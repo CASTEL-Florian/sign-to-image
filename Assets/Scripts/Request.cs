@@ -14,12 +14,13 @@ public class Request : MonoBehaviour
     private string prompt = "A cat";
     private Texture2D tex;
     private bool generationEnded = false;
-    private string url = "http://d0d4-34-126-93-69.ngrok.io";
+    public string url = "http://c376-35-188-156-72.ngrok.io";
 
     private void Start()
     {
         tex = new Texture2D(2,2);
         LoadImage();
+        url = PlayerPrefs.GetString("url");
     }
     public class Parameters
     {
@@ -73,7 +74,7 @@ public class Request : MonoBehaviour
     }
     IEnumerator GetTexture()
     {
-
+        Debug.Log("1");
         float t = Time.time;
 
         string json = "{\"prompt\": \"" + prompt + "\", \"steps\": " + steps.ToString() + ", \"sampler_index\": \"Euler a\"}";
@@ -83,7 +84,7 @@ public class Request : MonoBehaviour
 
         UploadHandlerRaw uploadHandlerRaw = new UploadHandlerRaw(jsonBinary);
         uploadHandlerRaw.contentType = "application/json";
-
+        Debug.Log("2");
         UnityWebRequest www =
             new UnityWebRequest(url + "/sdapi/v1/txt2img", "POST", downloadHandlerBuffer, uploadHandlerRaw);
         www.SetRequestHeader("ngrok-skip-browser-warning", "69420");
@@ -91,6 +92,7 @@ public class Request : MonoBehaviour
         Coroutine progressRoutine = StartCoroutine(CheckProgress());
         yield return www.SendWebRequest();
         generationEnded = true;
+        Debug.Log("3");
         if (www.isNetworkError)
             Debug.LogError(string.Format("{0}: {1}", www.url, www.error));
         else
@@ -101,7 +103,7 @@ public class Request : MonoBehaviour
             tex.LoadImage(imageBytes);
             img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
             print("Time:" + (Time.time - t).ToString());
-            SaveImage();
+            //SaveImage();
         }
         www.Dispose();
     }
