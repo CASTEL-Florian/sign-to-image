@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DAA2331D-F0B7-6C5B-A9D1-59EE6A0E4470}</ProjectGuid>
+    <ProjectGuid>{272490EA-B467-921A-0578-DB37A06F0C32}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Facebook.Wit.Conduit</AssemblyName>
@@ -735,7 +735,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="LitJson.csproj">
-      <Project>{51E806E9-1BDB-C487-D3CA-B0A5A46D0144}</Project>
+      <Project>{EEDEB49B-45E6-B91E-AD47-84AE04CBF7E2}</Project>
       <Name>LitJson</Name>
     </ProjectReference>
   </ItemGroup>

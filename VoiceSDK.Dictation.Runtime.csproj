@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A65FD3D3-30C8-A9B8-65DA-EA07650F6EC6}</ProjectGuid>
+    <ProjectGuid>{44998BE8-6BF5-A129-AA22-3B900B1B5560}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>VoiceSDK.Dictation.Runtime</AssemblyName>
@@ -726,19 +726,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="AssistantCoreSDKRuntime.csproj">
-      <Project>{EEA100D4-D4F7-BF00-10DC-BFFBB5A54F48}</Project>
+      <Project>{A2319142-B77B-E93C-91E6-1F328FAEDBDF}</Project>
       <Name>AssistantCoreSDKRuntime</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.WitAI.csproj">
-      <Project>{7C8DA20D-533D-F3AD-1E4F-2A633CF9A78F}</Project>
+      <Project>{DB61B6A7-0D7A-8DBD-642C-F82EB4C598BA}</Project>
       <Name>Facebook.WitAI</Name>
     </ProjectReference>
     <ProjectReference Include="Facebook.Wit.Dictation.csproj">
-      <Project>{C9128EFF-498C-81EA-8104-90AC9B61A532}</Project>
+      <Project>{9F32AFD8-F3A8-4169-394F-225376863CE0}</Project>
       <Name>Facebook.Wit.Dictation</Name>
     </ProjectReference>
     <ProjectReference Include="VoiceSDK.Runtime.csproj">
-      <Project>{CE82A0B3-45E5-921A-75B1-485843012E47}</Project>
+      <Project>{382D1CDD-2426-5A63-12D2-A8B2FF55674F}</Project>
       <Name>VoiceSDK.Runtime</Name>
     </ProjectReference>
   </ItemGroup>

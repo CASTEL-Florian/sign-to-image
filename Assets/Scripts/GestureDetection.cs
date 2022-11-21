@@ -5,16 +5,30 @@ using UnityEngine.Events;
 using TMPro;
 
 [System.Serializable]
-public struct Gesture
+public class Gesture
 {
     public string name;
     public List<Vector3> fingerDatas;
-    //public UnityEvent onRecognized;
+
+
+}
+
+// necessaire car JsonUtility.ToJson fait chier et veut pas écrire juste une putain de liste
+[System.Serializable]
+public class GestureList
+{
+    public List<Gesture> gestures;
 }
 
 
 public class GestureDetection : MonoBehaviour
 {
+    // save & load system
+    [SerializeField] private string FileName;
+    public FileDataHandler dataHandler;
+    public TMP_InputField dataInputField;
+
+
     public float threshold;
     public OVRSkeleton skeleton;
     public List<Gesture> gestures;
@@ -35,17 +49,19 @@ public class GestureDetection : MonoBehaviour
     private string phrase = "";
 
     public GameObject frame;
+    public GesturesCanvasManagement gesturesCanvasManagement;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        //fingerBones = new List<OVRBone>(skeleton.Bones);    test avec delay
+        // load data from the saveFile
+        dataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
+        dataHandler.dataInputField = dataInputField;
+        gestures = dataHandler.Load().gestures;
+
         previousGesture = new Gesture();
         StartCoroutine(DelayRoutine(2.5f));
-        if(gestures.Equals(new List<Gesture>() ))
-        {
-            gestureRecognitionInputField.text = "c vide";
-        }
     }
 
     public IEnumerator DelayRoutine(float delay)
@@ -59,13 +75,6 @@ public class GestureDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            phrase = "fox in woods";
-            phraseField.text = phrase;
-            frame.GetComponent<Request>().SetPrompt(phrase);
-            frame.GetComponent<Request>().Generate();
-        }
         if(hasStarted)
         {
             Gesture currentGesture = Recognize();
@@ -133,16 +142,12 @@ public class GestureDetection : MonoBehaviour
             g.name = inputField.text;
             g.fingerDatas = data;
             gestures.Add(g);
-            if(gestures == null)
-            {
-                gestureRecognitionInputField.text = "c toujours vide";
-            }
-            else
-            {
-                //gestureRecognitionInputField.text = gestures[i].name;
-                //debugLog.text = (gestures[i].fingerDatas[0].x).ToString();
-                //i++;
-            }
+
+            // save data in the saveFile
+            GestureList gestureList = new GestureList();
+            gestureList.gestures = gestures;
+            dataHandler.Save(gestureList);
+            //gesturesCanvasManagement.UpdateCanvas();
         }
         else
         {
