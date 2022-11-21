@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F0E7C7F5-8718-C17A-EBE8-1969C0B7AD2B}</ProjectGuid>
+    <ProjectGuid>{172FA924-F762-E9FB-6A6D-C79C5C84C6E8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Facebook.Wit.TTS</AssemblyName>
@@ -732,7 +732,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Facebook.WitAI.csproj">
-      <Project>{7C8DA20D-533D-F3AD-1E4F-2A633CF9A78F}</Project>
+      <Project>{DB61B6A7-0D7A-8DBD-642C-F82EB4C598BA}</Project>
       <Name>Facebook.WitAI</Name>
     </ProjectReference>
   </ItemGroup>

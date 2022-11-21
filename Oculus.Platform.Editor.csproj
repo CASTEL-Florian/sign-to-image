@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BF5FDA3A-83AB-00E4-DEE0-BF482B9FBD84}</ProjectGuid>
+    <ProjectGuid>{C3C9B028-0717-D81F-5358-19339AC189AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Oculus.Platform.Editor</AssemblyName>
@@ -749,7 +749,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Oculus.Platform.csproj">
-      <Project>{1C34E3BF-6E65-2837-8688-B39E5C2D502C}</Project>
+      <Project>{98A0296A-5048-C515-7E6E-7FF3D7F2725C}</Project>
       <Name>Oculus.Platform</Name>
     </ProjectReference>
   </ItemGroup>

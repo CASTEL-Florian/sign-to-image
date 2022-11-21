@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4914C1C1-CBAC-4856-95A1-4E9C5D849BF5}</ProjectGuid>
+    <ProjectGuid>{D522E7F0-6549-8A04-E1D8-67353B0707C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Oculus.LipSync</AssemblyName>

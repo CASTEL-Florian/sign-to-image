@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - ButtonVR
     - GestureDetection
+    - GesturesCanvasManagement
     - Keyboard
     - KeyboardButton
     - Request
@@ -241,7 +242,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12110}
     - Class: 114
-      Script: {instanceID: 30190}
+      Script: {instanceID: 30372}
+    - Class: 114
+      Script: {instanceID: 31916}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -3171,7 +3174,7 @@ ScriptsOnlyBuild:
     className: PlayerArea
   - hash:
       serializedVersion: 2
-      Hash: 4a79342f32c7255fe9b3d64c2be80f8d
+      Hash: 456a32387560382806649fc6b29bf66a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GestureDetection
@@ -4399,7 +4402,13 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: OculusSampleFramework
     className: TrackSegment
+  - hash:
+      serializedVersion: 2
+      Hash: 717b20cdcb57d19520c6c35fb4bc151b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GesturesCanvasManagement
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Arthur/TestVR/Assets/../Temp/OVRGradleTempExport
+  playerPath: C:/Users/Arthur/projets/sign-to-image/Assets/../Temp/OVRGradleTempExport

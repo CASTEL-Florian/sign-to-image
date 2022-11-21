@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1C34E3BF-6E65-2837-8688-B39E5C2D502C}</ProjectGuid>
+    <ProjectGuid>{98A0296A-5048-C515-7E6E-7FF3D7F2725C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Oculus.Platform</AssemblyName>
