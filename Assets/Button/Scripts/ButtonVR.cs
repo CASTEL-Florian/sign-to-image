@@ -10,6 +10,7 @@ using UnityEngine.Events;
 
 public class ButtonVR : MonoBehaviour
 {
+    public string buttonName;
     public GameObject button;
     public UnityEvent onPress;
     public UnityEvent onRelease;

@@ -18,6 +18,11 @@ public class Gesture
 public class GestureList
 {
     public List<Gesture> gestures;
+
+    public GestureList()
+    {
+        gestures = new List<Gesture>();
+    }
 }
 
 
@@ -30,18 +35,25 @@ public class GestureDetection : MonoBehaviour
 
 
     public float threshold;
-    public OVRSkeleton skeleton;
+    public OVRSkeleton rightSkeleton;
+    public OVRSkeleton leftSkeleton;
     public List<Gesture> gestures;
-    private List<OVRBone> fingerBones;
+    private List<OVRBone> rightFingerBones;
+    private List<OVRBone> leftFingerBones;
     private Gesture previousGesture;
 
     public TMP_InputField inputField;
     public TMP_InputField gestureRecognitionInputField;
     public TMP_InputField debugLog, debugLog2, debugLog3, debugLog4, phraseField, URLInputField;
 
+    // canvas to show cooldown when saving a new gesture
+    public GameObject cooldownCanvas;
+    public TMP_InputField cooldownInputField;
+    private bool _isSaving;
+
+
     private bool hasStarted = false;
 
-    private bool _isTesting = true;
     int i = 0;
 
     private string start = "sos";
@@ -67,7 +79,8 @@ public class GestureDetection : MonoBehaviour
     public IEnumerator DelayRoutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        fingerBones = new List<OVRBone>(skeleton.Bones);
+        rightFingerBones = new List<OVRBone>(rightSkeleton.Bones);
+        leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
         hasStarted = true;
         URLInputField.text = frame.GetComponent<Request>().url;
     }
@@ -126,6 +139,29 @@ public class GestureDetection : MonoBehaviour
         }
     }
 
+    public void SaveGestureButton()
+    {
+        if(!_isSaving)
+        {
+            StartCoroutine(SaveGesture());
+        }
+    }
+    public IEnumerator SaveGesture()
+    {
+        _isSaving = true;
+        cooldownCanvas.SetActive(true);
+        cooldownInputField.text = "3";
+        yield return new WaitForSeconds(1f);
+        cooldownInputField.text = "2";
+        yield return new WaitForSeconds(1f);
+        cooldownInputField.text = "1";
+        yield return new WaitForSeconds(1f);
+        cooldownInputField.text = "KABOOOM";
+        Save();
+        yield return new WaitForSeconds(1f);
+        cooldownCanvas.SetActive(false);
+        _isSaving = false;
+    }
     public void Save()
     {
         if(hasStarted)
@@ -133,10 +169,10 @@ public class GestureDetection : MonoBehaviour
             Gesture g = new Gesture();
             g.name = "new gesture";
             List<Vector3> data = new List<Vector3>();
-            foreach (var bone in fingerBones)
+            foreach (var bone in rightFingerBones)
             {
                 // finger position relative to root
-                data.Add(skeleton.transform.InverseTransformPoint(bone.Transform.position));
+                data.Add(rightSkeleton.transform.InverseTransformPoint(bone.Transform.position));
             }
             
             g.name = inputField.text;
@@ -147,7 +183,8 @@ public class GestureDetection : MonoBehaviour
             GestureList gestureList = new GestureList();
             gestureList.gestures = gestures;
             dataHandler.Save(gestureList);
-            //gesturesCanvasManagement.UpdateCanvas();
+            inputField.text = "";
+            gesturesCanvasManagement.UpdateCanvas(gestures);
         }
         else
         {
@@ -165,9 +202,9 @@ public class GestureDetection : MonoBehaviour
             
             float sumDistance = 0;
             bool isDiscarded = false;
-            for(int i = 0; i < fingerBones.Count; i++)
+            for(int i = 0; i < rightFingerBones.Count; i++)
             {
-                Vector3 currentData = skeleton.transform.InverseTransformPoint(fingerBones[i].Transform.position);
+                Vector3 currentData = rightSkeleton.transform.InverseTransformPoint(rightFingerBones[i].Transform.position);
                 float distance = Vector3.Distance(currentData,gesture.fingerDatas[i]);
                 debugLog.text = "Dist = " + distance.ToString();
                 //debugLog2.text = (distance > 0.05f).ToString();
