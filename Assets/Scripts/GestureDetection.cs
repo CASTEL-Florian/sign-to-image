@@ -10,6 +10,13 @@ public class Gesture
     public string name;
     public List<Vector3> rightFingerDatas;
     public List<Vector3> leftFingerDatas;
+
+    public Gesture()
+    {
+        name = "";
+        rightFingerDatas = new List<Vector3>();
+        leftFingerDatas = new List<Vector3>();
+    }
 }
 
 // necessaire car JsonUtility.ToJson fait chier et veut pas écrire juste une putain de liste
@@ -93,10 +100,11 @@ public class GestureDetection : MonoBehaviour
             bool hasRecognized = !currentGesture.Equals(new Gesture());
             debugLog.text = hasRecognized.ToString();
             // check if its a new gesture
+
             if(hasRecognized && !currentGesture.Equals(previousGesture) && currentGesture.name != "")
             {
                 previousGesture = currentGesture;
-                gestureRecognitionInputField.text = "s" + currentGesture.name + "s";
+                gestureRecognitionInputField.text = currentGesture.name;
                 if(currentGesture.name == "sos")
                 {
                     if(_isPhrase)
