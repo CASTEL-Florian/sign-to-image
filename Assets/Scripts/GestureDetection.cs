@@ -8,9 +8,8 @@ using TMPro;
 public class Gesture
 {
     public string name;
-    public List<Vector3> fingerDatas;
-
-
+    public List<Vector3> rightFingerDatas;
+    public List<Vector3> leftFingerDatas;
 }
 
 // necessaire car JsonUtility.ToJson fait chier et veut pas écrire juste une putain de liste
@@ -167,16 +166,22 @@ public class GestureDetection : MonoBehaviour
         if(hasStarted)
         {
             Gesture g = new Gesture();
-            g.name = "new gesture";
-            List<Vector3> data = new List<Vector3>();
+            List<Vector3> rightData = new List<Vector3>();
+            List<Vector3> leftData = new List<Vector3>();
             foreach (var bone in rightFingerBones)
             {
                 // finger position relative to root
-                data.Add(rightSkeleton.transform.InverseTransformPoint(bone.Transform.position));
+                rightData.Add(rightSkeleton.transform.InverseTransformPoint(bone.Transform.position));
+            }
+
+            foreach (var bone in leftFingerBones)
+            {
+                leftData.Add(leftSkeleton.transform.InverseTransformPoint(bone.Transform.position));
             }
             
             g.name = inputField.text;
-            g.fingerDatas = data;
+            g.rightFingerDatas = rightData;
+            g.leftFingerDatas = leftData;
             gestures.Add(g);
 
             // save data in the saveFile
@@ -199,13 +204,16 @@ public class GestureDetection : MonoBehaviour
 
         foreach (var gesture in gestures)
         {
-            
             float sumDistance = 0;
             bool isDiscarded = false;
             for(int i = 0; i < rightFingerBones.Count; i++)
             {
-                Vector3 currentData = rightSkeleton.transform.InverseTransformPoint(rightFingerBones[i].Transform.position);
-                float distance = Vector3.Distance(currentData,gesture.fingerDatas[i]);
+                Vector3 currentRightData = rightSkeleton.transform.InverseTransformPoint(rightFingerBones[i].Transform.position);
+                Vector3 currentLeftData = leftSkeleton.transform.InverseTransformPoint(leftFingerBones[i].Transform.position);
+
+                float rightDistance = Vector3.Distance(currentRightData,gesture.rightFingerDatas[i]);
+                float leftDistance = Vector3.Distance(currentLeftData, gesture.leftFingerDatas[i]);
+                float distance = Mathf.Max(rightDistance, leftDistance);
                 debugLog.text = "Dist = " + distance.ToString();
                 //debugLog2.text = (distance > 0.05f).ToString();
                 if (distance > threshold)
