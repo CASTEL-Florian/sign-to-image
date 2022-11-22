@@ -25,7 +25,7 @@ public class FileDataHandler
         GestureList loadedData =  new GestureList();
         if(File.Exists(fullPath))
         {
-            dataInputField.text = "ya un putain de fichier";
+            dataInputField.text = "ya un de fichier";
             try
             {
                 // Load the serialized data from the file
