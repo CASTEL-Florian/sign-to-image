@@ -91,19 +91,18 @@ public class GestureDetection : MonoBehaviour
         {
             Gesture currentGesture = Recognize();
             bool hasRecognized = !currentGesture.Equals(new Gesture());
-
+            debugLog.text = hasRecognized.ToString();
             // check if its a new gesture
-            if(hasRecognized && !currentGesture.Equals(previousGesture))
+            if(hasRecognized && !currentGesture.Equals(previousGesture) && currentGesture.name != "")
             {
                 previousGesture = currentGesture;
-                //currentGesture.onRecognized.Invoke();
-                gestureRecognitionInputField.text = currentGesture.name;
-                if(currentGesture.name == "sos" || i == 2)
+                gestureRecognitionInputField.text = "s" + currentGesture.name + "s";
+                if(currentGesture.name == "sos")
                 {
                     if(_isPhrase)
                     {
-                        //frame.GetComponent<Request>().SetPrompt(phrase);
                         _isPhrase = false;
+                        i = 0;
                     }    
                     else
                     {
@@ -113,7 +112,7 @@ public class GestureDetection : MonoBehaviour
                 }
                 else
                 {
-                    if(_isPhrase)
+                    if(_isPhrase && currentGesture.name != "")
                     {
                         if(i == 0)
                         {
@@ -214,8 +213,6 @@ public class GestureDetection : MonoBehaviour
                 float rightDistance = Vector3.Distance(currentRightData,gesture.rightFingerDatas[i]);
                 float leftDistance = Vector3.Distance(currentLeftData, gesture.leftFingerDatas[i]);
                 float distance = Mathf.Max(rightDistance, leftDistance);
-                debugLog.text = "Dist = " + distance.ToString();
-                //debugLog2.text = (distance > 0.05f).ToString();
                 if (distance > threshold)
                 {
                     isDiscarded = true;

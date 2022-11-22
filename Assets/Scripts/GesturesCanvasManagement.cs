@@ -12,7 +12,12 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public TMP_InputField debugLog, debugLog2;
 
-    private int k = 0, j = 0;
+
+    public GameObject rightHand;
+    public GameObject leftHand;
+
+    public List<GameObject> rightFingerBones;
+    public List<GameObject> leftFingerBones;
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +35,8 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public void UpdateCanvas(List<Gesture> gestureList)
     {
-        j++;
         if (gestureList.Count != 0)
         {
-            k++;
             for (int i = 0; i < GestureFrames.Length; i++)
             {
                 GestureFrames[i].SetActive(false);   
@@ -47,8 +50,6 @@ public class GesturesCanvasManagement : MonoBehaviour
             }
             
         }
-        debugLog.text = "j = " + j.ToString();
-        debugLog2.text = " k = " + k.ToString();
     }
 
     public void DeleteGesture(string name)
@@ -57,7 +58,9 @@ public class GesturesCanvasManagement : MonoBehaviour
 
         for (int i = 0; i < gestureList.Count; i++)
         {
-            if(gestureList[i].name == name)
+            debugLog2.text = name;
+            debugLog.text = gestureList[i].name;
+            if (gestureList[i].name == name)
             {
                 gestureDetection.gestures.RemoveAt(i);
                 break;
@@ -73,8 +76,50 @@ public class GesturesCanvasManagement : MonoBehaviour
         UpdateCanvas(gestureDetection.gestures);
     }
 
+    public void showGesture(string name)
+    {
+        debugLog.text = "bouton show bien appuyé";
+        gestureList = gestureDetection.gestures;
+
+        for (int i = 0; i < gestureList.Count; i++)
+        {
+            debugLog2.text = name;
+            debugLog.text = gestureList[i].name;
+            if (gestureList[i].name == name)
+            {
+                leftHand.SetActive(true);
+                rightHand.SetActive(true);
+                for (int k = 0; k < gestureList[i].leftFingerDatas.Count; k++)
+                {
+                    debugLog2.text = "IN THE LOOP";
+                    rightFingerBones[k].transform.position = gestureList[i].rightFingerDatas[k];
+                    leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
+                }
+                rightHand.transform.position = new Vector3(0.25f, 1.5f, 0.4f);
+                rightHand.transform.rotation = Quaternion.Euler(0, 90f, -90f);
+                leftHand.transform.position = new Vector3(-0.25f, 1.5f, 0.4f);
+                leftHand.transform.rotation = Quaternion.Euler(0, 90f, 90f);
+                StartCoroutine(DesactivateHands(10f));
+                break;
+            }
+        }
+       
+
+    }
+
     public void PrintName(string name)
     {
         debugLog.text = name;
+    }
+
+    public IEnumerator DesactivateHands(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        rightHand.transform.position = new Vector3(0, 0, 0);
+        rightHand.transform.rotation = Quaternion.Euler(0, 0, 0);
+        leftHand.transform.position = new Vector3(0, 0, 0);
+        leftHand.transform.rotation = Quaternion.Euler(0, 0, 0);
+        leftHand.SetActive(false);
+        rightHand.SetActive(false);
     }
 }

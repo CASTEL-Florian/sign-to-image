@@ -11,4 +11,9 @@ public class ButtonsGesturesCanvas : MonoBehaviour
     {
         gesturesCanvasManagement.DeleteGesture(buttonName);
     }
+
+    public void ShowButton()
+    {
+        gesturesCanvasManagement.showGesture(buttonName);
+    }
 }

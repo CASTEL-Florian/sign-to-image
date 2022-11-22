@@ -5,7 +5,17 @@
       "ProjectGuid": "6e71233e-13ae-707b-b2b0-bd6aa2546180",
       "DisplayName": "Assembly-CSharp",
       "ColorIndex": 0
+    },
+    "3c42a836-d559-7365-1cfc-a57795d3f2ab": {
+      "ProjectGuid": "3c42a836-d559-7365-1cfc-a57795d3f2ab",
+      "DisplayName": "Oculus.VR",
+      "ColorIndex": 1
+    },
+    "6cee9cbd-d9b8-82b0-1d5e-1c502955ae56": {
+      "ProjectGuid": "6cee9cbd-d9b8-82b0-1d5e-1c502955ae56",
+      "DisplayName": "Oculus.VR.Scripts.Editor",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }
