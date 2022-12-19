@@ -10,7 +10,10 @@ public class Request : MonoBehaviour
 {
     [SerializeField] Image img;
     [SerializeField] int steps = 15;
-    [SerializeField] private string imageName = "image.png";
+    [SerializeField] private string imageName = "image";
+    [SerializeField] private Frame frame;
+    [SerializeField] private bool saveImage = false;
+
     private string prompt = "A cat";
     private Texture2D tex;
     private bool generationEnded = false;
@@ -102,8 +105,13 @@ public class Request : MonoBehaviour
             byte[] imageBytes = Convert.FromBase64String(response.images[0]);
             tex.LoadImage(imageBytes);
             img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+            Painting painting = new Painting();
+            painting.date = DateTime.Now;
+            painting.name = prompt;
+            frame.SetPainting(painting, tex);
             print("Time:" + (Time.time - t).ToString());
-            //SaveImage();
+            if (saveImage)
+                SaveImage();
         }
         www.Dispose();
     }
@@ -157,7 +165,8 @@ public class Request : MonoBehaviour
     }
     private void SaveImage()
     {
-        byte[] byteArray = tex.EncodeToPNG();
-        File.WriteAllBytes(Application.dataPath + "/SavedPictures/" + imageName, byteArray);
+        if (!ImageFileManager.Instance)
+            return;
+        ImageFileManager.Instance.AddPainting(prompt, tex, false);
     }
 }
