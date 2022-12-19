@@ -11,6 +11,9 @@ public class Gesture
     public List<Vector3> rightFingerDatas;
     public List<Vector3> leftFingerDatas;
 
+    public List<Quaternion> rightFingerRotations;
+    public List<Quaternion> leftFingerRotations;
+
     public Gesture()
     {
         name = "";
@@ -69,6 +72,12 @@ public class GestureDetection : MonoBehaviour
     public GameObject frame;
     public GesturesCanvasManagement gesturesCanvasManagement;
 
+    // player movement
+    public PlayerMovement playerMovement;
+    public bool _playerCanMove = true;
+
+    //particules system to show feedbacks
+    public ParticleSystem particleLeftManager, particleRightManager;
 
     // Start is called before the first frame update
     void Start()
@@ -98,7 +107,6 @@ public class GestureDetection : MonoBehaviour
         {
             Gesture currentGesture = Recognize();
             bool hasRecognized = !currentGesture.Equals(new Gesture());
-            debugLog.text = hasRecognized.ToString();
             // check if its a new gesture
 
             if(hasRecognized && !currentGesture.Equals(previousGesture) && currentGesture.name != "")
@@ -111,6 +119,8 @@ public class GestureDetection : MonoBehaviour
                     {
                         _isPhrase = false;
                         i = 0;
+                        Generate();
+                        Reset();
                     }    
                     else
                     {
@@ -118,24 +128,29 @@ public class GestureDetection : MonoBehaviour
                         i = 0;
                     }
                 }
+                else if (currentGesture.name == "move" && _playerCanMove)
+                {
+                    movePlayer();
+                    previousGesture = null;
+                }
                 else
                 {
                     if(_isPhrase && currentGesture.name != "")
                     {
                         if(i == 0)
                         {
-                            debugLog3.text = "sujet :" + currentGesture.name;
                             phrase += " " + currentGesture.name;
                         }
                         else
                         {
-                            debugLog4.text = "lieu :" + currentGesture.name;
                             phrase += " in " + currentGesture.name; 
                         }
                         i ++;
-                    }        
+                    }
+                    particleLeftManager.Play();
+                    particleRightManager.Play();
                 }
-                debugLog2.text = "_isPhrase = " + _isPhrase.ToString();
+                
                 phraseField.text = phrase;
             }
             else if(!hasRecognized)
@@ -162,7 +177,7 @@ public class GestureDetection : MonoBehaviour
         yield return new WaitForSeconds(1f);
         cooldownInputField.text = "1";
         yield return new WaitForSeconds(1f);
-        cooldownInputField.text = "KABOOOM";
+        cooldownInputField.text = "CLIC";
         Save();
         yield return new WaitForSeconds(1f);
         cooldownCanvas.SetActive(false);
@@ -175,20 +190,27 @@ public class GestureDetection : MonoBehaviour
             Gesture g = new Gesture();
             List<Vector3> rightData = new List<Vector3>();
             List<Vector3> leftData = new List<Vector3>();
+            List<Quaternion> rotationRightData = new List<Quaternion>();
+            List<Quaternion> rotationLeftData = new List<Quaternion>();
             foreach (var bone in rightFingerBones)
             {
                 // finger position relative to root
                 rightData.Add(rightSkeleton.transform.InverseTransformPoint(bone.Transform.position));
+                rotationRightData.Add(bone.Transform.rotation);
+
             }
 
             foreach (var bone in leftFingerBones)
             {
                 leftData.Add(leftSkeleton.transform.InverseTransformPoint(bone.Transform.position));
+                rotationLeftData.Add(bone.Transform.rotation);
             }
             
             g.name = inputField.text;
             g.rightFingerDatas = rightData;
             g.leftFingerDatas = leftData;
+            g.rightFingerRotations = rotationRightData;
+            g.leftFingerRotations = rotationLeftData;
             gestures.Add(g);
 
             // save data in the saveFile
@@ -241,8 +263,6 @@ public class GestureDetection : MonoBehaviour
 
     public void Reset()
     {
-        debugLog3.text = " ";
-        debugLog4.text = " ";
         phraseField.text = " ";
         phrase = "";
     }
@@ -257,5 +277,16 @@ public class GestureDetection : MonoBehaviour
     {
         frame.GetComponent<Request>().url = URLInputField.text;
         PlayerPrefs.SetString("url",URLInputField.text);
+    }
+
+    public void movePlayer()
+    {
+        Vector3 startBone = rightFingerBones[6].Transform.position;
+        Vector3 endBone = rightFingerBones[8].Transform.position;
+
+        Vector3 direction = new Vector3 (startBone.x - endBone.x, 0 , startBone.z - endBone.z);
+        debugLog.text = "x = " + direction.x.ToString();
+        debugLog2.text = "z = " + direction.z.ToString();
+        playerMovement.PlayerMove(direction);
     }
 }
