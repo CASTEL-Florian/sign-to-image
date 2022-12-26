@@ -13,12 +13,21 @@ public class Request : MonoBehaviour
     [SerializeField] private string imageName = "image";
     [SerializeField] private Frame frame;
     [SerializeField] private bool saveImage = false;
+    [SerializeField] private bool test = false;
 
     private string prompt = "A cat";
     private Texture2D tex;
     private bool generationEnded = false;
     public string url = "http://c376-35-188-156-72.ngrok.io";
 
+    private void Update()
+    {
+        if (test)
+        {
+            test = false;
+            Generate();
+        }
+    }
     private void Start()
     {
         tex = new Texture2D(2,2);
@@ -64,7 +73,7 @@ public class Request : MonoBehaviour
 
     public class ProgressResponse
     {
-        public string images;
+        public string current_image;
     }
 
     public void SetPrompt(string _prompt)
@@ -77,7 +86,6 @@ public class Request : MonoBehaviour
     }
     IEnumerator GetTexture()
     {
-        Debug.Log("1");
         float t = Time.time;
 
         string json = "{\"prompt\": \"" + prompt + "\", \"steps\": " + steps.ToString() + ", \"sampler_index\": \"Euler a\"}";
@@ -87,7 +95,6 @@ public class Request : MonoBehaviour
 
         UploadHandlerRaw uploadHandlerRaw = new UploadHandlerRaw(jsonBinary);
         uploadHandlerRaw.contentType = "application/json";
-        Debug.Log("2");
         UnityWebRequest www =
             new UnityWebRequest(url + "/sdapi/v1/txt2img", "POST", downloadHandlerBuffer, uploadHandlerRaw);
         www.SetRequestHeader("ngrok-skip-browser-warning", "69420");
@@ -95,7 +102,6 @@ public class Request : MonoBehaviour
         Coroutine progressRoutine = StartCoroutine(CheckProgress());
         yield return www.SendWebRequest();
         generationEnded = true;
-        Debug.Log("3");
         if (www.isNetworkError)
             Debug.LogError(string.Format("{0}: {1}", www.url, www.error));
         else
@@ -108,7 +114,8 @@ public class Request : MonoBehaviour
             Painting painting = new Painting();
             painting.date = DateTime.Now;
             painting.name = prompt;
-            frame.SetPainting(painting, tex);
+            if (frame)
+                frame.SetPainting(painting, tex);
             print("Time:" + (Time.time - t).ToString());
             if (saveImage)
                 SaveImage();
@@ -131,25 +138,32 @@ public class Request : MonoBehaviour
             uploadHandlerRaw.contentType = "application/json";
 
             UnityWebRequest www =
-                new UnityWebRequest(url + "/sdapi/v1/progress", "POST", downloadHandlerBuffer, uploadHandlerRaw);
+                new UnityWebRequest(url + "/sdapi/v1/progress", "GET", downloadHandlerBuffer, uploadHandlerRaw);
             www.SetRequestHeader("ngrok-skip-browser-warning", "69420");
             yield return www.SendWebRequest();
 
             if (www.isNetworkError)
                 Debug.LogError(string.Format("{0}: {1}", www.url, www.error));
-            else
             {
                 if (!generationEnded)
                 {
                     print("progress time:" + (Time.time - t).ToString());
                     t = Time.time;
                     ProgressResponse response = JsonUtility.FromJson<ProgressResponse>(www.downloadHandler.text);
-                    byte[] imageBytes = Convert.FromBase64String(response.images);
-                    tex.LoadImage(imageBytes);
-                    img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+                    if (response.current_image.Length > 0)
+                    {
+                        byte[] imageBytes = Convert.FromBase64String(response.current_image);
+                        Debug.Log(response.current_image);
+                        tex.LoadImage(imageBytes);
+                        img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+                    }
+                    else
+                    {
+                        Debug.Log("empty image");
+                    }
                 }
-            www.Dispose();
             }
+            www.Dispose();
         } while (!generationEnded);
     }
 
