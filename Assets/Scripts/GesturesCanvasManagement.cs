@@ -94,9 +94,9 @@ public class GesturesCanvasManagement : MonoBehaviour
                     for (int k = 0; k < gestureList[i].leftFingerDatas.Count; k++)
                     {
                         rightFingerBones[k].transform.position = gestureList[i].rightFingerDatas[k];
-                        //rightFingerBones[k].transform.rotation = gestureList[i].rightFingerRotations[k];
+                        rightFingerBones[k].transform.rotation = gestureList[i].rightFingerRotations[k];
                         leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
-                        //leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
+                        leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
                     }
                     rightHand.transform.position = new Vector3(0.25f, 1.5f, 0.4f);
                     rightHand.transform.rotation = Quaternion.Euler(0, 90f, -90f);

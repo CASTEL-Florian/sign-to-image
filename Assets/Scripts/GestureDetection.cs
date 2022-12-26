@@ -196,14 +196,14 @@ public class GestureDetection : MonoBehaviour
             {
                 // finger position relative to root
                 rightData.Add(rightSkeleton.transform.InverseTransformPoint(bone.Transform.position));
-                rotationRightData.Add(bone.Transform.rotation);
+                rotationRightData.Add(Quaternion.Inverse(rightSkeleton.transform.rotation) * bone.Transform.rotation);
 
             }
 
             foreach (var bone in leftFingerBones)
             {
                 leftData.Add(leftSkeleton.transform.InverseTransformPoint(bone.Transform.position));
-                rotationLeftData.Add(bone.Transform.rotation);
+                rotationLeftData.Add(Quaternion.Inverse(leftSkeleton.transform.rotation) * bone.Transform.rotation);
             }
             
             g.name = inputField.text;
