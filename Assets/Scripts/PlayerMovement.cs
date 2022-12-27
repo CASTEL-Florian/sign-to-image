@@ -13,11 +13,13 @@ public class PlayerMovement : MonoBehaviour
     {
         initialPos = transform.position;
     }
+
     public void PlayerMove(Vector3 direction)
     {
         controller.Move(speed * direction * Time.deltaTime);
         //transform.position += direction * Time.deltaTime * speed;
-        debugLog.text = "isMoving";
+        if (debugLog)
+            debugLog.text = "isMoving";
     }
 
     public void ResetPos()

@@ -112,7 +112,8 @@ public class GestureDetection : MonoBehaviour
         rightFingerBones = new List<OVRBone>(rightSkeleton.Bones);
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
         hasStarted = true;
-        URLInputField.text = frame.url;
+        if (URLInputField)
+            URLInputField.text = frame.url;
     }
 
     // Update is called once per frame
@@ -127,7 +128,8 @@ public class GestureDetection : MonoBehaviour
             if (hasRecognized && !currentGesture.Equals(previousGesture) && currentGesture.name != "")
             {
                 previousGesture = currentGesture;
-                gestureRecognitionInputField.text = currentGesture.name;
+                if (gestureRecognitionInputField)
+                    gestureRecognitionInputField.text = currentGesture.name;
                 if(currentGesture.name == "sos")
                 {
                     if(_isPhrase)
@@ -142,10 +144,6 @@ public class GestureDetection : MonoBehaviour
                     else
                     {
                         _isPhrase = true;
-                        for (int i = 0; i < phraseElements.Length; i++)
-                        {
-                            phraseElements[i] = "";
-                        }
                         sentenceParticlesLeft.Play();
                         sentenceParticlesRight.Play();
                         i = 0;
@@ -156,7 +154,7 @@ public class GestureDetection : MonoBehaviour
                     movePlayer();
                     previousGesture = null;
                 }
-                else if (currentGesture.name == "change" && _playerCanMove)
+                else if (currentGesture.name == "change")
                 {
                     promptStyliser.ChangeStyle();
                 }
@@ -199,7 +197,8 @@ public class GestureDetection : MonoBehaviour
                 
                 ///-------------used for grammar------------
                 //phrase = subject + place + other;
-                phraseField.text = phrase;
+                if (phraseField)
+                    phraseField.text = phrase;
             }
             else if(!hasRecognized)
             {
@@ -312,12 +311,9 @@ public class GestureDetection : MonoBehaviour
 
     public void Reset()
     {
-        phraseField.text = " ";
+        if (phraseField)
+            phraseField.text = " ";
         phrase = "";
-        for (int i = 0; i < phraseElements.Length; i++)
-        {
-            phraseElements[i] = "";
-        }
     }
 
     public void Generate()
@@ -340,8 +336,10 @@ public class GestureDetection : MonoBehaviour
         Vector3 direction = new Vector3 (startBone.x - endBone.x, startBone.y - endBone.y, startBone.z - endBone.z);
         direction = direction.normalized;
         direction.y = 0;
-        debugLog.text = "x = " + direction.x.ToString();
-        debugLog2.text = "z = " + direction.z.ToString();
+        if (debugLog)
+            debugLog.text = "x = " + direction.x.ToString();
+        if (debugLog2)
+            debugLog2.text = "z = " + direction.z.ToString();
         playerMovement.PlayerMove(-direction);
     }
 }
