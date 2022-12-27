@@ -25,7 +25,8 @@ public class FileDataHandler
         GestureList loadedData =  new GestureList();
         if(File.Exists(fullPath))
         {
-            dataInputField.text = "ya un de fichier";
+            if (dataInputField)
+                dataInputField.text = "ya un de fichier";
             try
             {
                 // Load the serialized data from the file
@@ -44,12 +45,14 @@ public class FileDataHandler
             catch(Exception ex)
             {
                 Debug.LogError("Error occured when trying to load data to file: " + fullPath + "\n" + ex);
-                dataInputField.text = "Error occured when trying to load data to file: " + fullPath + "\n" + ex;
+                if (dataInputField)
+                    dataInputField.text = "Error occured when trying to load data to file: " + fullPath + "\n" + ex;
             }
         }
         else
         {
-            dataInputField.text = "ya pas de fichier";
+            if (dataInputField)
+                dataInputField.text = "ya pas de fichier";
         }
 
         return loadedData;
@@ -74,14 +77,16 @@ public class FileDataHandler
                 using(StreamWriter writer = new StreamWriter(stream))
                 {
                     writer.Write(dataToStore);
-                    dataInputField.text = "on a écrit sur le fichier";
+                    if (dataInputField)
+                        dataInputField.text = "on a écrit sur le fichier";
                 }
             }
         }
         catch(Exception ex)
         {
             Debug.LogError("Error occured when trying to save data to file: " + fullPath + "\n" + ex);
-            dataInputField.text = "Error occured when trying to save data to file: " + fullPath + "\n" + ex;
+            if (dataInputField)
+                dataInputField.text = "Error occured when trying to save data to file: " + fullPath + "\n" + ex;
         }
     }
 }

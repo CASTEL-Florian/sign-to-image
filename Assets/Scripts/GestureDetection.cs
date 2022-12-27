@@ -69,7 +69,10 @@ public class GestureDetection : MonoBehaviour
     private bool _isPhrase = false;
     private string phrase = "";
 
-    public GameObject frame;
+    // phrase elements : subject, action, location
+    private string[] phraseElements = new string[3];
+
+    public Request frame;
     public GesturesCanvasManagement gesturesCanvasManagement;
 
     // player movement
@@ -79,12 +82,18 @@ public class GestureDetection : MonoBehaviour
     //particules system to show feedbacks
     public ParticleSystem particleLeftManager, particleRightManager;
 
+    public ColorChange colorChangeLeft, colorChangeRight;
+
+    public ParticleSystem sentenceParticlesLeft, sentenceParticlesRight;
+
+    public PromptStyliser promptStyliser;
     // Start is called before the first frame update
     void Start()
     {
         // load data from the saveFile
         dataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
-        dataHandler.dataInputField = dataInputField;
+        if(dataInputField)
+            dataHandler.dataInputField = dataInputField;
         gestures = dataHandler.Load().gestures;
 
         previousGesture = new Gesture();
@@ -97,7 +106,7 @@ public class GestureDetection : MonoBehaviour
         rightFingerBones = new List<OVRBone>(rightSkeleton.Bones);
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
         hasStarted = true;
-        URLInputField.text = frame.GetComponent<Request>().url;
+        URLInputField.text = frame.url;
     }
 
     // Update is called once per frame
@@ -109,7 +118,7 @@ public class GestureDetection : MonoBehaviour
             bool hasRecognized = !currentGesture.Equals(new Gesture());
             // check if its a new gesture
 
-            if(hasRecognized && !currentGesture.Equals(previousGesture) && currentGesture.name != "")
+            if (hasRecognized && !currentGesture.Equals(previousGesture) && currentGesture.name != "")
             {
                 previousGesture = currentGesture;
                 gestureRecognitionInputField.text = currentGesture.name;
@@ -118,6 +127,8 @@ public class GestureDetection : MonoBehaviour
                     if(_isPhrase)
                     {
                         _isPhrase = false;
+                        sentenceParticlesLeft.Stop();
+                        sentenceParticlesRight.Stop();
                         i = 0;
                         Generate();
                         Reset();
@@ -125,6 +136,12 @@ public class GestureDetection : MonoBehaviour
                     else
                     {
                         _isPhrase = true;
+                        for (int i = 0; i < phraseElements.Length; i++)
+                        {
+                            phraseElements[i] = "";
+                        }
+                        sentenceParticlesLeft.Play();
+                        sentenceParticlesRight.Play();
                         i = 0;
                     }
                 }
@@ -133,22 +150,32 @@ public class GestureDetection : MonoBehaviour
                     movePlayer();
                     previousGesture = null;
                 }
+                else if (currentGesture.name == "change" && _playerCanMove)
+                {
+                    promptStyliser.ChangeStyle();
+                }
                 else
                 {
                     if(_isPhrase && currentGesture.name != "")
                     {
-                        if(i == 0)
+                        if (currentGesture.name[0] == 's')
                         {
-                            phrase += " " + currentGesture.name;
+                            phraseElements[0] = currentGesture.name.Substring(1, currentGesture.name.Length - 1);
                         }
-                        else
+                        else if (currentGesture.name[0] == 'a')
                         {
-                            phrase += " in " + currentGesture.name; 
+                            phraseElements[1] = currentGesture.name.Substring(1, currentGesture.name.Length - 1);
                         }
-                        i ++;
+                        else if (currentGesture.name[0] == 'l')
+                        {
+                            phraseElements[2] = currentGesture.name.Substring(1, currentGesture.name.Length - 1);
+                        }
+                        SetPhase();
                     }
                     particleLeftManager.Play();
                     particleRightManager.Play();
+                    colorChangeLeft.Pulse();
+                    colorChangeRight.Pulse();
                 }
                 
                 phraseField.text = phrase;
@@ -157,6 +184,23 @@ public class GestureDetection : MonoBehaviour
             {
                 gestureRecognitionInputField.text = " ";
             }
+        }
+    }
+
+    private void SetPhase()
+    {
+        phrase = "";
+        if (phraseElements[0] != "")
+        {
+            phrase += phraseElements[0];
+        }
+        if (phraseElements[1] != "")
+        {
+            phrase += (phrase != "" ? " " : "") + phraseElements[1];
+        }
+        if (phraseElements[2] != "")
+        {
+            phrase += (phrase != "" ? " in " : "") + phraseElements[2];
         }
     }
 
@@ -218,7 +262,8 @@ public class GestureDetection : MonoBehaviour
             gestureList.gestures = gestures;
             dataHandler.Save(gestureList);
             inputField.text = "";
-            gesturesCanvasManagement.UpdateCanvas(gestures);
+            if (gesturesCanvasManagement)
+                gesturesCanvasManagement.UpdateCanvas(gestures);
         }
         else
         {
@@ -265,17 +310,21 @@ public class GestureDetection : MonoBehaviour
     {
         phraseField.text = " ";
         phrase = "";
+        for (int i = 0; i < phraseElements.Length; i++)
+        {
+            phraseElements[i] = "";
+        }
     }
 
     public void Generate()
     {
-        frame.GetComponent<Request>().SetPrompt(phrase);
-        frame.GetComponent<Request>().Generate();
+        frame.SetPrompt(promptStyliser.ApplyCurrentStyle(phrase));
+        frame.Generate();
     }
 
     public void SetURL()
     {
-        frame.GetComponent<Request>().url = URLInputField.text;
+        frame.url = URLInputField.text;
         PlayerPrefs.SetString("url",URLInputField.text);
     }
 
@@ -284,9 +333,11 @@ public class GestureDetection : MonoBehaviour
         Vector3 startBone = rightFingerBones[6].Transform.position;
         Vector3 endBone = rightFingerBones[8].Transform.position;
 
-        Vector3 direction = new Vector3 (startBone.x - endBone.x, 0 , startBone.z - endBone.z);
+        Vector3 direction = new Vector3 (startBone.x - endBone.x, startBone.y - endBone.y, startBone.z - endBone.z);
+        direction = direction.normalized;
+        direction.y = 0;
         debugLog.text = "x = " + direction.x.ToString();
         debugLog2.text = "z = " + direction.z.ToString();
-        playerMovement.PlayerMove(direction);
+        playerMovement.PlayerMove(-direction);
     }
 }

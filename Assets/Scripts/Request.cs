@@ -110,7 +110,8 @@ public class Request : MonoBehaviour
             Response response = JsonUtility.FromJson<Response>(www.downloadHandler.text);
             byte[] imageBytes = Convert.FromBase64String(response.images[0]);
             tex.LoadImage(imageBytes);
-            img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+            if (img)
+                img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
             Painting painting = new Painting();
             painting.date = DateTime.Now;
             painting.name = prompt;
@@ -155,7 +156,13 @@ public class Request : MonoBehaviour
                         byte[] imageBytes = Convert.FromBase64String(response.current_image);
                         Debug.Log(response.current_image);
                         tex.LoadImage(imageBytes);
-                        img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+                        if (img)
+                            img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+                        Painting painting = new Painting();
+                        painting.date = DateTime.Now;
+                        painting.name = prompt;
+                        if (frame)
+                            frame.SetPainting(painting, tex);
                     }
                     else
                     {

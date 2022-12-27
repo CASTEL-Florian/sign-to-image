@@ -3,10 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class NewBehaviourScript : MonoBehaviour
+public class PromptStyliser : MonoBehaviour
 {
+    [System.Serializable]
+    public class StyleColor
+    {
+        public Style style;
+        public Color color;
+    }
+
     public enum Style { NoStyle, Painting, Sketch, Drawing, DigitalArt, Abstract, Watercolor, Photo, Cubism }
     
+    
+    [SerializeField] private List<StyleColor> styleColors;
+    [SerializeField] private List<ColorChange> colorChanges;
+    private int currentIndex;
+
     public string Stylise(string prompt, Style style)
     {
         if (style == Style.NoStyle)
@@ -29,5 +41,27 @@ public class NewBehaviourScript : MonoBehaviour
         if (style == Style.Cubism)
             newPrompt = prompt + " in the style of cubism";
         return newPrompt;
+    }
+
+    public string ApplyCurrentStyle(string prompt)
+    {
+        return Stylise(prompt, styleColors[currentIndex].style);
+    }
+
+    private void Start()
+    {
+        foreach (ColorChange colorChange in colorChanges)
+        {
+            colorChange.ChangeColor(styleColors[0].color);
+        }
+    }
+
+    public void ChangeStyle()
+    {
+        currentIndex = (currentIndex + 1) % styleColors.Count;
+        foreach (ColorChange colorChange in colorChanges)
+        {
+            colorChange.ChangeColor(styleColors[currentIndex].color);
+        }
     }
 }
