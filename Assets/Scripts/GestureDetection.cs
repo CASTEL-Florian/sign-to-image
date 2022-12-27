@@ -8,6 +8,9 @@ using TMPro;
 public class Gesture
 {
     public string name;
+    ///-------------used for grammar------------
+    public string type;
+
     public List<Vector3> rightFingerDatas;
     public List<Vector3> leftFingerDatas;
 
@@ -17,12 +20,13 @@ public class Gesture
     public Gesture()
     {
         name = "";
+        type = "";
         rightFingerDatas = new List<Vector3>();
         leftFingerDatas = new List<Vector3>();
     }
 }
 
-// necessaire car JsonUtility.ToJson fait chier et veut pas écrire juste une putain de liste
+// necessaire car JsonUtility.ToJson fait chier et veut pas ï¿½crire juste une putain de liste
 [System.Serializable]
 public class GestureList
 {
@@ -69,8 +73,10 @@ public class GestureDetection : MonoBehaviour
     private bool _isPhrase = false;
     private string phrase = "";
 
-    // phrase elements : subject, action, location
-    private string[] phraseElements = new string[3];
+    ///-------------used for grammar------------
+    private string subject = "";
+    private string place = "";
+    private string other = "";
 
     public Request frame;
     public GesturesCanvasManagement gesturesCanvasManagement;
@@ -158,19 +164,32 @@ public class GestureDetection : MonoBehaviour
                 {
                     if(_isPhrase && currentGesture.name != "")
                     {
-                        if (currentGesture.name[0] == 's')
+                        if(i == 0)
                         {
-                            phraseElements[0] = currentGesture.name.Substring(1, currentGesture.name.Length - 1);
+                            phrase += " " + currentGesture.name;
                         }
-                        else if (currentGesture.name[0] == 'a')
+                        else
                         {
-                            phraseElements[1] = currentGesture.name.Substring(1, currentGesture.name.Length - 1);
+                            phrase += " in " + currentGesture.name; 
                         }
-                        else if (currentGesture.name[0] == 'l')
+                        i ++;
+
+                        ///-------------used for grammar------------
+                        /*
+                        if (currentGesture.type == "subject")
                         {
-                            phraseElements[2] = currentGesture.name.Substring(1, currentGesture.name.Length - 1);
+                            subject = currentGesture.name;
                         }
-                        SetPhase();
+                        else if(currentGesture.type == "place")
+                        {
+                            place = " in " + currentGesture.name;
+                        }
+                        else if (currentGesture.type == "other")
+                        {
+                            other += " " + currentGesture.name;
+                        }*/
+
+                        i++;
                     }
                     particleLeftManager.Play();
                     particleRightManager.Play();
@@ -178,29 +197,14 @@ public class GestureDetection : MonoBehaviour
                     colorChangeRight.Pulse();
                 }
                 
+                ///-------------used for grammar------------
+                //phrase = subject + place + other;
                 phraseField.text = phrase;
             }
             else if(!hasRecognized)
             {
                 gestureRecognitionInputField.text = " ";
             }
-        }
-    }
-
-    private void SetPhase()
-    {
-        phrase = "";
-        if (phraseElements[0] != "")
-        {
-            phrase += phraseElements[0];
-        }
-        if (phraseElements[1] != "")
-        {
-            phrase += (phrase != "" ? " " : "") + phraseElements[1];
-        }
-        if (phraseElements[2] != "")
-        {
-            phrase += (phrase != "" ? " in " : "") + phraseElements[2];
         }
     }
 
