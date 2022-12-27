@@ -8,6 +8,9 @@ using TMPro;
 public class Gesture
 {
     public string name;
+    ///-------------used for grammar------------
+    public string type;
+
     public List<Vector3> rightFingerDatas;
     public List<Vector3> leftFingerDatas;
 
@@ -17,12 +20,13 @@ public class Gesture
     public Gesture()
     {
         name = "";
+        type = "";
         rightFingerDatas = new List<Vector3>();
         leftFingerDatas = new List<Vector3>();
     }
 }
 
-// necessaire car JsonUtility.ToJson fait chier et veut pas écrire juste une putain de liste
+// necessaire car JsonUtility.ToJson fait chier et veut pas ï¿½crire juste une putain de liste
 [System.Serializable]
 public class GestureList
 {
@@ -68,6 +72,11 @@ public class GestureDetection : MonoBehaviour
     private string start = "sos";
     private bool _isPhrase = false;
     private string phrase = "";
+
+    ///-------------used for grammar------------
+    private string subject = "";
+    private string place = "";
+    private string other = "";
 
     public GameObject frame;
     public GesturesCanvasManagement gesturesCanvasManagement;
@@ -146,11 +155,30 @@ public class GestureDetection : MonoBehaviour
                             phrase += " in " + currentGesture.name; 
                         }
                         i ++;
+
+                        ///-------------used for grammar------------
+                        /*
+                        if (currentGesture.type == "subject")
+                        {
+                            subject = currentGesture.name;
+                        }
+                        else if(currentGesture.type == "place")
+                        {
+                            place = " in " + currentGesture.name;
+                        }
+                        else if (currentGesture.type == "other")
+                        {
+                            other += " " + currentGesture.name;
+                        }*/
+
+                        i++;
                     }
                     particleLeftManager.Play();
                     particleRightManager.Play();
                 }
                 
+                ///-------------used for grammar------------
+                //phrase = subject + place + other;
                 phraseField.text = phrase;
             }
             else if(!hasRecognized)
