@@ -119,6 +119,7 @@ public class GestureDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool playerMoving = false;
         if(hasStarted)
         {
             Gesture currentGesture = Recognize();
@@ -152,6 +153,7 @@ public class GestureDetection : MonoBehaviour
                 else if (currentGesture.name == "move" && _playerCanMove)
                 {
                     movePlayer();
+                    playerMoving = true;
                     previousGesture = null;
                 }
                 else if (currentGesture.name == "change")
@@ -205,6 +207,8 @@ public class GestureDetection : MonoBehaviour
                 gestureRecognitionInputField.text = " ";
             }
         }
+        if (!playerMoving)
+            playerMovement.PlayerMove(Vector3.zero);
     }
 
     public void SaveGestureButton()
