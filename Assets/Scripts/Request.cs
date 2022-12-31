@@ -16,7 +16,10 @@ public class Request : MonoBehaviour
     [SerializeField] private bool test = false;
 
     private string prompt = "A cat";
+    private string negativePrompt = "bad art, low quality, ugly, blurry, pixelated, morbid, mutation, gross proportions, duplicate, mutilated, deformed, signature";
     private Texture2D tex;
+    private int width = 640;
+    private int height = 640;
     private bool generationEnded = false;
     public string url = "http://c376-35-188-156-72.ngrok.io";
 
@@ -88,7 +91,8 @@ public class Request : MonoBehaviour
     {
         float t = Time.time;
 
-        string json = "{\"prompt\": \"" + prompt + "\", \"steps\": " + steps.ToString() + ", \"sampler_index\": \"Euler a\"}";
+        string json = "{\"prompt\": \"" + prompt + "\", \"negative_prompt\": \"" + negativePrompt + "\", \"steps\": " + steps.ToString() + ", \"width\": " + width.ToString() + ", \"height\": " + height.ToString() + ", \"sampler_index\": \"Euler a\"}";
+        print(json);
         var jsonBinary = System.Text.Encoding.UTF8.GetBytes(json);
 
         DownloadHandlerBuffer downloadHandlerBuffer = new DownloadHandlerBuffer();
@@ -111,7 +115,7 @@ public class Request : MonoBehaviour
             byte[] imageBytes = Convert.FromBase64String(response.images[0]);
             tex.LoadImage(imageBytes);
             if (img)
-                img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+                img.sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2());
             Painting painting = new Painting();
             painting.date = DateTime.Now;
             painting.name = prompt;
@@ -157,7 +161,7 @@ public class Request : MonoBehaviour
                         Debug.Log(response.current_image);
                         tex.LoadImage(imageBytes);
                         if (img)
-                            img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+                            img.sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2());
                         Painting painting = new Painting();
                         painting.date = DateTime.Now;
                         painting.name = prompt;
@@ -181,7 +185,7 @@ public class Request : MonoBehaviour
         {
             byte[] byteArray = File.ReadAllBytes(path);
             tex.LoadImage(byteArray);
-            img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+            img.sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2());
         }
     }
     private void SaveImage()

@@ -1110,6 +1110,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame (6)
@@ -1217,6 +1221,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 112549127}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &112549129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+  m_PrefabInstance: {fileID: 112549127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &113976642
 GameObject:
   m_ObjectHideFlags: 0
@@ -3427,6 +3442,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame (4)
@@ -3529,11 +3548,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
---- !u!1 &223974227 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+--- !u!114 &223974227 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 223974226}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &223974228 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
@@ -3832,11 +3857,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &230909541 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
-  m_PrefabInstance: {fileID: 112549127}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &230960267 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4178103343611426, guid: c6a74181d4000004887343fb87b3c53a, type: 3}
@@ -5100,11 +5120,6 @@ Transform:
   m_Father: {fileID: 558859841}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &344116089 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
-  m_PrefabInstance: {fileID: 1497136673}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &348660484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6211,6 +6226,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame (8)
@@ -6318,6 +6337,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 371013808}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &371013810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+  m_PrefabInstance: {fileID: 371013808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &387882205
 GameObject:
   m_ObjectHideFlags: 0
@@ -7143,6 +7173,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame (7)
@@ -7250,6 +7284,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 425269026}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &425269028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+  m_PrefabInstance: {fileID: 425269026}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &425552938
 GameObject:
   m_ObjectHideFlags: 0
@@ -7323,9 +7368,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504f8884307aa454c8df505101ef09d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   debugLog: {fileID: 1054114596}
   controller: {fileID: 467327669}
+  speedLerpRate: 0.1
 --- !u!143 &467327669 stripped
 CharacterController:
   m_CorrespondingSourceObject: {fileID: 14300000, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
@@ -7511,6 +7557,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame (1)
@@ -7613,11 +7663,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
---- !u!1 &471592852 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+--- !u!114 &471592852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 471592851}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &471592853 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
@@ -12086,11 +12142,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.50054646, y: 0.008803844}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &850670380 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
-  m_PrefabInstance: {fileID: 425269026}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &854905463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4711711751280016, guid: e201a24a09e942042b93390d0444d728, type: 3}
@@ -13584,6 +13635,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame (2)
@@ -13686,11 +13741,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
---- !u!1 &1038577817 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+--- !u!114 &1038577817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 1038577816}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1038577818 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
@@ -15812,6 +15873,10 @@ PrefabInstance:
       propertyPath: gesturesCanvasManagement
       value: 
       objectReference: {fileID: 1887965478}
+    - target: {fileID: 3715411001004658263, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4489013037473456615, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -15820,6 +15885,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame
@@ -15831,6 +15900,10 @@ PrefabInstance:
     - target: {fileID: 7932714004736256739, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219957697540729189, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8622564707862460601, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: gesturesCanvasManagement
@@ -15922,11 +15995,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
---- !u!1 &1231569843 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+--- !u!114 &1231569843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 1231569842}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1231569844 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
@@ -17692,11 +17771,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
---- !u!1 &1495664808 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
-  m_PrefabInstance: {fileID: 371013808}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1497136673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17716,6 +17790,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame (5)
@@ -17823,6 +17901,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 1497136673}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1497136675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+  m_PrefabInstance: {fileID: 1497136673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1500248481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5143491889877904077, guid: d9ee4a10114b03b4eb7eb7fb7c05717f, type: 3}
@@ -18254,6 +18343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonName: 
   gesturesCanvasManagement: {fileID: 1887965478}
+  text: {fileID: 0}
 --- !u!1 &1617900923
 GameObject:
   m_ObjectHideFlags: 0
@@ -20859,10 +20949,10 @@ MonoBehaviour:
   - {fileID: 1038577817}
   - {fileID: 2076382805}
   - {fileID: 223974227}
-  - {fileID: 344116089}
-  - {fileID: 230909541}
-  - {fileID: 850670380}
-  - {fileID: 1495664808}
+  - {fileID: 1497136675}
+  - {fileID: 112549129}
+  - {fileID: 425269028}
+  - {fileID: 371013810}
   debugLog: {fileID: 1054114596}
   debugLog2: {fileID: 1792632259}
   rightHand: {fileID: 310513434}
@@ -22566,6 +22656,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5004709575453253985, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+      propertyPath: gesturesCanvasManagement
+      value: 
+      objectReference: {fileID: 1887965478}
     - target: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
       propertyPath: m_Name
       value: GestureFrame (3)
@@ -22668,11 +22762,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
---- !u!1 &2076382805 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5793139130076996852, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
+--- !u!114 &2076382805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8967716321388640722, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}
   m_PrefabInstance: {fileID: 2076382804}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c4d2d8a422ad947a8bc1cf4122134b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2076382806 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8820466030676037893, guid: 4b4d89263b265174698fb3a3e78930de, type: 3}

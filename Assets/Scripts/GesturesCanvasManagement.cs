@@ -8,7 +8,7 @@ public class GesturesCanvasManagement : MonoBehaviour
     public GestureDetection gestureDetection;
     private List<Gesture> gestureList;
 
-    public GameObject[] GestureFrames;
+    public GestureFrame[] GestureFrames;
 
     public TMP_InputField debugLog, debugLog2;
 
@@ -22,7 +22,7 @@ public class GesturesCanvasManagement : MonoBehaviour
     // machine is the gameObject that allows user to create new signs 
     public GameObject machine;
 
-    private bool _canShow = true;
+    private Coroutine showRoutine;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +44,23 @@ public class GesturesCanvasManagement : MonoBehaviour
         {
             for (int i = 0; i < GestureFrames.Length; i++)
             {
-                GestureFrames[i].SetActive(false);   
+                GestureFrames[i].gameObject.SetActive(false);   
             }
             
             for (int i = 0; i < gestureList.Count; i++)
             {
-                GestureFrames[i].SetActive(true);
-                GestureFrames[i].GetComponentInChildren<TextMeshProUGUI>().text = gestureList[i].name;
-                GestureFrames[i].GetComponentInChildren<ButtonsGesturesCanvas>().buttonName = gestureList[i].name;
+                GestureFrames[i].gameObject.SetActive(true);
+                GestureFrames[i].SetName(gestureList[i].name);
+                string label = "O";
+                if (gestureList[i].type == "subject")
+                {
+                    label = "S";
+                }
+                if (gestureList[i].type == "place")
+                {
+                    label = "P";
+                }
+                GestureFrames[i].SetLabel(label);
             }
             
         }
@@ -79,34 +88,76 @@ public class GesturesCanvasManagement : MonoBehaviour
         UpdateCanvas(gestureDetection.gestures);
     }
 
-    public void showGesture(string name)
+    public void ChangeLabel(string name)
     {
-        if (_canShow)
+        gestureList = gestureDetection.gestures;
+        for (int i = 0; i < gestureList.Count; i++)
         {
-            gestureList = gestureDetection.gestures;
-
-            for (int i = 0; i < gestureList.Count; i++)
+            if (gestureList[i].name == name)
             {
-                if (gestureList[i].name == name)
+                print("before : " +gestureList[i].type);
+                if (gestureList[i].type == "subject")
                 {
-                    leftHand.SetActive(true);
-                    rightHand.SetActive(true);
-                    for (int k = 0; k < gestureList[i].leftFingerDatas.Count; k++)
-                    {
-                        rightFingerBones[k].transform.position = gestureList[i].rightFingerDatas[k];
-                        rightFingerBones[k].transform.rotation = gestureList[i].rightFingerRotations[k];
-                        leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
-                        leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
-                    }
-                    rightHand.transform.position = new Vector3(0.25f, 1.5f, 0.4f);
-                    rightHand.transform.rotation = Quaternion.Euler(0, 90f, -90f);
-                    leftHand.transform.position = new Vector3(-0.25f, 1.5f, 0.4f);
-                    leftHand.transform.rotation = Quaternion.Euler(0, 90f, 90f);
-                    StartCoroutine(DesactivateHands(10f));
-                    break;
+                    gestureList[i].type = "place";
                 }
+                else if (gestureList[i].type == "place")
+                {
+                    gestureList[i].type = "other";
+                }
+                else
+                {
+                    gestureList[i].type = "subject";
+                }
+                print("after : " + gestureList[i].type);
+                break;
             }
         }
+
+        // save the new gesture list 
+        GestureList gestureClass = new GestureList();
+        gestureClass.gestures = gestureDetection.gestures;
+        gestureDetection.dataHandler.Save(gestureClass);
+
+        // update the canvas with the new gesture list
+        UpdateCanvas(gestureDetection.gestures);
+    }
+
+    public void showGesture(string name)
+    {
+        if (showRoutine != null)
+        {
+            rightHand.transform.position = new Vector3(0, 0, 0);
+            rightHand.transform.rotation = Quaternion.Euler(0, 0, 0);
+            leftHand.transform.position = new Vector3(0, 0, 0);
+            leftHand.transform.rotation = Quaternion.Euler(0, 0, 0);
+            leftHand.SetActive(false);
+            rightHand.SetActive(false);
+            StopCoroutine(showRoutine);
+        }
+        gestureList = gestureDetection.gestures;
+
+        for (int i = 0; i < gestureList.Count; i++)
+        {
+            if (gestureList[i].name == name)
+            {
+                leftHand.SetActive(true);
+                rightHand.SetActive(true);
+                for (int k = 0; k < gestureList[i].leftFingerDatas.Count; k++)
+                {
+                    rightFingerBones[k].transform.position = gestureList[i].rightFingerDatas[k];
+                    rightFingerBones[k].transform.rotation = gestureList[i].rightFingerRotations[k];
+                    leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
+                    leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
+                }
+                rightHand.transform.position = new Vector3(0.25f, 1.5f, 0.4f);
+                rightHand.transform.rotation = Quaternion.Euler(0, 90f, -90f);
+                leftHand.transform.position = new Vector3(-0.25f, 1.5f, 0.4f);
+                leftHand.transform.rotation = Quaternion.Euler(0, 90f, 90f);
+                showRoutine = StartCoroutine(DesactivateHands(10f));
+                break;
+            }
+        }
+        
     }
 
     // set active an object by pushing a button
@@ -129,7 +180,6 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public IEnumerator DesactivateHands(float delay)
     {
-        _canShow = false;
         yield return new WaitForSeconds(delay);
         rightHand.transform.position = new Vector3(0, 0, 0);
         rightHand.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -137,6 +187,5 @@ public class GesturesCanvasManagement : MonoBehaviour
         leftHand.transform.rotation = Quaternion.Euler(0, 0, 0);
         leftHand.SetActive(false);
         rightHand.SetActive(false);
-        _canShow = true;
     }
 }

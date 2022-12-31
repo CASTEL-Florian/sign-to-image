@@ -360,9 +360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504f8884307aa454c8df505101ef09d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 1.5
   debugLog: {fileID: 0}
   controller: {fileID: 17506588}
+  speedLerpRate: 0.1
 --- !u!1001 &30848422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2323,15 +2324,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c8deabee1efdac4e955dceebd810ba5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c8deabee1efdac4e955dceebd810ba5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c8deabee1efdac4e955dceebd810ba5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9c8deabee1efdac4e955dceebd810ba5, type: 3}
       propertyPath: m_LocalPosition.x
