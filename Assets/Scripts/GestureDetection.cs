@@ -164,18 +164,8 @@ public class GestureDetection : MonoBehaviour
                 {
                     if(_isPhrase && currentGesture.name != "")
                     {
-                        if(i == 0)
-                        {
-                            phrase += " " + currentGesture.name;
-                        }
-                        else
-                        {
-                            phrase += " in " + currentGesture.name; 
-                        }
-                        i ++;
-
                         ///-------------used for grammar------------
-                        /*
+                        
                         if (currentGesture.type == "subject")
                         {
                             subject = currentGesture.name;
@@ -184,10 +174,10 @@ public class GestureDetection : MonoBehaviour
                         {
                             place = " in " + currentGesture.name;
                         }
-                        else if (currentGesture.type == "other")
+                        else
                         {
                             other += " " + currentGesture.name;
-                        }*/
+                        }
 
                         i++;
                     }
@@ -198,7 +188,7 @@ public class GestureDetection : MonoBehaviour
                 }
                 
                 ///-------------used for grammar------------
-                //phrase = subject + place + other;
+                phrase = subject + place + other;
                 if (phraseField)
                     phraseField.text = phrase;
             }
@@ -318,10 +308,15 @@ public class GestureDetection : MonoBehaviour
         if (phraseField)
             phraseField.text = " ";
         phrase = "";
+        subject = "";
+        place = "";
+        other = "";
     }
 
     public void Generate()
     {
+        if (phrase == "")
+            return;
         frame.SetPrompt(promptStyliser.ApplyCurrentStyle(phrase));
         frame.Generate();
     }

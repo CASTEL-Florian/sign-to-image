@@ -19,13 +19,13 @@ public class PromptStyliser : MonoBehaviour
     [SerializeField] private List<ColorChange> colorChanges;
     private int currentIndex;
 
-    public string Stylise(string prompt, Style style)
+    public string Stylise(string prompt, Style style, bool addQualityTags = true)
     {
         if (style == Style.NoStyle)
-            return prompt;
+            return prompt + (addQualityTags ? ", masterpiece, intricate, high quality, 8k" : "");
         string newPrompt = prompt;
         if (style == Style.Painting)
-            newPrompt = "Oil painting of " + newPrompt;
+            newPrompt = "Painting of " + newPrompt;
         if (style == Style.Sketch)
             newPrompt = "Professional pencil sketch of " + newPrompt;
         if (style == Style.Drawing)
@@ -40,7 +40,7 @@ public class PromptStyliser : MonoBehaviour
             newPrompt = "Photo of " + prompt;
         if (style == Style.Cubism)
             newPrompt = prompt + " in the style of cubism";
-        return newPrompt;
+        return newPrompt + (addQualityTags ? ", masterpiece, intricate, high quality, 8k" : "");
     }
 
     public string ApplyCurrentStyle(string prompt)
