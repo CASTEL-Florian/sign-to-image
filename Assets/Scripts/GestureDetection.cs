@@ -176,7 +176,7 @@ public class GestureDetection : MonoBehaviour
                         }
                         else
                         {
-                            other = " " + currentGesture.name;
+                            other += " " + currentGesture.name;
                         }
 
                         i++;
