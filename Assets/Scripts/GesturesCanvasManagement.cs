@@ -24,6 +24,9 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     private Coroutine showRoutine;
 
+    private int pageNb = 0;
+    public GameObject NextButton, PreviousButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,10 +50,11 @@ public class GesturesCanvasManagement : MonoBehaviour
                 GestureFrames[i].gameObject.SetActive(false);   
             }
             
-            for (int i = 0; i < gestureList.Count; i++)
+            int Min = Mathf.Min(gestureList.Count - pageNb * 18, 18);
+            for (int i = 0; i < Min; i++)
             {
                 GestureFrames[i].gameObject.SetActive(true);
-                GestureFrames[i].SetName(gestureList[i].name);
+                GestureFrames[i].SetName(gestureList[i + 18 * pageNb].name);
                 string label = "O";
                 if (gestureList[i].type == "subject")
                 {
@@ -62,8 +66,24 @@ public class GesturesCanvasManagement : MonoBehaviour
                 }
                 GestureFrames[i].SetLabel(label);
             }
-            
+            if(pageNb == 0)
+            {
+                PreviousButton.SetActive(false);
+            }
+            else
+            {
+                PreviousButton.SetActive(true);
+            }
+            if(gestureList.Count - pageNb * 18 <= 18)
+            {
+                NextButton.SetActive(false);
+            }
+            else
+            {
+                NextButton.SetActive(true);
+            }
         }
+        
     }
 
     public void DeleteGesture(string name)
@@ -187,5 +207,21 @@ public class GesturesCanvasManagement : MonoBehaviour
         leftHand.transform.rotation = Quaternion.Euler(0, 0, 0);
         leftHand.SetActive(false);
         rightHand.SetActive(false);
+    }
+
+    public void ChangePage(int plusOuMoins)
+    {
+        pageNb += plusOuMoins;
+        UpdateCanvas(gestureDetection.gestures);
+    }
+
+    public void Next()
+    {
+        ChangePage(1);
+    }
+
+    public void Previous()
+    {
+        ChangePage(-1);
     }
 }
