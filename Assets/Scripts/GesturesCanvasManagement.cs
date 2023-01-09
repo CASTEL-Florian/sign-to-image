@@ -102,7 +102,7 @@ public class GesturesCanvasManagement : MonoBehaviour
         // save the new gesture list 
         GestureList gestureClass = new GestureList();
         gestureClass.gestures = gestureDetection.gestures;
-        gestureDetection.dataHandler.Save(gestureClass);
+        gestureDetection.gesturesDataHandler.Save(gestureClass);
 
         // update the canvas with the new gesture list
         UpdateCanvas(gestureDetection.gestures);
@@ -136,7 +136,7 @@ public class GesturesCanvasManagement : MonoBehaviour
         // save the new gesture list 
         GestureList gestureClass = new GestureList();
         gestureClass.gestures = gestureDetection.gestures;
-        gestureDetection.dataHandler.Save(gestureClass);
+        gestureDetection.gesturesDataHandler.Save(gestureClass);
 
         // update the canvas with the new gesture list
         UpdateCanvas(gestureDetection.gestures);
@@ -224,4 +224,7 @@ public class GesturesCanvasManagement : MonoBehaviour
     {
         ChangePage(-1);
     }
+    
+
+
 }
