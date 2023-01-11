@@ -92,6 +92,7 @@ public class FileDataHandler
         }
         else
         {
+            loadedData = null;
             if (dataInputField)
                 dataInputField.text = "ya pas de fichier";
         }

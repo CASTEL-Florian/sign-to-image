@@ -119,7 +119,7 @@ public class GestureDetection : MonoBehaviour
     // saved datas of the admin hands (for calibration)
     private HandsDists referenceHandsDists;
     private bool _isCalibrating;
-
+    public GameObject CalibrationCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -141,9 +141,9 @@ public class GestureDetection : MonoBehaviour
         yield return new WaitForSeconds(delay);
         rightFingerBones = new List<OVRBone>(rightSkeleton.Bones);
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
-        hasStarted = true;
         if (URLInputField)
             URLInputField.text = frame.url;
+        CalibrationCanvas.SetActive(true);    
     }
 
     // Update is called once per frame
@@ -397,25 +397,45 @@ public class GestureDetection : MonoBehaviour
 
     // ---------- welcome in the calibration world ----------
 
+    // lance la calibration puis le jeu 
+    public void CalibrationYes()
+    {
+        CalibrationCanvas.SetActive(false);
+        StartCoroutine(StartCalibration()); 
+    }
+
+    // lance juste le jeu
+    public void CalibrationNo()
+    {
+        CalibrationCanvas.SetActive(false);
+        hasStarted = true;
+    }
+
     // lance la calibration des mains de l'utilisateur et des gestes enregitrés
     public void Calibration()
     {
         HandsDists userHandsDists = new HandsDists();
         SaveDistances(userHandsDists);
 
-        foreach(Gesture gesture in gestures)
+        if (referenceHandsDists != null)
         {
-            CalibrateGesture(gesture, userHandsDists, referenceHandsDists);
+            foreach (Gesture gesture in gestures)
+            {
+                CalibrateGesture(gesture, userHandsDists, referenceHandsDists);
+            }
         }
 
         referenceHandsDists = userHandsDists;
     }
     public IEnumerator StartCalibration()
     {
+        if(gesturesCanvasManagement.finGestureByName("calibration") != null)
+        {
+            gesturesCanvasManagement.showGesture("calibration");
+        }
         _isCalibrating = true;
         cooldownCanvas.SetActive(true);
-        cooldownInputField.text = "Calibration";
-        gesturesCanvasManagement.showGesture("calibration");  // show the gesture associate with the calibration
+        cooldownInputField.text = "Calibration"; 
         yield return new WaitForSeconds(1f);
         cooldownInputField.text = "3";
         yield return new WaitForSeconds(1f);
@@ -428,6 +448,7 @@ public class GestureDetection : MonoBehaviour
         yield return new WaitForSeconds(1f);
         cooldownCanvas.SetActive(false);
         _isCalibrating = false;
+        hasStarted = true;
     }
 
     // enregistre les distance des mains de l'utilistateur dans handDist
