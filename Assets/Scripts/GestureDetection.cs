@@ -93,6 +93,8 @@ public class GestureDetection : MonoBehaviour
     public ParticleSystem sentenceParticlesLeft, sentenceParticlesRight;
 
     public PromptStyliser promptStyliser;
+
+    public AudioHandler audioHandler;
     // Start is called before the first frame update
     void Start()
     {
@@ -101,7 +103,6 @@ public class GestureDetection : MonoBehaviour
         if(dataInputField)
             dataHandler.dataInputField = dataInputField;
         gestures = dataHandler.Load().gestures;
-
         previousGesture = new Gesture();
         StartCoroutine(DelayRoutine(2.5f));
     }
@@ -133,6 +134,8 @@ public class GestureDetection : MonoBehaviour
                     gestureRecognitionInputField.text = currentGesture.name;
                 if(currentGesture.name == "sos")
                 {
+                    if (audioHandler)
+                        audioHandler.PlaySosSound();
                     if(_isPhrase)
                     {
                         _isPhrase = false;
@@ -156,13 +159,20 @@ public class GestureDetection : MonoBehaviour
                     playerMoving = true;
                     previousGesture = null;
                 }
+                else if (currentGesture.name == "tp" && _playerCanMove)
+                {
+                    playerMovement.TeleportToIndicator();
+                    playerMoving = true;
+                }
                 else if (currentGesture.name == "change")
                 {
                     promptStyliser.ChangeStyle();
                 }
                 else
                 {
-                    if(_isPhrase && currentGesture.name != "")
+                    if (audioHandler)
+                        audioHandler.PlaySignSound();
+                    if (_isPhrase && currentGesture.name != "")
                     {
                         ///-------------used for grammar------------
                         
