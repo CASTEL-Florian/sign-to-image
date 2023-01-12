@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GalleryPlaceholder.unity
     guid: d528a8d08b512414e84e3914b385fe6c
+  - enabled: 1
+    path: Assets/galerie/Scenes/Galery Scene.unity
+    guid: 696c7231d30d1ed4283460f719ae777d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 11d1fb941ec85fc4c923cda1cc4cf307, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: efada187f5db4144b853e5a8b194e2af, type: 2}
