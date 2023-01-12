@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 currentVelocity = new Vector3();
     private Vector3 initialPos;
     private Vector3 direction;
+    [SerializeField] private TeleportHandler tpHandler;
+    [SerializeField] private float maxTimeToTeleport = 1f;
+    private float currentTime = 0;
+    [SerializeField] private AudioHandler audioHandler;
     private void Start()
     {
         initialPos = transform.position;
@@ -23,10 +27,23 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        currentTime += Time.deltaTime;
         currentVelocity = Vector3.Lerp(currentVelocity, speed * direction, speedLerpRate);
         controller.SimpleMove(currentVelocity);
+        
         if (direction.magnitude > 0)
-            debugLog.text = "isMoving";
+        {
+            if (tpHandler)
+            {
+                tpHandler.Show();
+                tpHandler.ShootRay();
+            }
+            currentTime = 0;
+        }
+        else
+        {
+            tpHandler.Hide();
+        }
     }
     public void ResetPos()
     {
@@ -35,6 +52,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void Teleport(Vector3 newPos)
     {
+        controller.enabled = false;
         transform.position = newPos;
+        controller.enabled = true;
+    }
+    public void TeleportToIndicator()
+    {
+        if (currentTime > maxTimeToTeleport)
+            return;
+        Trigger trigger = tpHandler.GetCurrentTrigger();
+        if (trigger)
+            trigger.Activate();
+        else
+        {
+            if (audioHandler)
+                audioHandler.PlayTPSound();
+            Teleport(tpHandler.GetIndicatorPosition());
+        }
     }
 }

@@ -13,4 +13,9 @@ public class Trigger : MonoBehaviour
             onTriggerEvent.Invoke();
         }
     }
+
+    public void Activate()
+    {
+        onTriggerEvent.Invoke();
+    }
 }
