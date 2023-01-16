@@ -9,9 +9,14 @@ public class Trigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("trigger : " + other.tag);
-        if (other.tag == "Player")
+        if (other.tag == "Hand"||other.tag=="Player")
         {
             onTriggerEvent.Invoke();
         }
+    }
+
+    public void Activate()
+    {
+        onTriggerEvent.Invoke();
     }
 }

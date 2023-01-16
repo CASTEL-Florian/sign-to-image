@@ -1,0 +1,8 @@
+﻿C:\Users\Sebastian\Desktop\t$m$p$$$\warrior_head.max
+C:\Users\Sebastian\Desktop\t$m$p$$$\MAXFILES.TXT
+D:\RILIEVO\Testa guerriero\Modello 3ds.jpg
+D:\RILIEVO\Testa guerriero\guerriero_refl.jpg
+D:\RILIEVO\Testa guerriero\guerriero_bump.jpg
+D:\RILIEVO\Testa guerriero\guerriero_displ.jpg
+D:\RILIEVO\Testa guerriero\scratches_and_scrapes_texture_by_atticresources-d9we3dq.jpg
+D:\RILIEVO\Testa guerriero\softbox.jpg
