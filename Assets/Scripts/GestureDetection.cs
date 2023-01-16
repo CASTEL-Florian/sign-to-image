@@ -96,6 +96,9 @@ public class GestureDetection : MonoBehaviour
 
     public AudioHandler audioHandler;
     // Start is called before the first frame update
+    public BackgroundChanger backgroundChanger;
+
+    public StyleSelectionUI styleSelectionUI;
     void Start()
     {
         // load data from the saveFile
@@ -166,6 +169,8 @@ public class GestureDetection : MonoBehaviour
                 }
                 else if (currentGesture.name == "change")
                 {
+                    if (styleSelectionUI)
+                        styleSelectionUI.Toggle();
                     promptStyliser.ChangeStyle();
                 }
                 else
@@ -329,6 +334,8 @@ public class GestureDetection : MonoBehaviour
             return;
         frame.SetPrompt(promptStyliser.ApplyCurrentStyle(phrase));
         frame.Generate();
+        if (backgroundChanger)
+            backgroundChanger.ChangeBackground(place);
     }
 
     public void SetURL()

@@ -16,8 +16,11 @@ public class BackgroundChanger : MonoBehaviour
     [SerializeField] private float fadeOutTime = 1f;
 
     private Coroutine changeBackgroundRoutine;
+    private string currentBackground = "";
     public void ChangeBackground(string newBackgroundName)
     {
+        if (currentBackground == newBackgroundName)
+            return;
         int i = 0;
         while (i < backgrounds.Count && backgrounds[i].name != newBackgroundName)
             i++;
@@ -27,6 +30,7 @@ public class BackgroundChanger : MonoBehaviour
         {
             StopCoroutine(changeBackgroundRoutine);
         }
+        currentBackground = newBackgroundName;
         changeBackgroundRoutine = StartCoroutine(ChangeBackgroundRoutine(i));
     }   
 
@@ -44,7 +48,7 @@ public class BackgroundChanger : MonoBehaviour
         backgroundMeshRenderer.material.SetTexture("_MainTex", backgrounds[backgroundIndex].texture);
         while (t < 1)
         {
-            t += Time.deltaTime / fadeOutTime;
+            t += Time.deltaTime / fadeInTime;
             if (t > 1) t = 1;
             backgroundMeshRenderer.material.color = new Color(t, t, t, 1);
             yield return null;

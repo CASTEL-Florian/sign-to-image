@@ -64,4 +64,13 @@ public class PromptStyliser : MonoBehaviour
             colorChange.ChangeColor(styleColors[currentIndex].color);
         }
     }
+
+    public void ChangeStyle(int styleId)
+    {
+        currentIndex = styleId % styleColors.Count;
+        foreach (ColorChange colorChange in colorChanges)
+        {
+            colorChange.ChangeColor(styleColors[currentIndex].color);
+        }
+    }
 }
