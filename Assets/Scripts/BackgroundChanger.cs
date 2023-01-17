@@ -23,7 +23,9 @@ public class BackgroundChanger : MonoBehaviour
             return;
         int i = 0;
         while (i < backgrounds.Count && backgrounds[i].name != newBackgroundName)
+        {
             i++;
+        }
         if (i >= backgrounds.Count)
             return;
         if (changeBackgroundRoutine != null)
@@ -37,7 +39,6 @@ public class BackgroundChanger : MonoBehaviour
     private IEnumerator ChangeBackgroundRoutine(int backgroundIndex)
     {
         float t = 1;
-
         while (t > 0)
         {
             t -= Time.deltaTime / fadeOutTime;
@@ -45,7 +46,7 @@ public class BackgroundChanger : MonoBehaviour
             backgroundMeshRenderer.material.color = new Color(t, t, t, 1);
             yield return null;
         }
-        backgroundMeshRenderer.material.SetTexture("_MainTex", backgrounds[backgroundIndex].texture);
+        backgroundMeshRenderer.material.SetTexture("_BaseMap", backgrounds[backgroundIndex].texture);
         while (t < 1)
         {
             t += Time.deltaTime / fadeInTime;
