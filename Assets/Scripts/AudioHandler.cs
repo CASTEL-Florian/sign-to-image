@@ -8,6 +8,7 @@ public class AudioHandler : MonoBehaviour
     [SerializeField] private AudioClip signSound;
     [SerializeField] private AudioClip sosSound;
     [SerializeField] private AudioClip tpSound;
+    [SerializeField] private AudioClip switchStyleSound;
 
     public void PlaySignSound()
     {
@@ -23,5 +24,8 @@ public class AudioHandler : MonoBehaviour
     {
         audioSource.PlayOneShot(tpSound);
     }
-
+    public void PlaySwitchStyleSound()
+    {
+        audioSource.PlayOneShot(switchStyleSound);
+    }
 }
