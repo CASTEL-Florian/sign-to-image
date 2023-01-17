@@ -85,7 +85,6 @@ public class GestureDetection : MonoBehaviour
 
     int i = 0;
 
-    private string start = "sos";
     private bool _isPhrase = false;
     private string phrase = "";
 
@@ -112,6 +111,8 @@ public class GestureDetection : MonoBehaviour
 
     // feed back visuel en faisant apparaitre le nom du signe fait
     public GameObject testObject;
+    public GameObject centerEyeAnchor;
+    public GameObject target;
     private List<GameObject> TestGameObjectList;
     private Vector3 posTest;
     private Quaternion rotTest;
@@ -168,7 +169,7 @@ public class GestureDetection : MonoBehaviour
                         _isPhrase = false;
                         foreach (GameObject test in TestGameObjectList)
                         {
-                            Destroy(test);
+                            test.GetComponent<SymbolsMovement>()._canMove = true;
                         }
                         debugLog.text = "fin de phrase";
                         Reset();
@@ -224,16 +225,13 @@ public class GestureDetection : MonoBehaviour
                         {
                             posTest = leftFingerBones[8].Transform.position;
                         }
-                        rotTest = playerController.transform.rotation;
+                        rotTest = centerEyeAnchor.transform.rotation;
 
-                        debugLog3.text = "text n'à pas été créé";
                         GameObject test = Instantiate(testObject, posTest, rotTest);
-                        debugLog3.text = "text à été créé";
-                        debugLog2.text = "test n'à été ajouté";
                         TestGameObjectList.Add(test);
-                        debugLog2.text = "test à été ajouté";
                         test.GetComponent<TextMeshPro>().text = currentGesture.name;
-                        debugLog3.text = "text à été modifié";
+                        test.GetComponent<SymbolsMovement>().target = target;
+                        test.GetComponent<SymbolsMovement>().centerEyeAnchor = centerEyeAnchor;
                         i++;
                     }
                     particleLeftManager.Play();
