@@ -122,6 +122,11 @@ public class GestureDetection : MonoBehaviour
     private bool _isCalibrating;
     public GameObject CalibrationCanvas;
 
+    // gestion des quêtes 
+    public GameObject QuestManagerCanvas;
+    public bool _hasQuest;
+
+
     public AudioHandler audioHandler;
     // Start is called before the first frame update
     void Start()
