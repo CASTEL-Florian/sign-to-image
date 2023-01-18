@@ -6,9 +6,15 @@ using UnityEngine.Events;
 public class Trigger : MonoBehaviour
 {
     [SerializeField] private UnityEvent onTriggerEvent;
+    [SerializeField] private bool onlyHandsTrigger = false;
     private void OnTriggerEnter(Collider other)
     {
-        print("trigger : " + other.tag);
+        if (onlyHandsTrigger)
+        {
+            if (other.tag == "Hand")
+                onTriggerEvent.Invoke();
+            return;
+        }
         if (other.tag == "Hand"||other.tag=="Player")
         {
             onTriggerEvent.Invoke();

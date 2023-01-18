@@ -54,6 +54,8 @@ public class BigPainting : MonoBehaviour
 
     public void Activate()
     {
+        if (transitioning || activated)
+            return;
         StartCoroutine(ActivationRoutine());
     }
 
@@ -85,6 +87,8 @@ public class BigPainting : MonoBehaviour
 
     public void Desactivate()
     {
+        if (transitioning || !activated)
+            return;
         StartCoroutine(DesactivationRoutine());
     }
 

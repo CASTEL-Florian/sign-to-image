@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerEyeAnchor: {fileID: 0}
   promptStyliser: {fileID: 0}
+  audioHandler: {fileID: 0}
   images:
   - {fileID: 8708413442985039003}
   - {fileID: 8302594236886933249}
@@ -179,7 +180,7 @@ GameObject:
   - component: {fileID: 2583190916905633198}
   - component: {fileID: 5521005509855538019}
   - component: {fileID: 8039856229009530780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PencilImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +272,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  handTrigger: 1
+  onlyHandsTrigger: 0
 --- !u!65 &5521005509855538019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -315,7 +316,7 @@ GameObject:
   - component: {fileID: 5448146148581736633}
   - component: {fileID: 5265451447074327783}
   - component: {fileID: 1708689436469120768}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ColoredPencilImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +408,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  handTrigger: 1
+  onlyHandsTrigger: 0
 --- !u!65 &5265451447074327783
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -451,7 +452,7 @@ GameObject:
   - component: {fileID: 4355201594311153003}
   - component: {fileID: 2445640860472394101}
   - component: {fileID: 7316347733145873558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PaintingImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,7 +544,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  handTrigger: 1
+  onlyHandsTrigger: 0
 --- !u!65 &2445640860472394101
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -587,7 +588,7 @@ GameObject:
   - component: {fileID: 1526845682853714791}
   - component: {fileID: 1858840635524923316}
   - component: {fileID: 6664364447276130164}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WatercolorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -679,7 +680,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  handTrigger: 1
+  onlyHandsTrigger: 0
 --- !u!65 &1858840635524923316
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -723,7 +724,7 @@ GameObject:
   - component: {fileID: 1703253259148745983}
   - component: {fileID: 7403420204886574924}
   - component: {fileID: 4118487212461361419}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DigitalArtImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +816,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  handTrigger: 1
+  onlyHandsTrigger: 0
 --- !u!65 &7403420204886574924
 BoxCollider:
   m_ObjectHideFlags: 0

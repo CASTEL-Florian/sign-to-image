@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class SymbolsMovement : MonoBehaviour
 {
-    public bool _canMove = false;
-    private float speed = 0.5f;
-    private float minDistance = 0.1f;
-    public GameObject target;
-    public GameObject centerEyeAnchor;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AnimationCurve movementTowardTargetCurve;
+    [SerializeField] private float timeToGoToTarget = 5f;
+    private bool targetReached = false;
+    private bool startedMovingTowardTarget = false;
+
+
+    public void GoToTarget(Vector3 target)
     {
-        
+        if (startedMovingTowardTarget) return;
+        startedMovingTowardTarget = true;
+        StartCoroutine(GoToTargetRoutine(target));
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator GoToTargetRoutine(Vector3 target)
     {
-        if(_canMove)
+        Vector3 initialPos = transform.position;
+        float t = 0;
+        while (t < 1)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * speed);
-            transform.rotation = centerEyeAnchor.transform.rotation;
-            if(Vector3.Distance(transform.position, target.transform.position) < minDistance)
-            {
-                Destroy(gameObject);
-            }
+            t += Time.deltaTime / timeToGoToTarget;
+            if (t > 1) t = 1;
+            transform.position = Vector3.Lerp(initialPos, target, t);
+            yield return null;
         }
+        targetReached = true;
+    }
+
+    public bool TargetReached()
+    {
+        return targetReached;
     }
 }
