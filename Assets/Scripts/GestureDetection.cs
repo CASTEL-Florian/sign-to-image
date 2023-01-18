@@ -117,6 +117,11 @@ public class GestureDetection : MonoBehaviour
     private bool _isCalibrating;
     public GameObject CalibrationCanvas;
 
+    // gestion des quêtes 
+    public GameObject QuestManagerCanvas;
+    public bool _hasQuest;
+
+
     public AudioHandler audioHandler;
 
     [SerializeField] private float minTimeBetweenSigns = 0.5f;
