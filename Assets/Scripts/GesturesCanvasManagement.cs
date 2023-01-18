@@ -102,7 +102,7 @@ public class GesturesCanvasManagement : MonoBehaviour
         // save the new gesture list 
         GestureList gestureClass = new GestureList();
         gestureClass.gestures = gestureDetection.gestures;
-        gestureDetection.dataHandler.Save(gestureClass);
+        gestureDetection.gesturesDataHandler.Save(gestureClass);
 
         // update the canvas with the new gesture list
         UpdateCanvas(gestureDetection.gestures);
@@ -136,7 +136,7 @@ public class GesturesCanvasManagement : MonoBehaviour
         // save the new gesture list 
         GestureList gestureClass = new GestureList();
         gestureClass.gestures = gestureDetection.gestures;
-        gestureDetection.dataHandler.Save(gestureClass);
+        gestureDetection.gesturesDataHandler.Save(gestureClass);
 
         // update the canvas with the new gesture list
         UpdateCanvas(gestureDetection.gestures);
@@ -170,9 +170,9 @@ public class GesturesCanvasManagement : MonoBehaviour
                     leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
                 }
                 rightHand.transform.position = new Vector3(0.25f, 1.5f, 0.4f);
-                rightHand.transform.rotation = Quaternion.Euler(0, 90f, -90f);
+                rightHand.transform.rotation = Quaternion.Euler(0, -90f, -90f);
                 leftHand.transform.position = new Vector3(-0.25f, 1.5f, 0.4f);
-                leftHand.transform.rotation = Quaternion.Euler(0, 90f, 90f);
+                leftHand.transform.rotation = Quaternion.Euler(0, -90f, 90f);
                 showRoutine = StartCoroutine(DesactivateHands(10f));
                 break;
             }
@@ -224,4 +224,17 @@ public class GesturesCanvasManagement : MonoBehaviour
     {
         ChangePage(-1);
     }
+    
+    public Gesture finGestureByName(string name)
+    {
+        foreach(Gesture g in gestureDetection.gestures)
+        {
+            if (g.name == name)
+            {
+                return g;
+            }
+        }
+        return null;
+    }
+
 }

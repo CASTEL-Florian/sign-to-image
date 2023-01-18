@@ -38,16 +38,32 @@ public class GestureList
     }
 }
 
+// used to save the distances of the real bones of the 2 hands
+public class HandsDists
+{
+    public List<float> rightHandDists;
+    public List<float> leftHandDists;
+
+    public HandsDists()
+    {
+        rightHandDists = new List<float>();
+        leftHandDists = new List<float>();
+    }
+}
+
 
 public class GestureDetection : MonoBehaviour
 {
     // save & load system
-    [SerializeField] private string FileName;
-    public FileDataHandler dataHandler;
+    [SerializeField] private string GesturesFileName;
+    [SerializeField] private string HandsDatasFileName;
+    public FileDataHandler gesturesDataHandler;
+    public FileDataHandler handsDataHandler;
     public TMP_InputField dataInputField;
 
 
     public float threshold;
+    public OVRPlayerController playerController;
     public OVRSkeleton rightSkeleton;
     public OVRSkeleton leftSkeleton;
     public List<Gesture> gestures;
@@ -69,7 +85,6 @@ public class GestureDetection : MonoBehaviour
 
     int i = 0;
 
-    private string start = "sos";
     private bool _isPhrase = false;
     private string phrase = "";
 
@@ -94,16 +109,37 @@ public class GestureDetection : MonoBehaviour
 
     public PromptStyliser promptStyliser;
 
+    // feed back visuel en faisant apparaitre le nom du signe fait
+    public GameObject testObject;
+    public GameObject centerEyeAnchor;
+    public GameObject target;
+    private List<GameObject> TestGameObjectList;
+    private Vector3 posTest;
+    private Quaternion rotTest;
+
+    // saved datas of the admin hands (for calibration)
+    private HandsDists referenceHandsDists;
+    private bool _isCalibrating;
+    public GameObject CalibrationCanvas;
+
+    // gestion des quêtes 
+    public GameObject QuestManagerCanvas;
+    public bool _hasQuest;
+
+
     public AudioHandler audioHandler;
     // Start is called before the first frame update
     void Start()
     {
         // load data from the saveFile
-        dataHandler = new FileDataHandler(Application.persistentDataPath, FileName);
-        if(dataInputField)
-            dataHandler.dataInputField = dataInputField;
-        gestures = dataHandler.Load().gestures;
+        gesturesDataHandler = new FileDataHandler(Application.persistentDataPath, GesturesFileName);
+        if (dataInputField)
+            gesturesDataHandler.dataInputField = dataInputField;
+        gestures = gesturesDataHandler.Load().gestures;
         previousGesture = new Gesture();
+
+        handsDataHandler = new FileDataHandler(Application.persistentDataPath, HandsDatasFileName);
+        referenceHandsDists = handsDataHandler.HandsDistsLoad();
         StartCoroutine(DelayRoutine(2.5f));
     }
 
@@ -112,9 +148,9 @@ public class GestureDetection : MonoBehaviour
         yield return new WaitForSeconds(delay);
         rightFingerBones = new List<OVRBone>(rightSkeleton.Bones);
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
-        hasStarted = true;
         if (URLInputField)
             URLInputField.text = frame.url;
+        CalibrationCanvas.SetActive(true);    
     }
 
     // Update is called once per frame
@@ -139,15 +175,22 @@ public class GestureDetection : MonoBehaviour
                     if(_isPhrase)
                     {
                         _isPhrase = false;
+                        foreach (GameObject test in TestGameObjectList)
+                        {
+                            test.GetComponent<SymbolsMovement>()._canMove = true;
+                        }
+                        debugLog.text = "fin de phrase";
+                        Reset();
+                        Generate();
                         sentenceParticlesLeft.Stop();
                         sentenceParticlesRight.Stop();
                         i = 0;
-                        Generate();
-                        Reset();
                     }    
                     else
                     {
+                        debugLog.text = "début de phrase";
                         _isPhrase = true;
+                        TestGameObjectList = new List<GameObject>();
                         sentenceParticlesLeft.Play();
                         sentenceParticlesRight.Play();
                         i = 0;
@@ -189,6 +232,21 @@ public class GestureDetection : MonoBehaviour
                             other += " " + currentGesture.name;
                         }
 
+                        if (i % 2 == 0)
+                        {
+                            posTest = rightFingerBones[8].Transform.position;
+                        }
+                        else
+                        {
+                            posTest = leftFingerBones[8].Transform.position;
+                        }
+                        rotTest = centerEyeAnchor.transform.rotation;
+
+                        GameObject test = Instantiate(testObject, posTest, rotTest);
+                        TestGameObjectList.Add(test);
+                        test.GetComponent<TextMeshPro>().text = currentGesture.name;
+                        test.GetComponent<SymbolsMovement>().target = target;
+                        test.GetComponent<SymbolsMovement>().centerEyeAnchor = centerEyeAnchor;
                         i++;
                     }
                     particleLeftManager.Play();
@@ -267,7 +325,7 @@ public class GestureDetection : MonoBehaviour
             // save data in the saveFile
             GestureList gestureList = new GestureList();
             gestureList.gestures = gestures;
-            dataHandler.Save(gestureList);
+            gesturesDataHandler.Save(gestureList);
             inputField.text = "";
             if (gesturesCanvasManagement)
                 gesturesCanvasManagement.UpdateCanvas(gestures);
@@ -313,6 +371,7 @@ public class GestureDetection : MonoBehaviour
         return (currentgesture);
     }
 
+
     public void Reset()
     {
         if (phraseField)
@@ -345,10 +404,235 @@ public class GestureDetection : MonoBehaviour
         Vector3 direction = new Vector3 (startBone.x - endBone.x, startBone.y - endBone.y, startBone.z - endBone.z);
         direction = direction.normalized;
         direction.y = 0;
-        if (debugLog)
-            debugLog.text = "x = " + direction.x.ToString();
-        if (debugLog2)
-            debugLog2.text = "z = " + direction.z.ToString();
         playerMovement.PlayerMove(-direction);
+    }
+
+
+    // ---------- welcome in the calibration world ----------
+
+    // lance la calibration puis le jeu 
+    public void CalibrationYes()
+    {
+        CalibrationCanvas.SetActive(false);
+        StartCoroutine(StartCalibration()); 
+    }
+
+    // lance juste le jeu
+    public void CalibrationNo()
+    {
+        CalibrationCanvas.SetActive(false);
+        hasStarted = true;
+    }
+
+    // lance la calibration des mains de l'utilisateur et des gestes enregitrés
+    public void Calibration()
+    {
+        HandsDists userHandsDists = new HandsDists();
+        SaveDistances(userHandsDists);
+
+        if (referenceHandsDists != null)
+        {
+            foreach (Gesture gesture in gestures)
+            {
+                CalibrateGesture(gesture, userHandsDists, referenceHandsDists);
+            }
+        }
+
+        referenceHandsDists = userHandsDists;
+    }
+    public IEnumerator StartCalibration()
+    {
+        if(gesturesCanvasManagement.finGestureByName("calibration") != null)
+        {
+            gesturesCanvasManagement.showGesture("calibration");
+        }
+        _isCalibrating = true;
+        cooldownCanvas.SetActive(true);
+        cooldownInputField.text = "Calibration"; 
+        yield return new WaitForSeconds(1f);
+        cooldownInputField.text = "3";
+        yield return new WaitForSeconds(1f);
+        cooldownInputField.text = "2";
+        yield return new WaitForSeconds(1f);
+        cooldownInputField.text = "1";
+        yield return new WaitForSeconds(1f);
+        cooldownInputField.text = "CLIC";
+        Calibration();
+        yield return new WaitForSeconds(1f);
+        cooldownCanvas.SetActive(false);
+        _isCalibrating = false;
+        hasStarted = true;
+    }
+
+    // enregistre les distance des mains de l'utilistateur dans handDist
+    public void SaveDistances(HandsDists handsDists)
+    {
+        SaveDistancesOneHand(handsDists.leftHandDists, leftFingerBones);
+        SaveDistancesOneHand(handsDists.rightHandDists, rightFingerBones);
+        
+        handsDataHandler.Save(handsDists);
+    }
+
+    // enregistre les distances d'une main de l'utilisateur 
+    private void SaveDistancesOneHand(List<float> handDists, List<OVRBone> fingerBones)
+    {
+        // save distances of the thumb
+        handDists.Add(Vector3.Distance(fingerBones[1].Transform.position, fingerBones[2].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[2].Transform.position, fingerBones[3].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[3].Transform.position, fingerBones[4].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[4].Transform.position, fingerBones[5].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[5].Transform.position, fingerBones[19].Transform.position));
+
+        // save distances of the index
+        handDists.Add(Vector3.Distance(fingerBones[1].Transform.position, fingerBones[6].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[6].Transform.position, fingerBones[7].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[7].Transform.position, fingerBones[8].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[8].Transform.position, fingerBones[20].Transform.position));
+
+        // save distances pf the middle
+        handDists.Add(Vector3.Distance(fingerBones[1].Transform.position, fingerBones[9].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[9].Transform.position, fingerBones[10].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[10].Transform.position, fingerBones[11].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[11].Transform.position, fingerBones[21].Transform.position));
+
+        // save distances of the ring
+        handDists.Add(Vector3.Distance(fingerBones[1].Transform.position, fingerBones[12].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[12].Transform.position, fingerBones[13].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[13].Transform.position, fingerBones[14].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[14].Transform.position, fingerBones[22].Transform.position));
+
+        // save distances of the pinky 
+        handDists.Add(Vector3.Distance(fingerBones[1].Transform.position, fingerBones[15].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[15].Transform.position, fingerBones[16].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[16].Transform.position, fingerBones[17].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[17].Transform.position, fingerBones[18].Transform.position));
+        handDists.Add(Vector3.Distance(fingerBones[18].Transform.position, fingerBones[23].Transform.position));
+    }
+    // calibre un geste sur une taille de mains par rapport à celle rentrée en référence
+    public void CalibrateGesture (Gesture gesture, HandsDists userHandsDists, HandsDists referenceHandsDist)
+    {
+        CalibrateGestureOneHand(gesture.rightFingerDatas, userHandsDists.rightHandDists, referenceHandsDist.rightHandDists);
+        CalibrateGestureOneHand(gesture.leftFingerDatas, userHandsDists.leftHandDists, referenceHandsDist.leftHandDists);
+    }
+
+    // calibre une main d'un geste par rapport à une taille de main
+    private void CalibrateGestureOneHand(List<Vector3> fingerDatas, List<float> userHandDists, List<float> referenceHandDist)
+    {
+        // calibrate the thumb
+        Vector3 translationVector = findTranslationVector(fingerDatas[1], fingerDatas[2], userHandDists[0], referenceHandDist[0]);
+        fingerDatas[2] += translationVector;
+        fingerDatas[3] += translationVector;
+        fingerDatas[4] += translationVector;
+        fingerDatas[5] += translationVector;
+        fingerDatas[19] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[2], fingerDatas[3], userHandDists[1], referenceHandDist[1]);
+        fingerDatas[3] += translationVector;
+        fingerDatas[4] += translationVector;
+        fingerDatas[5] += translationVector;
+        fingerDatas[19] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[3], fingerDatas[4], userHandDists[2], referenceHandDist[2]);
+        fingerDatas[4] += translationVector;
+        fingerDatas[5] += translationVector;
+        fingerDatas[19] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[4], fingerDatas[5], userHandDists[3], referenceHandDist[3]);
+        fingerDatas[5] += translationVector;
+        fingerDatas[19] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[5], fingerDatas[19], userHandDists[4], referenceHandDist[4]);
+        fingerDatas[19] += translationVector;
+
+        // calibrate the index
+        translationVector = findTranslationVector(fingerDatas[1], fingerDatas[6], userHandDists[5], referenceHandDist[5]);
+        fingerDatas[6] += translationVector;
+        fingerDatas[7] += translationVector;
+        fingerDatas[8] += translationVector;
+        fingerDatas[20] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[6], fingerDatas[7], userHandDists[6], referenceHandDist[6]);
+        fingerDatas[7] += translationVector;
+        fingerDatas[8] += translationVector;
+        fingerDatas[20] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[7], fingerDatas[8], userHandDists[7], referenceHandDist[7]);
+        fingerDatas[8] += translationVector;
+        fingerDatas[20] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[8], fingerDatas[20], userHandDists[8], referenceHandDist[8]);
+        fingerDatas[20] += translationVector;
+
+        // calibrate the middle
+        translationVector = findTranslationVector(fingerDatas[1], fingerDatas[9], userHandDists[9], referenceHandDist[9]);
+        fingerDatas[9] += translationVector;
+        fingerDatas[10] += translationVector;
+        fingerDatas[11] += translationVector;
+        fingerDatas[21] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[9], fingerDatas[10], userHandDists[10], referenceHandDist[10]);
+        fingerDatas[10] += translationVector;
+        fingerDatas[11] += translationVector;
+        fingerDatas[21] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[10], fingerDatas[11], userHandDists[11], referenceHandDist[11]);
+        fingerDatas[11] += translationVector;
+        fingerDatas[21] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[11], fingerDatas[21], userHandDists[12], referenceHandDist[12]);
+        fingerDatas[21] += translationVector;
+
+        // calibrate the ring
+        translationVector = findTranslationVector(fingerDatas[1], fingerDatas[12], userHandDists[13], referenceHandDist[13]);
+        fingerDatas[12] += translationVector;
+        fingerDatas[13] += translationVector;
+        fingerDatas[14] += translationVector;
+        fingerDatas[22] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[12], fingerDatas[13], userHandDists[14], referenceHandDist[14]);
+        fingerDatas[13] += translationVector;
+        fingerDatas[14] += translationVector;
+        fingerDatas[22] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[13], fingerDatas[14], userHandDists[15], referenceHandDist[15]);
+        fingerDatas[14] += translationVector;
+        fingerDatas[22] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[14], fingerDatas[22], userHandDists[16], referenceHandDist[16]);
+        fingerDatas[22] += translationVector;
+
+        // calibrate the pinky
+        translationVector = findTranslationVector(fingerDatas[1], fingerDatas[15], userHandDists[17], referenceHandDist[17]);
+        fingerDatas[15] += translationVector;
+        fingerDatas[16] += translationVector;
+        fingerDatas[17] += translationVector;
+        fingerDatas[18] += translationVector;
+        fingerDatas[23] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[15], fingerDatas[16], userHandDists[18], referenceHandDist[18]);
+        fingerDatas[16] += translationVector;
+        fingerDatas[17] += translationVector;
+        fingerDatas[18] += translationVector;
+        fingerDatas[23] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[16], fingerDatas[17], userHandDists[19], referenceHandDist[19]);
+        fingerDatas[17] += translationVector;
+        fingerDatas[18] += translationVector;
+        fingerDatas[23] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[17], fingerDatas[18], userHandDists[20], referenceHandDist[20]);
+        fingerDatas[18] += translationVector;
+        fingerDatas[23] += translationVector;
+
+        translationVector = findTranslationVector(fingerDatas[18], fingerDatas[23], userHandDists[21], referenceHandDist[21]);
+        fingerDatas[23] += translationVector;
+    }
+
+    private Vector3 findTranslationVector(Vector3 origin, Vector3 pointToMove, float userBoneDist, float referenceBoneDist)
+    {
+        Vector3 V1 = pointToMove - origin;
+        float alpha = userBoneDist / referenceBoneDist;
+        Vector3 translationVector = (alpha - 1f) * V1;
+        return translationVector;
     }
 }
