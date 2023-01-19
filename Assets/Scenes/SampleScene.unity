@@ -20516,7 +20516,7 @@ MonoBehaviour:
   cooldownCanvas: {fileID: 362328508}
   cooldownInputField: {fileID: 999978614}
   frame: {fileID: 1629512266}
-  gesturesCanvasManagement: {fileID: 0}
+  gesturesCanvasManagement: {fileID: 1161695362}
   playerMovement: {fileID: 467327664}
   _playerCanMove: 1
   particleLeftManager: {fileID: 154293552}
