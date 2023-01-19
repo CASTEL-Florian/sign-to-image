@@ -13,16 +13,15 @@ public class FloatingImage
 public class FloatingImagesHandler : MonoBehaviour
 {
     [SerializeField] private List<FloatingImage> images;
-    [SerializeField] private SymbolsMovement floatingImagePrefab;
+    [SerializeField] private FloatingImage unknownImage;
+    [SerializeField] private FloatingSymbol floatingImagePrefab;
     [SerializeField] private Transform target;
     [SerializeField] private Transform centerEyeAnchor;
-    private List<SymbolsMovement> activeSymbols;
-    [SerializeField]  bool test = false;
-    [SerializeField]  bool test2 = false;
+    private List<FloatingSymbol> activeSymbols;
 
     private void Start()
     {
-        activeSymbols = new List<SymbolsMovement>();
+        activeSymbols = new List<FloatingSymbol>();
     }
 
     private void Update()
@@ -32,38 +31,46 @@ public class FloatingImagesHandler : MonoBehaviour
             DeleteSymbols();
             return;
         }
-        foreach (SymbolsMovement symbol in activeSymbols)
+        foreach (FloatingSymbol symbol in activeSymbols)
         {
             symbol.transform.LookAt(centerEyeAnchor.transform.position);
         }
-        if (test)
-        {
-            DeleteSymbols();
-            test = false;
-            CreateImage("fox", new Vector3(0, 1, 0));
-        }
-        if (test2)
-        {
-            test2 = false;
-            SendImagesToTarget();
-        }
     }
 
-    public void CreateImage(string name, Vector3 position)
+    public void CreateImage(string name, Vector3 position, string type)
     {
         int i = 0;
+        List<FloatingSymbol> symbolsToDelete = activeSymbols.FindAll(s => s.GetSymbolType() == type);
+        foreach (FloatingSymbol symbol in symbolsToDelete)
+        {
+            symbol.FadeOutAndDestroy();
+        }
+        activeSymbols.RemoveAll(s => s.GetSymbolType() == type);
         while (i < images.Count && images[i].name != name)
             i++;
         if (i >= images.Count)
+        {
+            FloatingSymbol floatingImage = Instantiate(floatingImagePrefab, position, Quaternion.identity);
+            floatingImage.SetSymbolImage(unknownImage.sprite);
+            floatingImage.SetBackgroundColor(unknownImage.color);
+            floatingImage.SetType(type);
+            activeSymbols.Add(floatingImage);
             return;
-        SymbolsMovement floationgImage = Instantiate(floatingImagePrefab, position, Quaternion.identity);
-        floationgImage.GetComponentInChildren<Image>().sprite = images[i].sprite;
-        activeSymbols.Add(floationgImage);
+        }
+        else
+        {
+            FloatingSymbol floatingImage = Instantiate(floatingImagePrefab, position, Quaternion.identity);
+            floatingImage.SetSymbolImage(images[i].sprite);
+            floatingImage.SetBackgroundColor(images[i].color);
+            floatingImage.SetType(type);
+            activeSymbols.Add(floatingImage);
+        }
+        
     }
 
     public void SendImagesToTarget()
     {
-        foreach (SymbolsMovement symbol in activeSymbols)
+        foreach (FloatingSymbol symbol in activeSymbols)
         {
             symbol.GoToTarget(target.position);
         }
@@ -71,7 +78,7 @@ public class FloatingImagesHandler : MonoBehaviour
 
     public void DeleteSymbols()
     {
-        foreach (SymbolsMovement symbol in activeSymbols)
+        foreach (FloatingSymbol symbol in activeSymbols)
         {
             Destroy(symbol.gameObject);
         }

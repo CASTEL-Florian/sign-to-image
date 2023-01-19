@@ -56,11 +56,11 @@ public class GesturesCanvasManagement : MonoBehaviour
                 GestureFrames[i].gameObject.SetActive(true);
                 GestureFrames[i].SetName(gestureList[i + 18 * pageNb].name);
                 string label = "O";
-                if (gestureList[i].type == "subject")
+                if (gestureList[i + 18 * pageNb].type == "subject")
                 {
                     label = "S";
                 }
-                if (gestureList[i].type == "place")
+                if (gestureList[i + 18 * pageNb].type == "place")
                 {
                     label = "P";
                 }
