@@ -213,7 +213,7 @@ public class GestureDetection : MonoBehaviour
                         floatingImagesHandler.SendImagesToTarget();
                         debugLog.text = "fin de phrase";
                         Generate();
-                        if (questManager.currentQuest != null)
+                        if (questManager && questManager.currentQuest != null)
                         {
                             questManager.PopUpQuest.SetActive(true);
                             _hasToValidateQuest = true;
@@ -254,7 +254,7 @@ public class GestureDetection : MonoBehaviour
                         }
                         else if(currentGesture.type == "place")
                         {
-                            place = " in " + currentGesture.name;
+                            place = currentGesture.name;
                         }
                         floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position, currentGesture.type);
                         i++;
@@ -266,7 +266,7 @@ public class GestureDetection : MonoBehaviour
                 }
                 
                 ///-------------used for grammar------------
-                phrase = subject + place + other;
+                phrase = subject + " in " + place;
                 if (phraseField)
                     phraseField.text = phrase;
             }
