@@ -13,7 +13,8 @@ public class Frame : MonoBehaviour
     public void SetPainting(Painting paint, Texture2D tex)
     {
         painting = paint;
-        img.sprite = Sprite.Create(tex, new Rect(0, 0, 512, 512), new Vector2());
+        img.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2());
+        img.material.SetTexture("_BaseMap", tex);
         if (text)
             text.text = painting.name;
     }

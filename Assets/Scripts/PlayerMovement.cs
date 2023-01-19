@@ -42,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            tpHandler.Hide();
+            if (tpHandler)
+                tpHandler.Hide();
         }
     }
     public void ResetPos()

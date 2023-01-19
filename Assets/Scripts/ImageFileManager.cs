@@ -63,6 +63,7 @@ public class ImageFileManager : MonoBehaviour
     [SerializeField] private bool reset = false;
     [SerializeField] private Gallery reception ;
     [SerializeField] private GalleryManager galleryManager ;
+    public int PaintingsNumber { get; set; }
 
     private void Awake()
     {
@@ -76,6 +77,7 @@ public class ImageFileManager : MonoBehaviour
     {
         directoryPath = Application.dataPath + "/SavedPictures/";
         LoadData();
+        PaintingsNumber = paintings.Count;
         if (paintings.Count > 0)
             maxID = paintings[paintings.Count - 1].id;
         else

@@ -20,39 +20,19 @@ public class GalleryManager : MonoBehaviour
     Dictionary<int, Gallery> availableModules = new Dictionary<int, Gallery>();
    public List<Frame> frames;
     bool modulecreated = false;
-    // Start is called before the first frame update
-    int findMinRooms(int[] capacities, int numPeople)
-    {
-        int num_rooms = 0;
-        int remaining = numPeople;
-        while (remaining > 0) { }
-        for (int i = 0; i < capacities.Length; i++)
-        {
-            if (capacities[i] <= remaining)
-            {
-                num_rooms++;
-                remaining -= capacities[i];
-            }
-            else if (i == 3)
-            {
+    private bool isRestricted;
 
-            }
-            {
-                break;
-            }
-        }
-        return num_rooms;
-    }
+
 
     void Start()
     {
-       
+        number_of_tab = imageFileManager.PaintingsNumber;
         availableModules.Add(0, reception);
         number_of_tab -= reception.capacity;
         frames.AddRange(reception.frames);
-        //imageFileManager.ShowPaintings(reception.frames, 0);
+        imageFileManager.ShowPaintings(reception.frames,offset );
 
-
+        offset += reception.frames.Count;
     }
 
     // Update is called once per frame
@@ -65,28 +45,19 @@ public class GalleryManager : MonoBehaviour
         currentRoom = FindCurrentRoom(availableModules, player);
    
         if (number_of_tab > 0) { SuccessiveGeneration(currentRoom); }
-        else
+        else if(number_of_tab<=0&&!isRestricted)
         {
             foreach (Transform dock in availableModules[availableModules.Count - 1].docks) 
             {
                 Instantiate(restricted, dock.position, Quaternion.identity);
             }
+            isRestricted = true;
             
         }
         hideModules(currentRoom);
         showModule(currentRoom);
     }
-    public void CheckTabNum()
-    {
-        modulecreated = true;
-
-        if (number_of_tab <= 6) { Instantiate(galleryModules[6], availableDocks[Random.Range(0, availableDocks.Count - 1)].position, transform.rotation * Quaternion.Euler(0f, 180f, 0f)); }
-        else if (number_of_tab > 6 && number_of_tab <= 12) { Instantiate(galleryModules[12], availableDocks[Random.Range(0, availableDocks.Count - 1)].position, transform.rotation * Quaternion.Euler(0f, 180f, 0f)); }
-
-
-
-
-    }
+  
     void InstantiateGallery()
     {
         int oldnum = number_of_tab;
