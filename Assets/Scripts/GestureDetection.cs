@@ -138,6 +138,9 @@ public class GestureDetection : MonoBehaviour
     public StyleSelectionUI styleSelectionUI;
     public bool test = false;
 
+    // _isFirstScene : solution de secours pour faire en sorte que la calibration se lance que dans l'atelier 
+    public bool _isFirstScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -160,7 +163,10 @@ public class GestureDetection : MonoBehaviour
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
         if (URLInputField)
             URLInputField.text = frame.url;
-        CalibrationCanvas.SetActive(true);    
+        if (_isFirstScene)
+            CalibrationCanvas.SetActive(true);
+        else
+            hasStarted = true;
     }
 
     // Update is called once per frame
