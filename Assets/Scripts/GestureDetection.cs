@@ -10,6 +10,8 @@ public class Gesture
     public string name;
     ///-------------used for grammar------------
     public string type;
+    /// string that act like a boolean 0 false 1 true
+    public string unlock;
 
     public List<Vector3> rightFingerDatas;
     public List<Vector3> leftFingerDatas;
@@ -19,6 +21,7 @@ public class Gesture
 
     public Gesture()
     {
+        unlock = "0";
         name = "";
         type = "";
         rightFingerDatas = new List<Vector3>();
@@ -118,9 +121,8 @@ public class GestureDetection : MonoBehaviour
     public GameObject CalibrationCanvas;
 
     // gestion des quêtes 
-    public GameObject QuestManagerCanvas;
-    public bool _hasQuest;
-
+    public QuestManager questManager;
+    private bool _hasToValidateQuest = false;
 
     public AudioHandler audioHandler;
 
@@ -166,7 +168,7 @@ public class GestureDetection : MonoBehaviour
     {
         currentTimeBetweenSigns += Time.deltaTime;
         bool playerMoving = false;
-        if(hasStarted)
+        if(hasStarted && !_hasToValidateQuest)
         {
             Gesture currentGesture = Recognize();
             bool hasRecognized = currentGesture.name != "";
@@ -211,7 +213,14 @@ public class GestureDetection : MonoBehaviour
                         floatingImagesHandler.SendImagesToTarget();
                         debugLog.text = "fin de phrase";
                         Generate();
-                        Reset();
+                        if (questManager && questManager.currentQuest != null)
+                        {
+                            questManager.PopUpQuest.SetActive(true);
+                            _hasToValidateQuest = true;
+                        }
+                        else
+                            Reset();
+                        questManager.AddQuest();
                         sentenceParticlesLeft.Stop();
                         sentenceParticlesRight.Stop();
                         i = 0;
@@ -241,19 +250,21 @@ public class GestureDetection : MonoBehaviour
                     {
                         ///-------------used for grammar------------
                         
+                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position, currentGesture.type);
                         if (currentGesture.type == "subject")
                         {
                             subject = currentGesture.name;
+                            if (subject == "human")
+                            {
+                                int r = Random.Range(0, 2);
+                                if (r == 0)
+                                    subject = "man";
+                            }
                         }
                         else if(currentGesture.type == "place")
                         {
-                            place = " in " + currentGesture.name;
+                            place = currentGesture.name;
                         }
-                        else
-                        {
-                            other += " " + currentGesture.name;
-                        }
-                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position);
                         i++;
                     }
                     particleLeftManager.Play();
@@ -263,7 +274,7 @@ public class GestureDetection : MonoBehaviour
                 }
                 
                 ///-------------used for grammar------------
-                phrase = subject + place + other;
+                phrase = subject + " in " + place;
                 if (phraseField)
                     phraseField.text = phrase;
             }
@@ -416,6 +427,21 @@ public class GestureDetection : MonoBehaviour
         playerMovement.PlayerMove(-direction);
     }
 
+    // functions of the 2 buttons on the pop up of the quest validation
+    public void ValidateYes()
+    {
+        questManager.EvaluatePrompt(questManager.currentQuest, phrase);
+        Reset();
+        questManager.PopUpQuest.SetActive(false);
+        _hasToValidateQuest = false;
+    }
+
+    public void ValidateNo()
+    {
+        Reset();
+        questManager.PopUpQuest.SetActive(false);
+        _hasToValidateQuest = false;
+    }
 
     // ---------- welcome in the calibration world ----------
 

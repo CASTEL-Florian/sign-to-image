@@ -56,7 +56,12 @@ public class QuestManager : MonoBehaviour
     public List<GameObject> QuestPaperList;
     [SerializeField] private Transform endPosition;
 
+    // diploma is here to track the current level of the player
     public GameObject DiplomaText;
+
+    // pop up so the player can send or not his current painting for a quest
+    public GameObject PopUpQuest;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +69,11 @@ public class QuestManager : MonoBehaviour
         playerInfos = playerDataHandler.PlayerLoad();
         //playerInfos = new PlayerInfos();
         Quest testquest = new Quest();
+        Quest testquest2 = new Quest();
+        testquest2.name = "test2";
+        testquest2.description = "ceci est la meilleure description que vous verrez aujourd'hui !";
         playerInfos.quests.Add(testquest);
+        playerInfos.quests.Add(testquest2);
         if (playerInfos.currentQuestsList.Count == 0)
         {
             AddQuest();
@@ -230,7 +239,7 @@ public class QuestManager : MonoBehaviour
         LevelUp();
         quest._hasBeenDone = true;
         currentQuestPaper.GetComponent<QuestPaperManager>().RemoveQuest();
-        AddQuest();
+        SavePlayerInfos();
     }
 
     public void UpdateDiploma()
