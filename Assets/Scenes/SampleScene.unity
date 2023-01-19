@@ -20535,6 +20535,7 @@ MonoBehaviour:
   backgroundChanger: {fileID: 991445981}
   styleSelectionUI: {fileID: 1688686185}
   test: 0
+  _isFirstScene: 0
 --- !u!4 &1669491901
 Transform:
   m_ObjectHideFlags: 0
