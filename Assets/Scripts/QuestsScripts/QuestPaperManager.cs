@@ -20,6 +20,11 @@ public class QuestPaperManager : MonoBehaviour
     private float minDistance = 0f;
     private float speed = 2f;
     private float rotSpeed = 2f;
+
+    [SerializeField] private GameObject QuestAccept;
+    [SerializeField] private GameObject QuestRefuse;
+    [SerializeField] private GameObject QuestDeselect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +50,9 @@ public class QuestPaperManager : MonoBehaviour
                     transform.rotation = endPosition.rotation;
                     _canMove = false;
                     _isMoving = false;
+                    QuestAccept.SetActive(false);
+                    QuestRefuse.SetActive(false);
+                    QuestDeselect.SetActive(true);
                 }
             }
             else
@@ -56,6 +64,9 @@ public class QuestPaperManager : MonoBehaviour
                     transform.rotation = startRotation;
                     _canMove = false;
                     _isMoving =false;
+                    QuestAccept.SetActive(false);
+                    QuestRefuse.SetActive(false);
+                    QuestDeselect.SetActive(true);
                 }
             }
         }
