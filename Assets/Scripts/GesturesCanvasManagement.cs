@@ -7,6 +7,7 @@ public class GesturesCanvasManagement : MonoBehaviour
 {
     private List<Gesture> gesturePlaceList;
     private List<Gesture> gestureSubjectList;
+    private List<Gesture> gestureOtherList;
 
     public GestureDetection gestureDetection;
     private List<Gesture> gestureList;
@@ -33,6 +34,12 @@ public class GesturesCanvasManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gestureOtherList = gestureDetection.gestures.FindAll(
+        delegate (Gesture g)
+        {
+            return g.type == "";
+        }
+        );
         StartCoroutine(DelayRoutine(1));
     }
 
@@ -54,7 +61,6 @@ public class GesturesCanvasManagement : MonoBehaviour
             return g.type == "subject" && g.unlock == "1";
         }
         );
-
         //UpdateCanvas(gestureDetection.gestures);
     }
 
@@ -254,6 +260,13 @@ public class GesturesCanvasManagement : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
         UpdateCanvas(gestureSubjectList);
+    }
+
+    public void ShowOther()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        UpdateCanvas(gestureOtherList);
     }
 
     public void PreviousState()
