@@ -7,14 +7,18 @@ public class GalleryManager : MonoBehaviour
     [SerializeField] Transform player;
     
     static int moduleindex = 1;
+    int offset;
     int i;
     int currentRoom;
     public int number_of_tab = 0;
     public Gallery reception;
     //  public  List<GameObject> galleryModules;
+    [SerializeField] private ImageFileManager imageFileManager;
+    [SerializeField] private GameObject restricted;
     public List<Gallery> galleryModules;
     public List<Transform> availableDocks;
     Dictionary<int, Gallery> availableModules = new Dictionary<int, Gallery>();
+   public List<Frame> frames;
     bool modulecreated = false;
     // Start is called before the first frame update
     int findMinRooms(int[] capacities, int numPeople)
@@ -44,6 +48,11 @@ public class GalleryManager : MonoBehaviour
     {
        
         availableModules.Add(0, reception);
+        number_of_tab -= reception.capacity;
+        frames.AddRange(reception.frames);
+        //imageFileManager.ShowPaintings(reception.frames, 0);
+
+
     }
 
     // Update is called once per frame
@@ -52,10 +61,18 @@ public class GalleryManager : MonoBehaviour
         /* if(!modulecreated)
          CheckTabNum();*/
         //  InstantiateGallery3();
+
         currentRoom = FindCurrentRoom(availableModules, player);
-
-
+   
         if (number_of_tab > 0) { SuccessiveGeneration(currentRoom); }
+        else
+        {
+            foreach (Transform dock in availableModules[availableModules.Count - 1].docks) 
+            {
+                Instantiate(restricted, dock.position, Quaternion.identity);
+            }
+            
+        }
         hideModules(currentRoom);
         showModule(currentRoom);
     }
@@ -197,7 +214,7 @@ public class GalleryManager : MonoBehaviour
     {
         Gallery module = availableModules[ModuleKey];
 
-        Gallery temp;
+        Gallery temp = null ;
 
 
         List<int> connected = FindConnectedRooms(ModuleKey);
@@ -218,6 +235,7 @@ public class GalleryManager : MonoBehaviour
                         temp = Instantiate(galleryModules[i], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f));
                         number_of_tab -= galleryModules[i].capacity;
                         availableModules.Add(moduleindex, temp);
+                        frames.AddRange(temp.frames);
 
                     }
                     else if (number_of_tab - galleryModules[i].capacity <= 0)
@@ -226,6 +244,7 @@ public class GalleryManager : MonoBehaviour
                         temp = Instantiate(galleryModules[i], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f));
                         number_of_tab -= galleryModules[i].capacity;
                         availableModules.Add(moduleindex, temp);
+                        frames.AddRange(temp.frames);
                     }
                     else if (number_of_tab - galleryModules[i].capacity >= 0)
                     {
@@ -235,12 +254,14 @@ public class GalleryManager : MonoBehaviour
 
                         number_of_tab -= galleryModules[i + 1].capacity;
                         availableModules.Add(moduleindex, temp);
+                        frames.AddRange(temp.frames);
 
                     }
                     moduleindex++;
                     i++;
                     if (i > 2) { i = 0; }
-                    
+                    imageFileManager.ShowPaintings(temp.frames, offset);
+                    offset += temp.frames.Count;
                 }
 
                 else
@@ -256,10 +277,14 @@ public class GalleryManager : MonoBehaviour
 
 
                                 number_of_tab -= galleryModules[j].capacity;
-                                availableModules.Add(moduleindex, Instantiate(galleryModules[i], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f)));
+                                temp = Instantiate(galleryModules[i], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f));
+                                availableModules.Add(moduleindex,temp );
+                                frames.AddRange(temp.frames);
                                 moduleindex++;
                                 i++;
                                 if (i > 3) { i = 0; }
+                                imageFileManager.ShowPaintings(temp.frames, offset);
+                                offset += temp.frames.Count;
                             }
                             break;
                         }
