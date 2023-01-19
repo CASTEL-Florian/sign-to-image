@@ -16,6 +16,8 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public TMP_InputField debugLog, debugLog2;
 
+    public TMP_Text titreGrim;
+
 
     public GameObject rightHand;
     public GameObject leftHand;
@@ -250,6 +252,7 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public void ShowPlace()
     {
+        titreGrim.text = "Signe des Lieux";
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
         UpdateCanvas(gesturePlaceList);
@@ -257,6 +260,7 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public void ShowSubject()   
     {
+        titreGrim.text = "Signe des Sujets";
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
         UpdateCanvas(gestureSubjectList);
@@ -264,6 +268,7 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public void ShowOther()
     {
+        titreGrim.text = "Autres Signe";
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
         UpdateCanvas(gestureOtherList);
