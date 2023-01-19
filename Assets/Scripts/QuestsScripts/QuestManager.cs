@@ -56,7 +56,12 @@ public class QuestManager : MonoBehaviour
     public List<GameObject> QuestPaperList;
     [SerializeField] private Transform endPosition;
 
+    // diploma is here to track the current level of the player
     public GameObject DiplomaText;
+
+    // pop up so the player can send or not his current painting for a quest
+    public GameObject PopUpQuest;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -118,9 +118,8 @@ public class GestureDetection : MonoBehaviour
     public GameObject CalibrationCanvas;
 
     // gestion des quêtes 
-    public GameObject QuestManagerCanvas;
-    public bool _hasQuest;
-
+    public QuestManager questManager;
+    private bool _hasToValidateQuest = false;
 
     public AudioHandler audioHandler;
 
@@ -166,7 +165,7 @@ public class GestureDetection : MonoBehaviour
     {
         currentTimeBetweenSigns += Time.deltaTime;
         bool playerMoving = false;
-        if(hasStarted)
+        if(hasStarted && !_hasToValidateQuest)
         {
             Gesture currentGesture = Recognize();
             bool hasRecognized = currentGesture.name != "";
@@ -211,6 +210,11 @@ public class GestureDetection : MonoBehaviour
                         floatingImagesHandler.SendImagesToTarget();
                         debugLog.text = "fin de phrase";
                         Generate();
+                        if (questManager.currentQuest != null)
+                        {
+                            questManager.PopUpQuest.SetActive(true);
+                            _hasToValidateQuest = true;
+                        }             
                         Reset();
                         sentenceParticlesLeft.Stop();
                         sentenceParticlesRight.Stop();
@@ -416,6 +420,19 @@ public class GestureDetection : MonoBehaviour
         playerMovement.PlayerMove(-direction);
     }
 
+    // functions of the 2 buttons on the pop up of the quest validation
+    public void ValidateYes()
+    {
+        questManager.EvaluatePrompt(questManager.currentQuest, phrase);
+        Reset();
+        _hasToValidateQuest = false;
+    }
+
+    public void ValidateNo()
+    {
+        Reset();
+        _hasToValidateQuest = false;
+    }
 
     // ---------- welcome in the calibration world ----------
 
