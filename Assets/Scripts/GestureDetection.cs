@@ -249,15 +249,21 @@ public class GestureDetection : MonoBehaviour
                     {
                         ///-------------used for grammar------------
                         
+                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position, currentGesture.type);
                         if (currentGesture.type == "subject")
                         {
                             subject = currentGesture.name;
+                            if (subject == "human")
+                            {
+                                int r = Random.Range(0, 2);
+                                if (r == 0)
+                                    subject = "man";
+                            }
                         }
                         else if(currentGesture.type == "place")
                         {
                             place = currentGesture.name;
                         }
-                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position, currentGesture.type);
                         i++;
                     }
                     particleLeftManager.Play();
