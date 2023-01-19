@@ -252,7 +252,7 @@ public class GestureDetection : MonoBehaviour
                         {
                             place = " in " + currentGesture.name;
                         }
-                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position);
+                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position, currentGesture.type);
                         i++;
                     }
                     particleLeftManager.Play();
