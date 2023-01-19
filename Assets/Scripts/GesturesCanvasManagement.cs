@@ -5,6 +5,9 @@ using TMPro;
 
 public class GesturesCanvasManagement : MonoBehaviour
 {
+    private List<Gesture> gesturePlaceList;
+    private List<Gesture> gestureSubjectList;
+
     public GestureDetection gestureDetection;
     private List<Gesture> gestureList;
 
@@ -38,7 +41,21 @@ public class GesturesCanvasManagement : MonoBehaviour
     public IEnumerator DelayRoutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        UpdateCanvas(gestureDetection.gestures);
+
+        gesturePlaceList = gestureDetection.gestures.FindAll(
+        delegate(Gesture g)
+        {
+            return g.type == "place" && g.unlock == "1";
+        }
+        );
+        gestureSubjectList = gestureDetection.gestures.FindAll(
+        delegate (Gesture g)
+        {
+            return g.type == "subject" && g.unlock == "1";
+        }
+        );
+
+        //UpdateCanvas(gestureDetection.gestures);
     }
 
     public void UpdateCanvas(List<Gesture> gestureList)
@@ -224,7 +241,27 @@ public class GesturesCanvasManagement : MonoBehaviour
     {
         ChangePage(-1);
     }
-    
+
+    public void ShowPlace()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        UpdateCanvas(gesturePlaceList);
+    }
+
+    public void ShowSubject()   
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        UpdateCanvas(gestureSubjectList);
+    }
+
+    public void PreviousState()
+    {
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+
     public Gesture finGestureByName(string name)
     {
         foreach(Gesture g in gestureDetection.gestures)
