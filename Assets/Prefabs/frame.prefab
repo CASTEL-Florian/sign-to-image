@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_Material: {fileID: 2100000, guid: bba87b8cc6cd9e042bdb642673bcb670, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -190,6 +190,8 @@ GameObject:
   - component: {fileID: 3852538326782564805}
   - component: {fileID: 2559754341865884393}
   - component: {fileID: 573484875377892394}
+  - component: {fileID: 1629512266}
+  - component: {fileID: 1629512274}
   m_Layer: 0
   m_Name: frame
   m_TagString: Frame
@@ -206,8 +208,8 @@ Transform:
   m_GameObject: {fileID: 3347875752801237008}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -6.5, z: -30.09}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.40658465, y: 0.25, z: 0.5444392}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2501576505423989589}
   m_Father: {fileID: 0}
@@ -241,7 +243,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: f2c731007ae7a6f4cbaa9c1469da7d8f, type: 3}
+  - {fileID: 2100000, guid: a7e59ec9ef1286f45b5300599fb0f18e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -290,3 +292,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 2501576505380681469}
   text: {fileID: 0}
+--- !u!114 &1629512266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347875752801237008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abb24cf8d5575a4c86c8bdda6956c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  img: {fileID: 0}
+  steps: 15
+  imageName: image.png
+  frame: {fileID: 573484875377892394}
+  saveImage: 0
+  test: 0
+  url: http://c376-35-188-156-72.ngrok.io
+--- !u!114 &1629512274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347875752801237008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ebd7c427292d8b41b13776c0d261fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleMultiplier: 10
+  positionOffset: 5
+  timeToTransition: 1
+  activationDistance: 1.1
+  objectsToHide:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  objectsToShow:
+  - {fileID: 0}
+  rendererToHide:
+  - {fileID: 0}
+  centerEyeAnchorFader: {fileID: 0}
+  player: {fileID: 0}

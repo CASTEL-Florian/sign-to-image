@@ -61,11 +61,15 @@ public class ImageFileManager : MonoBehaviour
     [SerializeField] private Order order = Order.Random;
     [SerializeField] private int offset = 0;
     [SerializeField] private bool reset = false;
+    [SerializeField] private Gallery reception ;
+    [SerializeField] private GalleryManager galleryManager ;
+    public int PaintingsNumber { get; set; }
 
     private void Awake()
     {
         Debug.Assert(Instance == null);
         Instance = this;
+        //frames = reception.frames;
     }
 
 
@@ -73,6 +77,7 @@ public class ImageFileManager : MonoBehaviour
     {
         directoryPath = Application.dataPath + "/SavedPictures/";
         LoadData();
+        PaintingsNumber = paintings.Count;
         if (paintings.Count > 0)
             maxID = paintings[paintings.Count - 1].id;
         else
@@ -94,7 +99,7 @@ public class ImageFileManager : MonoBehaviour
         paintingOrder = Enumerable.Range(0, paintings.Count).ToList();
 
         OrderPaintings(order, querry, favorite);
-        ShowPaintings(frames, offset);
+       // ShowPaintings(frames, offset);
         /*
         AddPainting("A fox in the forest", new Texture2D(2, 2));
         AddPainting("A fox in the snow", new Texture2D(2, 2));
@@ -131,12 +136,14 @@ public class ImageFileManager : MonoBehaviour
 
     private void Update()
     {
+
         if (reset)
         {
             reset = false;
             OrderPaintings(order, querry, favorite);
             ShowPaintings(frames, offset);
         }
+       // frames = galleryManager.frames;
     }
     public void LoadData()
     {
