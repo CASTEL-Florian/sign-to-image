@@ -220,6 +220,7 @@ public class GestureDetection : MonoBehaviour
                         }
                         else
                             Reset();
+                        questManager.AddQuest();
                         sentenceParticlesLeft.Stop();
                         sentenceParticlesRight.Stop();
                         i = 0;
@@ -425,12 +426,14 @@ public class GestureDetection : MonoBehaviour
     {
         questManager.EvaluatePrompt(questManager.currentQuest, phrase);
         Reset();
+        questManager.PopUpQuest.SetActive(false);
         _hasToValidateQuest = false;
     }
 
     public void ValidateNo()
     {
         Reset();
+        questManager.PopUpQuest.SetActive(false);
         _hasToValidateQuest = false;
     }
 

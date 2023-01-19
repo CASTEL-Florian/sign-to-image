@@ -18,8 +18,9 @@ public class TextButtonVR : MonoBehaviour
         
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-         onRelease.Invoke();
+        Debug.Log("collision");
+        onRelease.Invoke(); 
     }
 }
