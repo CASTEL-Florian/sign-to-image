@@ -217,8 +217,9 @@ public class GestureDetection : MonoBehaviour
                         {
                             questManager.PopUpQuest.SetActive(true);
                             _hasToValidateQuest = true;
-                        }             
-                        Reset();
+                        }
+                        else
+                            Reset();
                         sentenceParticlesLeft.Stop();
                         sentenceParticlesRight.Stop();
                         i = 0;
