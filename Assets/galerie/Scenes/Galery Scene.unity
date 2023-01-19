@@ -2338,7 +2338,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-199996
+  m_Name: pb_Mesh-267684
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3143,10 +3143,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'New Module 1 '
       objectReference: {fileID: 0}
+    - target: {fileID: 5027204051973210463, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261715793054369435, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261715793054369508, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261715793054369508, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5261715793639670060, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1609203251}
+    - target: {fileID: 7360376379666431477, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_ReceiveGI
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360376379666431477, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360376379666431477, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360376379666431482, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 9001212020412488106, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
       propertyPath: m_Mesh
       value: 
