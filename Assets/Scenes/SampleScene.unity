@@ -19947,6 +19947,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onlyHandsTrigger: 0
+--- !u!4 &1629512279 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2683542772516659882, guid: ef648ffc1280d6e4c939259a196f40d5, type: 3}
+  m_PrefabInstance: {fileID: 1629512263}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1648771271
 GameObject:
   m_ObjectHideFlags: 0
@@ -20383,8 +20388,7 @@ MonoBehaviour:
   promptStyliser: {fileID: 85050636}
   floatingImagesHandler: {fileID: 697253222}
   CalibrationCanvas: {fileID: 259715465}
-  QuestManagerCanvas: {fileID: 0}
-  _hasQuest: 0
+  questManager: {fileID: 0}
   audioHandler: {fileID: 945825979}
   minTimeBetweenSigns: 0.5
   minSignHoldTime: 0.5
@@ -20589,6 +20593,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4655488825086514724, guid: 2af458168f5db5b409b2b5fb6dbf8cfc, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1629512279}
+    - target: {fileID: 4655488825086514724, guid: 2af458168f5db5b409b2b5fb6dbf8cfc, type: 3}
+      propertyPath: centerEyeAnchor
+      value: 
+      objectReference: {fileID: 255968231}
     - target: {fileID: 4655488825086514727, guid: 2af458168f5db5b409b2b5fb6dbf8cfc, type: 3}
       propertyPath: m_RootOrder
       value: 23
