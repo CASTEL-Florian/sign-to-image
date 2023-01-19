@@ -109,13 +109,8 @@ public class GestureDetection : MonoBehaviour
 
     public PromptStyliser promptStyliser;
 
-    // feed back visuel en faisant apparaitre le nom du signe fait
-    public GameObject testObject;
-    public GameObject centerEyeAnchor;
-    public GameObject target;
-    private List<GameObject> TestGameObjectList;
-    private Vector3 posTest;
-    private Quaternion rotTest;
+    // feedback visuel en faisant apparaitre le nom du signe fait
+    public FloatingImagesHandler floatingImagesHandler;
 
     // saved datas of the admin hands (for calibration)
     private HandsDists referenceHandsDists;
@@ -128,6 +123,19 @@ public class GestureDetection : MonoBehaviour
 
 
     public AudioHandler audioHandler;
+
+    [SerializeField] private float minTimeBetweenSigns = 0.5f;
+
+    [SerializeField] private float minSignHoldTime = 0.5f;
+    private float currentTimeBetweenSigns = 0;
+    private float currentSignHoldTime = 0;
+    private bool currentGestureActivated = false;
+
+    public BackgroundChanger backgroundChanger;
+
+    public StyleSelectionUI styleSelectionUI;
+    public bool test = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -156,60 +164,74 @@ public class GestureDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentTimeBetweenSigns += Time.deltaTime;
         bool playerMoving = false;
         if(hasStarted)
         {
             Gesture currentGesture = Recognize();
-            bool hasRecognized = !currentGesture.Equals(new Gesture());
-            // check if its a new gesture
-
-            if (hasRecognized && !currentGesture.Equals(previousGesture) && currentGesture.name != "")
+            bool hasRecognized = currentGesture.name != "";
+            if (currentTimeBetweenSigns < minTimeBetweenSigns && currentGesture.name != "move" && currentGesture.name != "tp")
             {
-                previousGesture = currentGesture;
+                return;
+            }
+            if (!hasRecognized || !currentGesture.Equals(previousGesture))
+            {
+                currentGestureActivated = false;
+                currentSignHoldTime = 0;
+            }
+            else
+            {
+                currentSignHoldTime += Time.deltaTime;
+            }
+            if (currentGesture.name == "move" && _playerCanMove)
+            {
+                movePlayer();
+                playerMoving = true;
+                previousGesture = null;
+            }
+            else if (currentGesture.name == "tp" && _playerCanMove && !currentGesture.Equals(previousGesture))
+            {
+                playerMovement.TeleportToIndicator();
+                playerMoving = true;
+            }
+            previousGesture = currentGesture;
+            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime)
+            {
+                currentGestureActivated = true;
+                currentTimeBetweenSigns = 0;
                 if (gestureRecognitionInputField)
                     gestureRecognitionInputField.text = currentGesture.name;
                 if(currentGesture.name == "sos")
                 {
                     if (audioHandler)
                         audioHandler.PlaySosSound();
-                    if(_isPhrase)
+                    if (_isPhrase)
                     {
                         _isPhrase = false;
-                        foreach (GameObject test in TestGameObjectList)
-                        {
-                            test.GetComponent<SymbolsMovement>()._canMove = true;
-                        }
+                        floatingImagesHandler.SendImagesToTarget();
                         debugLog.text = "fin de phrase";
-                        Reset();
                         Generate();
+                        Reset();
                         sentenceParticlesLeft.Stop();
                         sentenceParticlesRight.Stop();
                         i = 0;
                     }    
                     else
                     {
+                        if (!frame.generationEnded)
+                            return;
                         debugLog.text = "début de phrase";
                         _isPhrase = true;
-                        TestGameObjectList = new List<GameObject>();
+                        floatingImagesHandler.DeleteSymbols();
                         sentenceParticlesLeft.Play();
                         sentenceParticlesRight.Play();
                         i = 0;
                     }
                 }
-                else if (currentGesture.name == "move" && _playerCanMove)
-                {
-                    movePlayer();
-                    playerMoving = true;
-                    previousGesture = null;
-                }
-                else if (currentGesture.name == "tp" && _playerCanMove)
-                {
-                    playerMovement.TeleportToIndicator();
-                    playerMoving = true;
-                }
                 else if (currentGesture.name == "change")
                 {
-                    promptStyliser.ChangeStyle();
+                    if (styleSelectionUI)
+                        styleSelectionUI.Toggle();
                 }
                 else
                 {
@@ -231,22 +253,7 @@ public class GestureDetection : MonoBehaviour
                         {
                             other += " " + currentGesture.name;
                         }
-
-                        if (i % 2 == 0)
-                        {
-                            posTest = rightFingerBones[8].Transform.position;
-                        }
-                        else
-                        {
-                            posTest = leftFingerBones[8].Transform.position;
-                        }
-                        rotTest = centerEyeAnchor.transform.rotation;
-
-                        GameObject test = Instantiate(testObject, posTest, rotTest);
-                        TestGameObjectList.Add(test);
-                        test.GetComponent<TextMeshPro>().text = currentGesture.name;
-                        test.GetComponent<SymbolsMovement>().target = target;
-                        test.GetComponent<SymbolsMovement>().centerEyeAnchor = centerEyeAnchor;
+                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position);
                         i++;
                     }
                     particleLeftManager.Play();
@@ -388,6 +395,8 @@ public class GestureDetection : MonoBehaviour
             return;
         frame.SetPrompt(promptStyliser.ApplyCurrentStyle(phrase));
         frame.Generate();
+        if (backgroundChanger)
+            backgroundChanger.ChangeBackground(place);
     }
 
     public void SetURL()

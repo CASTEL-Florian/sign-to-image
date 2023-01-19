@@ -18,10 +18,11 @@ public class Request : MonoBehaviour
     private string prompt = "A cat";
     private string negativePrompt = "bad art, low quality, ugly, blurry, pixelated, morbid, mutation, gross proportions, duplicate, mutilated, deformed, signature";
     private Texture2D tex;
-    private int width = 640;
-    private int height = 640;
-    private bool generationEnded = false;
+    private int width = 512;
+    private int height = 768;
+    public bool generationEnded = true;
     public string url = "http://c376-35-188-156-72.ngrok.io";
+
 
     private void Update()
     {
@@ -89,6 +90,10 @@ public class Request : MonoBehaviour
     }
     IEnumerator GetTexture()
     {
+        if (url.Length == 0)
+            Debug.Log("url vide");
+        if (url[url.Length - 1] == '/')
+            url = url.Substring(0, url.Length - 1);
         float t = Time.time;
 
         string json = "{\"prompt\": \"" + prompt + "\", \"negative_prompt\": \"" + negativePrompt + "\", \"steps\": " + steps.ToString() + ", \"width\": " + width.ToString() + ", \"height\": " + height.ToString() + ", \"sampler_index\": \"Euler a\"}";
@@ -149,28 +154,32 @@ public class Request : MonoBehaviour
 
             if (www.isNetworkError)
                 Debug.LogError(string.Format("{0}: {1}", www.url, www.error));
+            else
             {
                 if (!generationEnded)
                 {
                     print("progress time:" + (Time.time - t).ToString());
                     t = Time.time;
-                    ProgressResponse response = JsonUtility.FromJson<ProgressResponse>(www.downloadHandler.text);
-                    if (response.current_image.Length > 0)
+                    if (www.downloadHandler.text[0] == '{')
                     {
-                        byte[] imageBytes = Convert.FromBase64String(response.current_image);
-                        Debug.Log(response.current_image);
-                        tex.LoadImage(imageBytes);
-                        if (img)
-                            img.sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2());
-                        Painting painting = new Painting();
-                        painting.date = DateTime.Now;
-                        painting.name = prompt;
-                        if (frame)
-                            frame.SetPainting(painting, tex);
-                    }
-                    else
-                    {
-                        Debug.Log("empty image");
+                        ProgressResponse response = JsonUtility.FromJson<ProgressResponse>(www.downloadHandler.text);
+                        if (response.current_image.Length > 0)
+                        {
+                            byte[] imageBytes = Convert.FromBase64String(response.current_image);
+                            Debug.Log(response.current_image);
+                            tex.LoadImage(imageBytes);
+                            if (img)
+                                img.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2());
+                            Painting painting = new Painting();
+                            painting.date = DateTime.Now;
+                            painting.name = prompt;
+                            if (frame)
+                                frame.SetPainting(painting, tex);
+                        }
+                        else
+                        {
+                            Debug.Log("empty image");
+                        }
                     }
                 }
             }

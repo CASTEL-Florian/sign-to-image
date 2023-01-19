@@ -6,21 +6,27 @@ using UnityEngine.AI;
 public class TeleportHandler : MonoBehaviour
 {
     [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] private Transform teleportationIndicator;
-    [SerializeField] private MeshRenderer teleportationIndicatorMeshRenderer;
-    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private GameObject teleportationIndicatorPrefab;
+    [SerializeField] private LineRenderer lineRendererPrefab;
     [SerializeField] private Transform indexFingerPos1;
     [SerializeField] private Transform indexFingerPos2;
     [SerializeField] private float fadeOutTime = 1f;
     [SerializeField] private float fadeInTime = 0.3f;
+    [SerializeField] private float indicatorHeightOffset = 0;
     private bool hidden = true;
     private float alpha = 0;
     Gradient lineRendererGradient;
     private Trigger currentTrigger = null;
+    private MeshRenderer teleportationIndicatorMeshRenderer;
+    private Transform teleportationIndicator;
+    private LineRenderer lineRenderer;
 
 
     private void Start()
     {
+        teleportationIndicator = Instantiate(teleportationIndicatorPrefab).transform;
+        teleportationIndicatorMeshRenderer = teleportationIndicator.GetComponentInChildren<MeshRenderer>();
+        lineRenderer = Instantiate(lineRendererPrefab);
         lineRendererGradient = lineRenderer.colorGradient;
         GradientAlphaKey[] alphaKeys = new GradientAlphaKey[lineRendererGradient.alphaKeys.Length];
         for (int i = 0; i < alphaKeys.Length; i++)
@@ -55,8 +61,8 @@ public class TeleportHandler : MonoBehaviour
                 hitPos.y = 0;
             }
             lineRenderer.SetPosition(0, origin);
-            lineRenderer.SetPosition(1, hitPos);
-            teleportationIndicator.position = hitPos;
+            lineRenderer.SetPosition(1, hitPos + new Vector3(0, indicatorHeightOffset, 0));
+            teleportationIndicator.position = hitPos + new Vector3(0, indicatorHeightOffset, 0);
         }
     }
 
