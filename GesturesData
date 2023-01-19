@@ -2,6 +2,7 @@
     "gestures": [
         {
             "name": "sea prey",
+            "unlock": "1",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -542,6 +543,7 @@
         },
         {
             "name": "sos",
+            "unlock": "1",
             "type": "",
             "rightFingerDatas": [
                 {
@@ -1082,6 +1084,7 @@
         },
         {
             "name": "sea predator",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -1622,6 +1625,7 @@
         },
         {
             "name": "sea human",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -2162,6 +2166,7 @@
         },
         {
             "name": "sea mammal",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -2702,6 +2707,7 @@
         },
         {
             "name": "sea alien",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -3242,6 +3248,7 @@
         },
         {
             "name": "sea horror",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -3782,6 +3789,7 @@
         },
         {
             "name": "change",
+            "unlock": "1",
             "type": "",
             "rightFingerDatas": [
                 {
@@ -4322,6 +4330,7 @@
         },
         {
             "name": "sea entity",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -4862,6 +4871,7 @@
         },
         {
             "name": "sea ghost",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -5402,6 +5412,7 @@
         },
         {
             "name": "sea spirit",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -5942,6 +5953,7 @@
         },
         {
             "name": "mammal",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -6482,6 +6494,7 @@
         },
         {
             "name": "human",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -7022,6 +7035,7 @@
         },
         {
             "name": "prey",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -7562,6 +7576,7 @@
         },
         {
             "name": "predator",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -8102,6 +8117,7 @@
         },
         {
             "name": "monster",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -8642,6 +8658,7 @@
         },
         {
             "name": "sea monster",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -9182,6 +9199,7 @@
         },
         {
             "name": "alien",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -9722,6 +9740,7 @@
         },
         {
             "name": "beast",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -10262,6 +10281,7 @@
         },
         {
             "name": "horror",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -10802,6 +10822,7 @@
         },
         {
             "name": "ghost",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -11342,6 +11363,7 @@
         },
         {
             "name": "spirit",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -11882,6 +11904,7 @@
         },
         {
             "name": "entity",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -12422,6 +12445,7 @@
         },
         {
             "name": "flying prey",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -12962,6 +12986,7 @@
         },
         {
             "name": "flying predator",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -13502,6 +13527,7 @@
         },
         {
             "name": "flying monster",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -14042,6 +14068,7 @@
         },
         {
             "name": "flying mammal",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -14582,6 +14609,7 @@
         },
         {
             "name": "flying beast",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -15122,6 +15150,7 @@
         },
         {
             "name": "flying human",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -15662,6 +15691,7 @@
         },
         {
             "name": "flying alien",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -16202,6 +16232,7 @@
         },
         {
             "name": "flying ghost",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -16742,6 +16773,7 @@
         },
         {
             "name": "flying horror",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -17282,6 +17314,7 @@
         },
         {
             "name": "flying entity",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -17822,6 +17855,7 @@
         },
         {
             "name": "flying spirit",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -18362,6 +18396,7 @@
         },
         {
             "name": "fantasy prey",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -18902,6 +18937,7 @@
         },
         {
             "name": "fantasy predator",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -19442,6 +19478,7 @@
         },
         {
             "name": "fantasy monster",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -19982,6 +20019,7 @@
         },
         {
             "name": "fantasy human",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -20522,6 +20560,7 @@
         },
         {
             "name": "fantasy beast",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -21062,6 +21101,7 @@
         },
         {
             "name": "fantasy mammal",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -21602,6 +21642,7 @@
         },
         {
             "name": "fantasy alien",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -22142,6 +22183,7 @@
         },
         {
             "name": "fantasy horror",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -22682,6 +22724,7 @@
         },
         {
             "name": "fantasy ghost",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -23222,6 +23265,7 @@
         },
         {
             "name": "fantasy spririt",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -23762,6 +23806,7 @@
         },
         {
             "name": "fantasy entity",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -24302,6 +24347,7 @@
         },
         {
             "name": "lovecraftian prey",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -24842,6 +24888,7 @@
         },
         {
             "name": "lovecraftian predator",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -25382,6 +25429,7 @@
         },
         {
             "name": "lovecraftian monster",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -25922,6 +25970,7 @@
         },
         {
             "name": "lovecraftian human",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -26462,6 +26511,7 @@
         },
         {
             "name": "lovecraftian beast",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -27002,6 +27052,7 @@
         },
         {
             "name": "lovecraftian mammal",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -27542,6 +27593,7 @@
         },
         {
             "name": "lovecraftian alien",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -28082,6 +28134,7 @@
         },
         {
             "name": "lovecraftian horror",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -28622,6 +28675,7 @@
         },
         {
             "name": "lovecraftian ghost",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -29162,6 +29216,7 @@
         },
         {
             "name": "lovecraftian spirit",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -29702,6 +29757,7 @@
         },
         {
             "name": "lovecraftian entity",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -30242,6 +30298,7 @@
         },
         {
             "name": "occult prey",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -30782,6 +30839,7 @@
         },
         {
             "name": "occult predator",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -31322,6 +31380,7 @@
         },
         {
             "name": "occult monster",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -31862,6 +31921,7 @@
         },
         {
             "name": "occult human",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -32402,6 +32462,7 @@
         },
         {
             "name": "occult beast",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -32942,6 +33003,7 @@
         },
         {
             "name": "occult mammal",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -33482,6 +33544,7 @@
         },
         {
             "name": "occult alien",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -34022,6 +34085,7 @@
         },
         {
             "name": "occult horror",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -34562,6 +34626,7 @@
         },
         {
             "name": "occult ghost",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -35102,6 +35167,7 @@
         },
         {
             "name": "occult spirit",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -35642,6 +35708,7 @@
         },
         {
             "name": "occult entity",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -36182,6 +36249,7 @@
         },
         {
             "name": "mystic prey",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -36722,6 +36790,7 @@
         },
         {
             "name": "mystic predator",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -37262,6 +37331,7 @@
         },
         {
             "name": "mystic monster",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -37802,6 +37872,7 @@
         },
         {
             "name": "mystic human",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -38342,6 +38413,7 @@
         },
         {
             "name": "mystic beast",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -38882,6 +38954,7 @@
         },
         {
             "name": "mystic mammal",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -39422,6 +39495,7 @@
         },
         {
             "name": "mystic alien",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -39962,6 +40036,7 @@
         },
         {
             "name": "mystic horror",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -40502,6 +40577,7 @@
         },
         {
             "name": "mystic ghost",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -41042,6 +41118,7 @@
         },
         {
             "name": "mystic spirit",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -41582,6 +41659,7 @@
         },
         {
             "name": "mystic entity",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -42122,6 +42200,7 @@
         },
         {
             "name": "supernatural prey",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -42662,6 +42741,7 @@
         },
         {
             "name": "supernatural predator",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -43202,6 +43282,7 @@
         },
         {
             "name": "supernatural monster",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -43742,6 +43823,7 @@
         },
         {
             "name": "supernatural human",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -44282,6 +44364,7 @@
         },
         {
             "name": "supernatural beast",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -44822,6 +44905,7 @@
         },
         {
             "name": "supernatural mammal",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -45362,6 +45446,7 @@
         },
         {
             "name": "supernatural alien",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -45902,6 +45987,7 @@
         },
         {
             "name": "supernatural horror",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -46442,6 +46528,7 @@
         },
         {
             "name": "supernatural ghost",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -46982,6 +47069,7 @@
         },
         {
             "name": "supernatural spirit",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -47522,6 +47610,7 @@
         },
         {
             "name": "supernatural entity",
+            "unlock": "0",
             "type": "subject",
             "rightFingerDatas": [
                 {
@@ -48062,6 +48151,7 @@
         },
         {
             "name": "sky",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -48602,6 +48692,7 @@
         },
         {
             "name": "cave",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -49142,6 +49233,7 @@
         },
         {
             "name": "swamp",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -49682,6 +49774,7 @@
         },
         {
             "name": "sea",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -50222,6 +50315,7 @@
         },
         {
             "name": "mountain",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -50762,6 +50856,7 @@
         },
         {
             "name": "maze",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -51302,6 +51397,7 @@
         },
         {
             "name": "space",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -51842,6 +51938,7 @@
         },
         {
             "name": "mausoleum",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -52382,6 +52479,7 @@
         },
         {
             "name": "graveyard",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -52922,6 +53020,7 @@
         },
         {
             "name": "black hole",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -53462,6 +53561,7 @@
         },
         {
             "name": "forest",
+            "unlock": "1",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -54002,6 +54102,7 @@
         },
         {
             "name": "desert",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -54542,6 +54643,7 @@
         },
         {
             "name": "catacomb",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -55082,6 +55184,7 @@
         },
         {
             "name": "planet",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -55622,6 +55725,7 @@
         },
         {
             "name": "river",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {
@@ -56162,6 +56266,7 @@
         },
         {
             "name": "star",
+            "unlock": "0",
             "type": "place",
             "rightFingerDatas": [
                 {

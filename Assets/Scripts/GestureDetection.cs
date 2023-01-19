@@ -10,6 +10,8 @@ public class Gesture
     public string name;
     ///-------------used for grammar------------
     public string type;
+    /// string that act like a boolean 0 false 1 true
+    public string unlock;
 
     public List<Vector3> rightFingerDatas;
     public List<Vector3> leftFingerDatas;
@@ -19,6 +21,7 @@ public class Gesture
 
     public Gesture()
     {
+        unlock = "0";
         name = "";
         type = "";
         rightFingerDatas = new List<Vector3>();
@@ -249,11 +252,7 @@ public class GestureDetection : MonoBehaviour
                         {
                             place = " in " + currentGesture.name;
                         }
-                        else
-                        {
-                            other += " " + currentGesture.name;
-                        }
-                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position, currentGesture.type);
+                        floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position);
                         i++;
                     }
                     particleLeftManager.Play();

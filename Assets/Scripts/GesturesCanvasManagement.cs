@@ -5,6 +5,10 @@ using TMPro;
 
 public class GesturesCanvasManagement : MonoBehaviour
 {
+    private List<Gesture> gesturePlaceList;
+    private List<Gesture> gestureSubjectList;
+    private List<Gesture> gestureOtherList;
+
     public GestureDetection gestureDetection;
     private List<Gesture> gestureList;
 
@@ -30,6 +34,12 @@ public class GesturesCanvasManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gestureOtherList = gestureDetection.gestures.FindAll(
+        delegate (Gesture g)
+        {
+            return g.type == "";
+        }
+        );
         StartCoroutine(DelayRoutine(1));
     }
 
@@ -38,7 +48,20 @@ public class GesturesCanvasManagement : MonoBehaviour
     public IEnumerator DelayRoutine(float delay)
     {
         yield return new WaitForSeconds(delay);
-        UpdateCanvas(gestureDetection.gestures);
+
+        gesturePlaceList = gestureDetection.gestures.FindAll(
+        delegate(Gesture g)
+        {
+            return g.type == "place" && g.unlock == "1";
+        }
+        );
+        gestureSubjectList = gestureDetection.gestures.FindAll(
+        delegate (Gesture g)
+        {
+            return g.type == "subject" && g.unlock == "1";
+        }
+        );
+        //UpdateCanvas(gestureDetection.gestures);
     }
 
     public void UpdateCanvas(List<Gesture> gestureList)
@@ -224,7 +247,34 @@ public class GesturesCanvasManagement : MonoBehaviour
     {
         ChangePage(-1);
     }
-    
+
+    public void ShowPlace()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        UpdateCanvas(gesturePlaceList);
+    }
+
+    public void ShowSubject()   
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        UpdateCanvas(gestureSubjectList);
+    }
+
+    public void ShowOther()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        UpdateCanvas(gestureOtherList);
+    }
+
+    public void PreviousState()
+    {
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+
     public Gesture finGestureByName(string name)
     {
         foreach(Gesture g in gestureDetection.gestures)
