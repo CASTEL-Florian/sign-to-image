@@ -1192,6 +1192,10 @@ PrefabInstance:
       value: GesturesCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 2990424118618459425, guid: e37c9d10f2ea08048ad6958addab807c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990424118618459425, guid: e37c9d10f2ea08048ad6958addab807c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1245,7 +1249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2990424118618459438, guid: e37c9d10f2ea08048ad6958addab807c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.027
+      value: -11.71
       objectReference: {fileID: 0}
     - target: {fileID: 2990424118618459438, guid: e37c9d10f2ea08048ad6958addab807c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1265,11 +1269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2990424118618459438, guid: e37c9d10f2ea08048ad6958addab807c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.944
+      value: 3.867
       objectReference: {fileID: 0}
     - target: {fileID: 2990424118618459438, guid: e37c9d10f2ea08048ad6958addab807c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.353
+      value: -10.217
       objectReference: {fileID: 0}
     - target: {fileID: 2990424118618459438, guid: e37c9d10f2ea08048ad6958addab807c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2074,12 +2078,20 @@ PrefabInstance:
       objectReference: {fileID: 122777145}
     - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
       propertyPath: GesturesFileName
-      value: GesturesDatas
+      value: GesturesData
       objectReference: {fileID: 0}
+    - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 6801313727578277431}
     - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
       propertyPath: CalibrationCanvas
       value: 
       objectReference: {fileID: 1355984953}
+    - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
+      propertyPath: HandsDatasFileName
+      value: ReferenceHandsData
+      objectReference: {fileID: 0}
     - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
       propertyPath: gesturesCanvasManagement
       value: 
@@ -2480,7 +2492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3271979708788258989, guid: feafc58769cd31d448d99ac9c360d33a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.14
+      value: -6.28
       objectReference: {fileID: 0}
     - target: {fileID: 3271979708788258989, guid: feafc58769cd31d448d99ac9c360d33a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2500,11 +2512,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3271979708788258989, guid: feafc58769cd31d448d99ac9c360d33a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.092
+      value: 3.71
       objectReference: {fileID: 0}
     - target: {fileID: 3271979708788258989, guid: feafc58769cd31d448d99ac9c360d33a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.935
+      value: -7.03
       objectReference: {fileID: 0}
     - target: {fileID: 3271979708788258989, guid: feafc58769cd31d448d99ac9c360d33a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2521,6 +2533,10 @@ PrefabInstance:
     - target: {fileID: 3271979708788259025, guid: feafc58769cd31d448d99ac9c360d33a, type: 3}
       propertyPath: m_Name
       value: CooldownCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271979708788259025, guid: feafc58769cd31d448d99ac9c360d33a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3271979708788259025, guid: feafc58769cd31d448d99ac9c360d33a, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3403,7 +3419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 574484079188570014, guid: 9fd8cd0a293b4c7418c73e4cf9076d4b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.74
+      value: -11.585
       objectReference: {fileID: 0}
     - target: {fileID: 574484079188570014, guid: 9fd8cd0a293b4c7418c73e4cf9076d4b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3427,7 +3443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 574484079188570014, guid: 9fd8cd0a293b4c7418c73e4cf9076d4b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10.04
+      value: -9.722
       objectReference: {fileID: 0}
     - target: {fileID: 574484079188570014, guid: 9fd8cd0a293b4c7418c73e4cf9076d4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3448,6 +3464,10 @@ PrefabInstance:
     - target: {fileID: 1155771733982878121, guid: 9fd8cd0a293b4c7418c73e4cf9076d4b, type: 3}
       propertyPath: m_Name
       value: CalibrationCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155771733982878121, guid: 9fd8cd0a293b4c7418c73e4cf9076d4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1155771733982878121, guid: 9fd8cd0a293b4c7418c73e4cf9076d4b, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3736,6 +3756,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4188652693158468977, guid: e046543d5d1c6134da5b117b6ffdc22d, type: 3}
   m_PrefabInstance: {fileID: 7224349544639306565}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6801313727578277431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4188652693165339837, guid: e046543d5d1c6134da5b117b6ffdc22d, type: 3}
+  m_PrefabInstance: {fileID: 7224349544639306565}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0950df82e7936c84983497630bde5b54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6801313727588249728 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4188652693165288389, guid: e046543d5d1c6134da5b117b6ffdc22d, type: 3}
