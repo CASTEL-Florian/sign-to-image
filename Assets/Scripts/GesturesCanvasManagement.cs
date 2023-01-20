@@ -36,35 +36,8 @@ public class GesturesCanvasManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gestureOtherList = gestureDetection.gestures.FindAll(
-        delegate (Gesture g)
-        {
-            return g.type == "";
-        }
-        );
-        StartCoroutine(DelayRoutine(1));
     }
 
-    // Update is called once per frame
-
-    public IEnumerator DelayRoutine(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        gesturePlaceList = gestureDetection.gestures.FindAll(
-        delegate(Gesture g)
-        {
-            return g.type == "place" && g.unlock == "1";
-        }
-        );
-        gestureSubjectList = gestureDetection.gestures.FindAll(
-        delegate (Gesture g)
-        {
-            return g.type == "subject" && g.unlock == "1";
-        }
-        );
-        //UpdateCanvas(gestureDetection.gestures);
-    }
 
     public void UpdateCanvas(List<Gesture> gestureList)
     {
@@ -252,6 +225,12 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public void ShowPlace()
     {
+        gesturePlaceList = gestureDetection.gestures.FindAll(
+        delegate (Gesture g)
+        {
+            return g.type == "place" && g.unlock == "1";
+        }
+        );
         titreGrim.text = "Signe des Lieux";
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
@@ -260,6 +239,12 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public void ShowSubject()   
     {
+        gestureSubjectList = gestureDetection.gestures.FindAll(
+        delegate (Gesture g)
+        {
+            return g.type == "subject" && g.unlock == "1";
+        }
+        );
         titreGrim.text = "Signe des Sujets";
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
@@ -268,6 +253,12 @@ public class GesturesCanvasManagement : MonoBehaviour
 
     public void ShowOther()
     {
+        gestureOtherList = gestureDetection.gestures.FindAll(
+        delegate (Gesture g)
+        {
+            return g.type == "";
+        }
+        );
         titreGrim.text = "Autres Signe";
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
