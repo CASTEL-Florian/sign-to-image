@@ -135,6 +135,10 @@ PrefabInstance:
       value: GestureDetecture
       objectReference: {fileID: 0}
     - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
+      propertyPath: _isGallery
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
       propertyPath: leftSkeleton
       value: 
       objectReference: {fileID: 1660922843}
@@ -146,6 +150,14 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 1673771129831758784}
+    - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
+      propertyPath: GesturesFileName
+      value: GesturesData
+      objectReference: {fileID: 0}
+    - target: {fileID: 906767208203691838, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
+      propertyPath: HandsDatasFileName
+      value: ReferenceHandsData
+      objectReference: {fileID: 0}
     - target: {fileID: 906767208203691839, guid: 5ca95972665ebed4ea6b13890d074aaa, type: 3}
       propertyPath: m_RootOrder
       value: 3

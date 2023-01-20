@@ -228,13 +228,13 @@ public class QuestManager : MonoBehaviour
     {
         string[] words = prompt.Split(' ');
         float xpGained = 0;
-        for(int i = 0; i < words.Length; i++)
-        {
-            if(quest.requestedPromptItems.Contains(words[i]))
-            {
-                xpGained += 0.5f;
-            }
-        }
+        //for(int i = 0; i < words.Length; i++)
+        //{
+        //    if(quest.requestedPromptItems.Contains(words[i]))
+        //    {
+        //        xpGained += 0.5f;
+        //    }
+        //}
         playerInfos.currentXP += xpGained * quest.XPGiven;
         LevelUp();
         quest._hasBeenDone = true;

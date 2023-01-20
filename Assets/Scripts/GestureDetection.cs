@@ -138,6 +138,7 @@ public class GestureDetection : MonoBehaviour
     public StyleSelectionUI styleSelectionUI;
     public bool test = false;
 
+    public bool _isGallery;
     // Start is called before the first frame update
     void Start()
     {
@@ -160,7 +161,10 @@ public class GestureDetection : MonoBehaviour
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
         if (URLInputField)
             URLInputField.text = frame.url;
-        CalibrationCanvas.SetActive(true);    
+        if(!_isGallery)
+            CalibrationCanvas.SetActive(true);
+        else
+            hasStarted = true;
     }
 
     // Update is called once per frame
@@ -197,7 +201,7 @@ public class GestureDetection : MonoBehaviour
                 playerMoving = true;
             }
             previousGesture = currentGesture;
-            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime)
+            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isGallery)
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;

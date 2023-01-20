@@ -64,9 +64,9 @@ public class QuestPaperManager : MonoBehaviour
                     transform.rotation = startRotation;
                     _canMove = false;
                     _isMoving =false;
-                    QuestAccept.SetActive(false);
-                    QuestRefuse.SetActive(false);
-                    QuestDeselect.SetActive(true);
+                    QuestAccept.SetActive(true);
+                    QuestRefuse.SetActive(true);
+                    QuestDeselect.SetActive(false);
                 }
             }
         }
@@ -91,7 +91,7 @@ public class QuestPaperManager : MonoBehaviour
 
     public void RemoveQuest()
     {
-        if(!_isSelected)
+        if(!_isMoving)
         {
             questManager.RemoveQuest(quest);
         }
