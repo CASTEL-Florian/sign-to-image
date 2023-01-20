@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 8dd1aa292e0a66a4dbcceb217123dc29, type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 119fdb845fa65b742a71e0cd07ab3b4e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -2338,7 +2338,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-267684
+  m_Name: pb_Mesh-319722
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
