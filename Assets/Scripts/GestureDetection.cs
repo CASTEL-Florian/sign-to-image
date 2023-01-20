@@ -141,6 +141,9 @@ public class GestureDetection : MonoBehaviour
     // _isFirstScene : solution de secours pour faire en sorte que la calibration se lance que dans l'atelier 
     public bool _isFirstScene;
 
+    // _isInGallery permet de ne pas faier de phrase dans la gallerie
+    public bool _isInGallery;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -203,13 +206,13 @@ public class GestureDetection : MonoBehaviour
                 playerMoving = true;
             }
             previousGesture = currentGesture;
-            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime)
+            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery)
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;
                 if (gestureRecognitionInputField)
                     gestureRecognitionInputField.text = currentGesture.name;
-                if(currentGesture.name == "sos")
+                if(currentGesture.name == "sos" )
                 {
                     if (audioHandler)
                         audioHandler.PlaySosSound();
