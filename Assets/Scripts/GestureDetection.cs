@@ -253,10 +253,10 @@ public class GestureDetection : MonoBehaviour
                 }
                 else
                 {
-                    if (audioHandler)
-                        audioHandler.PlaySignSound();
                     if (_isPhrase && currentGesture.name != "")
                     {
+                        if (audioHandler)
+                            audioHandler.PlaySignSound();
                         ///-------------used for grammar------------
                         
                         floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position, currentGesture.type);
@@ -275,11 +275,11 @@ public class GestureDetection : MonoBehaviour
                             place = currentGesture.name;
                         }
                         i++;
+                        particleLeftManager.Play();
+                        particleRightManager.Play();
+                        colorChangeLeft.Pulse();
+                        colorChangeRight.Pulse();
                     }
-                    particleLeftManager.Play();
-                    particleRightManager.Play();
-                    colorChangeLeft.Pulse();
-                    colorChangeRight.Pulse();
                 }
                 
                 ///-------------used for grammar------------
