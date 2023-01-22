@@ -2202,8 +2202,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Pour retourner \xE0 ton atelier, cherche les portes de sortie"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6298267b1909e604bb5a590cf29bd856, type: 2}
+  m_sharedMaterial: {fileID: -4588604389896671250, guid: 6298267b1909e604bb5a590cf29bd856, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2227,7 +2227,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.65
+  m_fontSize: 32.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3440,7 +3440,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-10206
+  m_Name: pb_Mesh-360330
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5603,8 +5603,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "D\xE9place toi dans la galerie en utilisant le signe \"MOVE\" ou \"TP\""
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6298267b1909e604bb5a590cf29bd856, type: 2}
+  m_sharedMaterial: {fileID: -4588604389896671250, guid: 6298267b1909e604bb5a590cf29bd856, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5628,7 +5628,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.3
+  m_fontSize: 32.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6073,10 +6073,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'New Module 1 '
       objectReference: {fileID: 0}
+    - target: {fileID: 3761343065771542331, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761343065771542331, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761343065771542331, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761343065771542331, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761343065771542331, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761343065771542331, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754574988331228570, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.024360038
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754574988331228570, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04674596
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754574988331228570, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.067231596
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754574988331228570, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.00015
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754574988331228570, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0053
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754574988331228570, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0489
+      objectReference: {fileID: 0}
+    - target: {fileID: 4754574988331228570, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5261715793639670060, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1609203251}
+    - target: {fileID: 5261715793639670061, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0005
+      objectReference: {fileID: 0}
     - target: {fileID: 9001212020412488106, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
       propertyPath: m_Mesh
       value: 

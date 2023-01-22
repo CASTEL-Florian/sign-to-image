@@ -25,20 +25,37 @@ public class QuestPaperManager : MonoBehaviour
     [SerializeField] private GameObject QuestRefuse;
     [SerializeField] private GameObject QuestDeselect;
 
+    public bool Selection;
+    public bool Remove;
+    public bool Deselection;
     // Start is called before the first frame update
     void Start()
     {
-        QuestTitle.GetComponent<TextMeshPro>().text = quest.name;
+        QuestTitle.GetComponent<TextMeshPro>().text = quest.titre;
         QuestRank.GetComponent<TextMeshPro>().text = quest.rank.ToString();
         QuestDescription.GetComponent<TextMeshPro>().text = quest.description;
         startPosition = transform.position;
         startRotation = transform.rotation;
     }
 
+    private void OnEnable()
+    {
+        QuestTitle.GetComponent<TextMeshPro>().text = quest.titre;
+        QuestRank.GetComponent<TextMeshPro>().text = quest.rank.ToString();
+        QuestDescription.GetComponent<TextMeshPro>().text = quest.description;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(_canMove)
+        if (Selection)
+            SelectQuest(); Selection = false;
+        if (Remove)
+            RemoveQuest(); Remove = false;
+        if(Deselection)
+            DeselectQuest(); Deselection = false;
+
+        if (_canMove)
         {
             _isMoving = true;
             if(_isSelected)
@@ -91,6 +108,7 @@ public class QuestPaperManager : MonoBehaviour
 
     public void RemoveQuest()
     {
+        DeselectQuest();
         if(!_isSelected)
         {
             questManager.RemoveQuest(quest);

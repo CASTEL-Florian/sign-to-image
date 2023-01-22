@@ -115,9 +115,10 @@ public class GestureDetection : MonoBehaviour
     // feedback visuel en faisant apparaitre le nom du signe fait
     public FloatingImagesHandler floatingImagesHandler;
 
-    //Ghost feedback
-    public Animator? ghostAnimator;
-
+    //Ghost feedback animation
+#nullable enable
+    public Animator? animatorGhost;
+#nullable disable
     // saved datas of the admin hands (for calibration)
     private HandsDists referenceHandsDists;
     private bool _isCalibrating;
@@ -141,8 +142,8 @@ public class GestureDetection : MonoBehaviour
     public StyleSelectionUI styleSelectionUI;
     public bool test = false;
 
-    // _isFirstScene : solution de secours pour faire en sorte que la calibration se lance que dans l'atelier 
-    public bool _isFirstScene;
+    // _hasCalibrate : permet de faire la calibration qu'au début du jeu 
+    public static bool _isCalibrate = false;
 
     // _isInGallery permet de ne pas faier de phrase dans la gallerie
     public bool _isInGallery;
@@ -169,8 +170,11 @@ public class GestureDetection : MonoBehaviour
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
         if (URLInputField)
             URLInputField.text = frame.url;
-        if (_isFirstScene)
+        if (!_isCalibrate)
+        {
             CalibrationCanvas.SetActive(true);
+            _isCalibrate = true;
+        }      
         else
             hasStarted = true;
     }
@@ -246,11 +250,10 @@ public class GestureDetection : MonoBehaviour
                         floatingImagesHandler.DeleteSymbols();
                         sentenceParticlesLeft.Play();
                         sentenceParticlesRight.Play();
-                        if (ghostAnimator) 
+                        if (animatorGhost) 
                         {
-                            ghostAnimator.SetTrigger("Stretching");
+                            animatorGhost.SetTrigger("Stretching");
                         }
-                      
                         i = 0;
                     }
                 }
@@ -261,10 +264,10 @@ public class GestureDetection : MonoBehaviour
                 }
                 else
                 {
-                    if (audioHandler)
-                        audioHandler.PlaySignSound();
                     if (_isPhrase && currentGesture.name != "")
                     {
+                        if (audioHandler)
+                            audioHandler.PlaySignSound();
                         ///-------------used for grammar------------
                         
                         floatingImagesHandler.CreateImage(currentGesture.name, i % 2 == 0 ? rightFingerBones[8].Transform.position : leftFingerBones[8].Transform.position, currentGesture.type);
@@ -283,14 +286,14 @@ public class GestureDetection : MonoBehaviour
                             place = currentGesture.name;
                         }
                         i++;
-                    }
-                    particleLeftManager.Play();
-                    particleRightManager.Play();
-                    colorChangeLeft.Pulse();
-                    colorChangeRight.Pulse();
-                    if (ghostAnimator)
-                    {
-                        ghostAnimator.SetTrigger("Clap");
+                        particleLeftManager.Play();
+                        particleRightManager.Play();
+                        colorChangeLeft.Pulse();
+                        colorChangeRight.Pulse();
+                        if (animatorGhost) 
+                        {
+                            animatorGhost.SetTrigger("Clap");
+                        }
                     }
                 }
                 
