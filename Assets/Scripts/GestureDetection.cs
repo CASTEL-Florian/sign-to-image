@@ -115,6 +115,9 @@ public class GestureDetection : MonoBehaviour
     // feedback visuel en faisant apparaitre le nom du signe fait
     public FloatingImagesHandler floatingImagesHandler;
 
+    //Ghost feedback
+    public Animator? ghostAnimator;
+
     // saved datas of the admin hands (for calibration)
     private HandsDists referenceHandsDists;
     private bool _isCalibrating;
@@ -243,6 +246,11 @@ public class GestureDetection : MonoBehaviour
                         floatingImagesHandler.DeleteSymbols();
                         sentenceParticlesLeft.Play();
                         sentenceParticlesRight.Play();
+                        if (ghostAnimator) 
+                        {
+                            ghostAnimator.SetTrigger("Stretching");
+                        }
+                      
                         i = 0;
                     }
                 }
@@ -280,6 +288,10 @@ public class GestureDetection : MonoBehaviour
                     particleRightManager.Play();
                     colorChangeLeft.Pulse();
                     colorChangeRight.Pulse();
+                    if (ghostAnimator)
+                    {
+                        ghostAnimator.SetTrigger("Clap");
+                    }
                 }
                 
                 ///-------------used for grammar------------
