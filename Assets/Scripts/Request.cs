@@ -86,12 +86,14 @@ public class Request : MonoBehaviour
     }
     public void Generate()
     {
+        if (url.Length == 0) {
+            Debug.Log("url vide");
+            return;
+        }
         StartCoroutine(GetTexture());
     }
     IEnumerator GetTexture()
     {
-        if (url.Length == 0)
-            Debug.Log("url vide");
         if (url[url.Length - 1] == '/')
             url = url.Substring(0, url.Length - 1);
         float t = Time.time;
@@ -116,19 +118,22 @@ public class Request : MonoBehaviour
         else
         {
             Debug.Log(string.Format("Response: {0}", www.downloadHandler.text));
-            Response response = JsonUtility.FromJson<Response>(www.downloadHandler.text);
-            byte[] imageBytes = Convert.FromBase64String(response.images[0]);
-            tex.LoadImage(imageBytes);
-            if (img)
-                img.sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2());
-            Painting painting = new Painting();
-            painting.date = DateTime.Now;
-            painting.name = prompt;
-            if (frame)
-                frame.SetPainting(painting, tex);
-            print("Time:" + (Time.time - t).ToString());
-            if (saveImage)
-                SaveImage();
+            if (www.downloadHandler.text[0] == '{')
+            {
+                Response response = JsonUtility.FromJson<Response>(www.downloadHandler.text);
+                byte[] imageBytes = Convert.FromBase64String(response.images[0]);
+                tex.LoadImage(imageBytes);
+                if (img)
+                    img.sprite = Sprite.Create(tex, new Rect(0, 0, width, height), new Vector2());
+                Painting painting = new Painting();
+                painting.date = DateTime.Now;
+                painting.name = prompt;
+                if (frame)
+                    frame.SetPainting(painting, tex);
+                print("Time:" + (Time.time - t).ToString());
+                if (saveImage)
+                    SaveImage();
+            }
         }
         www.Dispose();
     }

@@ -16,7 +16,7 @@ public class StyleSelectionUI : MonoBehaviour
     [SerializeField] private float fadeInTime = 0.5f;
     [SerializeField] private float fadeOutTime = 0.5f;
     private float currentAngle = 0;
-    [SerializeField]private bool hidden = true;
+    private bool hidden = true;
     float alpha = 0;
 
     private void Start()
@@ -70,6 +70,8 @@ public class StyleSelectionUI : MonoBehaviour
     public void Toggle()
     {
         hidden = !hidden;
+        if (!hidden)
+            transform.position = centerEyeAnchor.transform.position + new Vector3(0, height, 0);
     }
 
     public void ChangeStyle(int id)

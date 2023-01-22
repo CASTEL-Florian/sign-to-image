@@ -199,7 +199,7 @@ public class GalleryManager : MonoBehaviour
 
                 if (galleryModules[i].capacity <= number_of_tab)
                 {
-                    if (i != 0)
+                    if (i != 0|| number_of_tab - galleryModules[i].capacity <= 0)
                     {
 
 
@@ -209,14 +209,14 @@ public class GalleryManager : MonoBehaviour
                         frames.AddRange(temp.frames);
 
                     }
-                    else if (number_of_tab - galleryModules[i].capacity <= 0)
+                   /* else if (number_of_tab - galleryModules[i].capacity <= 0)
                     {
 
                         temp = Instantiate(galleryModules[i], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f));
                         number_of_tab -= galleryModules[i].capacity;
                         availableModules.Add(moduleindex, temp);
                         frames.AddRange(temp.frames);
-                    }
+                    }*/
                     else if (number_of_tab - galleryModules[i].capacity >= 0)
                     {
 
