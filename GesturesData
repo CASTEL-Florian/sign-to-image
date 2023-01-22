@@ -1,7 +1,7 @@
 {
     "gestures": [
         {
-            "name": "sea prey",
+            "name": "sea animal",
             "type": "subject",
             "unlock": "1",
             "rightFingerDatas": [
@@ -7575,7 +7575,7 @@
             ]
         },
         {
-            "name": "prey",
+            "name": "animal",
             "type": "subject",
             "unlock": "1",
             "rightFingerDatas": [
@@ -11903,7 +11903,7 @@
             ]
         },
         {
-            "name": "flying prey",
+            "name": "flying animal",
             "type": "subject",
             "unlock": "1",
             "rightFingerDatas": [
@@ -16772,7 +16772,7 @@
             ]
         },
         {
-            "name": "fantasy prey",
+            "name": "fantasy animal",
             "type": "subject",
             "unlock": "1",
             "rightFingerDatas": [
@@ -22182,7 +22182,7 @@
             ]
         },
         {
-            "name": "lovecraftian prey",
+            "name": "lovecraftian animal",
             "type": "subject",
             "unlock": "1",
             "rightFingerDatas": [
@@ -27592,7 +27592,7 @@
             ]
         },
         {
-            "name": "occult prey",
+            "name": "occult animal",
             "type": "subject",
             "unlock": "1",
             "rightFingerDatas": [
@@ -33002,7 +33002,7 @@
             ]
         },
         {
-            "name": "mystic prey",
+            "name": "mystic animal",
             "type": "subject",
             "unlock": "1",
             "rightFingerDatas": [
@@ -38412,7 +38412,7 @@
             ]
         },
         {
-            "name": "supernatural prey",
+            "name": "supernatural animal",
             "type": "subject",
             "unlock": "1",
             "rightFingerDatas": [
