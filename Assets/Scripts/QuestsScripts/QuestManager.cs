@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class Quest 
+
+[System.Serializable]
+public class Quest
 {
     public int rank;
-    public string name;
+    public string titre;
     public string description;
     public List<string> requestedPromptItems;
     public float XPGiven;
@@ -14,7 +16,7 @@ public class Quest
     public Quest()
     {
         rank = 1;
-        name = "test";
+        titre = "test";
         description = "je suis une description etxt, normalement vous ne me voyez pas, sauf si on est en plein test";
         requestedPromptItems = new List<string>();
         XPGiven = 0;
@@ -22,6 +24,7 @@ public class Quest
     }
 }
 
+[System.Serializable]
 public class PlayerInfos
 {
     public int currentLevel;
@@ -40,9 +43,9 @@ public class PlayerInfos
 public class QuestManager : MonoBehaviour
 {
     public string PlayerDatasFileName;
-    [HideInInspector]
     public PlayerInfos playerInfos;
     public Quest currentQuest;
+    [HideInInspector]
     public FileDataHandler playerDataHandler;
     private bool _canRedoneQuest = false;
 
@@ -62,29 +65,35 @@ public class QuestManager : MonoBehaviour
     // pop up so the player can send or not his current painting for a quest
     public GameObject PopUpQuest;
 
+    public bool _isPhrase;
+    public bool ValidationOui;
+    public bool ValidationNon;
+    
     // Start is called before the first frame update
     void Start()
     {
         playerDataHandler = new FileDataHandler(Application.persistentDataPath, PlayerDatasFileName);
         playerInfos = playerDataHandler.PlayerLoad();
-        //playerInfos = new PlayerInfos();
-        Quest testquest = new Quest();
-        Quest testquest2 = new Quest();
-        testquest2.name = "test2";
-        testquest2.description = "ceci est la meilleure description que vous verrez aujourd'hui !";
-        playerInfos.quests.Add(testquest);
-        playerInfos.quests.Add(testquest2);
         if (playerInfos.currentQuestsList.Count == 0)
         {
             AddQuest();
         }
         GenerateQuestPlaceHolder();
+        UpdateDiploma();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(_isPhrase && currentQuest != null)
+        {
+            _isPhrase = false;
+            sendPhrase();
+        }
+        if (ValidationOui)
+            ValidateYes(); ValidationOui = false;
+        if (ValidationNon)
+            ValidateNo(); ValidationNon = false;
     }
 
     public void LevelUp()
@@ -93,19 +102,19 @@ public class QuestManager : MonoBehaviour
         {
             case 1:
                 if (playerInfos.currentXP > xpToLevel2)
-                    playerInfos.currentLevel = 2;
+                    playerInfos.currentLevel = 2; UpdateDiploma(); 
                 break;
             case 2:
                 if (playerInfos.currentXP > xpToLevel3)
-                    playerInfos.currentLevel = 3;
+                    playerInfos.currentLevel = 3; UpdateDiploma();
                 break;
             case 3:
                 if (playerInfos.currentXP > xpToLevel4)
-                    playerInfos.currentLevel = 4;
+                    playerInfos.currentLevel = 4; UpdateDiploma();
                 break;
             case 4:
                 if (playerInfos.currentXP > xpToLevel5)
-                    playerInfos.currentLevel = 5;
+                    playerInfos.currentLevel = 5; UpdateDiploma();
                 break;
         }
     }
@@ -177,8 +186,11 @@ public class QuestManager : MonoBehaviour
                     }
                 }
             }
-            int randomIndex = Random.Range(0, questPool.Count);
-            playerInfos.currentQuestsList.Add(questPool[randomIndex]);
+            if(questPool.Count > 0)
+            {
+                int randomIndex = Random.Range(0, questPool.Count);
+                playerInfos.currentQuestsList.Add(questPool[randomIndex]);
+            }
         }
     }
     
@@ -205,17 +217,18 @@ public class QuestManager : MonoBehaviour
         }
         for(int i = 0; i < playerInfos.currentQuestsList.Count; i++)
         {
-            QuestPaperList[i].SetActive(true);
             QuestPaperList[i].GetComponent<QuestPaperManager>().quest = playerInfos.currentQuestsList[i];
             QuestPaperList[i].GetComponent<QuestPaperManager>().endPosition = endPosition;
+            QuestPaperList[i].SetActive(true);
         }
+        SavePlayerInfos();
     }
 
     public void RemoveQuest(Quest quest)
     {
         foreach(Quest quest1 in playerInfos.currentQuestsList)
         {
-            if (quest == quest1)
+            if (quest.titre == quest1.titre)
             {
                 playerInfos.currentQuestsList.Remove(quest1);
                 break;
@@ -237,9 +250,15 @@ public class QuestManager : MonoBehaviour
         }
         playerInfos.currentXP += xpGained * quest.XPGiven;
         LevelUp();
-        quest._hasBeenDone = true;
+        foreach (Quest quest1 in playerInfos.quests)
+        {
+            if (quest.titre == quest1.titre)
+            {
+                quest1._hasBeenDone = true;
+                break;
+            }
+        }
         currentQuestPaper.GetComponent<QuestPaperManager>().RemoveQuest();
-        SavePlayerInfos();
     }
 
     public void UpdateDiploma()
@@ -261,6 +280,35 @@ public class QuestManager : MonoBehaviour
             case 5:
                 DiplomaText.GetComponent<TextMeshPro>().text = "MAÎTRE";
                 break;
+        }
+    }
+
+    // --------------------- fonctions utilisées pour des tests -------------------------
+
+    private string phrase = "fox in forest";
+
+    public void ValidateYes()
+    {
+        EvaluatePrompt(currentQuest, phrase);
+        PopUpQuest.SetActive(false);
+        AddQuest();
+        GenerateQuestPlaceHolder();
+    }
+
+    public void ValidateNo()
+    {
+        PopUpQuest.SetActive(false);
+        //currentQuestPaper.GetComponent<QuestPaperManager>().DeselectQuest();
+        AddQuest();
+        GenerateQuestPlaceHolder();
+        SavePlayerInfos();
+    }
+
+    public void sendPhrase()
+    {
+        if(currentQuest != null)
+        {
+            PopUpQuest.SetActive(true);
         }
     }
 }
