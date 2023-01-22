@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: aa1f4160d3ae272469bc64de5c6ecb41
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Grimoire
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 36c783375dae3b543b7f714ad8b3a00e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
