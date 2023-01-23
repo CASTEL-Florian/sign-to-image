@@ -70,16 +70,16 @@ public class QuestManager : MonoBehaviour
     public bool ValidationNon;
 
     // pop up used to show the results of the woke done by the player during the quest
-
-    [SerializeField] private GameObject QuestSummary;
-    [SerializeField] private GameObject QuestDescription;
-    [SerializeField] private GameObject XPSummary;
+    [SerializeField] private GameObject ExpGainSummary;
+    [SerializeField] private GameObject MarkText;
+    [SerializeField] private GameObject NewXpText;
     [SerializeField] private GameObject LevelUpText;
     [SerializeField] private GameObject FinalCommentary;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         playerDataHandler = new FileDataHandler(Application.persistentDataPath, PlayerDatasFileName);
         playerInfos = playerDataHandler.PlayerLoad();
         if (playerInfos.currentQuestsList.Count == 0)
@@ -88,6 +88,7 @@ public class QuestManager : MonoBehaviour
         }
         GenerateQuestPlaceHolder();
         UpdateDiploma();
+        currentQuest = null;
     }
 
     // Update is called once per frame
@@ -104,27 +105,46 @@ public class QuestManager : MonoBehaviour
             ValidateNo(); ValidationNon = false;
     }
 
-    public void LevelUp()
+    public bool LevelUp()
     {
         switch(playerInfos.currentLevel)
         {
             case 1:
                 if (playerInfos.currentXP > xpToLevel2)
-                    playerInfos.currentLevel = 2; UpdateDiploma(); 
+                {
+                    playerInfos.currentLevel = 2;
+                    UpdateDiploma(); 
+                    return true;
+                }
                 break;
+                    
             case 2:
                 if (playerInfos.currentXP > xpToLevel3)
-                    playerInfos.currentLevel = 3; UpdateDiploma();
+                {
+                    playerInfos.currentLevel = 3;
+                    UpdateDiploma(); 
+                    return true;
+                }
                 break;
             case 3:
                 if (playerInfos.currentXP > xpToLevel4)
-                    playerInfos.currentLevel = 4; UpdateDiploma();
+                {
+                    playerInfos.currentLevel = 4; 
+                    UpdateDiploma(); 
+                    return true;
+                }
                 break;
+                
             case 4:
                 if (playerInfos.currentXP > xpToLevel5)
-                    playerInfos.currentLevel = 5; UpdateDiploma();
-                break;
+                {
+                    playerInfos.currentLevel = 5; 
+                    UpdateDiploma(); 
+                    return true;
+                }
+                break;    
         }
+        return false;
     }
     public void SavePlayerInfos()
     {
@@ -256,8 +276,7 @@ public class QuestManager : MonoBehaviour
                 eval += 0.5f;
             }
         }
-        playerInfos.currentXP += eval * quest.XPGiven;
-        LevelUp();
+        StartCoroutine(ShowResultCoroutine(eval, eval * quest.XPGiven));
         foreach (Quest quest1 in playerInfos.quests)
         {
             if (quest.titre == quest1.titre)
@@ -320,13 +339,45 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    public void ShowResults(float evaluation, float xpGained)
-    {
 
-    }
-
-    IEnumerator ShowResultCoroutine()
+    public IEnumerator ShowResultCoroutine(float evaluation, float xpGained)
     {
-        yield return null;
+        ExpGainSummary.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        MarkText.GetComponent<TextMeshPro>().text = "Vous avez fait " + (evaluation * 100).ToString() + "% de ce que voulait le client.";
+        MarkText.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        NewXpText.SetActive(true);
+        for (float i = 0; i < xpGained; i++)
+        {
+            NewXpText.GetComponent<TextMeshPro>().text = "Exp : " + (playerInfos.currentXP +  i + 1).ToString() + " Xp";
+            yield return new WaitForSeconds(0.5f / xpGained);
+        }
+        playerInfos.currentXP += xpGained;
+        yield return new WaitForSeconds(0.5f);
+        if(LevelUp())
+        {
+            LevelUpText.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+        }
+        FinalCommentary.SetActive(true);
+        switch(evaluation)
+        {
+            case 0:
+                FinalCommentary.GetComponent<TextMeshPro>().text = "Faites mieux pour la prochaine fois !";
+                break;
+            case 0.5f:
+                FinalCommentary.GetComponent<TextMeshPro>().text = "C'est pas mal !";
+                break;
+            case 1.0f:
+                FinalCommentary.GetComponent<TextMeshPro>().text = "Bravo !";
+                break;
+        }
+        yield return new WaitForSeconds(4.0f);
+        MarkText.SetActive(false);
+        NewXpText.SetActive(false);
+        FinalCommentary.SetActive(false);
+        ExpGainSummary.SetActive(false);
+        SavePlayerInfos();
     }
 }

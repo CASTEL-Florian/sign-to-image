@@ -185,7 +185,7 @@ public class GestureDetection : MonoBehaviour
     {
         currentTimeBetweenSigns += Time.deltaTime;
         bool playerMoving = false;
-        if(hasStarted && !_hasToValidateQuest)
+        if(hasStarted)
         {
             Gesture currentGesture = Recognize();
             bool hasRecognized = currentGesture.name != "";
@@ -214,7 +214,7 @@ public class GestureDetection : MonoBehaviour
                 playerMoving = true;
             }
             previousGesture = currentGesture;
-            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery ||test)
+            if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery ||test)
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;

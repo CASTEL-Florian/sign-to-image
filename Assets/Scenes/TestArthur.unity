@@ -750,7 +750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &227967672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1534,7 +1534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &598021611
 Transform:
   m_ObjectHideFlags: 0
@@ -2338,7 +2338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &769394719
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2540,20 +2540,20 @@ MonoBehaviour:
     XPGiven: 0
     _hasBeenDone: 0
   QuestPaperList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  endPosition: {fileID: 0}
-  DiplomaText: {fileID: 0}
-  PopUpQuest: {fileID: 0}
+  - {fileID: 7851305667437938750}
+  - {fileID: 7851305668814801190}
+  - {fileID: 7851305668632382866}
+  endPosition: {fileID: 5235968674902600363}
+  DiplomaText: {fileID: 141189786}
+  PopUpQuest: {fileID: 7901618614149100149}
   _isPhrase: 0
   ValidationOui: 0
   ValidationNon: 0
-  QuestSummary: {fileID: 0}
-  QuestDescription: {fileID: 0}
-  XPSummary: {fileID: 0}
-  LevelUpText: {fileID: 0}
-  FinalCommentary: {fileID: 0}
+  ExpGainSummary: {fileID: 598021610}
+  MarkText: {fileID: 1464786854}
+  NewXpText: {fileID: 1990584529}
+  LevelUpText: {fileID: 769394718}
+  FinalCommentary: {fileID: 227967671}
 --- !u!65 &824367184
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3786,7 +3786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1464786855
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4992,7 +4992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1990584530
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6307,7 +6307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e71e636ddd36b42ad8e3a87a0cb4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questManager: {fileID: 0}
+  questManager: {fileID: 824367183}
   quest:
     rank: 1
     titre: test
@@ -7056,7 +7056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e71e636ddd36b42ad8e3a87a0cb4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questManager: {fileID: 0}
+  questManager: {fileID: 824367183}
   quest:
     rank: 1
     titre: test
@@ -7191,7 +7191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e71e636ddd36b42ad8e3a87a0cb4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questManager: {fileID: 0}
+  questManager: {fileID: 824367183}
   quest:
     rank: 1
     titre: test
