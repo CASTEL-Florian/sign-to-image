@@ -47,6 +47,7 @@ public class BackgroundChanger : MonoBehaviour
             yield return null;
         }
         backgroundMeshRenderer.material.SetTexture("_BaseMap", backgrounds[backgroundIndex].texture);
+        backgroundMeshRenderer.material.SetTexture("_EmissionMap", backgrounds[backgroundIndex].texture);
         while (t < 1)
         {
             t += Time.deltaTime / fadeInTime;
