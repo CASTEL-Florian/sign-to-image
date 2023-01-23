@@ -68,7 +68,15 @@ public class QuestManager : MonoBehaviour
     public bool _isPhrase;
     public bool ValidationOui;
     public bool ValidationNon;
-    
+
+    // pop up used to show the results of the woke done by the player during the quest
+
+    [SerializeField] private GameObject QuestSummary;
+    [SerializeField] private GameObject QuestDescription;
+    [SerializeField] private GameObject XPSummary;
+    [SerializeField] private GameObject LevelUpText;
+    [SerializeField] private GameObject FinalCommentary;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -240,15 +248,15 @@ public class QuestManager : MonoBehaviour
     public void EvaluatePrompt(Quest quest, string prompt)
     {
         string[] words = prompt.Split(' ');
-        float xpGained = 0;
+        float eval = 0;
         for(int i = 0; i < words.Length; i++)
         {
             if(quest.requestedPromptItems.Contains(words[i]))
             {
-                xpGained += 0.5f;
+                eval += 0.5f;
             }
         }
-        playerInfos.currentXP += xpGained * quest.XPGiven;
+        playerInfos.currentXP += eval * quest.XPGiven;
         LevelUp();
         foreach (Quest quest1 in playerInfos.quests)
         {
@@ -310,5 +318,15 @@ public class QuestManager : MonoBehaviour
         {
             PopUpQuest.SetActive(true);
         }
+    }
+
+    public void ShowResults(float evaluation, float xpGained)
+    {
+
+    }
+
+    IEnumerator ShowResultCoroutine()
+    {
+        yield return null;
     }
 }
