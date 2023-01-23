@@ -15,6 +15,7 @@ public class Frame : MonoBehaviour
         painting = paint;
         img.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2());
         img.material.SetTexture("_BaseMap", tex);
+        img.material.SetTexture("_EmissionMap", tex);
         if (text)
             text.text = painting.name;
     }

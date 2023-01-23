@@ -140,13 +140,14 @@ public class GestureDetection : MonoBehaviour
     public BackgroundChanger backgroundChanger;
 
     public StyleSelectionUI styleSelectionUI;
-    public bool test = false;
 
     // _hasCalibrate : permet de faire la calibration qu'au début du jeu 
     public static bool _isCalibrate = false;
 
     // _isInGallery permet de ne pas faier de phrase dans la gallerie
     public bool _isInGallery;
+
+    public bool test = false;
 
     // Start is called before the first frame update
     void Start()
@@ -213,14 +214,15 @@ public class GestureDetection : MonoBehaviour
                 playerMoving = true;
             }
             previousGesture = currentGesture;
-            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery)
+            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery ||test)
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;
                 if (gestureRecognitionInputField)
                     gestureRecognitionInputField.text = currentGesture.name;
-                if(currentGesture.name == "sos" )
+                if(currentGesture.name == "sos" || test)
                 {
+                    test = false;
                     if (audioHandler)
                         audioHandler.PlaySosSound();
                     if (_isPhrase)
