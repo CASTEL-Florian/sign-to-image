@@ -147,7 +147,6 @@ public class GestureDetection : MonoBehaviour
     // _isInGallery permet de ne pas faier de phrase dans la gallerie
     public bool _isInGallery;
 
-    public bool test = false;
 
     // Start is called before the first frame update
     void Start()
@@ -214,15 +213,14 @@ public class GestureDetection : MonoBehaviour
                 playerMoving = true;
             }
             previousGesture = currentGesture;
-            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery ||test)
+            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp")
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;
                 if (gestureRecognitionInputField)
                     gestureRecognitionInputField.text = currentGesture.name;
-                if(currentGesture.name == "sos" || test)
+                if(currentGesture.name == "sos")
                 {
-                    test = false;
                     if (audioHandler)
                         audioHandler.PlaySosSound();
                     if (_isPhrase)
