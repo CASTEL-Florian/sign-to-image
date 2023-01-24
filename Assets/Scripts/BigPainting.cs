@@ -13,6 +13,7 @@ public class BigPainting : MonoBehaviour
     [SerializeField] private List<MeshRenderer> rendererToHide;
     [SerializeField] private OVRScreenFade centerEyeAnchorFader;
     [SerializeField] private PlayerMovement player;
+    [SerializeField] private Transform centerEyeAnchor;
 
 
     private bool activated = false;
@@ -39,15 +40,23 @@ public class BigPainting : MonoBehaviour
         }
         else if (activated)
         {
-            if (DistanceXZ(player.transform.position, initialPos) > activationDistance)
+            if (DistanceXZ(centerEyeAnchor.position, initialPos) > activationDistance)
             {
                 currentTime += Time.deltaTime;
             }
+            else
+            {
+                currentTime = 0;
+            }
         } else
         {
-            if (DistanceXZ(player.transform.position, transform.position) < activationDistance)
+            if (DistanceXZ(centerEyeAnchor.position, transform.position) < activationDistance)
             {
                 currentTime += Time.deltaTime;
+            }
+            else
+            {
+                currentTime = 0;
             }
         }
     }

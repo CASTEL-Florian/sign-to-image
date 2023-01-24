@@ -257,11 +257,6 @@ public class GestureDetection : MonoBehaviour
                         i = 0;
                     }
                 }
-                else if (currentGesture.name == "change")
-                {
-                    if (styleSelectionUI)
-                        styleSelectionUI.Toggle();
-                }
                 else
                 {
                     if (_isPhrase && currentGesture.name != "")

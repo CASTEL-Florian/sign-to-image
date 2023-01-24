@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxTimeToTeleport = 1f;
     private float currentTime = 0;
     [SerializeField] private AudioHandler audioHandler;
+    [SerializeField] private Transform cameraRig;
+    [SerializeField] private Transform centerEyeAnchorTranform;
     private void Start()
     {
         initialPos = transform.position;
@@ -48,13 +50,16 @@ public class PlayerMovement : MonoBehaviour
     }
     public void ResetPos()
     {
-        transform.position = initialPos;
+        Teleport(initialPos);
     }
 
     public void Teleport(Vector3 newPos)
     {
         controller.enabled = false;
         transform.position = newPos;
+        Vector3 offset = centerEyeAnchorTranform.position - controller.transform.position;
+        offset.y = 0;
+        cameraRig.transform.position -= offset;
         controller.enabled = true;
     }
     public void TeleportToIndicator()
