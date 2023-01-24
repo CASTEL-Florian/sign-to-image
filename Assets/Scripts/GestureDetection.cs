@@ -140,13 +140,13 @@ public class GestureDetection : MonoBehaviour
     public BackgroundChanger backgroundChanger;
 
     public StyleSelectionUI styleSelectionUI;
-    public bool test = false;
 
     // _hasCalibrate : permet de faire la calibration qu'au début du jeu 
     public static bool _isCalibrate = false;
 
     // _isInGallery permet de ne pas faier de phrase dans la gallerie
     public bool _isInGallery;
+
 
     // Start is called before the first frame update
     void Start()
@@ -184,7 +184,7 @@ public class GestureDetection : MonoBehaviour
     {
         currentTimeBetweenSigns += Time.deltaTime;
         bool playerMoving = false;
-        if(hasStarted && !_hasToValidateQuest)
+        if(hasStarted)
         {
             Gesture currentGesture = Recognize();
             bool hasRecognized = currentGesture.name != "";
@@ -213,13 +213,13 @@ public class GestureDetection : MonoBehaviour
                 playerMoving = true;
             }
             previousGesture = currentGesture;
-            if (!currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery)
+            if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp")
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;
                 if (gestureRecognitionInputField)
                     gestureRecognitionInputField.text = currentGesture.name;
-                if(currentGesture.name == "sos" )
+                if(currentGesture.name == "sos")
                 {
                     if (audioHandler)
                         audioHandler.PlaySosSound();
@@ -256,11 +256,6 @@ public class GestureDetection : MonoBehaviour
                         }
                         i = 0;
                     }
-                }
-                else if (currentGesture.name == "change")
-                {
-                    if (styleSelectionUI)
-                        styleSelectionUI.Toggle();
                 }
                 else
                 {
