@@ -27124,7 +27124,7 @@ MonoBehaviour:
   particleLeftManager: {fileID: 154293552}
   particleRightManager: {fileID: 1113336503}
   colorChangeLeft: {fileID: 675872363}
-  colorChangeRight: {fileID: 0}
+  colorChangeRight: {fileID: 817509751}
   sentenceParticlesLeft: {fileID: 6531420299155118594}
   sentenceParticlesRight: {fileID: 257566445}
   promptStyliser: {fileID: 85050636}
