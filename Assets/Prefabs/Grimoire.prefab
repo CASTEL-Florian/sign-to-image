@@ -2130,6 +2130,22 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4067137898788238332}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
       objectReference: {fileID: 0}
@@ -2138,20 +2154,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4067137898788238332}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EqName
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EqName
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GrimoireCarousel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GrimoireCarousel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2752736906534005993}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 6027103686277741007}
+      objectReference: {fileID: 5030667397899416541}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Transform, UnityEngine
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484913, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_LocalScale.x
@@ -2288,6 +2324,22 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4067137898788238332}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
       objectReference: {fileID: 0}
@@ -2296,20 +2348,40 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4067137898788238332}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EqName
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EqName
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GrimoireCarousel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GrimoireCarousel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2741069976434209168}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 8164329752571708826}
+      objectReference: {fileID: 6565283997431462869}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+      objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Transform, UnityEngine
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484913, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_LocalScale.x
