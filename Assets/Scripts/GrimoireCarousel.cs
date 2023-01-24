@@ -183,10 +183,10 @@ public class GrimoireCarousel : MonoBehaviour
     }
 
     //button call
-    public void EqName()
+    public void EqName(Transform t)
     {
         SignDescriptionTextSecondPage.SetText("plap");
-        string name = transform.parent.parent.GetChild(2).GetComponent<TextMeshPro>().text;
+        string name = t.GetComponent<TextMeshPro>().text;
         if (name != null)
         {
             SignDescriptionTextSecondPage.SetText("plop");
