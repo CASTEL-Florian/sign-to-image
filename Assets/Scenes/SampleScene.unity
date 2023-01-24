@@ -34231,7 +34231,7 @@ PrefabInstance:
     - target: {fileID: 8123407948956917689, guid: fffd1ae9b8e5113478633abce5a7e475, type: 3}
       propertyPath: colorChanges.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 817509751}
     - target: {fileID: 8123407948956917694, guid: fffd1ae9b8e5113478633abce5a7e475, type: 3}
       propertyPath: m_Name
       value: PromptStyliser
