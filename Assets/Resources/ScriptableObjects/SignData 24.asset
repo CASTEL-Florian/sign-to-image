@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SignData 24
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 76afc378f1aa73a45b4cb8e1c525e9b6, type: 3}
-  SignNameText: personne
+  SignNameText: Humain
   SignDescriptionText: Signe exprimant une personne

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SignData 25
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 166ae46e2b5750643ab9d698d7f90965, type: 3}
-  SignNameText: Extraterrestre
+  SignNameText: Alien
   SignDescriptionText: Signe de l'extraterrestre

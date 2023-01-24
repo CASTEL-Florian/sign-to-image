@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SignData 26
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 32d0ede302b41984399d38580bcc0e20, type: 3}
-  SignNameText: "Mammif\xE8re"
+  SignNameText: Mammifere
   SignDescriptionText: "Signe du Mammif\xE8re"
