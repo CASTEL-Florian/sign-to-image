@@ -52,27 +52,29 @@ public class GrimoireCarousel : MonoBehaviour
 
     private void initDic()
     {
-        EnName = new Dictionary<string, string>();
-        EnName.Add("Marin", "sea");
-        EnName.Add("Terrestre", "mountain");
-        EnName.Add("Aerien", "flying");
-        EnName.Add("Fantastique", "fantasy");
-        EnName.Add("Lovecraftien", "lovecraftian");
-        EnName.Add("Occulte", "occult");
-        EnName.Add("Mystique", "mystic");
-        EnName.Add("Surnaturel", "supernatural");
-        EnName.Add("Lieu", "mountain");
-        EnName.Add("Animal", "animal");
-        EnName.Add("Monstre", "monster");
-        EnName.Add("fantome", "ghost");
-        EnName.Add("Bete", "beast");
-        EnName.Add("Humain", "human");
-        EnName.Add("Alien", "alien");
-        EnName.Add("Mammifere", "mammal");
-        EnName.Add("Fantome", "ghost");
-        EnName.Add("Horreur", "horror");
-        EnName.Add("Esprit", "spirit");
-        EnName.Add("Entité", "entity");
+        EnName = new Dictionary<string, string>
+        {
+            { "Marin", "sea" },
+            { "Terrestre", "mountain" },
+            { "Aerien", "flying" },
+            { "Fantastique", "fantasy" },
+            { "Lovecraftien", "lovecraftian" },
+            { "Occulte", "occult" },
+            { "Mystique", "mystic" },
+            { "Surnaturel", "supernatural" },
+            { "Lieu", "mountain" },
+            { "Animal", "animal" },
+            { "Monstre", "monster" },
+            { "fantome", "ghost" },
+            { "Bete", "beast" },
+            { "Humain", "human" },
+            { "Alien", "alien" },
+            { "Mammifere", "mammal" },
+            { "Fantome", "ghost" },
+            { "Horreur", "horror" },
+            { "Esprit", "spirit" },
+            { "Entité", "entity" }
+        };
     }
 
    /* private void retour()
@@ -103,8 +105,7 @@ public class GrimoireCarousel : MonoBehaviour
     }
 
     private void UpdateGrimoireUI()
-    {
-        
+    {       
         SignsData currentSign = Signs[currentSignIndex-1];
         SignNameTextFirstPage.SetText(currentSign.SignNameText);
         SignSpriteImageFirstPage.sprite = currentSign.SignSprite;
@@ -176,14 +177,21 @@ public class GrimoireCarousel : MonoBehaviour
                 return g.name.Contains(name);
         }
         ).name;
+        SignDescriptionTextSecondPage.SetText("plip");
 
         showGesture(trueName);
     }
 
+    //button call
     public void EqName()
     {
-        string name = transform.parent.GetChild(2).GetComponent<TextMeshPro>().text;
-        if(name != null)
+        SignDescriptionTextSecondPage.SetText("plap");
+        string name = transform.parent.parent.GetChild(2).GetComponent<TextMeshPro>().text;
+        if (name != null)
+        {
+            SignDescriptionTextSecondPage.SetText("plop");
             FindContaining(EnName[name]);
+        }
+            
     }
 }
