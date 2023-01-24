@@ -7,17 +7,19 @@ public class Trigger : MonoBehaviour
 {
     [SerializeField] private UnityEvent onTriggerEvent;
     [SerializeField] private bool onlyHandsTrigger = false;
+    [SerializeField] private Animator animator;
     private void OnTriggerEnter(Collider other)
     {
         if (onlyHandsTrigger)
         {
             if (other.tag == "Hand")
-                onTriggerEvent.Invoke();
+                animator.Play("Big");
+                //onTriggerEvent.Invoke();
             return;
         }
         if (other.tag == "Hand"||other.tag=="Player")
         {
-            onTriggerEvent.Invoke();
+           // onTriggerEvent.Invoke();
         }
     }
 

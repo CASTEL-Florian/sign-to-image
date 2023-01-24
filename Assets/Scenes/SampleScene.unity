@@ -26784,7 +26784,7 @@ PrefabInstance:
     - target: {fileID: 2501576505380681469, guid: ef648ffc1280d6e4c939259a196f40d5, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 2100000, guid: bba87b8cc6cd9e042bdb642673bcb670, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2501576505380681471, guid: ef648ffc1280d6e4c939259a196f40d5, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -30756,7 +30756,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 
+  m_Text: https://0762-34-91-226-178.ngrok.io
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
