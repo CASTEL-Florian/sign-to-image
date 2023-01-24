@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50dc103d628d6e344a01e6a12a4da340, type: 3}
   m_Name: SignData 1
   m_EditorClassIdentifier: 
-  SignSprite: {fileID: 21300000, guid: a079f0d231d586f41beaaa0b334a3d10, type: 3}
-  SignNameText: Fox
-  SignDescriptionText: this is a fox
+  SignSprite: {fileID: 21300000, guid: c539ecece90b74047a3b9ff5c7ae4309, type: 3}
+  SignNameText: Marin
+  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner la Mer"

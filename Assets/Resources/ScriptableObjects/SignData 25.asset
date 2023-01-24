@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50dc103d628d6e344a01e6a12a4da340, type: 3}
-  m_Name: SignData 5
+  m_Name: SignData 25
   m_EditorClassIdentifier: 
-  SignSprite: {fileID: 21300000, guid: 4b4b23d1411628d41a6fa68f23cc255b, type: 3}
-  SignNameText: Mountain
-  SignDescriptionText: this is a mountain
+  SignSprite: {fileID: 21300000, guid: 166ae46e2b5750643ab9d698d7f90965, type: 3}
+  SignNameText: Extraterrestre
+  SignDescriptionText: Signe de l'extraterrestre
