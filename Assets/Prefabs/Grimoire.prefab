@@ -879,6 +879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f615bf9941e36a469cce6e6221cd0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gestureDetection: {fileID: 0}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
+  rightFingerBones: []
+  leftFingerBones: []
   nextButton: {fileID: 0}
   previousButton: {fileID: 0}
   SignSpriteImageFirstPage: {fileID: 6037300359319632478}
@@ -887,7 +892,7 @@ MonoBehaviour:
   SignSpriteImageSecondPage: {fileID: 8596477701508963086}
   SignNameTextSecondPage: {fileID: 2752736906534005993}
   SignDescriptionTextSecondPage: {fileID: 5332450521308459208}
-  retourButon: {fileID: 0}
+  retourButon: {fileID: 6367921175225044409}
 --- !u!1 &4145107371135257646
 GameObject:
   m_ObjectHideFlags: 0
