@@ -16,6 +16,8 @@ public class GrimoireCarousel : MonoBehaviour
     public List<GameObject> leftFingerBones;
     private Coroutine showRoutine;
 
+    private Dictionary<string,string> EnName;
+
 
 /*    [SerializeField] private Button nextButton;
     [SerializeField] private Button previousButton;*/
@@ -35,15 +37,42 @@ public class GrimoireCarousel : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-/*        nextButton.onClick.AddListener(NextSign);
-        previousButton.onClick.AddListener(PreviousSign);*/
-      
+        initDic();
+
+        //nextButton.onClick.AddListener(NextSign);
+        //previousButton.onClick.AddListener(PreviousSign);
+
         // retourButon.onClick.AddListener(retour);
 
         // Recuperation des donnees des signes
         Signs = Resources.LoadAll<SignsData>("ScriptableObjects");
 
         UpdateGrimoireUI();
+    }
+
+    private void initDic()
+    {
+        EnName = new Dictionary<string, string>();
+        EnName.Add("Marin", "sea");
+        EnName.Add("Terrestre", "mountain");
+        EnName.Add("Aerien", "flying");
+        EnName.Add("Fantastique", "fantasy");
+        EnName.Add("Lovecraftien", "lovecraftian");
+        EnName.Add("Occulte", "occult");
+        EnName.Add("Mystique", "mystic");
+        EnName.Add("Surnaturel", "supernatural");
+        EnName.Add("Lieu", "mountain");
+        EnName.Add("Animal", "animal");
+        EnName.Add("Monstre", "monster");
+        EnName.Add("fantome", "ghost");
+        EnName.Add("Bete", "beast");
+        EnName.Add("Humain", "human");
+        EnName.Add("Alien", "alien");
+        EnName.Add("Mammifere", "mammal");
+        EnName.Add("Fantome", "ghost");
+        EnName.Add("Horreur", "horror");
+        EnName.Add("Esprit", "spirit");
+        EnName.Add("Entité", "entity");
     }
 
    /* private void retour()
@@ -84,12 +113,7 @@ public class GrimoireCarousel : MonoBehaviour
         SignsData currentSignPage2 = Signs[currentSignIndex];
         SignNameTextSecondPage.SetText(currentSignPage2.SignNameText);
         SignSpriteImageSecondPage.sprite = currentSignPage2.SignSprite;
-        SignDescriptionTextSecondPage.SetText(currentSignPage2.SignDescriptionText.ToString());
-
-  
-
-
-       
+        SignDescriptionTextSecondPage.SetText(currentSignPage2.SignDescriptionText.ToString());    
     }
 
 
@@ -111,6 +135,7 @@ public class GrimoireCarousel : MonoBehaviour
         {
             if (gestureList[i].name == name)
             {
+                //gerer main droite main gauche ou les deux via ID
                 leftHand.SetActive(true);
                 rightHand.SetActive(true);
                 for (int k = 0; k < gestureList[i].leftFingerDatas.Count; k++)
@@ -120,9 +145,9 @@ public class GrimoireCarousel : MonoBehaviour
                     leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
                     leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
                 }
-                rightHand.transform.position = new Vector3(0.25f, 1.5f, 0.4f);
+                rightHand.transform.position = transform.position + new Vector3(0.25f, 0f, 0.4f) ;
                 rightHand.transform.rotation = Quaternion.Euler(0, -90f, -90f);
-                leftHand.transform.position = new Vector3(-0.25f, 1.5f, 0.4f);
+                leftHand.transform.position = transform.position + new Vector3(-0.25f, 0f, 0.4f);
                 leftHand.transform.rotation = Quaternion.Euler(0, -90f, 90f);
                 showRoutine = StartCoroutine(DesactivateHands(10f));
                 break;
@@ -139,5 +164,26 @@ public class GrimoireCarousel : MonoBehaviour
         leftHand.transform.rotation = Quaternion.Euler(0, 0, 0);
         leftHand.SetActive(false);
         rightHand.SetActive(false);
+    }
+
+
+    //call when page touch
+    private void FindContaining(string name)
+    {
+        string trueName = gestureDetection.gestures.Find(
+        delegate (Gesture g)
+        {
+                return g.name.Contains(name);
+        }
+        ).name;
+
+        showGesture(trueName);
+    }
+
+    public void EqName()
+    {
+        string name = transform.parent.parent.GetChild(2).GetComponent<TextMeshPro>().text;
+        if(name != null)
+            FindContaining(EnName[name]);
     }
 }
