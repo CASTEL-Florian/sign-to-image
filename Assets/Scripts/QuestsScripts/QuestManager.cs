@@ -31,13 +31,14 @@ public class PlayerInfos
     public float currentXP;
     public List<Quest> currentQuestsList;
     public List<Quest> quests;
-
+    public bool _hasDoneTuto;
     public PlayerInfos()
     {
         currentLevel = 1;
         currentXP = 0;
         currentQuestsList = new List<Quest>();
         quests = new List<Quest>();
+        _hasDoneTuto = false;
     }
 }
 public class QuestManager : MonoBehaviour
