@@ -78,10 +78,10 @@ public class QuestManager : MonoBehaviour
 
     [HideInInspector] public bool _isInBigPicture = false;
 
+
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {       
         playerDataHandler = new FileDataHandler(Application.persistentDataPath, PlayerDatasFileName);
         playerInfos = playerDataHandler.PlayerLoad();
         if (playerInfos.currentQuestsList.Count == 0)
@@ -352,6 +352,7 @@ public class QuestManager : MonoBehaviour
     public IEnumerator ShowResultCoroutine(float evaluation, float xpGained)
     {
         ExpGainSummary.SetActive(true);
+        ExpGainSummary.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(0.5f);
         MarkText.GetComponent<TextMeshPro>().text = "Vous avez fait " + (evaluation * 100).ToString() + "% de ce que voulait le client.";
         MarkText.SetActive(true);
