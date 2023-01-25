@@ -53,7 +53,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 4a60930e98067cd49b424876350054a0, type: 3}
   - name: starscape
     color: {r: 1, g: 0.9727186, b: 0, a: 1}
-    sprite: {fileID: 21300000, guid: 4b17d83fe28f8b0488f50fe2953c0b3e, type: 3}
+    sprite: {fileID: 21300000, guid: 642664d810a6f154980604d936cda953, type: 3}
   - name: space
     color: {r: 0, g: 0.044828843, b: 0.5188679, a: 1}
     sprite: {fileID: 21300000, guid: 013c72cbcddc7c74c99ad9ee874446ad, type: 3}
