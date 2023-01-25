@@ -199,10 +199,13 @@ public class GrimoireCarousel : MonoBehaviour
     //button call
     public void EqName(TextMeshProUGUI txt)
     {
-        string name = txt.text;
-        if (EnName.ContainsKey(name))
+        if (txt != null)
         {
-            FindContaining(EnName[name]);
-        } 
+            string name = txt.text;
+            if (EnName.ContainsKey(name))
+            {
+                FindContaining(EnName[name]);
+            }
+        }
     }
 }
