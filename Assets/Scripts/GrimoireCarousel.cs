@@ -193,8 +193,6 @@ public class GrimoireCarousel : MonoBehaviour
                 return g.name.Contains(name);
         }
         ).name;
-        SignDescriptionTextSecondPage.SetText(trueName);
-        SignDescriptionTextFirstPage.SetText(name);
         showGesture(trueName);
     }
 
@@ -202,7 +200,7 @@ public class GrimoireCarousel : MonoBehaviour
     public void EqName(TextMeshProUGUI txt)
     {
         string name = txt.text;
-        if (name != null)
+        if (EnName.ContainsKey(name))
         {
             FindContaining(EnName[name]);
         } 
