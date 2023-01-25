@@ -96,7 +96,7 @@ MonoBehaviour:
   - name: desert
     color: {r: 0.764151, g: 0.66296196, b: 0, a: 1}
     sprite: {fileID: 21300000, guid: 7883e8f273212f147b6eab49f978bd18, type: 3}
-  - name: sea prey
+  - name: sea animal
     color: {r: 0, g: 0.38431373, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 2fcfba17f9a999c45b339804fdb1a7af, type: 3}
   - name: sea predator
@@ -135,7 +135,7 @@ MonoBehaviour:
   - name: human
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 76afc378f1aa73a45b4cb8e1c525e9b6, type: 3}
-  - name: prey
+  - name: animal
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 2fcfba17f9a999c45b339804fdb1a7af, type: 3}
   - name: predator
@@ -162,7 +162,7 @@ MonoBehaviour:
   - name: entity
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 2ae1114a15f48554eb261ece12ca1ff0, type: 3}
-  - name: flying prey
+  - name: flying animal
     color: {r: 0.20188677, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 2fcfba17f9a999c45b339804fdb1a7af, type: 3}
   - name: flying predator
@@ -195,7 +195,7 @@ MonoBehaviour:
   - name: flying spirit
     color: {r: 0.20188677, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: aa83f7e12b0247148a205d60b64fa20f, type: 3}
-  - name: fantasy prey
+  - name: fantasy animal
     color: {r: 0.7792425, g: 0, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 2fcfba17f9a999c45b339804fdb1a7af, type: 3}
   - name: fantasy predator
@@ -228,7 +228,7 @@ MonoBehaviour:
   - name: fantasy entity
     color: {r: 0.7792425, g: 0, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 2ae1114a15f48554eb261ece12ca1ff0, type: 3}
-  - name: lovecraftian prey
+  - name: lovecraftian animal
     color: {r: 0.58431375, g: 0, b: 0, a: 1}
     sprite: {fileID: 21300000, guid: 2fcfba17f9a999c45b339804fdb1a7af, type: 3}
   - name: lovecraftian predator
@@ -261,7 +261,7 @@ MonoBehaviour:
   - name: lovecraftian entity
     color: {r: 0.58431375, g: 0, b: 0, a: 1}
     sprite: {fileID: 21300000, guid: 2ae1114a15f48554eb261ece12ca1ff0, type: 3}
-  - name: occult prey
+  - name: occult animal
     color: {r: 0.8113208, g: 0.31860945, b: 0, a: 1}
     sprite: {fileID: 21300000, guid: 2fcfba17f9a999c45b339804fdb1a7af, type: 3}
   - name: occult predator
@@ -294,7 +294,7 @@ MonoBehaviour:
   - name: occult entity
     color: {r: 0.8113208, g: 0.31860945, b: 0, a: 1}
     sprite: {fileID: 21300000, guid: 2ae1114a15f48554eb261ece12ca1ff0, type: 3}
-  - name: mystic prey
+  - name: mystic animal
     color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
     sprite: {fileID: 21300000, guid: 2fcfba17f9a999c45b339804fdb1a7af, type: 3}
   - name: mystic predator
@@ -327,7 +327,7 @@ MonoBehaviour:
   - name: mystic entity
     color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
     sprite: {fileID: 21300000, guid: 2ae1114a15f48554eb261ece12ca1ff0, type: 3}
-  - name: supernatural prey
+  - name: supernatural animal
     color: {r: 1, g: 0, b: 0, a: 1}
     sprite: {fileID: 21300000, guid: 2fcfba17f9a999c45b339804fdb1a7af, type: 3}
   - name: supernatural predator
