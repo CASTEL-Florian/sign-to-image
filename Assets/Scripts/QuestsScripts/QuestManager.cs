@@ -76,6 +76,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField] private GameObject LevelUpText;
     [SerializeField] private GameObject FinalCommentary;
 
+    [HideInInspector] public bool _isInBigPicture = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -242,12 +244,14 @@ public class QuestManager : MonoBehaviour
         for(int i = 0; i < QuestPaperList.Count; i++)
         {
             QuestPaperList[i].SetActive(false);
+            QuestPaperList[i].GetComponent<QuestPaperManager>().quest = null;
         }
         for(int i = 0; i < playerInfos.currentQuestsList.Count; i++)
         {
             QuestPaperList[i].GetComponent<QuestPaperManager>().quest = playerInfos.currentQuestsList[i];
             QuestPaperList[i].GetComponent<QuestPaperManager>().endPosition = endPosition;
-            QuestPaperList[i].SetActive(true);
+            if(QuestPaperList[i].GetComponent<QuestPaperManager>()._isSelected || !_isInBigPicture)
+                QuestPaperList[i].SetActive(true);
         }
         SavePlayerInfos();
     }
@@ -284,6 +288,11 @@ public class QuestManager : MonoBehaviour
                 quest1._hasBeenDone = true;
                 break;
             }
+        }
+        if(currentQuestPaper.GetComponent<QuestPaperManager>()._isSelectedInBigPainting)
+        {
+            currentQuestPaper.GetComponent<QuestPaperManager>()._isSelectedInBigPainting = false;
+            currentQuestPaper.SetActive(false);
         }
         currentQuestPaper.GetComponent<QuestPaperManager>().RemoveQuest();
     }
@@ -348,12 +357,19 @@ public class QuestManager : MonoBehaviour
         MarkText.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         NewXpText.SetActive(true);
-        for (float i = 0; i < xpGained; i++)
+        if(xpGained == 0)
         {
-            NewXpText.GetComponent<TextMeshPro>().text = "Exp : " + (playerInfos.currentXP +  i + 1).ToString() + " Xp";
-            yield return new WaitForSeconds(0.5f / xpGained);
+            NewXpText.GetComponent<TextMeshPro>().text = "Exp : " + (playerInfos.currentXP).ToString() + " Xp";
         }
-        playerInfos.currentXP += xpGained;
+        else
+        {
+            for (float i = 0; i < xpGained; i++)
+            {
+                NewXpText.GetComponent<TextMeshPro>().text = "Exp : " + (playerInfos.currentXP + i + 1).ToString() + " Xp";
+                yield return new WaitForSeconds(0.5f / xpGained);
+            }
+            playerInfos.currentXP += xpGained;
+        }
         yield return new WaitForSeconds(0.5f);
         if(LevelUp())
         {
@@ -364,7 +380,7 @@ public class QuestManager : MonoBehaviour
         switch(evaluation)
         {
             case 0:
-                FinalCommentary.GetComponent<TextMeshPro>().text = "Faites mieux pour la prochaine fois !";
+                FinalCommentary.GetComponent<TextMeshPro>().text = "Faites mieux la prochaine fois !";
                 break;
             case 0.5f:
                 FinalCommentary.GetComponent<TextMeshPro>().text = "C'est pas mal !";

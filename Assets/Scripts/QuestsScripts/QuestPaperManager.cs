@@ -11,7 +11,8 @@ public class QuestPaperManager : MonoBehaviour
     [SerializeField] private GameObject QuestRank;
     [SerializeField] private GameObject QuestDescription;
 
-    private bool _isSelected = false;
+    [HideInInspector] public bool _isSelectedInBigPainting = false;
+    [HideInInspector] public bool _isSelected = false;
     private bool _isMoving = false;
     private bool _canMove = false;
     private Vector3 startPosition;
@@ -104,6 +105,12 @@ public class QuestPaperManager : MonoBehaviour
         questManager.DeselectQuest();
         _isSelected = false;
         _canMove = true;
+        if(questManager._isInBigPicture)
+        {
+            _isSelectedInBigPainting = false;
+            gameObject.SetActive(false);
+        }
+            
     }
 
     public void RemoveQuest()

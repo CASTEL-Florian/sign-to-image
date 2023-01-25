@@ -15,12 +15,15 @@ public class BigPainting : MonoBehaviour
     [SerializeField] private PlayerMovement player;
     [SerializeField] private Transform centerEyeAnchor;
 
-
+    
     private bool activated = false;
     private bool transitioning = false;
     private float currentTime = 0;
     private Vector3 initialPos;
 
+    // c pour les tests
+    [SerializeField] private bool activia = false;
+    [SerializeField] private bool desactivia = false;
     private void Start()
     {
         initialPos = transform.position;
@@ -28,6 +31,17 @@ public class BigPainting : MonoBehaviour
 
     private void Update()
     {
+        if (activia) // test
+        {
+            Activate();
+            activia = false;
+        }
+        if(desactivia)  // test
+        {
+            Desactivate();
+            desactivia = false;
+        }
+            
         if (transitioning)
             return;
         if (currentTime > timeToTransition)
@@ -75,7 +89,22 @@ public class BigPainting : MonoBehaviour
         yield return new WaitForSeconds(centerEyeAnchorFader.fadeTime);
         foreach (var item in objectsToHide)
         {
-            item.SetActive(false);
+            if (item.GetComponent<QuestPaperManager>() != null)
+            {
+                if (item.GetComponent<QuestPaperManager>()._isSelected)
+                {
+                    item.GetComponent<QuestPaperManager>()._isSelectedInBigPainting = true;
+                }
+                else
+                {
+                    item.GetComponent<QuestPaperManager>().questManager._isInBigPicture = true;
+                    item.SetActive(false);
+                }    
+            }   
+            else
+            {
+                item.SetActive(false);
+            }          
         }
         foreach (var item in objectsToShow)
         {
@@ -108,7 +137,17 @@ public class BigPainting : MonoBehaviour
         yield return new WaitForSeconds(centerEyeAnchorFader.fadeTime);
         foreach (var item in objectsToHide)
         {
-            item.SetActive(true);
+            if (item.GetComponent<QuestPaperManager>() != null)
+            {
+                item.GetComponent<QuestPaperManager>().questManager._isInBigPicture = false;
+                item.GetComponent<QuestPaperManager>()._isSelectedInBigPainting = false;
+                if (!(item.GetComponent<QuestPaperManager>().quest == null))
+                    item.SetActive(true);
+            }
+            else
+            {
+                item.SetActive(true);
+            }         
         }
         foreach (var item in objectsToShow)
         {
