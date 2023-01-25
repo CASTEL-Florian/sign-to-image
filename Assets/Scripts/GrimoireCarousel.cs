@@ -162,10 +162,10 @@ public class GrimoireCarousel : MonoBehaviour
                     leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
                     leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
                 }
-                rightHand.transform.position = transform.position + new Vector3(-0.25f, 0f, 0.4f) ;
-                rightHand.transform.rotation = Quaternion.Euler(0, 90f, -90f);
-                leftHand.transform.position = transform.position + new Vector3(0.25f, 0f, 0.4f);
-                leftHand.transform.rotation = Quaternion.Euler(0, 90f, 90f);
+                rightHand.transform.position = transform.position + new Vector3(0.4f, 0f, -0.25f) ;
+                rightHand.transform.rotation = Quaternion.Euler(0, 90f - transform.rotation.eulerAngles.y, -90f);
+                leftHand.transform.position = transform.position + new Vector3(0.4f, 0f, 0.25f);
+                leftHand.transform.rotation = Quaternion.Euler(0, 90f - transform.rotation.eulerAngles.y, 90f);
                 showRoutine = StartCoroutine(DesactivateHands(10f));
                 break;
             }
@@ -199,10 +199,13 @@ public class GrimoireCarousel : MonoBehaviour
     //button call
     public void EqName(TextMeshProUGUI txt)
     {
-        string name = txt.text;
-        if (EnName.ContainsKey(name))
+        if (txt != null)
         {
-            FindContaining(EnName[name]);
-        } 
+            string name = txt.text;
+            if (EnName.ContainsKey(name))
+            {
+                FindContaining(EnName[name]);
+            }
+        }
     }
 }
