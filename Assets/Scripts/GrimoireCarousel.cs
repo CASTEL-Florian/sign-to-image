@@ -73,7 +73,10 @@ public class GrimoireCarousel : MonoBehaviour
             { "Fantome", "ghost" },
             { "Horreur", "horror" },
             { "Esprit", "spirit" },
-            { "Entité", "entity" }
+            { "Entité", "entity" },
+            { "SOS", "sos" },
+            { "Move", "move" },
+            { "TP", "tp" }
         };
     }
 
@@ -137,8 +140,21 @@ public class GrimoireCarousel : MonoBehaviour
             if (gestureList[i].name == name)
             {
                 //gerer main droite main gauche ou les deux via ID
-                leftHand.SetActive(true);
-                rightHand.SetActive(true);
+                if(currentSignIndex <= 9)
+                {
+                    leftHand.SetActive(true);
+                    rightHand.SetActive(false);
+                }
+                else if(currentSignIndex <= 21)
+                {
+                    leftHand.SetActive(false);
+                    rightHand.SetActive(true);
+                }
+                else
+                {
+                    leftHand.SetActive(true);
+                    rightHand.SetActive(true);
+                }
                 for (int k = 0; k < gestureList[i].leftFingerDatas.Count; k++)
                 {
                     rightFingerBones[k].transform.position = gestureList[i].rightFingerDatas[k];
@@ -189,11 +205,6 @@ public class GrimoireCarousel : MonoBehaviour
         if (name != null)
         {
             FindContaining(EnName[name]);
-        }
-        else
-        {
-            FindContaining(EnName["Marin"]);
-        }
-            
+        } 
     }
 }
