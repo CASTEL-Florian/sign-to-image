@@ -27,7 +27,6 @@ public class GrimoireCarousel : MonoBehaviour
     [SerializeField] private Image SignSpriteImageSecondPage;
     [SerializeField] private TextMeshProUGUI SignNameTextSecondPage;
     [SerializeField] private TextMeshProUGUI SignDescriptionTextSecondPage;
-    [SerializeField] private Button retourButon;
     private SignsData[] Signs;
     private int currentSignIndex = 1;
 
@@ -42,7 +41,6 @@ public class GrimoireCarousel : MonoBehaviour
         //nextButton.onClick.AddListener(NextSign);
         //previousButton.onClick.AddListener(PreviousSign);
 
-        // retourButon.onClick.AddListener(retour);
 
         // Recuperation des donnees des signes
         Signs = Resources.LoadAll<SignsData>("ScriptableObjects");
@@ -80,11 +78,6 @@ public class GrimoireCarousel : MonoBehaviour
         };
     }
 
-   /* private void retour()
-    {
-       
-    }*/
- 
     public void NextSign()
     {
         currentSignIndex+=2;
