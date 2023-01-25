@@ -79,6 +79,7 @@ public class QuestManager : MonoBehaviour
 
     [HideInInspector] public bool _isInBigPicture = false;
 
+    public TutoManager tutoManager;
 
     // Start is called before the first frame update
     void Start()
@@ -92,6 +93,7 @@ public class QuestManager : MonoBehaviour
         GenerateQuestPlaceHolder();
         UpdateDiploma();
         currentQuest = null;
+        tutoManager._isInTuto = !playerInfos._hasDoneTuto;
     }
 
     // Update is called once per frame
@@ -233,6 +235,10 @@ public class QuestManager : MonoBehaviour
         }
         currentQuestPaper = questPaper;
         currentQuest = quest;
+        if(tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 2)
+        {
+            StartCoroutine(tutoManager.TutoStep3());
+        }
     }
     public void DeselectQuest()
     {
