@@ -85,6 +85,10 @@ public class BigPainting : MonoBehaviour
     {
         if (transitioning || activated)
             return;
+
+        if (tutoCanvas.GetComponent<TutoManager>()._isInTuto && tutoCanvas.GetComponent<TutoManager>().currentTutoStep < 6)
+            return;
+
         StartCoroutine(ActivationRoutine());
     }
 

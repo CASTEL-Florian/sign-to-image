@@ -31,6 +31,7 @@ public class TutoManager : MonoBehaviour
     private List<Gesture> gestureList;
 
     public LightmapChanger lightmapChanger;
+    public QuestManager questManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class TutoManager : MonoBehaviour
         leftHand = grimoireCarousel.leftHand;
         rightFingerBones = grimoireCarousel.rightFingerBones;
         leftFingerBones = grimoireCarousel.leftFingerBones;
+        lightmapChanger.IsGlobal = true;
     }
 
     // Update is called once per frame
@@ -75,6 +77,8 @@ public class TutoManager : MonoBehaviour
         StartCoroutine(DesactivateHandsTuto(3f));
         tutoText.text = "Très bien.\n\n";
         yield return new WaitForSeconds(2f);
+        lightmapChanger.IsGlobal = false;
+        lightmapChanger.IsQuest = true;
         tutoText.text += "Maintenant, rejoins le tableau de commande pour en choisir une.";
         ActivateList(textQuestManagerList);
         _canChangeStep = true;
@@ -89,6 +93,8 @@ public class TutoManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         tutoText.text += "Avant de faire ce tableau, tu dois apprendre les bons signes. \n\n";
         yield return new WaitForSeconds(2f);
+        lightmapChanger.IsQuest = false;
+        lightmapChanger.IsGrimoire = true;
         tutoText.text += "Déplace toi vers le grimoire et ouvre le. \n\n";
         ActivateList(textGrimoireList);
         _canChangeStep = true;
@@ -148,6 +154,8 @@ public class TutoManager : MonoBehaviour
         _canChangeStep = false;
         tutoText.text = "Bien, maintenant que tu maitrise les signes, tu vas pouvoir peindre.\n";
         yield return new WaitForSeconds(3f);
+        lightmapChanger.IsGrimoire = false;
+        lightmapChanger.IsCanvas = true;
         tutoText.text += "Dirige toi vers le tableau.";
         ActivateList(textSmallCanvasList);
         _canChangeStep = true;
@@ -223,6 +231,10 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoEnd()
     {
+        lightmapChanger.IsCanvas = false;
+        lightmapChanger.IsGlobal = true;
+        questManager.playerInfos._hasDoneTuto = true;
+        questManager.SavePlayerInfos();
         yield return null;
     }
 
