@@ -11,6 +11,8 @@ public class TutoTp : MonoBehaviour
 
     [SerializeField] private GameObject rightHand;
     [SerializeField] private GameObject leftHand;
+    [SerializeField] private Transform centerEye;
+    [SerializeField] private float initialDistanceFromPlayer = 1f;
     private float currentTime = 0f;
     private string currentSign = "move";
     private List<Gesture> gestureList;
@@ -22,6 +24,9 @@ public class TutoTp : MonoBehaviour
 
     private void Start()
     {
+        Vector3 pos = centerEye.position + centerEye.forward;
+        pos.y = transform.position.y;
+        transform.position = pos;
         initialPosLeft = leftHand.transform.position;
         initialRotLeft = leftHand.transform.rotation;
         initialRotRight = rightHand.transform.rotation;

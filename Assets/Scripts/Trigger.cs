@@ -13,7 +13,6 @@ public class Trigger : MonoBehaviour
         if (onlyHandsTrigger)
         {
             if (other.tag == "Hand")
-                animator.Play("Big");
                 onTriggerEvent.Invoke();
             return;
         }
