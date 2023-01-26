@@ -66,14 +66,8 @@ public class TeleportHandler : MonoBehaviour
         }
     }
 
-    public Vector3 GetIndicatorPosition()
+    public Vector3 GetTpPosition()
     {
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(teleportationIndicator.position, out hit, Mathf.Infinity, NavMesh.AllAreas))
-        {
-            return hit.position;
-        }
-
         return teleportationIndicator.position;
     }
 
