@@ -12,7 +12,7 @@ public class TeleportHandler : MonoBehaviour
     [SerializeField] private Transform indexFingerPos2;
     [SerializeField] private float fadeOutTime = 1f;
     [SerializeField] private float fadeInTime = 0.3f;
-    [SerializeField] private float indicatorHeightOffset = 0;
+    [SerializeField] private float floorHeight = 0;
     private bool hidden = true;
     private float alpha = 0;
     Gradient lineRendererGradient;
@@ -61,19 +61,13 @@ public class TeleportHandler : MonoBehaviour
                 hitPos.y = 0;
             }
             lineRenderer.SetPosition(0, origin);
-            lineRenderer.SetPosition(1, hitPos + new Vector3(0, indicatorHeightOffset, 0));
-            teleportationIndicator.position = hitPos + new Vector3(0, indicatorHeightOffset, 0);
+            lineRenderer.SetPosition(1, hitPos + new Vector3(0, floorHeight, 0));
+            teleportationIndicator.position = hitPos + new Vector3(0, floorHeight, 0);
         }
     }
 
-    public Vector3 GetIndicatorPosition()
+    public Vector3 GetTpPosition()
     {
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(teleportationIndicator.position, out hit, Mathf.Infinity, NavMesh.AllAreas))
-        {
-            return hit.position;
-        }
-
         return teleportationIndicator.position;
     }
 

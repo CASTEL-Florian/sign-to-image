@@ -223,7 +223,7 @@ public class GestureDetection : MonoBehaviour
                 playerMoving = true;
             }
             previousGesture = currentGesture;
-            if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp" )
+            if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp" && (!tutoManager._isInTuto || (((tutoManager.currentTutoStep == 7 || tutoManager.currentTutoStep == 10) && currentGesture.name == "sos") || (tutoManager.currentTutoStep == 8 && currentGesture.name == "sea monster") || (tutoManager.currentTutoStep == 9 && currentGesture.name == "sea") && tutoManager._canChangeStep)))
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;
@@ -301,7 +301,24 @@ public class GestureDetection : MonoBehaviour
                         }
                     }
                 }
-                
+                if(tutoManager._isInTuto)
+                {
+                    switch(tutoManager.currentTutoStep)
+                    {
+                        case 7:
+                            StartCoroutine(tutoManager.TutoStep8());
+                            break;
+                        case 8:
+                            StartCoroutine(tutoManager.TutoStep9());
+                            break;
+                        case 9:
+                            StartCoroutine(tutoManager.TutoStep10());
+                            break;
+                        case 10:
+                            StartCoroutine(tutoManager.TutoStep11());
+                            break;
+                    }
+                }
                 ///-------------used for grammar------------
                 phrase = subject + " in " + place;
                 if (phraseField)
@@ -511,9 +528,7 @@ public class GestureDetection : MonoBehaviour
             gesturesCanvasManagement.showGesture("calibration");
         }
         _isCalibrating = true;
-        cooldownCanvas.SetActive(true);
-        cooldownInputField.text = "Calibration"; 
-        yield return new WaitForSeconds(1f);
+        cooldownCanvas.SetActive(true); 
         cooldownInputField.text = "3";
         yield return new WaitForSeconds(1f);
         cooldownInputField.text = "2";

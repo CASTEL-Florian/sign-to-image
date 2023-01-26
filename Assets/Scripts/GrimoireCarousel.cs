@@ -72,9 +72,13 @@ public class GrimoireCarousel : MonoBehaviour
             { "Horreur", "horror" },
             { "Esprit", "spirit" },
             { "Entité", "entity" },
-            { "SOS", "sos" },
+            { "Phrase", "sos" },
             { "Move", "move" },
-            { "TP", "tp" }
+            { "TP", "tp" },
+            { "Foret", "forest" },
+            { "Grotte", "cave" },
+            { "Nuit etoile", "starscape" },
+            { "Cimetierre", "graveyard" }
         };
     }
 
@@ -188,7 +192,7 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
 
-        if(tutoManager._isInTuto && name == "sea" && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
+        if(tutoManager._isInTuto && name == "mountain" && currentSignIndex <= 21 && currentSignIndex > 9 && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
         {
             StartCoroutine(tutoManager.TutoStep6());
         }

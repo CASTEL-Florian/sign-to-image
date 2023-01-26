@@ -15,7 +15,12 @@ public class BigPainting : MonoBehaviour
     [SerializeField] private PlayerMovement player;
     [SerializeField] private Transform centerEyeAnchor;
 
-    
+    [SerializeField] private GameObject tutoCanvas;
+    [SerializeField] private Vector3 tutoCanvasPos;
+    [SerializeField] private GameObject ValidationLetter;
+    [SerializeField] private QuestManager questManager;
+    private GameObject currentQuestPaper;
+
     private bool activated = false;
     private bool transitioning = false;
     private float currentTime = 0;
@@ -24,6 +29,7 @@ public class BigPainting : MonoBehaviour
     // c pour les tests
     [SerializeField] private bool activia = false;
     [SerializeField] private bool desactivia = false;
+    [SerializeField] private bool testTuto = false;
     private void Start()
     {
         initialPos = transform.position;
@@ -114,6 +120,11 @@ public class BigPainting : MonoBehaviour
         {
             rend.enabled = false;
         }
+        if(tutoCanvas.GetComponent<TutoManager>()._isInTuto && tutoCanvas.GetComponent<TutoManager>().currentTutoStep == 6 || testTuto)
+        {
+            tutoCanvas.transform.position = tutoCanvasPos;
+            StartCoroutine(tutoCanvas.GetComponent<TutoManager>().TutoStep7());
+        }  
         player.Teleport(new Vector3(initialPos.x, player.transform.position.y, initialPos.z));
         transform.localScale = transform.localScale * scaleMultiplier;
         transform.Translate(-transform.forward * positionOffset);
