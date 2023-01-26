@@ -16,10 +16,12 @@ public class BigPainting : MonoBehaviour
     [SerializeField] private Transform centerEyeAnchor;
 
     [SerializeField] private GameObject tutoCanvas;
-    [SerializeField] private Vector3 tutoCanvasPos;
-    [SerializeField] private GameObject ValidationLetter;
+    private Vector3 tutoCanvasPosBigFrame = new Vector3(0.86f, 1.92f, -3.345f);
+    private Vector3 tutoCanvasPos;
     [SerializeField] private QuestManager questManager;
-    private GameObject currentQuestPaper;
+    [SerializeField] private Transform endPosBigFrame;
+    private Vector3 ValAndXPPos;
+    [SerializeField] private Transform ValAndXPosBigFrame;
 
     private bool activated = false;
     private bool transitioning = false;
@@ -33,6 +35,8 @@ public class BigPainting : MonoBehaviour
     private void Start()
     {
         initialPos = transform.position;
+        ValAndXPPos = questManager.PopUpQuest.transform.position;
+        tutoCanvasPos = tutoCanvas.transform.position; 
     }
 
     private void Update()
@@ -126,9 +130,17 @@ public class BigPainting : MonoBehaviour
         }
         if(tutoCanvas.GetComponent<TutoManager>()._isInTuto && tutoCanvas.GetComponent<TutoManager>().currentTutoStep == 6 || testTuto)
         {
-            tutoCanvas.transform.position = tutoCanvasPos;
+            tutoCanvas.transform.position = tutoCanvasPosBigFrame;
             StartCoroutine(tutoCanvas.GetComponent<TutoManager>().TutoStep7());
         }  
+        if(questManager.currentQuest != null)
+        {
+            questManager.currentQuestPaper.transform.position = endPosBigFrame.position;
+            questManager.currentQuestPaper.transform.rotation = endPosBigFrame.rotation;
+        }
+        questManager.PopUpQuest.transform.position = ValAndXPPos;
+        questManager.ExpGainSummary.transform.position = ValAndXPPos;
+
         player.Teleport(new Vector3(initialPos.x, player.transform.position.y, initialPos.z));
         transform.localScale = transform.localScale * scaleMultiplier;
         transform.Translate(-transform.forward * positionOffset);
@@ -172,6 +184,20 @@ public class BigPainting : MonoBehaviour
         {
             rend.enabled = true;
         }
+
+        if (tutoCanvas.GetComponent<TutoManager>()._isInTuto && tutoCanvas.GetComponent<TutoManager>().currentTutoStep == 12 || testTuto)
+        {
+            tutoCanvas.transform.position = tutoCanvasPos;
+            StartCoroutine(tutoCanvas.GetComponent<TutoManager>().TutoEnd());
+        }
+        if (questManager.currentQuest != null)
+        {
+            questManager.currentQuestPaper.transform.position = questManager.endPosition.position;
+            questManager.currentQuestPaper.transform.rotation = questManager.endPosition.rotation;
+        }
+        questManager.PopUpQuest.transform.position = ValAndXPosBigFrame.position;
+        questManager.ExpGainSummary.transform.position = ValAndXPosBigFrame.position;
+
         transform.localScale = transform.localScale / scaleMultiplier;
         transform.position = initialPos;
         player.ResetPos();
