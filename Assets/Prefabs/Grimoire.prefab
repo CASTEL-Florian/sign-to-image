@@ -1877,11 +1877,11 @@ PrefabInstance:
       objectReference: {fileID: 6928234215289047461}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1906,6 +1906,10 @@ PrefabInstance:
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EqName
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -2088,11 +2092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onPress.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2117,6 +2121,10 @@ PrefabInstance:
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onPress.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EqName
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
