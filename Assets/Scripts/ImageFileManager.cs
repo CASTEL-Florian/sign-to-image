@@ -75,7 +75,7 @@ public class ImageFileManager : MonoBehaviour
 
     void Start()
     {
-        directoryPath = Application.dataPath + "/SavedPictures/";
+        directoryPath = Application.persistentDataPath + "/SavedPictures/";
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);
@@ -184,7 +184,7 @@ public class ImageFileManager : MonoBehaviour
         paintings.Add(painting);
         paintings = paintings.OrderBy(p => p.id).ToList();
         byte[] byteArray = tex.EncodeToPNG();
-        File.WriteAllBytes(Application.dataPath + "/SavedPictures/" + painting.name + " " + painting.id.ToString() + ".png", byteArray);
+        File.WriteAllBytes(Application.persistentDataPath + "/SavedPictures/" + painting.name + " " + painting.id.ToString() + ".png", byteArray);
         Debug.Log("creating the painting : " + painting.name + " " + painting.id.ToString());
         SaveData();
     }
@@ -197,7 +197,7 @@ public class ImageFileManager : MonoBehaviour
             availableIDs.Add(painting.id);
             maxID = paintings[paintings.Count - 1].id;
         }
-        File.Delete(Application.dataPath + "/SavedPictures/" + painting.name + " " + painting.id.ToString() + ".png");
+        File.Delete(Application.persistentDataPath + "/SavedPictures/" + painting.name + " " + painting.id.ToString() + ".png");
         SaveData();
     }
 
@@ -263,7 +263,7 @@ public class ImageFileManager : MonoBehaviour
                 continue;
             }
             Texture2D tex = new Texture2D(2, 2);
-            string path = Application.dataPath + "/SavedPictures/" + paintings[paintingOrder[i]].name + " " + paintings[paintingOrder[i]].id.ToString() + ".png";
+            string path = Application.persistentDataPath + "/SavedPictures/" + paintings[paintingOrder[i]].name + " " + paintings[paintingOrder[i]].id.ToString() + ".png";
             if (File.Exists(path))
             {
                 byte[] byteArray = File.ReadAllBytes(path);

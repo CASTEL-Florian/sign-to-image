@@ -213,7 +213,7 @@ public class GestureDetection : MonoBehaviour
                     movePlayer();
                 playerMoving = true;
                 previousGesture = null;
-                if((tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 1) && testTutoStep1)
+                if(tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 1)
                 {
                     StartCoroutine(tutoManager.TutoStep2());
                     testTutoStep1 = false;
