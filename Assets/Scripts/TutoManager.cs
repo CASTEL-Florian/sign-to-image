@@ -36,12 +36,13 @@ public class TutoManager : MonoBehaviour
         leftHand = grimoireCarousel.leftHand;
         rightFingerBones = grimoireCarousel.rightFingerBones;
         leftFingerBones = grimoireCarousel.leftFingerBones;
+        StartCoroutine(TutoStep1());
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(2 * transform.position - CenterEyeAnchor.position);
+        transform.rotation = CenterEyeAnchor.rotation;
     }
 
     public IEnumerator TutoStep1()
@@ -103,7 +104,6 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep4Concept()
     {
-        yield return new WaitForSeconds(5f);
         DesactivateList(textTutoFindSubjectList);
         DesactivateList(textTutoFindSubjectRadicalList);
         currentTutoStep = 4.1f;
@@ -114,7 +114,6 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep4Radical()
     {
-        yield return new WaitForSeconds(5f);
         DesactivateList(textTutoFindSubjectList);
         DesactivateList(textTutoFindSubjectConceptList);
         currentTutoStep = 4.2f;
@@ -124,7 +123,6 @@ public class TutoManager : MonoBehaviour
     }
     public IEnumerator TutoStep5()
     {
-        yield return new WaitForSeconds(5f);
         DesactivateList(textTutoFindSubjectList);
         currentTutoStep = 5;
         _canChangeStep = false;
@@ -140,82 +138,14 @@ public class TutoManager : MonoBehaviour
         DesactivateList(textGrimoireList);
         currentTutoStep = 6;
         _canChangeStep = false;
-        tutoText.text = "Bien, maintenant que tu maitrise les signes, tu vas pouvoir peindre.\n";
+        tutoText.text = "Bien, maintenant que tu maitrise les signes, tu vas pouvoir peindre\n";
         yield return new WaitForSeconds(3f);
-        tutoText.text += "Dirige toi vers le tableau.";
+        tutoText.text += "Dirige toi vers le tableau";
         ActivateList(textSmallCanvasList);
         _canChangeStep = true;
     }
 
     public IEnumerator TutoStep7()
-    {
-        DesactivateList(textSmallCanvasList);
-        ActivateList(textBigCanvasList);
-        currentTutoStep = 7;
-        _canChangeStep = false;
-        tutoText.text = "Te voilà dans ton espace de création.\n";
-        yield return new WaitForSeconds(3f);
-        tutoText.text += "Pour commencer un tableau, tu dois faire le signe 'Phrase', le voici :";
-        ShowGestureTuto("sos");
-        _canChangeStep = true;
-    }
-
-    public IEnumerator TutoStep8()
-    {
-        currentTutoStep = 8;
-        _canChangeStep = false;
-        tutoText.text = "Maintenant tu dois indiquer le sujet de ton tableau.\n\n";
-        yield return new WaitForSeconds(3f);
-        tutoText.text += "Fais le signe correspondant à 'Monstre Marin'.";
-        _canChangeStep = true;
-    }
-
-    public IEnumerator TutoStep9()
-    {
-        currentTutoStep = 9;
-        _canChangeStep = false;
-        tutoText.text = "Maintenant tu dois indiquer le lieu de ton tableau.\n\n";
-        yield return new WaitForSeconds(3f);
-        tutoText.text += "Fais le signe correspondant à 'Océan'.";
-        _canChangeStep = true;
-    }
-
-    public IEnumerator TutoStep10()
-    {
-        currentTutoStep = 10;
-        _canChangeStep = false;
-        tutoText.text = "Tu peux maintenant valider ton tableau en refaisant le signe 'Phrase'\n\n";
-        yield return new WaitForSeconds(3f);
-        tutoText.text += "Fais le signe correspondant à 'Monstre Marin'.";
-        _canChangeStep = true;
-    }
-
-    public IEnumerator TutoStep11()
-    {
-        currentTutoStep = 11;
-        _canChangeStep = false;
-        tutoText.text = "Parfait, une fois ton tableau créé, tu peux le faire évaluer.\n\n";
-        yield return new WaitForSeconds(3f);
-        tutoText.text += "Clique sur le bouton de validation.";
-        _canChangeStep = true;
-    }
-
-    public IEnumerator TutoStep12()
-    {
-        currentTutoStep = 12;
-        _canChangeStep = false;
-        yield return new WaitForSeconds(1f);
-        tutoText.text = "Tu a finis ce tutoriel.\n\n";
-        yield return new WaitForSeconds(3f);
-        tutoText.text += "Tu peux maintenant prendre de nouvelles commandes, faire les tableaux que tu souhaites, et aller les admirer dans la galerie.";
-        yield return new WaitForSeconds(6f);
-        tutoText.text = "Sors de ton espace de création pour finir ce tutoriel.\n\n";
-        yield return new WaitForSeconds(2f);
-        tutoText.text += "Bonne continuation !!!";
-        _canChangeStep = true;
-    }
-
-    public IEnumerator TutoEnd()
     {
         yield return null;
     }
@@ -241,17 +171,10 @@ public class TutoManager : MonoBehaviour
                 switch(name)
                 {
                     case "move":
-                        rightHand.transform.position = transform.position + new Vector3(-0.25f, 0f, 1f);
+                        rightHand.transform.position = transform.position + new Vector3(-0.25f, 0f, 1.4f);
                         rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
-                        leftHand.transform.position = transform.position + new Vector3(0.25f, 0f, 1f);
+                        leftHand.transform.position = transform.position + new Vector3(0.25f, 0f, 1.4f);
                         leftHand.transform.rotation = Quaternion.Euler(0, -90f, 90f);
-                        break;
-
-                    case "sos":
-                        rightHand.transform.position = transform.position + new Vector3(-0.25f, 0f, -3f);
-                        rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
-                        leftHand.transform.position = transform.position + new Vector3(0.25f, 0f, -3f);
-                        leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
                         break;
                 }
                 break;
