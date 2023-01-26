@@ -24,14 +24,27 @@ public class TutoTp : MonoBehaviour
 
     private void Start()
     {
-        Vector3 pos = centerEye.position + centerEye.forward;
+        rightHand.SetActive(false);
+        leftHand.SetActive(false);
+        StartCoroutine(WaitAndSetPosition());
+    }
+
+    private IEnumerator WaitAndSetPosition()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Vector3 pos = centerEye.position;
         pos.y = transform.position.y;
         transform.position = pos;
+        transform.position = pos + centerEye.forward * initialDistanceFromPlayer;
+        transform.LookAt(2 * transform.position - pos);
         initialPosLeft = leftHand.transform.position;
         initialRotLeft = leftHand.transform.rotation;
         initialRotRight = rightHand.transform.rotation;
         initialPosRight = rightHand.transform.position;
+        rightHand.SetActive(true);
+        leftHand.SetActive(true);
     }
+
     private void Update()
     {
         currentTime += Time.deltaTime;
