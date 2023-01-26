@@ -29,6 +29,8 @@ public class TutoManager : MonoBehaviour
     private List<GameObject> rightFingerBones;
     private List<GameObject> leftFingerBones;
     private List<Gesture> gestureList;
+
+    public LightmapChanger lightmapChanger;
     // Start is called before the first frame update
     void Start()
     {
