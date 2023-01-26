@@ -188,7 +188,7 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
 
-        if(tutoManager._isInTuto && name == "sea" && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
+        if(tutoManager._isInTuto && name == "mountain" && currentSignIndex <= 21 && currentSignIndex > 9 && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
         {
             StartCoroutine(tutoManager.TutoStep6());
         }

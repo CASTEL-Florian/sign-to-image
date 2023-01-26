@@ -26,6 +26,8 @@ public class QuestPaperManager : MonoBehaviour
     [SerializeField] private GameObject QuestRefuse;
     [SerializeField] private GameObject QuestDeselect;
 
+    [SerializeField] private TutoManager tutoManager;
+    // used for tests
     public bool Selection;
     public bool Remove;
     public bool Deselection;
@@ -102,6 +104,8 @@ public class QuestPaperManager : MonoBehaviour
 
     public void DeselectQuest()
     {
+        if (tutoManager != null && tutoManager._isInTuto)
+            return;
         questManager.DeselectQuest();
         _isSelected = false;
         _canMove = true;
@@ -109,12 +113,13 @@ public class QuestPaperManager : MonoBehaviour
         {
             _isSelectedInBigPainting = false;
             gameObject.SetActive(false);
-        }
-            
+        }         
     }
 
     public void RemoveQuest()
     {
+        if (tutoManager != null && tutoManager._isInTuto)
+            return;
         DeselectQuest();
         if(!_isSelected)
         {

@@ -102,12 +102,20 @@ public class QuestManager : MonoBehaviour
         if(_isPhrase && currentQuest != null)
         {
             _isPhrase = false;
-            sendPhrase();
+            TestsendPhrase();
         }
         if (ValidationOui)
-            ValidateYes(); ValidationOui = false;
+        {
+            TestValidateYes();
+            ValidationOui = false;
+        }
+           
         if (ValidationNon)
-            ValidateNo(); ValidationNon = false;
+        {
+            TestValidateNo(); 
+            ValidationNon = false;
+        }
+            
     }
 
     public bool LevelUp()
@@ -278,6 +286,10 @@ public class QuestManager : MonoBehaviour
 
     public void EvaluatePrompt(Quest quest, string prompt)
     {
+        // for tuto
+        if (tutoManager._isInTuto && !tutoManager._canChangeStep)
+            return;
+
         string[] words = prompt.Split(' ');
         float eval = 0;
         for(int i = 0; i < words.Length; i++)
@@ -302,6 +314,12 @@ public class QuestManager : MonoBehaviour
             currentQuestPaper.SetActive(false);
         }
         currentQuestPaper.GetComponent<QuestPaperManager>().RemoveQuest();
+
+        //for tuto -> go to step 12
+        if(tutoManager._isInTuto && tutoManager.currentTutoStep == 11)
+        {
+            StartCoroutine(tutoManager.TutoStep12());
+        }
     }
 
     public void UpdateDiploma()
@@ -326,36 +344,6 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    // --------------------- fonctions utilisées pour des tests -------------------------
-
-    private string phrase = "fox in forest";
-
-    public void ValidateYes()
-    {
-        EvaluatePrompt(currentQuest, phrase);
-        PopUpQuest.SetActive(false);
-        AddQuest();
-        GenerateQuestPlaceHolder();
-    }
-
-    public void ValidateNo()
-    {
-        PopUpQuest.SetActive(false);
-        //currentQuestPaper.GetComponent<QuestPaperManager>().DeselectQuest();
-        AddQuest();
-        GenerateQuestPlaceHolder();
-        SavePlayerInfos();
-    }
-
-    public void sendPhrase()
-    {
-        if(currentQuest != null)
-        {
-            PopUpQuest.SetActive(true);
-        }
-    }
-
-
     public IEnumerator ShowResultCoroutine(float evaluation, float xpGained)
     {
         ExpGainSummary.SetActive(true);
@@ -365,7 +353,7 @@ public class QuestManager : MonoBehaviour
         MarkText.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         NewXpText.SetActive(true);
-        if(xpGained == 0)
+        if (xpGained == 0)
         {
             NewXpText.GetComponent<TextMeshPro>().text = "Exp : " + (playerInfos.currentXP).ToString() + " Xp";
         }
@@ -379,13 +367,13 @@ public class QuestManager : MonoBehaviour
             playerInfos.currentXP += xpGained;
         }
         yield return new WaitForSeconds(0.5f);
-        if(LevelUp())
+        if (LevelUp())
         {
             LevelUpText.SetActive(true);
             yield return new WaitForSeconds(0.5f);
         }
         FinalCommentary.SetActive(true);
-        switch(evaluation)
+        switch (evaluation)
         {
             case 0:
                 FinalCommentary.GetComponent<TextMeshPro>().text = "Faites mieux la prochaine fois !";
@@ -404,4 +392,36 @@ public class QuestManager : MonoBehaviour
         ExpGainSummary.SetActive(false);
         SavePlayerInfos();
     }
+
+    // --------------------- fonctions utilisées pour des tests -------------------------
+
+    private string phrase = "fox in forest";
+
+    public void TestValidateYes()
+    {
+        EvaluatePrompt(currentQuest, phrase);
+        PopUpQuest.SetActive(false);
+        AddQuest();
+        GenerateQuestPlaceHolder();
+    }
+
+    public void TestValidateNo()
+    {
+        PopUpQuest.SetActive(false);
+        //currentQuestPaper.GetComponent<QuestPaperManager>().DeselectQuest();
+        AddQuest();
+        GenerateQuestPlaceHolder();
+        SavePlayerInfos();
+    }
+
+    public void TestsendPhrase()
+    {
+        if(currentQuest != null)
+        {
+            PopUpQuest.SetActive(true);
+        }
+    }
+
+
+
 }
