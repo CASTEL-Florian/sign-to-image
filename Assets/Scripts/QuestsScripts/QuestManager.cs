@@ -27,6 +27,7 @@ public class Quest
 [System.Serializable]
 public class PlayerInfos
 {
+    public string url;
     public int currentLevel;
     public float currentXP;
     public List<Quest> currentQuestsList;
@@ -96,6 +97,8 @@ public class QuestManager : MonoBehaviour
         tutoManager._isInTuto = !playerInfos._hasDoneTuto;
         if (tutoManager._isInTuto)
             StartCoroutine(tutoManager.TutoStep1());
+        else
+            tutoManager.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

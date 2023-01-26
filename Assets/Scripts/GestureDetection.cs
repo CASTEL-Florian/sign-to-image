@@ -174,6 +174,8 @@ public class GestureDetection : MonoBehaviour
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
         if (URLInputField)
             URLInputField.text = frame.url;
+        if (questManager)
+            frame.url = questManager.playerInfos.url;
         if (!_isCalibrate && !testTuto)
         {
             CalibrationCanvas.SetActive(true);
@@ -211,7 +213,7 @@ public class GestureDetection : MonoBehaviour
                     movePlayer();
                 playerMoving = true;
                 previousGesture = null;
-                if((tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 1) || testTutoStep1)
+                if((tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 1) && testTutoStep1)
                 {
                     StartCoroutine(tutoManager.TutoStep2());
                     testTutoStep1 = false;
