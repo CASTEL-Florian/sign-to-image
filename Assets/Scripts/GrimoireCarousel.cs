@@ -31,7 +31,7 @@ public class GrimoireCarousel : MonoBehaviour
     private int currentSignIndex = 1;
 
 
-   
+    public TutoManager tutoManager;
 
     // Start is called before the first frame update
     private void Start()
@@ -162,6 +162,35 @@ public class GrimoireCarousel : MonoBehaviour
                 showRoutine = StartCoroutine(DesactivateHands(10f));
                 break;
             }
+        }
+
+        if(tutoManager._isInTuto && name == "monster" && tutoManager._canChangeStep)
+        {
+            if(tutoManager.currentTutoStep == 4)
+            {
+                StartCoroutine(tutoManager.TutoStep4Radical());
+            }
+            else if(tutoManager.currentTutoStep == 4.1f)
+            {
+                StartCoroutine(tutoManager.TutoStep5());
+            }
+        }
+
+        if (tutoManager._isInTuto && name == "sea" && tutoManager._canChangeStep)
+        {
+            if (tutoManager.currentTutoStep == 4)
+            {
+                StartCoroutine(tutoManager.TutoStep4Concept());
+            }
+            else if (tutoManager.currentTutoStep == 4.2f)
+            {
+                StartCoroutine(tutoManager.TutoStep5());
+            }
+        }
+
+        if(tutoManager._isInTuto && name == "sea" && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
+        {
+            StartCoroutine(tutoManager.TutoStep6());
         }
     }
 

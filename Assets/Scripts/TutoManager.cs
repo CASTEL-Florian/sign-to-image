@@ -5,14 +5,23 @@ using TMPro;
 
 public class TutoManager : MonoBehaviour
 {
+    [SerializeField] Transform CenterEyeAnchor;
     public GestureDetection gestureDetection;
     public GrimoireCarousel grimoireCarousel;
     [SerializeField] private TextMeshProUGUI tutoText;
     [SerializeField] private List<GameObject> textQuestManagerList;
+
     [SerializeField] private List<GameObject> textGrimoireList;
+    [SerializeField] private List<GameObject> textTutoFindSubjectList;
+    [SerializeField] private List<GameObject> textTutoFindLocationList;
+    [SerializeField] private List<GameObject> textTutoFindSubjectRadicalList;
+    [SerializeField] private List<GameObject> textTutoFindSubjectConceptList;
+
+    [SerializeField] private List<GameObject> textSmallCanvasList;
+    [SerializeField] private List<GameObject> textBigCanvasList;
 
     [HideInInspector] public bool _isInTuto;
-    [HideInInspector] public int currentTutoStep;
+    [HideInInspector] public float currentTutoStep;
     [HideInInspector] public bool _canChangeStep = false;
 
     private GameObject rightHand;
@@ -33,7 +42,7 @@ public class TutoManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.rotation = CenterEyeAnchor.rotation;
     }
 
     public IEnumerator TutoStep1()
@@ -79,6 +88,66 @@ public class TutoManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         tutoText.text += "Déplace toi vers le grimoire et ouvre le. \n\n";
         ActivateList(textGrimoireList);
+        _canChangeStep = true;
+    }
+
+    public IEnumerator TutoStep4()
+    {
+        currentTutoStep = 4;
+        _canChangeStep = false;
+        tutoText.text = "Bien, trouve le geste pour ton sujet : \n";
+        yield return new WaitForSeconds(2f);
+        tutoText.text = "Monstre Marin";
+        ActivateList(textTutoFindSubjectList);
+        _canChangeStep= true;
+    }
+
+    public IEnumerator TutoStep4Concept()
+    {
+        DesactivateList(textTutoFindSubjectList);
+        DesactivateList(textTutoFindSubjectRadicalList);
+        currentTutoStep = 4.1f;
+        ActivateList(textTutoFindSubjectConceptList);
+        _canChangeStep = true;
+        yield return null;
+    }
+
+    public IEnumerator TutoStep4Radical()
+    {
+        DesactivateList(textTutoFindSubjectList);
+        DesactivateList(textTutoFindSubjectConceptList);
+        currentTutoStep = 4.2f;
+        ActivateList(textTutoFindSubjectRadicalList);
+        _canChangeStep = true;
+        yield return null;
+    }
+    public IEnumerator TutoStep5()
+    {
+        DesactivateList(textTutoFindSubjectList);
+        currentTutoStep = 5;
+        _canChangeStep = false;
+        tutoText.text = "Bien, trouve le geste pour ton lieu : \n";
+        yield return new WaitForSeconds(2f);
+        tutoText.text = "Océan";
+        ActivateList(textTutoFindLocationList);
+        _canChangeStep = true;
+    }
+
+    public IEnumerator TutoStep6()
+    {
+        DesactivateList(textGrimoireList);
+        currentTutoStep = 6;
+        _canChangeStep = false;
+        tutoText.text = "Bien, maintenant que tu maitrise les signes, tu vas pouvoir peindre\n";
+        yield return new WaitForSeconds(3f);
+        tutoText.text += "Dirige toi vers le tableau";
+        ActivateList(textSmallCanvasList);
+        _canChangeStep = true;
+    }
+
+    public IEnumerator TutoStep7()
+    {
+        yield return null;
     }
 
     private void ShowGestureTuto(string name)
