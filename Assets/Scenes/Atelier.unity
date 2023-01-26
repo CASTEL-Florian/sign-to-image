@@ -3869,6 +3869,11 @@ Transform:
   m_Father: {fileID: 1831910513}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &179428719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9016013579934303969, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+  m_PrefabInstance: {fileID: 344250091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &187238235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4360771558957118, guid: e201a24a09e942042b93390d0444d728, type: 3}
@@ -23739,6 +23744,8 @@ MonoBehaviour:
   _isInTuto: 0
   currentTutoStep: 0
   _canChangeStep: 0
+  lightmapChanger: {fileID: 832946752}
+  questManager: {fileID: 6435084636919455477}
 --- !u!114 &977864154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34883,7 +34890,7 @@ MonoBehaviour:
   timeToTransition: 1
   activationDistance: 1.1
   objectsToHide:
-  - {fileID: 859167070542322932}
+  - {fileID: 179428719}
   - {fileID: 1161695361}
   - {fileID: 1170255741506366038}
   - {fileID: 4003507816921395610}
