@@ -32,6 +32,7 @@ public class GrimoireCarousel : MonoBehaviour
 
 
     public TutoManager tutoManager;
+    [SerializeField] private bool TestTuto;
 
     // Start is called before the first frame update
     private void Start()
@@ -46,6 +47,49 @@ public class GrimoireCarousel : MonoBehaviour
         Signs = Resources.LoadAll<SignsData>("ScriptableObjects");
 
         UpdateGrimoireUI();
+    }
+
+    private void Update()
+    {
+        if (tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3 && TestTuto)
+        {
+            TestTuto = false;
+            StartCoroutine(tutoManager.TutoStep4());
+        }
+
+        if (tutoManager._isInTuto && TestTuto && tutoManager._canChangeStep)
+        {
+            if (tutoManager.currentTutoStep == 4)
+            {
+                StartCoroutine(tutoManager.TutoStep4Radical());
+                TestTuto = false;
+            }
+            else if (tutoManager.currentTutoStep == 4.1f)
+            {
+                StartCoroutine(tutoManager.TutoStep5());
+                TestTuto = false;
+            }
+        }
+
+        if (tutoManager._isInTuto && TestTuto && tutoManager._canChangeStep)
+        {
+            if (tutoManager.currentTutoStep == 4)
+            {
+                StartCoroutine(tutoManager.TutoStep4Concept());
+                TestTuto = false;
+            }
+            else if (tutoManager.currentTutoStep == 4.2f)
+            {
+                StartCoroutine(tutoManager.TutoStep5());
+                TestTuto = false;
+            }
+        }
+
+        if (TestTuto && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
+        {
+            StartCoroutine(tutoManager.TutoStep6());
+            TestTuto = false;
+        }
     }
 
     private void initDic()
@@ -162,6 +206,11 @@ public class GrimoireCarousel : MonoBehaviour
                 showRoutine = StartCoroutine(DesactivateHands(10f));
                 break;
             }
+        }
+
+        if(tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3 && TestTuto)
+        {
+            StartCoroutine(tutoManager.TutoStep4());
         }
 
         if(tutoManager._isInTuto && name == "monster" && tutoManager._canChangeStep)

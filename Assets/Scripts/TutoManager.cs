@@ -46,6 +46,8 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep1()
     {
+        currentTutoStep = 1;
+        _canChangeStep = false;
         tutoText.text = "Bonjour, bienvenue dans ton atelier.\n";
         yield return new WaitForSeconds(2f);
         tutoText.text += "Ici, tout fonctionne à partir des signes de tes mains";
@@ -60,7 +62,7 @@ public class TutoManager : MonoBehaviour
         tutoText.text = "Bien, maintenant, tu dois apprendre à te déplacer.\n\n";
         yield return new WaitForSeconds(5f);
         tutoText.text += "Fais le geste suivant : ";
-        ShowGestureTuto("move");
+        ShowGestureTuto("sos");
         _canChangeStep = true;
     }
 
@@ -94,9 +96,9 @@ public class TutoManager : MonoBehaviour
     {
         currentTutoStep = 4;
         _canChangeStep = false;
-        tutoText.text = "Bien, trouve le geste pour ton sujet : \n";
+        tutoText.text = "Bien, trouve le geste pour ton sujet : \n\n";
         yield return new WaitForSeconds(2f);
-        tutoText.text = "Monstre Marin";
+        tutoText.text += "Monstre Marin";
         ActivateList(textTutoFindSubjectList);
         _canChangeStep= true;
     }
@@ -126,11 +128,13 @@ public class TutoManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         DesactivateList(textTutoFindSubjectList);
+        DesactivateList(textTutoFindSubjectConceptList);
+        DesactivateList(textTutoFindSubjectRadicalList);
         currentTutoStep = 5;
         _canChangeStep = false;
-        tutoText.text = "Bien, trouve le geste pour ton lieu : \n";
+        tutoText.text = "Bien, trouve le geste pour ton lieu : \n\n";
         yield return new WaitForSeconds(2f);
-        tutoText.text = "Océan";
+        tutoText.text += "Océan";
         ActivateList(textTutoFindLocationList);
         _canChangeStep = true;
     }
@@ -248,9 +252,9 @@ public class TutoManager : MonoBehaviour
                         break;
 
                     case "sos":
-                        rightHand.transform.position = transform.position + new Vector3(-0.25f, 0f, -3f);
+                        rightHand.transform.position = new Vector3(-0.32f, 1.14f, -2.72f);
                         rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
-                        leftHand.transform.position = transform.position + new Vector3(0.25f, 0f, -3f);
+                        leftHand.transform.position = new Vector3(0.18f, 1.14f, -2.72f);
                         leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
                         break;
                 }

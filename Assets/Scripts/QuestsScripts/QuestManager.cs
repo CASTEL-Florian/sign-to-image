@@ -27,6 +27,7 @@ public class Quest
 [System.Serializable]
 public class PlayerInfos
 {
+    public string url;
     public int currentLevel;
     public float currentXP;
     public List<Quest> currentQuestsList;
