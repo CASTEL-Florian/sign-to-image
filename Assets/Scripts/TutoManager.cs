@@ -36,7 +36,6 @@ public class TutoManager : MonoBehaviour
         leftHand = grimoireCarousel.leftHand;
         rightFingerBones = grimoireCarousel.rightFingerBones;
         leftFingerBones = grimoireCarousel.leftFingerBones;
-        StartCoroutine(TutoStep1());
     }
 
     // Update is called once per frame
@@ -242,9 +241,9 @@ public class TutoManager : MonoBehaviour
                 switch(name)
                 {
                     case "move":
-                        rightHand.transform.position = transform.position + new Vector3(-0.25f, 0f, 1.4f);
+                        rightHand.transform.position = transform.position + new Vector3(-0.25f, 0f, 1f);
                         rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
-                        leftHand.transform.position = transform.position + new Vector3(0.25f, 0f, 1.4f);
+                        leftHand.transform.position = transform.position + new Vector3(0.25f, 0f, 1f);
                         leftHand.transform.rotation = Quaternion.Euler(0, -90f, 90f);
                         break;
 

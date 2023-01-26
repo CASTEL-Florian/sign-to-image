@@ -94,6 +94,8 @@ public class QuestManager : MonoBehaviour
         UpdateDiploma();
         currentQuest = null;
         tutoManager._isInTuto = !playerInfos._hasDoneTuto;
+        if (tutoManager._isInTuto)
+            StartCoroutine(tutoManager.TutoStep1());
     }
 
     // Update is called once per frame

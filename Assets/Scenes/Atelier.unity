@@ -10934,6 +10934,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 289342714}
     - target: {fileID: 4067137898788238332, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: tutoManager
+      value: 
+      objectReference: {fileID: 976085111}
+    - target: {fileID: 4067137898788238332, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: gestureDetection
       value: 
       objectReference: {fileID: 1669491900}
@@ -45592,13 +45596,25 @@ PrefabInstance:
       value: 127
       objectReference: {fileID: 0}
     - target: {fileID: 1428701050188758149, guid: 45f4776e59478f841b503cc20ac7d971, type: 3}
+      propertyPath: tutoManager
+      value: 
+      objectReference: {fileID: 976085111}
+    - target: {fileID: 1428701050188758149, guid: 45f4776e59478f841b503cc20ac7d971, type: 3}
       propertyPath: questManager
       value: 
       objectReference: {fileID: 6435084636919455477}
     - target: {fileID: 1428701050408663089, guid: 45f4776e59478f841b503cc20ac7d971, type: 3}
+      propertyPath: tutoManager
+      value: 
+      objectReference: {fileID: 976085111}
+    - target: {fileID: 1428701050408663089, guid: 45f4776e59478f841b503cc20ac7d971, type: 3}
       propertyPath: questManager
       value: 
       objectReference: {fileID: 6435084636919455477}
+    - target: {fileID: 1428701051563523481, guid: 45f4776e59478f841b503cc20ac7d971, type: 3}
+      propertyPath: tutoManager
+      value: 
+      objectReference: {fileID: 976085111}
     - target: {fileID: 1428701051563523481, guid: 45f4776e59478f841b503cc20ac7d971, type: 3}
       propertyPath: questManager
       value: 
