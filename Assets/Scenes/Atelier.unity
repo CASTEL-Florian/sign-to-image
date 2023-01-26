@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 5104ddbe1d4d04a47861093b83dc41ec, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: eca61519760f83348b3cd48e15680143, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 08a1c05f9c8e2f047bee689bc77dfac4, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 91af86471ba352043bc10cf53be99ca9, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -35643,10 +35643,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8571211502686687087, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8571211503229306768, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8571211504018736067, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 22354030}
+    - target: {fileID: 8572551146017039131, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572551146965240886, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572551147310072252, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9016013579934303969, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: m_Name
       value: Garage
