@@ -118,7 +118,11 @@ public class GrimoireCarousel : MonoBehaviour
             { "Entité", "entity" },
             { "Phrase", "sos" },
             { "Move", "move" },
-            { "TP", "tp" }
+            { "TP", "tp" },
+            { "Foret", "forest" },
+            { "Grotte", "cave" },
+            { "Nuit etoile", "starscape" },
+            { "Cimetierre", "graveyard" }
         };
     }
 
