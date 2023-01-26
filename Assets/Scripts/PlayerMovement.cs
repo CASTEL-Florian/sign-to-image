@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (audioHandler)
                 audioHandler.PlayTPSound();
-            Teleport(tpHandler.GetTpPosition());
+            Teleport(tpHandler.GetIndicatorPosition());
         }
     }
 }
