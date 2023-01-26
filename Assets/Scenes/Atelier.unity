@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 9dd1cd658de7d414fad4df8d68ef07da, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 5104ddbe1d4d04a47861093b83dc41ec, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: ac70ccc76fd5d5749ba885420d5b22c2, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -5767,7 +5767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8142725440903843164, guid: ed60bc10e95d64f4e86b72bfdd12b608, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8142725440903843164, guid: ed60bc10e95d64f4e86b72bfdd12b608, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11091,6 +11091,10 @@ PrefabInstance:
       propertyPath: rightFingerBones.Array.data[23]
       value: 
       objectReference: {fileID: 897873098}
+    - target: {fileID: 4199922018498390853, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4311394444385965729, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: m_RootOrder
       value: 2
