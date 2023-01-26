@@ -72,7 +72,7 @@ public class GrimoireCarousel : MonoBehaviour
             { "Horreur", "horror" },
             { "Esprit", "spirit" },
             { "Entité", "entity" },
-            { "SOS", "sos" },
+            { "Phrase", "sos" },
             { "Move", "move" },
             { "TP", "tp" }
         };
