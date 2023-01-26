@@ -10,7 +10,7 @@ public class LightmapChanger : MonoBehaviour
     void Start()
     {
         // Get the current lightmaps used in the scene
-         currentLightmaps = LightmapSettings.lightmaps;
+         currentLightmaps = LightmapSettings.lightmaps; 
 
       
     }

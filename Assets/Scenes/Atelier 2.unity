@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 5104ddbe1d4d04a47861093b83dc41ec, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 63cb568785e87c14db7cf3f6829d7215, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: eca61519760f83348b3cd48e15680143, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -27922,8 +27922,13 @@ MonoBehaviour:
   centerEyeAnchorFader: {fileID: 828348159}
   player: {fileID: 467327664}
   centerEyeAnchor: {fileID: 255968231}
+  tutoCanvas: {fileID: 0}
+  tutoCanvasPos: {x: 0, y: 0, z: 0}
+  ValidationLetter: {fileID: 0}
+  questManager: {fileID: 0}
   activia: 0
   desactivia: 0
+  testTuto: 0
 --- !u!114 &1629512278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35643,10 +35648,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8571211502708675352, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8571211503229306768, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8571211504018736067, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 22354030}
+    - target: {fileID: 8572551146017039131, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572551146965240886, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572551147310072252, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9016013579934303969, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: m_Name
       value: Garage

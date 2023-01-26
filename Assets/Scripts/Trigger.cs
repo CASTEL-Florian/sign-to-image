@@ -13,13 +13,12 @@ public class Trigger : MonoBehaviour
         if (onlyHandsTrigger)
         {
             if (other.tag == "Hand")
-                animator.Play("Big");
-                //onTriggerEvent.Invoke();
+                onTriggerEvent.Invoke();
             return;
         }
         if (other.tag == "Hand"||other.tag=="Player")
         {
-           // onTriggerEvent.Invoke();
+           onTriggerEvent.Invoke();
         }
     }
 
