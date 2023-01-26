@@ -76,6 +76,10 @@ public class ImageFileManager : MonoBehaviour
     void Start()
     {
         directoryPath = Application.dataPath + "/SavedPictures/";
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
         LoadData();
         PaintingsNumber = paintings.Count;
         if (paintings.Count > 0)

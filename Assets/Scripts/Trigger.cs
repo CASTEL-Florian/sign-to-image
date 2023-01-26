@@ -7,7 +7,6 @@ public class Trigger : MonoBehaviour
 {
     [SerializeField] private UnityEvent onTriggerEvent;
     [SerializeField] private bool onlyHandsTrigger = false;
-    [SerializeField] private Animator animator;
     private void OnTriggerEnter(Collider other)
     {
         if (onlyHandsTrigger)
