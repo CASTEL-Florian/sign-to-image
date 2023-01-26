@@ -57,9 +57,9 @@ public class QuestManager : MonoBehaviour
     private float xpToLevel4 = 450;
     private float xpToLevel5 = 750;
 
-    private GameObject currentQuestPaper;
+    public GameObject currentQuestPaper;
     public List<GameObject> QuestPaperList;
-    [SerializeField] private Transform endPosition;
+    public Transform endPosition;
 
     // diploma is here to track the current level of the player
     public GameObject DiplomaText;
@@ -72,7 +72,7 @@ public class QuestManager : MonoBehaviour
     public bool ValidationNon;
 
     // pop up used to show the results of the woke done by the player during the quest
-    [SerializeField] private GameObject ExpGainSummary;
+    public GameObject ExpGainSummary;
     [SerializeField] private GameObject MarkText;
     [SerializeField] private GameObject NewXpText;
     [SerializeField] private GameObject LevelUpText;
