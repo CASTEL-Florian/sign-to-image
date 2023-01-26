@@ -62,7 +62,7 @@ public class TutoManager : MonoBehaviour
         tutoText.text = "Bien, maintenant, tu dois apprendre à te déplacer.\n\n";
         yield return new WaitForSeconds(5f);
         tutoText.text += "Fais le geste suivant : ";
-        ShowGestureTuto("sos");
+        ShowGestureTuto("move");
         _canChangeStep = true;
     }
 

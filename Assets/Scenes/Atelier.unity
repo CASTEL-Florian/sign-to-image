@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 16206074}
   m_Layer: 6
   m_Name: Sphere Typing Right
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
