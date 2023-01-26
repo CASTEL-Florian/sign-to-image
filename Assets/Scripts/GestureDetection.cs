@@ -147,6 +147,10 @@ public class GestureDetection : MonoBehaviour
     // _isInGallery permet de ne pas faier de phrase dans la gallerie
     public bool _isInGallery;
 
+    // phase tuto 
+    private bool testTuto = true;
+    public bool testTutoStep1 = false;
+    public TutoManager tutoManager;
 
     // Start is called before the first frame update
     void Start()
@@ -170,7 +174,7 @@ public class GestureDetection : MonoBehaviour
         leftFingerBones = new List<OVRBone>(leftSkeleton.Bones);
         if (URLInputField)
             URLInputField.text = frame.url;
-        if (!_isCalibrate)
+        if (!_isCalibrate && !testTuto)
         {
             CalibrationCanvas.SetActive(true);
             _isCalibrate = true;
@@ -201,11 +205,17 @@ public class GestureDetection : MonoBehaviour
             {
                 currentSignHoldTime += Time.deltaTime;
             }
-            if (currentGesture.name == "move" && _playerCanMove)
+            if ((currentGesture.name == "move" && _playerCanMove) || testTutoStep1)
             {
-                movePlayer();
+                if(!testTutoStep1)
+                    movePlayer();
                 playerMoving = true;
                 previousGesture = null;
+                if((tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 1) || testTutoStep1)
+                {
+                    StartCoroutine(tutoManager.TutoStep2());
+                    testTutoStep1 = false;
+                }
             }
             else if (currentGesture.name == "tp" && _playerCanMove && !currentGesture.Equals(previousGesture))
             {
@@ -213,7 +223,7 @@ public class GestureDetection : MonoBehaviour
                 playerMoving = true;
             }
             previousGesture = currentGesture;
-            if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp")
+            if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp" )
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;
@@ -511,7 +521,10 @@ public class GestureDetection : MonoBehaviour
         cooldownInputField.text = "1";
         yield return new WaitForSeconds(1f);
         cooldownInputField.text = "CLIC";
-        Calibration();
+        if(!testTuto)
+        {
+            Calibration();
+        }
         yield return new WaitForSeconds(1f);
         cooldownCanvas.SetActive(false);
         _isCalibrating = false;

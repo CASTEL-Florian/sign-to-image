@@ -27,12 +27,11 @@ public class GrimoireCarousel : MonoBehaviour
     [SerializeField] private Image SignSpriteImageSecondPage;
     [SerializeField] private TextMeshProUGUI SignNameTextSecondPage;
     [SerializeField] private TextMeshProUGUI SignDescriptionTextSecondPage;
-    [SerializeField] private Button retourButon;
     private SignsData[] Signs;
     private int currentSignIndex = 1;
 
 
-   
+    public TutoManager tutoManager;
 
     // Start is called before the first frame update
     private void Start()
@@ -42,7 +41,6 @@ public class GrimoireCarousel : MonoBehaviour
         //nextButton.onClick.AddListener(NextSign);
         //previousButton.onClick.AddListener(PreviousSign);
 
-        // retourButon.onClick.AddListener(retour);
 
         // Recuperation des donnees des signes
         Signs = Resources.LoadAll<SignsData>("ScriptableObjects");
@@ -80,11 +78,6 @@ public class GrimoireCarousel : MonoBehaviour
         };
     }
 
-   /* private void retour()
-    {
-       
-    }*/
- 
     public void NextSign()
     {
         currentSignIndex+=2;
@@ -162,13 +155,42 @@ public class GrimoireCarousel : MonoBehaviour
                     leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
                     leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
                 }
-                rightHand.transform.position = transform.position + new Vector3(-0.25f, 0f, 0.4f) ;
-                rightHand.transform.rotation = Quaternion.Euler(0, 90f, -90f);
-                leftHand.transform.position = transform.position + new Vector3(0.25f, 0f, 0.4f);
-                leftHand.transform.rotation = Quaternion.Euler(0, 90f, 90f);
+                rightHand.transform.position = transform.position + new Vector3(0.4f, 0f, -0.25f) ;
+                rightHand.transform.rotation = Quaternion.Euler(0, 90f - transform.rotation.eulerAngles.y, -90f);
+                leftHand.transform.position = transform.position + new Vector3(0.4f, 0f, 0.25f);
+                leftHand.transform.rotation = Quaternion.Euler(0, 90f - transform.rotation.eulerAngles.y, 90f);
                 showRoutine = StartCoroutine(DesactivateHands(10f));
                 break;
             }
+        }
+
+        if(tutoManager._isInTuto && name == "monster" && tutoManager._canChangeStep)
+        {
+            if(tutoManager.currentTutoStep == 4)
+            {
+                StartCoroutine(tutoManager.TutoStep4Radical());
+            }
+            else if(tutoManager.currentTutoStep == 4.1f)
+            {
+                StartCoroutine(tutoManager.TutoStep5());
+            }
+        }
+
+        if (tutoManager._isInTuto && name == "sea" && tutoManager._canChangeStep)
+        {
+            if (tutoManager.currentTutoStep == 4)
+            {
+                StartCoroutine(tutoManager.TutoStep4Concept());
+            }
+            else if (tutoManager.currentTutoStep == 4.2f)
+            {
+                StartCoroutine(tutoManager.TutoStep5());
+            }
+        }
+
+        if(tutoManager._isInTuto && name == "sea" && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
+        {
+            StartCoroutine(tutoManager.TutoStep6());
         }
     }
 
@@ -193,18 +215,19 @@ public class GrimoireCarousel : MonoBehaviour
                 return g.name.Contains(name);
         }
         ).name;
-        SignDescriptionTextSecondPage.SetText(trueName);
-        SignDescriptionTextFirstPage.SetText(name);
         showGesture(trueName);
     }
 
     //button call
     public void EqName(TextMeshProUGUI txt)
     {
-        string name = txt.text;
-        if (name != null)
+        if (txt != null)
         {
-            FindContaining(EnName[name]);
-        } 
+            string name = txt.text;
+            if (EnName.ContainsKey(name))
+            {
+                FindContaining(EnName[name]);
+            }
+        }
     }
 }
