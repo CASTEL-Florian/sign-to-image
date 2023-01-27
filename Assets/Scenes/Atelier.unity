@@ -5404,7 +5404,7 @@ PrefabInstance:
     - target: {fileID: 4765396444552182894, guid: ed60bc10e95d64f4e86b72bfdd12b608, type: 3}
       propertyPath: ShapeModule.m_SkinnedMeshRenderer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 817509750}
     - target: {fileID: 8142725440903843164, guid: ed60bc10e95d64f4e86b72bfdd12b608, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -34949,7 +34949,7 @@ MonoBehaviour:
   steps: 15
   imageName: image.png
   frame: {fileID: 1629512265}
-  saveImage: 0
+  saveImage: 1
   test: 0
   generationEnded: 1
   url: http://c376-35-188-156-72.ngrok.io
