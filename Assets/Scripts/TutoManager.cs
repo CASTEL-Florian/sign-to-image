@@ -205,11 +205,13 @@ public class TutoManager : MonoBehaviour
         _canChangeStep = false;
         tutoText.text = "Tu peux maintenant valider ton tableau en refaisant le signe 'Phrase'\n\n";
         yield return new WaitForSeconds(2f);
+        ShowGestureTuto("sos");
         _canChangeStep = true;
     }
 
     public IEnumerator TutoStep11()
     {
+        DesactivateList(textSmallCanvasList);
         currentTutoStep = 11;
         _canChangeStep = false;
         tutoText.text = "Parfait, une fois ton tableau créé, tu peux le faire évaluer.\n\n";
