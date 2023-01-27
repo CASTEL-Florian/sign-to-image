@@ -238,6 +238,7 @@ public class TutoManager : MonoBehaviour
         lightmapChanger.IsCanvas = false;
         lightmapChanger.IsGlobal = true;
         questManager.playerInfos._hasDoneTuto = true;
+        _isInTuto = false;
         questManager.SavePlayerInfos();
         gameObject.SetActive(false);
         yield return null;
