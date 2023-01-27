@@ -23701,7 +23701,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.071, y: 1.144}
+  m_AnchoredPosition: {x: -0.071, y: 1.476}
   m_SizeDelta: {x: 1062, y: 627}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &976085111
@@ -23739,6 +23739,8 @@ MonoBehaviour:
   _isInTuto: 0
   currentTutoStep: 0
   _canChangeStep: 0
+  lightmapChanger: {fileID: 0}
+  questManager: {fileID: 0}
 --- !u!114 &977864154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31826,7 +31828,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onlyHandsTrigger: 0
-  animator: {fileID: 0}
 --- !u!1 &1481043506 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7764451781887639402, guid: aca0706bac5a68a4394ac02275753161, type: 3}
@@ -34985,9 +34986,9 @@ MonoBehaviour:
   player: {fileID: 467327664}
   centerEyeAnchor: {fileID: 255968231}
   tutoCanvas: {fileID: 976085107}
-  tutoCanvasPos: {x: 0.745, y: 1.624, z: -3.612}
-  ValidationLetter: {fileID: 0}
   questManager: {fileID: 0}
+  endPosBigFrame: {fileID: 0}
+  ValAndXPosBigFrame: {fileID: 0}
   activia: 0
   desactivia: 0
   testTuto: 0
@@ -35019,7 +35020,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onlyHandsTrigger: 0
-  animator: {fileID: 0}
 --- !u!4 &1629512279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2683542772516659882, guid: ef648ffc1280d6e4c939259a196f40d5, type: 3}
@@ -46942,6 +46942,7 @@ MonoBehaviour:
     requestedPromptItems: []
     XPGiven: 0
     _hasBeenDone: 0
+  currentQuestPaper: {fileID: 0}
   QuestPaperList:
   - {fileID: 1428701051314288634}
   - {fileID: 1428701050474428130}

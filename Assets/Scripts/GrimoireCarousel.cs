@@ -47,6 +47,12 @@ public class GrimoireCarousel : MonoBehaviour
         Signs = Resources.LoadAll<SignsData>("ScriptableObjects");
 
         UpdateGrimoireUI();
+
+
+        if (tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3)
+        {
+            StartCoroutine(tutoManager.TutoStep4());
+        }
     }
 
     private void Update()
@@ -212,10 +218,6 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
 
-        if(tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3 && TestTuto)
-        {
-            StartCoroutine(tutoManager.TutoStep4());
-        }
 
         if(tutoManager._isInTuto && name == "monster" && tutoManager._canChangeStep)
         {
