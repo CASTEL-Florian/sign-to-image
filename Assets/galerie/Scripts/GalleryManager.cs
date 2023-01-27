@@ -5,7 +5,8 @@ using UnityEngine;
 public class GalleryManager : MonoBehaviour
 {
     [SerializeField] Transform player;
-    
+    [SerializeField] AudioHandler audioHandler;
+
     static int moduleindex = 1;
     int offset;
     int i;
@@ -26,6 +27,7 @@ public class GalleryManager : MonoBehaviour
 
     void Start()
     {
+        audioHandler.PlayGaleryleMusic();
         number_of_tab = imageFileManager.PaintingsNumber;
         availableModules.Add(0, reception);
         number_of_tab -= reception.capacity;

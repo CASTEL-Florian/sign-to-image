@@ -11017,6 +11017,10 @@ PrefabInstance:
       value: Grimoire
       objectReference: {fileID: 0}
     - target: {fileID: 4067137898788238332, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: TestTuto
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4067137898788238332, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: leftHand
       value: 
       objectReference: {fileID: 1302248781}
@@ -16988,98 +16992,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2015248, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
   m_PrefabInstance: {fileID: 255968228}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &832946751
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 832946753}
-  - component: {fileID: 832946752}
-  m_Layer: 0
-  m_Name: LightMap Switcher
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &832946752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832946751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b534067bc700f4780e05be61895c1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newLightmapsGlobal:
-  - {fileID: 2800000, guid: c7d7bcb0fdfce594ab32caab2709e9c1, type: 3}
-  - {fileID: 2800000, guid: 2ef03af3aab3f294ca84597a1e4352ab, type: 3}
-  - {fileID: 2800000, guid: a694040ea8655a64d8fc21a11fcedfa7, type: 3}
-  - {fileID: 2800000, guid: a8ce0571b38583a4bb2031bb8f07ecc0, type: 3}
-  - {fileID: 2800000, guid: c94e6b228cd000d4d925d850ed031788, type: 3}
-  - {fileID: 2800000, guid: 194032934fd74c64ca0fa779e7d4bad5, type: 3}
-  - {fileID: 2800000, guid: 33fd0e051c8fcfa4a848d0851dede387, type: 3}
-  - {fileID: 2800000, guid: 74ae15f58415d694c95802e83cada3af, type: 3}
-  - {fileID: 2800000, guid: f9dfe3571331ee74fa1cee4b3a6891b7, type: 3}
-  newLightmapsCanvas:
-  - {fileID: 2800000, guid: acca794c34515034d87ee909cb1bf527, type: 3}
-  - {fileID: 2800000, guid: 478ed6ebdd63cac4d9bbfc11616661a4, type: 3}
-  - {fileID: 2800000, guid: 4509c9d31cb1cf148b1947575f64e624, type: 3}
-  - {fileID: 2800000, guid: 9b74bc3b1a559f64cbb06d36e6f3d32e, type: 3}
-  - {fileID: 2800000, guid: 8668f1176387d4943a7f8cf1b72e0986, type: 3}
-  - {fileID: 2800000, guid: c7c1cfd6f491def4bbd98b6d4387a7e3, type: 3}
-  - {fileID: 2800000, guid: 702dc7aeec7a98b41ba8cb4a9a34fe6d, type: 3}
-  - {fileID: 2800000, guid: ae4ad337db050574481a4e3978c12b05, type: 3}
-  - {fileID: 2800000, guid: 5099a8a45169edf49b4df4ebb2d78796, type: 3}
-  newLightmapsQuest:
-  - {fileID: 2800000, guid: 7cfa1faffd752024a86b6c8a3765e56d, type: 3}
-  - {fileID: 2800000, guid: 9e53b7ab8682fba4facfaa60588a85c1, type: 3}
-  - {fileID: 2800000, guid: f6ce7cb614cbc7b46afc5c518933d176, type: 3}
-  - {fileID: 2800000, guid: fb06ecc71e15cce45bf0b45b5495b882, type: 3}
-  - {fileID: 2800000, guid: c3496a83c5f03db4a9b5cdbd7ea79f50, type: 3}
-  - {fileID: 2800000, guid: de13edc3a01945848a312a3e0240ff43, type: 3}
-  - {fileID: 2800000, guid: f7a9cb1052e914543b35193e2795c74f, type: 3}
-  - {fileID: 2800000, guid: 66d336b96b056834a937172bddb8f45e, type: 3}
-  - {fileID: 2800000, guid: 441adacaf23c57348a173d259cbf0f35, type: 3}
-  newLightmapsGrimoire:
-  - {fileID: 2800000, guid: fd11108f1076289408696efd5999113e, type: 3}
-  - {fileID: 2800000, guid: 1a080c3ef2b65684db8f2d15caba133a, type: 3}
-  - {fileID: 2800000, guid: f812a39c270c2c24c9a717144c836151, type: 3}
-  - {fileID: 2800000, guid: 34f3c6010496a054db55408ea06fdb2e, type: 3}
-  - {fileID: 2800000, guid: d6f68610ebc62bf4ea69a4a34b5c9d1b, type: 3}
-  - {fileID: 2800000, guid: f6af70e7437d8f3488ce39a0975c6b60, type: 3}
-  - {fileID: 2800000, guid: 9db84f15ae9e2ce488900db7f91f37f7, type: 3}
-  - {fileID: 2800000, guid: bddf5b850377f094f9d06c909e76ee60, type: 3}
-  - {fileID: 2800000, guid: 60d39cc6beb91bf44b878bee5c984357, type: 3}
-  canvasCandles: {fileID: 1184564085}
-  GrimoireCandles: {fileID: 211907095}
-  QuestCandles: {fileID: 1197434948}
-  GlobalCandles: {fileID: 344250092}
-  IsGlobal: 0
-  IsCanvas: 0
-  IsQuest: 0
-  IsGrimoire: 0
---- !u!4 &832946753
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832946751}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 25
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &834807848
 GameObject:
   m_ObjectHideFlags: 0
@@ -23739,6 +23651,8 @@ MonoBehaviour:
   _isInTuto: 0
   currentTutoStep: 0
   _canChangeStep: 0
+  lightmapChanger: {fileID: 0}
+  questManager: {fileID: 0}
 --- !u!114 &977864154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31826,7 +31740,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onlyHandsTrigger: 0
-  animator: {fileID: 0}
 --- !u!1 &1481043506 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7764451781887639402, guid: aca0706bac5a68a4394ac02275753161, type: 3}
@@ -34985,9 +34898,9 @@ MonoBehaviour:
   player: {fileID: 467327664}
   centerEyeAnchor: {fileID: 255968231}
   tutoCanvas: {fileID: 976085107}
-  tutoCanvasPos: {x: 0.745, y: 1.624, z: -3.612}
-  ValidationLetter: {fileID: 0}
   questManager: {fileID: 0}
+  endPosBigFrame: {fileID: 0}
+  ValAndXPosBigFrame: {fileID: 0}
   activia: 0
   desactivia: 0
   testTuto: 0
@@ -35019,7 +34932,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onlyHandsTrigger: 0
-  animator: {fileID: 0}
 --- !u!4 &1629512279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2683542772516659882, guid: ef648ffc1280d6e4c939259a196f40d5, type: 3}
@@ -46942,6 +46854,7 @@ MonoBehaviour:
     requestedPromptItems: []
     XPGiven: 0
     _hasBeenDone: 0
+  currentQuestPaper: {fileID: 0}
   QuestPaperList:
   - {fileID: 1428701051314288634}
   - {fileID: 1428701050474428130}
@@ -47764,6 +47677,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8455587307007954744}
   m_Mesh: {fileID: 5591334694715795377, guid: 8f9e4da5668113a4da8b4efea4a9499f, type: 3}
+--- !u!1001 &7612668986826224890
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7612668986581137082, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: QuestCandles
+      value: 
+      objectReference: {fileID: 1197434948}
+    - target: {fileID: 7612668986581137082, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: GlobalCandles
+      value: 
+      objectReference: {fileID: 344250092}
+    - target: {fileID: 7612668986581137082, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: canvasCandles
+      value: 
+      objectReference: {fileID: 1184564085}
+    - target: {fileID: 7612668986581137082, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: GrimoireCandles
+      value: 
+      objectReference: {fileID: 211907095}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137083, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612668986581137093, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
+      propertyPath: m_Name
+      value: LightMap Switcher
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42b00d9c20b00a244acced6d8e140b8c, type: 3}
 --- !u!33 &8040217153520918401
 MeshFilter:
   m_ObjectHideFlags: 0
