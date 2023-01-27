@@ -5135,7 +5135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4311394444385965729, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.129
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4311394444385965729, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5205,6 +5205,22 @@ PrefabInstance:
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5144785560423630399, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144785560423630399, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144785560423630399, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144785560423630399, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32782526250db934e9405470f12389cd, type: 3}
 --- !u!1 &487374283 stripped
@@ -5253,7 +5269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.9, y: 212.9}
+  m_AnchoredPosition: {x: -0.9, y: 254}
   m_SizeDelta: {x: 143.8, y: 111.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &495680030
@@ -5465,7 +5481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -267, y: 157}
+  m_AnchoredPosition: {x: -378, y: 157}
   m_SizeDelta: {x: 143.8, y: 111.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &544695821
@@ -9072,9 +9088,9 @@ MonoBehaviour:
   - {fileID: 1428701050120893014}
   - {fileID: 1385272493}
   - {fileID: 149152470}
+  - {fileID: 2105218575}
   objectsToShow:
   - {fileID: 365714532}
-  - {fileID: 979189058}
   rendererToHide:
   - {fileID: 576360799}
   centerEyeAnchorFader: {fileID: 828348159}

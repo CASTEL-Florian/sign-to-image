@@ -205,11 +205,13 @@ public class TutoManager : MonoBehaviour
         _canChangeStep = false;
         tutoText.text = "Tu peux maintenant valider ton tableau en refaisant le signe 'Phrase'\n\n";
         yield return new WaitForSeconds(2f);
+        ShowGestureTuto("sos");
         _canChangeStep = true;
     }
 
     public IEnumerator TutoStep11()
     {
+        DesactivateList(textSmallCanvasList);
         currentTutoStep = 11;
         _canChangeStep = false;
         tutoText.text = "Parfait, une fois ton tableau créé, tu peux le faire évaluer.\n\n";
@@ -238,6 +240,7 @@ public class TutoManager : MonoBehaviour
         lightmapChanger.IsCanvas = false;
         lightmapChanger.IsGlobal = true;
         questManager.playerInfos._hasDoneTuto = true;
+        _isInTuto = false;
         questManager.SavePlayerInfos();
         gameObject.SetActive(false);
         yield return null;
@@ -282,7 +285,7 @@ public class TutoManager : MonoBehaviour
                         leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
                         leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
                         break;
-                    case "sea":
+                    case "ocean":
                         rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
                         rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
                         leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);

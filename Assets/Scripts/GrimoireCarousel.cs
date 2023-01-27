@@ -109,7 +109,7 @@ public class GrimoireCarousel : MonoBehaviour
     {
         EnName = new Dictionary<string, string>
         {
-            { "Marin", "sea" },
+            { "Marin", "ocean" },
             { "Terrestre", "mountain" },
             { "Aerien", "flying" },
             { "Fantastique", "fantasy" },
@@ -216,9 +216,9 @@ public class GrimoireCarousel : MonoBehaviour
                     leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
                     leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
                 }
-                rightHand.transform.position = new Vector3(1.382f, 1.129f, -0.968f) ;
+                rightHand.transform.position = new Vector3(1.382f, transform.position.y, -0.968f) ;
                 rightHand.transform.rotation = Quaternion.Euler(0, 22f, -90f);
-                leftHand.transform.position = new Vector3(1.517f, 1.129f, -0.633f);
+                leftHand.transform.position = new Vector3(1.517f, transform.position.y, -0.633f);
                 leftHand.transform.rotation = Quaternion.Euler(0, 22f, 90f);
                 showRoutine = StartCoroutine(DesactivateHands(10f));
                 break;
@@ -238,7 +238,7 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
 
-        if (tutoManager._isInTuto && name == "sea animal" && tutoManager._canChangeStep)
+        if (tutoManager._isInTuto && name == "ocean" && tutoManager._canChangeStep)
         {
             if (tutoManager.currentTutoStep == 4f)
             {
