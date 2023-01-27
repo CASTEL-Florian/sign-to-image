@@ -48,11 +48,6 @@ public class GrimoireCarousel : MonoBehaviour
 
         UpdateGrimoireUI();
 
-
-        if (tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3)
-        {
-            StartCoroutine(tutoManager.TutoStep4());
-        }
     }
 
     private void Update()
@@ -283,6 +278,14 @@ public class GrimoireCarousel : MonoBehaviour
             {
                 FindContaining(EnName[name]);
             }
+        }
+    }
+
+    public void OpenBookTuto()
+    {
+        if (tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3)
+        {
+            StartCoroutine(tutoManager.TutoStep4());
         }
     }
 }
