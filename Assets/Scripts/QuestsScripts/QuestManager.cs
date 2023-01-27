@@ -377,19 +377,6 @@ public class QuestManager : MonoBehaviour
             LevelUpText.SetActive(true);
             yield return new WaitForSeconds(0.5f);
         }
-        FinalCommentary.SetActive(true);
-        switch (evaluation)
-        {
-            case 0:
-                FinalCommentary.GetComponent<TextMeshPro>().text = "Faites mieux la prochaine fois !";
-                break;
-            case 0.5f:
-                FinalCommentary.GetComponent<TextMeshPro>().text = "C'est pas mal !";
-                break;
-            case 1.0f:
-                FinalCommentary.GetComponent<TextMeshPro>().text = "Bravo !";
-                break;
-        }
         yield return new WaitForSeconds(4.0f);
         MarkText.SetActive(false);
         NewXpText.SetActive(false);

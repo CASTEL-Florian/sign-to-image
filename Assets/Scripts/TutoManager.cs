@@ -163,7 +163,6 @@ public class TutoManager : MonoBehaviour
     public IEnumerator TutoStep7()
     {
         DesactivateList(textSmallCanvasList);
-        ActivateList(textBigCanvasList);
         currentTutoStep = 7;
         _canChangeStep = false;
         tutoText.text = "Te voilà dans ton espace de création.\n";
@@ -205,8 +204,7 @@ public class TutoManager : MonoBehaviour
         currentTutoStep = 10;
         _canChangeStep = false;
         tutoText.text = "Tu peux maintenant valider ton tableau en refaisant le signe 'Phrase'\n\n";
-        yield return new WaitForSeconds(3f);
-        tutoText.text += "Fais le signe correspondant à 'Monstre Marin'.";
+        yield return new WaitForSeconds(2f);
         _canChangeStep = true;
     }
 
@@ -241,6 +239,7 @@ public class TutoManager : MonoBehaviour
         lightmapChanger.IsGlobal = true;
         questManager.playerInfos._hasDoneTuto = true;
         questManager.SavePlayerInfos();
+        gameObject.SetActive(false);
         yield return null;
     }
 
