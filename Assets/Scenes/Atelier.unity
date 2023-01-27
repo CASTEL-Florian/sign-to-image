@@ -9072,9 +9072,9 @@ MonoBehaviour:
   - {fileID: 1428701050120893014}
   - {fileID: 1385272493}
   - {fileID: 149152470}
+  - {fileID: 2105218575}
   objectsToShow:
   - {fileID: 365714532}
-  - {fileID: 979189058}
   rendererToHide:
   - {fileID: 576360799}
   centerEyeAnchorFader: {fileID: 828348159}
