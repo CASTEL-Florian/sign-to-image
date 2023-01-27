@@ -19,18 +19,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform cameraRig;
     [SerializeField] private Transform centerEyeAnchorTranform;
 
-    private float initialHeight = 0;
-    private bool initialHeightSaved = false;
     private void Start()
     {
         initialPos = transform.position;
     }
 
-    private IEnumerator GetInitialHeightRoutine()
-    {
-        yield return new WaitForSeconds(0.5f);
-        initialHeight = transform.position.y;
-    }
 
     public void PlayerMove(Vector3 dir)
     {
@@ -58,13 +51,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (initialHeightSaved)
-        {
-            transform.position = new Vector3(transform.position.x, initialHeight, transform.position.z);
-        }
-    }
     public void ResetPos()
     {
         Teleport(initialPos);

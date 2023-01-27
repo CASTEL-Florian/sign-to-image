@@ -189,7 +189,6 @@ public class GestureDetection : MonoBehaviour
     void Update()
     {
         currentTimeBetweenSigns += Time.deltaTime;
-        bool playerMoving = false;
         if(hasStarted)
         {
             Gesture currentGesture = Recognize();
@@ -207,11 +206,12 @@ public class GestureDetection : MonoBehaviour
             {
                 currentSignHoldTime += Time.deltaTime;
             }
+            if (currentGesture.name != "move")
+                playerMovement.PlayerMove(Vector3.zero);
             if ((currentGesture.name == "move" && _playerCanMove) || testTutoStep1)
             {
                 if(!testTutoStep1)
                     movePlayer();
-                playerMoving = true;
                 previousGesture = null;
                 if(tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 1)
                 {
@@ -222,7 +222,6 @@ public class GestureDetection : MonoBehaviour
             else if (currentGesture.name == "tp" && _playerCanMove && !currentGesture.Equals(previousGesture))
             {
                 playerMovement.TeleportToIndicator();
-                playerMoving = true;
             }
             previousGesture = currentGesture;
             if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp" && (!tutoManager._isInTuto || (((tutoManager.currentTutoStep == 7 || tutoManager.currentTutoStep == 10) && currentGesture.name == "sos") || (tutoManager.currentTutoStep == 8 && currentGesture.name == "sea monster") || (tutoManager.currentTutoStep == 9 && currentGesture.name == "sea") && tutoManager._canChangeStep)))
@@ -329,8 +328,6 @@ public class GestureDetection : MonoBehaviour
                 gestureRecognitionInputField.text = " ";
             }
         }
-        if (!playerMoving)
-            playerMovement.PlayerMove(Vector3.zero);
     }
 
     public void SaveGestureButton()
