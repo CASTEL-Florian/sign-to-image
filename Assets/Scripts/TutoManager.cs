@@ -182,6 +182,8 @@ public class TutoManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         tutoText.text += "Fais le signe correspondant à 'Monstre Marin'.";
         _canChangeStep = true;
+        yield return new WaitForSeconds(5f);
+        ShowGestureTuto("sea monster");
     }
 
     public IEnumerator TutoStep9()
@@ -192,6 +194,8 @@ public class TutoManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         tutoText.text += "Fais le signe correspondant à 'Océan'.";
         _canChangeStep = true;
+        yield return new WaitForSeconds(5f);
+        ShowGestureTuto("sea");
     }
 
     public IEnumerator TutoStep10()
@@ -266,6 +270,18 @@ public class TutoManager : MonoBehaviour
                         break;
 
                     case "sos":
+                        rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
+                        rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
+                        leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
+                        leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
+                        break;
+                    case "sea monster":
+                        rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
+                        rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
+                        leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
+                        leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
+                        break;
+                    case "sea":
                         rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
                         rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
                         leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
