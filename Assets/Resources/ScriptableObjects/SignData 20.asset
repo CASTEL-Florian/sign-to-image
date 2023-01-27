@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50dc103d628d6e344a01e6a12a4da340, type: 3}
   m_Name: SignData 20
   m_EditorClassIdentifier: 
-  SignSprite: {fileID: 0}
+  SignSprite: {fileID: 21300000, guid: 8ce795f3adb517f4d9ce8f9b6f072f00, type: 3}
   SignNameText: Lieu
   SignDescriptionText: Signe exprimant un lieu

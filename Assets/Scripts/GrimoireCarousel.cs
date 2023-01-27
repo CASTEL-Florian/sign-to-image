@@ -47,6 +47,7 @@ public class GrimoireCarousel : MonoBehaviour
         Signs = Resources.LoadAll<SignsData>("ScriptableObjects");
 
         UpdateGrimoireUI();
+
     }
 
     private void Update()
@@ -203,19 +204,15 @@ public class GrimoireCarousel : MonoBehaviour
                     leftFingerBones[k].transform.position = gestureList[i].leftFingerDatas[k];
                     leftFingerBones[k].transform.rotation = gestureList[i].leftFingerRotations[k];
                 }
-                rightHand.transform.position = transform.position + new Vector3(-0.4f, 0f, 0.25f) ;
+                rightHand.transform.position = new Vector3(1.382f, 1.129f, -0.968f) ;
                 rightHand.transform.rotation = Quaternion.Euler(0, 22f, -90f);
-                leftHand.transform.position = transform.position + new Vector3(-0.4f, 0f, -0.25f);
+                leftHand.transform.position = new Vector3(1.517f, 1.129f, -0.633f);
                 leftHand.transform.rotation = Quaternion.Euler(0, 22f, 90f);
                 showRoutine = StartCoroutine(DesactivateHands(10f));
                 break;
             }
         }
 
-        if(tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3 && TestTuto)
-        {
-            StartCoroutine(tutoManager.TutoStep4());
-        }
 
         if(tutoManager._isInTuto && name == "monster" && tutoManager._canChangeStep)
         {
@@ -281,6 +278,14 @@ public class GrimoireCarousel : MonoBehaviour
             {
                 FindContaining(EnName[name]);
             }
+        }
+    }
+
+    public void OpenBookTuto()
+    {
+        if (tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3)
+        {
+            StartCoroutine(tutoManager.TutoStep4());
         }
     }
 }

@@ -271,7 +271,7 @@ public class GestureDetection : MonoBehaviour
                 }
                 else
                 {
-                    if (_isPhrase && currentGesture.name != "")
+                    if (_isPhrase && currentGesture.name != "" && currentGesture.name != "move" && currentGesture.name != "change" && currentGesture.name != "tp")
                     {
                         if (audioHandler)
                             audioHandler.PlaySignSound();
