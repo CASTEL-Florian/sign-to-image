@@ -4241,6 +4241,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8207225030541474919, guid: de7fa215fb0328d4bb364f7a7bd8156a, type: 3}
     - target: {fileID: 6720380373570195778, guid: 0572dcb268643394698ce680e3e9068d, type: 3}
+      propertyPath: audioHandler
+      value: 
+      objectReference: {fileID: 1521371743}
+    - target: {fileID: 6720380373570195778, guid: 0572dcb268643394698ce680e3e9068d, type: 3}
       propertyPath: number_of_tab
       value: 73
       objectReference: {fileID: 0}
@@ -4383,6 +4387,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1661418652}
+    - target: {fileID: 9001212020412488106, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
+      propertyPath: m_VersionIndex
+      value: 4114
+      objectReference: {fileID: 0}
     - target: {fileID: 9001212020412488109, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4743,6 +4751,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3234300802543494101, guid: adb7bebce15e73a4085a9146d874f665, type: 3}
+      propertyPath: GaleryMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 47c3b3ce3b5854e4086018d72e7b4134, type: 3}
+    - target: {fileID: 3234300802543494101, guid: adb7bebce15e73a4085a9146d874f665, type: 3}
+      propertyPath: GaletyMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 47c3b3ce3b5854e4086018d72e7b4134, type: 3}
     - target: {fileID: 3234300802543494103, guid: adb7bebce15e73a4085a9146d874f665, type: 3}
       propertyPath: m_Name
       value: AudioHandler
@@ -5068,7 +5084,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-28982
+  m_Name: pb_Mesh-346388
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6524,7 +6540,7 @@ PrefabInstance:
       objectReference: {fileID: 863312360}
     - target: {fileID: 9001212020412488106, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
       propertyPath: m_VersionIndex
-      value: 4114
+      value: 4117
       objectReference: {fileID: 0}
     - target: {fileID: 9001212020412488109, guid: 9a70f6e0d30ba5c4d81b3ceb4d43706e, type: 3}
       propertyPath: m_Mesh

@@ -5,11 +5,16 @@ using UnityEngine;
 public class AudioHandler : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
+    private AudioSource musicSource;
     [SerializeField] private AudioClip signSound;
     [SerializeField] private AudioClip sosSound;
     [SerializeField] private AudioClip tpSound;
     [SerializeField] private AudioClip switchStyleSound;
-
+    [SerializeField] private AudioClip GaleryMusic;
+    private void Start()
+    {
+       // musicSource = gameObject.AddComponent<AudioSource>();
+    }
     public void PlaySignSound()
     {
         audioSource.PlayOneShot(signSound);
@@ -27,5 +32,11 @@ public class AudioHandler : MonoBehaviour
     public void PlaySwitchStyleSound()
     {
         audioSource.PlayOneShot(switchStyleSound);
+    }
+    public void PlayGaleryleMusic()
+    {
+        audioSource.clip = GaleryMusic;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 }
