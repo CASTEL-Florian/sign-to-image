@@ -138,8 +138,8 @@ public class BigPainting : MonoBehaviour
             questManager.currentQuestPaper.transform.position = endPosBigFrame.position;
             questManager.currentQuestPaper.transform.rotation = endPosBigFrame.rotation;
         }
-        questManager.PopUpQuest.transform.position = ValAndXPPos;
-        questManager.ExpGainSummary.transform.position = ValAndXPPos;
+        questManager.PopUpQuest.transform.position = ValAndXPosBigFrame.position;
+        questManager.ExpGainSummary.transform.position = ValAndXPosBigFrame.position;
 
         player.Teleport(new Vector3(initialPos.x, player.transform.position.y, initialPos.z));
         transform.localScale = transform.localScale * scaleMultiplier;
@@ -195,8 +195,8 @@ public class BigPainting : MonoBehaviour
             questManager.currentQuestPaper.transform.position = questManager.endPosition.position;
             questManager.currentQuestPaper.transform.rotation = questManager.endPosition.rotation;
         }
-        questManager.PopUpQuest.transform.position = ValAndXPosBigFrame.position;
-        questManager.ExpGainSummary.transform.position = ValAndXPosBigFrame.position;
+        questManager.PopUpQuest.transform.position = ValAndXPPos;
+        questManager.ExpGainSummary.transform.position = ValAndXPPos;
 
         transform.localScale = transform.localScale / scaleMultiplier;
         transform.position = initialPos;

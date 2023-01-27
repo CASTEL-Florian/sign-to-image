@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 public class GrimoireCarousel : MonoBehaviour
 {
@@ -34,6 +35,10 @@ public class GrimoireCarousel : MonoBehaviour
     public TutoManager tutoManager;
     [SerializeField] private bool TestTuto;
 
+    public string testName;
+    public bool testPrint = false;
+
+    public TextMeshProUGUI textName;
     // Start is called before the first frame update
     private void Start()
     {
@@ -52,6 +57,12 @@ public class GrimoireCarousel : MonoBehaviour
 
     private void Update()
     {
+        if(testPrint)
+        {
+            testPrint = false;
+            showGesture(testName); 
+        }
+
         if (tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3 && TestTuto)
         {
             TestTuto = false;
@@ -62,12 +73,12 @@ public class GrimoireCarousel : MonoBehaviour
         {
             if (tutoManager.currentTutoStep == 4)
             {
-                StartCoroutine(tutoManager.TutoStep4Radical());
+                TestEqName("Monstre");
                 TestTuto = false;
             }
             else if (tutoManager.currentTutoStep == 4.1f)
             {
-                StartCoroutine(tutoManager.TutoStep5());
+                TestEqName("Marin");
                 TestTuto = false;
             }
         }
@@ -76,19 +87,20 @@ public class GrimoireCarousel : MonoBehaviour
         {
             if (tutoManager.currentTutoStep == 4)
             {
-                StartCoroutine(tutoManager.TutoStep4Concept());
+                TestEqName("Monstre");
                 TestTuto = false;
             }
             else if (tutoManager.currentTutoStep == 4.2f)
             {
-                StartCoroutine(tutoManager.TutoStep5());
+                TestEqName("Marin");
                 TestTuto = false;
             }
         }
 
         if (TestTuto && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
         {
-            StartCoroutine(tutoManager.TutoStep6());
+            currentSignIndex = 10;
+            TestEqName("Lieu");
             TestTuto = false;
         }
     }
@@ -214,9 +226,9 @@ public class GrimoireCarousel : MonoBehaviour
         }
 
 
-        if(tutoManager._isInTuto && name == "monster" && tutoManager._canChangeStep)
+        if(tutoManager._isInTuto && name == "sea monster" && tutoManager._canChangeStep)
         {
-            if(tutoManager.currentTutoStep == 4)
+            if(tutoManager.currentTutoStep == 4f)
             {
                 StartCoroutine(tutoManager.TutoStep4Radical());
             }
@@ -226,9 +238,9 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
 
-        if (tutoManager._isInTuto && name == "sea" && tutoManager._canChangeStep)
+        if (tutoManager._isInTuto && name == "sea animal" && tutoManager._canChangeStep)
         {
-            if (tutoManager.currentTutoStep == 4)
+            if (tutoManager.currentTutoStep == 4f)
             {
                 StartCoroutine(tutoManager.TutoStep4Concept());
             }
@@ -238,7 +250,7 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
 
-        if(tutoManager._isInTuto && name == "mountain" && currentSignIndex <= 21 && currentSignIndex > 9 && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
+        if(tutoManager._isInTuto && name == "mountain" && tutoManager.currentTutoStep == 5 && tutoManager._canChangeStep)
         {
             StartCoroutine(tutoManager.TutoStep6());
         }
@@ -286,6 +298,17 @@ public class GrimoireCarousel : MonoBehaviour
         if (tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3)
         {
             StartCoroutine(tutoManager.TutoStep4());
+        }
+    }
+
+    public void TestEqName(string name)
+    {
+        if (name != null)
+        {
+            if (EnName.ContainsKey(name))
+            {
+                FindContaining(EnName[name]);
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ public class TutoManager : MonoBehaviour
     [SerializeField] Transform CenterEyeAnchor;
     public GestureDetection gestureDetection;
     public GrimoireCarousel grimoireCarousel;
-    [SerializeField] private TextMeshProUGUI tutoText;
+    public TextMeshProUGUI tutoText;
     [SerializeField] private List<GameObject> textQuestManagerList;
 
     [SerializeField] private List<GameObject> textGrimoireList;
@@ -113,7 +113,7 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep4Concept()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         DesactivateList(textTutoFindSubjectList);
         DesactivateList(textTutoFindSubjectRadicalList);
         currentTutoStep = 4.1f;
@@ -140,9 +140,8 @@ public class TutoManager : MonoBehaviour
         DesactivateList(textTutoFindSubjectRadicalList);
         currentTutoStep = 5;
         _canChangeStep = false;
-        tutoText.text = "Bien, trouve le geste pour ton lieu : \n\n";
+        tutoText.text = "Bien, trouve le geste pour ton lieu : \n\n Océan";
         yield return new WaitForSeconds(2f);
-        tutoText.text += "Océan";
         ActivateList(textTutoFindLocationList);
         _canChangeStep = true;
     }
@@ -164,7 +163,6 @@ public class TutoManager : MonoBehaviour
     public IEnumerator TutoStep7()
     {
         DesactivateList(textSmallCanvasList);
-        ActivateList(textBigCanvasList);
         currentTutoStep = 7;
         _canChangeStep = false;
         tutoText.text = "Te voilà dans ton espace de création.\n";
@@ -176,31 +174,37 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep8()
     {
+        StartCoroutine(DesactivateHandsTuto(3f));
         currentTutoStep = 8;
         _canChangeStep = false;
         tutoText.text = "Maintenant tu dois indiquer le sujet de ton tableau.\n\n";
         yield return new WaitForSeconds(3f);
         tutoText.text += "Fais le signe correspondant à 'Monstre Marin'.";
         _canChangeStep = true;
+        yield return new WaitForSeconds(5f);
+        ShowGestureTuto("sea monster");
     }
 
     public IEnumerator TutoStep9()
     {
+        StartCoroutine(DesactivateHandsTuto(3f));
         currentTutoStep = 9;
         _canChangeStep = false;
         tutoText.text = "Maintenant tu dois indiquer le lieu de ton tableau.\n\n";
         yield return new WaitForSeconds(3f);
         tutoText.text += "Fais le signe correspondant à 'Océan'.";
         _canChangeStep = true;
+        yield return new WaitForSeconds(5f);
+        ShowGestureTuto("sea");
     }
 
     public IEnumerator TutoStep10()
     {
+        StartCoroutine(DesactivateHandsTuto(3f));
         currentTutoStep = 10;
         _canChangeStep = false;
         tutoText.text = "Tu peux maintenant valider ton tableau en refaisant le signe 'Phrase'\n\n";
-        yield return new WaitForSeconds(3f);
-        tutoText.text += "Fais le signe correspondant à 'Monstre Marin'.";
+        yield return new WaitForSeconds(2f);
         _canChangeStep = true;
     }
 
@@ -235,6 +239,7 @@ public class TutoManager : MonoBehaviour
         lightmapChanger.IsGlobal = true;
         questManager.playerInfos._hasDoneTuto = true;
         questManager.SavePlayerInfos();
+        gameObject.SetActive(false);
         yield return null;
     }
 
@@ -266,6 +271,18 @@ public class TutoManager : MonoBehaviour
                         break;
 
                     case "sos":
+                        rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
+                        rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
+                        leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
+                        leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
+                        break;
+                    case "sea monster":
+                        rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
+                        rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
+                        leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
+                        leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
+                        break;
+                    case "sea":
                         rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
                         rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
                         leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
