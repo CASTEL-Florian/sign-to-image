@@ -17,6 +17,7 @@ public class BackgroundChanger : MonoBehaviour
 
     private Coroutine changeBackgroundRoutine;
     private string currentBackground = "";
+
     public void ChangeBackground(string newBackgroundName)
     {
         if (currentBackground == newBackgroundName)
@@ -44,6 +45,7 @@ public class BackgroundChanger : MonoBehaviour
             t -= Time.deltaTime / fadeOutTime;
             if (t < 0) t = 0;
             backgroundMeshRenderer.material.color = new Color(t, t, t, 1);
+            backgroundMeshRenderer.material.SetColor("_EmissionColor", new Color(t, t, t, 1));
             yield return null;
         }
         backgroundMeshRenderer.material.SetTexture("_BaseMap", backgrounds[backgroundIndex].texture);
@@ -53,6 +55,7 @@ public class BackgroundChanger : MonoBehaviour
             t += Time.deltaTime / fadeInTime;
             if (t > 1) t = 1;
             backgroundMeshRenderer.material.color = new Color(t, t, t, 1);
+            backgroundMeshRenderer.material.SetColor("_EmissionColor", new Color(t, t, t, 1));
             yield return null;
         }
     }

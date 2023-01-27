@@ -1,0 +1,79 @@
+{
+    "currentLevel": 3,
+    "currentXP": 350.0,
+    "currentQuestsList": [
+        {
+            "rank": 1,
+            "titre": "La quete du tuto !",
+            "description": "Un client demande que tu fasse un la quete du tuto, IT'S TIME !!!'",
+            "requestedPromptItems": [
+                "fox",
+                "forest"
+            ],
+            "XPGiven": 100.0,
+            "_hasBeenDone": false
+        }
+    ],
+    "quests": [
+        {
+            "rank": 1,
+            "titre": "Au Monstre",
+            "description": "Un client demande que tu fasse un tableau representant une monstruosité dans une forêt",
+            "requestedPromptItems": [
+                "monster",
+                "forest"
+            ],
+            "XPGiven": 100.0,
+            "_hasBeenDone": false
+        },
+        {
+            "rank": 1,
+            "titre": "La non mort",
+            "description": "Un client demande que tu fasse un tableau representant un fantôme mystique qui hante les souterains",
+            "requestedPromptItems": [
+                "mystic",
+                "ghost",
+                "catacombs"
+            ],
+            "XPGiven": 100.0,
+            "_hasBeenDone": false
+        },
+        {
+            "rank": 1,
+            "titre": "Est-ce un ange...",
+            "description": "Un client demande que tu fasse un tableau representant une personne ailée",
+            "requestedPromptItems": [
+                "flying",
+                "human"
+            ],
+            "XPGiven": 100.0,
+            "_hasBeenDone": false
+        },
+        {
+            "rank": 2,
+            "titre": "Rencontre du 3eme type",
+            "description": "Un client demande que tu fasse un tableau representant un visiteur venu d'ailleurs résidant dans une montagne",
+            "requestedPromptItems": [
+                "alien",
+                "mountain"
+            ],
+            "XPGiven": 200.0,
+            "_hasBeenDone": false
+        },
+        {
+            "rank": 3,
+            "titre": "L'étrange",
+            "description": "Un client demande que tu fasse un tableau representant un être monstrueux qui se cache dans les profondeurs de l'océan",
+            "requestedPromptItems": [
+                "sea",
+                "lovecraftian",
+                "horror",
+                "monster",
+                "predator"
+            ],
+            "XPGiven": 300.0,
+            "_hasBeenDone": false
+        }
+    ],
+    "_hasDoneTuto": false
+}

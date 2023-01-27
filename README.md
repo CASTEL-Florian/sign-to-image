@@ -33,8 +33,8 @@ python launch.py --xformers --ngrok YOUR_NGROK_TOKEN --port 7860 --api
 ## Connect the app to the server
 
 To connect the app to the server, you'll need to enter the link of the api (for example the ngrok link).
-Use the left index finger to press the buttons. 
-In the virtual room, on the left of the keyboard, press the "switch" button once. Then, use the keyboard to type the url and press the "set url" button.
+
+In the file PlayerDatas, put a line with the url of the server : "url": "https://example.com"
 
 The first image may take more time to generate. To avoid that, you can use the webui to generate one image before using the app.
 

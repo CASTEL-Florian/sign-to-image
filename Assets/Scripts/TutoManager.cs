@@ -29,6 +29,9 @@ public class TutoManager : MonoBehaviour
     private List<GameObject> rightFingerBones;
     private List<GameObject> leftFingerBones;
     private List<Gesture> gestureList;
+
+    public LightmapChanger lightmapChanger;
+    public QuestManager questManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,7 @@ public class TutoManager : MonoBehaviour
         leftHand = grimoireCarousel.leftHand;
         rightFingerBones = grimoireCarousel.rightFingerBones;
         leftFingerBones = grimoireCarousel.leftFingerBones;
+        lightmapChanger.IsGlobal = true;
     }
 
     // Update is called once per frame
@@ -62,7 +66,7 @@ public class TutoManager : MonoBehaviour
         tutoText.text = "Bien, maintenant, tu dois apprendre à te déplacer.\n\n";
         yield return new WaitForSeconds(5f);
         tutoText.text += "Fais le geste suivant : ";
-        ShowGestureTuto("sos");
+        ShowGestureTuto("move");
         _canChangeStep = true;
     }
 
@@ -73,6 +77,8 @@ public class TutoManager : MonoBehaviour
         StartCoroutine(DesactivateHandsTuto(3f));
         tutoText.text = "Très bien.\n\n";
         yield return new WaitForSeconds(2f);
+        lightmapChanger.IsGlobal = false;
+        lightmapChanger.IsQuest = true;
         tutoText.text += "Maintenant, rejoins le tableau de commande pour en choisir une.";
         ActivateList(textQuestManagerList);
         _canChangeStep = true;
@@ -87,6 +93,8 @@ public class TutoManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         tutoText.text += "Avant de faire ce tableau, tu dois apprendre les bons signes. \n\n";
         yield return new WaitForSeconds(2f);
+        lightmapChanger.IsQuest = false;
+        lightmapChanger.IsGrimoire = true;
         tutoText.text += "Déplace toi vers le grimoire et ouvre le. \n\n";
         ActivateList(textGrimoireList);
         _canChangeStep = true;
@@ -146,6 +154,8 @@ public class TutoManager : MonoBehaviour
         _canChangeStep = false;
         tutoText.text = "Bien, maintenant que tu maitrise les signes, tu vas pouvoir peindre.\n";
         yield return new WaitForSeconds(3f);
+        lightmapChanger.IsGrimoire = false;
+        lightmapChanger.IsCanvas = true;
         tutoText.text += "Dirige toi vers le tableau.";
         ActivateList(textSmallCanvasList);
         _canChangeStep = true;
@@ -221,6 +231,10 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoEnd()
     {
+        lightmapChanger.IsCanvas = false;
+        lightmapChanger.IsGlobal = true;
+        questManager.playerInfos._hasDoneTuto = true;
+        questManager.SavePlayerInfos();
         yield return null;
     }
 
@@ -252,9 +266,9 @@ public class TutoManager : MonoBehaviour
                         break;
 
                     case "sos":
-                        rightHand.transform.position = new Vector3(-0.32f, 1.14f, -2.72f);
+                        rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
                         rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
-                        leftHand.transform.position = new Vector3(0.18f, 1.14f, -2.72f);
+                        leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
                         leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
                         break;
                 }
