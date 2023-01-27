@@ -285,7 +285,7 @@ public class TutoManager : MonoBehaviour
                         leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);
                         leftHand.transform.rotation = Quaternion.Euler(-90f, 180f, -90f);
                         break;
-                    case "sea":
+                    case "ocean":
                         rightHand.transform.position = new Vector3(-0.55f, 1.14f, -2.72f);
                         rightHand.transform.rotation = Quaternion.Euler(90f, 0, 90f);
                         leftHand.transform.position = new Vector3(-0.05f, 1.14f, -2.72f);

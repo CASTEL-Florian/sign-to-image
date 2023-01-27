@@ -238,7 +238,7 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
 
-        if (tutoManager._isInTuto && name == "sea animal" && tutoManager._canChangeStep)
+        if (tutoManager._isInTuto && name == "ocean" && tutoManager._canChangeStep)
         {
             if (tutoManager.currentTutoStep == 4f)
             {
