@@ -47,6 +47,7 @@ public class GrimoireCarousel : MonoBehaviour
         Signs = Resources.LoadAll<SignsData>("ScriptableObjects");
 
         UpdateGrimoireUI();
+
     }
 
     private void Update()
@@ -212,10 +213,6 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
 
-        if(tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3 && TestTuto)
-        {
-            StartCoroutine(tutoManager.TutoStep4());
-        }
 
         if(tutoManager._isInTuto && name == "monster" && tutoManager._canChangeStep)
         {
@@ -281,6 +278,14 @@ public class GrimoireCarousel : MonoBehaviour
             {
                 FindContaining(EnName[name]);
             }
+        }
+    }
+
+    public void OpenBookTuto()
+    {
+        if (tutoManager._isInTuto && tutoManager._canChangeStep && tutoManager.currentTutoStep == 3)
+        {
+            StartCoroutine(tutoManager.TutoStep4());
         }
     }
 }
