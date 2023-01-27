@@ -239,7 +239,6 @@ public class GestureDetection : MonoBehaviour
                     {
                         _isPhrase = false;
                         floatingImagesHandler.SendImagesToTarget();
-                        debugLog.text = "fin de phrase";
                         Generate();
                         if (questManager && questManager.currentQuest != null)
                         {
@@ -254,10 +253,9 @@ public class GestureDetection : MonoBehaviour
                         i = 0;
                     }    
                     else
-                    {
-                        if (!frame.generationEnded)
-                            return;
-                        debugLog.text = "début de phrase";
+                    {                    
+                        if (!frame.generationEnded && false)
+                            return;               
                         _isPhrase = true;
                         floatingImagesHandler.DeleteSymbols();
                         sentenceParticlesLeft.Play();
@@ -530,20 +528,20 @@ public class GestureDetection : MonoBehaviour
             gesturesCanvasManagement.showGesture("calibration");
         }
         _isCalibrating = true;
-        cooldownCanvas.SetActive(true); 
-        cooldownInputField.text = "3";
-        yield return new WaitForSeconds(1f);
-        cooldownInputField.text = "2";
-        yield return new WaitForSeconds(1f);
-        cooldownInputField.text = "1";
-        yield return new WaitForSeconds(1f);
-        cooldownInputField.text = "CLIC";
+        //cooldownCanvas.SetActive(true); 
+        //cooldownInputField.text = "3";
+        //yield return new WaitForSeconds(1f);
+        //cooldownInputField.text = "2";
+        //yield return new WaitForSeconds(1f);
+        //cooldownInputField.text = "1";
+        //yield return new WaitForSeconds(1f);
+        //cooldownInputField.text = "CLIC";
         if(!testTuto)
         {
             Calibration();
         }
         yield return new WaitForSeconds(1f);
-        cooldownCanvas.SetActive(false);
+        //cooldownCanvas.SetActive(false);
         _isCalibrating = false;
         hasStarted = true;
     }

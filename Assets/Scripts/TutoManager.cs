@@ -8,7 +8,7 @@ public class TutoManager : MonoBehaviour
     [SerializeField] Transform CenterEyeAnchor;
     public GestureDetection gestureDetection;
     public GrimoireCarousel grimoireCarousel;
-    [SerializeField] private TextMeshProUGUI tutoText;
+    public TextMeshProUGUI tutoText;
     [SerializeField] private List<GameObject> textQuestManagerList;
 
     [SerializeField] private List<GameObject> textGrimoireList;
@@ -113,7 +113,7 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep4Concept()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         DesactivateList(textTutoFindSubjectList);
         DesactivateList(textTutoFindSubjectRadicalList);
         currentTutoStep = 4.1f;
@@ -140,9 +140,8 @@ public class TutoManager : MonoBehaviour
         DesactivateList(textTutoFindSubjectRadicalList);
         currentTutoStep = 5;
         _canChangeStep = false;
-        tutoText.text = "Bien, trouve le geste pour ton lieu : \n\n";
+        tutoText.text = "Bien, trouve le geste pour ton lieu : \n\n Océan";
         yield return new WaitForSeconds(2f);
-        tutoText.text += "Océan";
         ActivateList(textTutoFindLocationList);
         _canChangeStep = true;
     }
@@ -176,6 +175,7 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep8()
     {
+        StartCoroutine(DesactivateHandsTuto(3f));
         currentTutoStep = 8;
         _canChangeStep = false;
         tutoText.text = "Maintenant tu dois indiquer le sujet de ton tableau.\n\n";
@@ -188,6 +188,7 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep9()
     {
+        StartCoroutine(DesactivateHandsTuto(3f));
         currentTutoStep = 9;
         _canChangeStep = false;
         tutoText.text = "Maintenant tu dois indiquer le lieu de ton tableau.\n\n";
@@ -200,6 +201,7 @@ public class TutoManager : MonoBehaviour
 
     public IEnumerator TutoStep10()
     {
+        StartCoroutine(DesactivateHandsTuto(3f));
         currentTutoStep = 10;
         _canChangeStep = false;
         tutoText.text = "Tu peux maintenant valider ton tableau en refaisant le signe 'Phrase'\n\n";
