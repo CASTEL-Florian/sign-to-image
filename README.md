@@ -62,3 +62,7 @@ In order to generate an image, start with the sos sign. A particle effect indica
 ## Giant canvas
 If you move next to the canvas (using the sign "move"), you will be teleported in a scene where the canvas is giant. You can still create new images in that scene.
 To go back to the original scene, you just need to move out of the platform you are on.
+
+## Retry the tutorial 
+For that, you will need to replace the file PlayerDatas currently in your vr headset by a new version of it, findable in the google drive.
+
