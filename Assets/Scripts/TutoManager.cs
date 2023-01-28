@@ -32,6 +32,8 @@ public class TutoManager : MonoBehaviour
 
     public LightmapChanger lightmapChanger;
     public QuestManager questManager;
+
+    private Coroutine showRoutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -182,7 +184,7 @@ public class TutoManager : MonoBehaviour
         tutoText.text += "Fais le signe correspondant à 'Monstre Marin'.";
         _canChangeStep = true;
         yield return new WaitForSeconds(5f);
-        ShowGestureTuto("sea monster");
+        showRoutine = StartCoroutine(ShowGestureTutoDelay("sea monster", 5f));
     }
 
     public IEnumerator TutoStep9()
@@ -194,8 +196,7 @@ public class TutoManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         tutoText.text += "Fais le signe correspondant à 'Océan'.";
         _canChangeStep = true;
-        yield return new WaitForSeconds(5f);
-        ShowGestureTuto("sea");
+        showRoutine = StartCoroutine(ShowGestureTutoDelay("ocean",5f));
     }
 
     public IEnumerator TutoStep10()
@@ -205,12 +206,13 @@ public class TutoManager : MonoBehaviour
         _canChangeStep = false;
         tutoText.text = "Tu peux maintenant valider ton tableau en refaisant le signe 'Phrase'\n\n";
         yield return new WaitForSeconds(2f);
-        ShowGestureTuto("sos");
+        showRoutine = StartCoroutine(ShowGestureTutoDelay("sos",2f));
         _canChangeStep = true;
     }
 
     public IEnumerator TutoStep11()
     {
+        StartCoroutine(DesactivateHandsTuto(3f));
         DesactivateList(textSmallCanvasList);
         currentTutoStep = 11;
         _canChangeStep = false;
@@ -297,9 +299,18 @@ public class TutoManager : MonoBehaviour
         }
     }
 
+    private IEnumerator ShowGestureTutoDelay(string name, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ShowGestureTuto(name);
+    }
     private IEnumerator DesactivateHandsTuto(float delay)
     {
         yield return new WaitForSeconds(delay);
+        if(showRoutine != null)
+        {
+            StopCoroutine(showRoutine);
+        }
         rightHand.transform.position = new Vector3(0, 0, 0);
         rightHand.transform.rotation = Quaternion.Euler(0, 0, 0);
         leftHand.transform.position = new Vector3(0, 0, 0);
