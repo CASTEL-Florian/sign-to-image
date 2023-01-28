@@ -6,20 +6,22 @@ public class GalleryManager : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] AudioHandler audioHandler;
+    [SerializeField] private ImageFileManager imageFileManager;
+    [SerializeField] private GameObject restricted;
+
+    public int number_of_tab = 0;
+    public Gallery reception;
+
+    public List<Gallery> galleryModules;
+    public List<Transform> availableDocks;
 
     static int moduleindex = 1;
     int offset;
     int i;
     int currentRoom;
-    public int number_of_tab = 0;
-    public Gallery reception;
-    //  public  List<GameObject> galleryModules;
-    [SerializeField] private ImageFileManager imageFileManager;
-    [SerializeField] private GameObject restricted;
-    public List<Gallery> galleryModules;
-    public List<Transform> availableDocks;
+   
     Dictionary<int, Gallery> availableModules = new Dictionary<int, Gallery>();
-   public List<Frame> frames;
+    public List<Frame> frames;
     bool modulecreated = false;
     private bool isRestricted;
 
