@@ -6,7 +6,7 @@
         {
             "rank": 1,
             "titre": "La quete du tuto !",
-            "description": "Je souhaite que tu me represente un monstre marin dans l'ocean",
+            "description": "Je souhaite que tu me representes un monstre marin dans l'ocean",
             "requestedPromptItems": [
                 "sea",
                 "ocean",
@@ -20,7 +20,7 @@
         {
             "rank": 1,
             "titre": "La quete du tuto !",
-            "description": "Je souhaite que tu me represente un monstre marin dans l'ocean",
+            "description": "Je souhaite que tu me representes un monstre marin dans l'ocean",
             "requestedPromptItems": [
                 "sea",
                 "ocean",
@@ -32,7 +32,7 @@
         {
             "rank": 1,
             "titre": "Au Monstre",
-            "description": "Un client demande que tu fasse un tableau representant une monstruosite dans une foret",
+            "description": "Un client demande que tu fasses un tableau representant une monstruosite dans une foret",
             "requestedPromptItems": [
                 "monster",
                 "forest"
@@ -43,7 +43,7 @@
         {
             "rank": 1,
             "titre": "La non mort",
-            "description": "Un client demande que tu fasse un tableau representant un fantome mystique qui hante les souterains",
+            "description": "Un client demande que tu fasses un tableau representant un fantome mystique qui hante les souterrains",
             "requestedPromptItems": [
                 "mystic",
                 "ghost",
@@ -55,7 +55,7 @@
         {
             "rank": 1,
             "titre": "Est-ce un ange...",
-            "description": "Un client demande que tu fasse un tableau representant une personne ailee",
+            "description": "Un client demande que tu fasses un tableau representant une personne ailee",
             "requestedPromptItems": [
                 "flying",
                 "human"
@@ -66,7 +66,7 @@
         {
             "rank": 2,
             "titre": "Rencontre du 3eme type",
-            "description": "Un client demande que tu fasse un tableau representant un visiteur venu d'ailleurs residant dans une montagne",
+            "description": "Un client demande que tu fasses un tableau representant un visiteur venu d'ailleurs residant dans une montagne",
             "requestedPromptItems": [
                 "alien",
                 "mountain"
@@ -77,7 +77,7 @@
         {
             "rank": 3,
             "titre": "L'etrange",
-            "description": "Un client demande que tu fasse un tableau representant un etre monstrueux qui se cache dans les profondeurs de l'ocean",
+            "description": "Un client demande que tu fasses un tableau representant un etre monstrueux qui se cache dans les profondeurs de l'ocean",
             "requestedPromptItems": [
                 "ocean",
                 "sea",
