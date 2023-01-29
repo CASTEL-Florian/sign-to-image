@@ -286,7 +286,10 @@ public class QuestManager : MonoBehaviour
                 break;
             }
         }
-        GenerateQuestPlaceHolder();
+        if(!_isInBigPicture)
+        {
+            GenerateQuestPlaceHolder();
+        }
     }
 
     public void EvaluatePrompt(Quest quest, string prompt)
@@ -315,13 +318,12 @@ public class QuestManager : MonoBehaviour
         }
         if(currentQuestPaper.GetComponent<QuestPaperManager>()._isSelectedInBigPainting)
         {
-            currentQuestPaper.GetComponent<QuestPaperManager>()._isSelectedInBigPainting = false;
-            currentQuestPaper.SetActive(false);
+            currentQuestPaper.GetComponent<QuestPaperManager>()._isSelectedInBigPainting = false;         
         }
         currentQuestPaper.GetComponent<QuestPaperManager>().RemoveQuest();
-
+        currentQuestPaper.SetActive(false);
         //for tuto -> go to step 12
-        if(tutoManager._isInTuto && tutoManager.currentTutoStep == 11)
+        if (tutoManager._isInTuto && tutoManager.currentTutoStep == 11)
         {
             StartCoroutine(tutoManager.TutoStep12());
         }
