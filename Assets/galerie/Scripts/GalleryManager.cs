@@ -21,11 +21,11 @@ public class GalleryManager : MonoBehaviour
     int currentRoom;
    
     Dictionary<int, Gallery> availableModules = new Dictionary<int, Gallery>();
+    Dictionary<int, bool> restrictedpath = new Dictionary<int, bool>();
     public List<Frame> frames;
     bool modulecreated = false;
     private bool isRestricted;
-
-
+    private bool isConnected;
 
     void Start()
     {
@@ -49,15 +49,36 @@ public class GalleryManager : MonoBehaviour
         currentRoom = FindCurrentRoom(availableModules, player);
    
         if (number_of_tab > 0) { SuccessiveGeneration(currentRoom); }
-        else if(number_of_tab<=0&&!isRestricted)
-        {
-            foreach (Transform dock in availableModules[availableModules.Count - 1].docks) 
-            {
-                Instantiate(restricted, dock.position, Quaternion.identity);
-            }
-            isRestricted = true;
+        //else if(number_of_tab<=0)
+        //{
+        //    List<int> connectedModules = FindConnectedRooms(currentRoom);
+        //   /* foreach (Transform dock in availableModules[availableModules.Count - 1].docks) 
+        //    {
+        //        Instantiate(restricted, dock.position, transform.rotation * Quaternion.Euler(0f, dock.eulerAngles.y, 0f));
+        //    }*/
             
-        }
+        //    foreach (Transform dock in availableModules[currentRoom].docks)
+        //    {
+        //      foreach(int key in connectedModules) 
+        //        {
+        //            if (availableModules[key].transform.position == dock.position) 
+        //            {
+        //                isConnected = true;
+        //                break;
+        //            }
+        //        }
+        //        if (!isConnected) {
+        //            Instantiate(restricted, dock.position, transform.rotation * Quaternion.Euler(0f, dock.eulerAngles.y, 0f));
+        //            if (!restrictedpath.ContainsKey(currentRoom))
+        //            {
+        //                restrictedpath.Add(currentRoom, true);
+        //            }
+                   
+        //        }
+             
+        //    }
+        //  //  isRestricted = true;
+        //}
         hideModules(currentRoom);
         showModule(currentRoom);
     }
