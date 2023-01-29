@@ -66,3 +66,9 @@ To go back to the original scene, you just need to move out of the platform you 
 ## Retry the tutorial 
 For that, you will need to replace the file PlayerDatas currently in your vr headset by a new version of it, findable in the google drive.
 
+## Credits
+Stable diffusion webui by AUTOMATIC1111: https://github.com/AUTOMATIC1111/stable-diffusion-webui
+
+Stable diffusion model vintedois-diffusion-v0-1 : https://huggingface.co/22h/vintedois-diffusion-v0-1
+
+Music by Eric Matyas: www.soundimage.org
