@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SignData 23
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 7cd81c5da9d795744b859b13f2534fc2, type: 3}
-  SignNameText: Bete
+  SignNameText: "B\xEAte"
   SignDescriptionText: "Signe de la b\xEAte"

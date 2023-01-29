@@ -111,7 +111,7 @@ public class GrimoireCarousel : MonoBehaviour
         {
             { "Marin", "ocean" },
             { "Terrestre", "mountain" },
-            { "Aerien", "flying" },
+            { "Aérien", "flying" },
             { "Fantastique", "fantasy" },
             { "Lovecraftien", "lovecraftian" },
             { "Occulte", "occult" },
@@ -120,22 +120,21 @@ public class GrimoireCarousel : MonoBehaviour
             { "Lieu", "mountain" },
             { "Animal", "animal" },
             { "Monstre", "monster" },
-            { "fantome", "ghost" },
-            { "Bete", "beast" },
+            { "Bête", "beast" },
             { "Humain", "human" },
             { "Alien", "alien" },
-            { "Mammifere", "mammal" },
-            { "Fantome", "ghost" },
+            { "Mammifère", "mammal" },
+            { "Fantôme", "ghost" },
             { "Horreur", "horror" },
             { "Esprit", "spirit" },
             { "Entité", "entity" },
             { "Phrase", "sos" },
             { "Move", "move" },
             { "TP", "tp" },
-            { "Foret", "forest" },
+            { "Forêt", "forest" },
             { "Grotte", "cave" },
-            { "Nuit etoile", "starscape" },
-            { "Cimetierre", "graveyard" }
+            { "Ciel étoilé", "starscape" },
+            { "Cimetière", "graveyard" }
         };
     }
 

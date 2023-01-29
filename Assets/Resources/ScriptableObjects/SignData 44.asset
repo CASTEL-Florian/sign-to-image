@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SignData 44
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 9baf33e18b1ecd84a871cb1c2d325532, type: 3}
-  SignNameText: Cimetiere
-  SignDescriptionText: Signe du Cimetiere
+  SignNameText: "Cimeti\xE8re"
+  SignDescriptionText: "Signe du Cimeti\xE8re"
