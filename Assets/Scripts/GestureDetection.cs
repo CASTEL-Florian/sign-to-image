@@ -520,7 +520,7 @@ public class GestureDetection : MonoBehaviour
     }
     public IEnumerator StartCalibration()
     {
-        if(gesturesCanvasManagement.finGestureByName("calibration") != null)
+        if(gesturesCanvasManagement && gesturesCanvasManagement.finGestureByName("calibration") != null)
         {
             gesturesCanvasManagement.showGesture("calibration");
         }
