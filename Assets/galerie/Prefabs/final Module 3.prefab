@@ -23291,6 +23291,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8145682960133452019}
     m_Modifications:
+    - target: {fileID: 1393742196, guid: 17b538efd3fc2a34cb15ee6770936a70, type: 3}
+      propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393742196, guid: 17b538efd3fc2a34cb15ee6770936a70, type: 3}
+      propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5634006658047013142, guid: 17b538efd3fc2a34cb15ee6770936a70, type: 3}
       propertyPath: m_Enabled
       value: 1

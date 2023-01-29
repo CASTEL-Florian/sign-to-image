@@ -34,5 +34,8 @@ public class AudioHandler : MonoBehaviour
         audioSource.clip = GaleryMusic;
         audioSource.loop = true;
         audioSource.Play();
+    } public void StopGaleryleMusic()
+    {
+        audioSource.Stop();
     }
 }
