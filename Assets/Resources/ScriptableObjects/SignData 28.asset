@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: a5ad855f99468c5449385799901befff, type: 3}
   SignNameText: Horreur
-  SignDescriptionText: Sign de l'Horreur
+  SignDescriptionText: Sign de l'horreur

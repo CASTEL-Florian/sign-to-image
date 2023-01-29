@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 9bbfafdffa303724f8a902d15ddb5399, type: 3}
   SignNameText: Monstre
-  SignDescriptionText: Signe D'un monstre
+  SignDescriptionText: Signe d'un monstre

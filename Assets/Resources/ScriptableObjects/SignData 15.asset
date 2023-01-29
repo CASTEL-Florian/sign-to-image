@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 06cea85d5cde1ad42b5b45c9276ee1ad, type: 3}
   SignNameText: Mystique
-  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner un Cour d'eau"
+  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner un Cours d'eau"
