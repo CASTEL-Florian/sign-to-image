@@ -97,7 +97,7 @@ public class TutoManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         lightmapChanger.IsQuest = false;
         lightmapChanger.IsGrimoire = true;
-        tutoText.text += "Déplace toi vers le grimoire et ouvre le. \n\n";
+        tutoText.text += "Déplace-toi vers le grimoire et ouvre-le. \n\n";
         ActivateList(textGrimoireList);
         _canChangeStep = true;
     }
@@ -153,11 +153,11 @@ public class TutoManager : MonoBehaviour
         DesactivateList(textGrimoireList);
         currentTutoStep = 6;
         _canChangeStep = false;
-        tutoText.text = "Bien, maintenant que tu maitrise les signes, tu vas pouvoir peindre.\n";
+        tutoText.text = "Bien, maintenant que tu maitrises les signes, tu vas pouvoir peindre.\n";
         yield return new WaitForSeconds(3f);
         lightmapChanger.IsGrimoire = false;
         lightmapChanger.IsCanvas = true;
-        tutoText.text += "Dirige toi vers le tableau.";
+        tutoText.text += "Dirige-toi vers le tableau.";
         ActivateList(textSmallCanvasList);
         _canChangeStep = true;
     }
@@ -179,7 +179,7 @@ public class TutoManager : MonoBehaviour
         StartCoroutine(DesactivateHandsTuto(3f));
         currentTutoStep = 8;
         _canChangeStep = false;
-        tutoText.text = "Maintenant tu dois indiquer le sujet de ton tableau.\n\n";
+        tutoText.text = "Maintenant, tu dois indiquer le sujet de ton tableau.\n\n";
         yield return new WaitForSeconds(3f);
         tutoText.text += "Fais le signe correspondant à 'Monstre Marin'.";
         _canChangeStep = true;
@@ -192,7 +192,7 @@ public class TutoManager : MonoBehaviour
         StartCoroutine(DesactivateHandsTuto(3f));
         currentTutoStep = 9;
         _canChangeStep = false;
-        tutoText.text = "Maintenant tu dois indiquer le lieu de ton tableau.\n\n";
+        tutoText.text = "Maintenant, tu dois indiquer le lieu de ton tableau.\n\n";
         yield return new WaitForSeconds(3f);
         tutoText.text += "Fais le signe correspondant à 'Océan'.";
         _canChangeStep = true;
@@ -227,7 +227,7 @@ public class TutoManager : MonoBehaviour
         currentTutoStep = 12;
         _canChangeStep = false;
         yield return new WaitForSeconds(1f);
-        tutoText.text = "Tu a finis ce tutoriel.\n\n";
+        tutoText.text = "Tu as fini ce tutoriel.\n\n";
         yield return new WaitForSeconds(3f);
         tutoText.text += "Tu peux maintenant prendre de nouvelles commandes, faire les tableaux que tu souhaites, et aller les admirer dans la galerie.";
         yield return new WaitForSeconds(6f);

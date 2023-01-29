@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 8ce795f3adb517f4d9ce8f9b6f072f00, type: 3}
   SignNameText: "Syst\xE8me"
-  SignDescriptionText: "Signe dont l'utilit\xE9 est d'interagir avec l'application"
+  SignDescriptionText: "Signes dont l'utilit\xE9 est d'interagir avec l'application"

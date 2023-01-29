@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 4f8c14fa8531eae45a0c0cf2f92a2900, type: 3}
   SignNameText: Fantastique
-  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner une Planete"
+  SignDescriptionText: "Peut \xEAtre utilis\xE9 pour dessiner une Plan\xE8te"

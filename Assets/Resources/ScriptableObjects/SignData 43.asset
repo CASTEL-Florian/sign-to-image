@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SignData 43
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 642664d810a6f154980604d936cda953, type: 3}
-  SignNameText: Nuit etoile
-  SignDescriptionText: Signe de la Nuit etoile
+  SignNameText: "Ciel \xE9toil\xE9"
+  SignDescriptionText: "Signe du ciel \xE9toil\xE9"

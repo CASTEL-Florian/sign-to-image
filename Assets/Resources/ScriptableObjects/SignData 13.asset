@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 013c72cbcddc7c74c99ad9ee874446ad, type: 3}
   SignNameText: Lovecraftien
-  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner l'espace"
+  SignDescriptionText: "Peut \xEAtre utilis\xE9 pour dessiner l'espace"

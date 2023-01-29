@@ -755,7 +755,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ici, vous pouvez trouvez les signes qu'il vous faut
+  m_text: Ici, vous pouvez trouver les signes qu'il vous faut
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6298267b1909e604bb5a590cf29bd856, type: 2}
   m_sharedMaterial: {fileID: -4588604389896671250, guid: 6298267b1909e604bb5a590cf29bd856, type: 2}
@@ -4909,9 +4909,45 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2115737847463525490, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.000002262359
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115737847463525490, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -17.31068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115737847463525490, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -89.99999
+      objectReference: {fileID: 0}
     - target: {fileID: 3503508912190491675, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: m_Name
       value: Grimoire
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757594727268070844, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.7550789
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757594727268070844, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.79022974
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757594727268070844, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 43.796318
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001052943727152378, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.6728518
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001052943727152378, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.81503785
+      objectReference: {fileID: 0}
+    - target: {fileID: 4001052943727152378, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -39.631958
       objectReference: {fileID: 0}
     - target: {fileID: 4067137898788238332, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: leftHand
@@ -5177,6 +5213,14 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4605712657628705236, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605712657628705236, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 62.104786
+      objectReference: {fileID: 0}
     - target: {fileID: 5100280671750927334, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: onTriggerEvent.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -5220,6 +5264,42 @@ PrefabInstance:
     - target: {fileID: 5144785560423630399, guid: 32782526250db934e9405470f12389cd, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161110063355658634, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98022
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161110063355658634, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.0000140789825
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869273912439719414, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.000002262359
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869273912439719414, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 17.31068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869273912439719414, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997304977466061208, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98925
+      objectReference: {fileID: 0}
+    - target: {fileID: 8997304977466061208, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -61.511097
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998768959696487148, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 89.98022
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998768959696487148, guid: 32782526250db934e9405470f12389cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.000014078978
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32782526250db934e9405470f12389cd, type: 3}
@@ -9067,7 +9147,7 @@ MonoBehaviour:
   saveImage: 1
   test: 0
   generationEnded: 1
-  url: http://c376-35-188-156-72.ngrok.io
+  url: https://6bda-34-126-165-27.ngrok.io
 --- !u!114 &1629512274
 MonoBehaviour:
   m_ObjectHideFlags: 0
