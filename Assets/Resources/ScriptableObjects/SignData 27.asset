@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 4a4055c992e591e4ebbf27945e5bb51e, type: 3}
   SignNameText: Fantome
-  SignDescriptionText: "Sign du Fant\xF4me"
+  SignDescriptionText: "Signe du Fant\xF4me"
