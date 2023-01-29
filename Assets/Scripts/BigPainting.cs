@@ -197,7 +197,7 @@ public class BigPainting : MonoBehaviour
         }
         questManager.PopUpQuest.transform.position = ValAndXPPos;
         questManager.ExpGainSummary.transform.position = ValAndXPPos;
-
+        questManager.GenerateQuestPlaceHolder();
         transform.localScale = transform.localScale / scaleMultiplier;
         transform.position = initialPos;
         player.ResetPos();
