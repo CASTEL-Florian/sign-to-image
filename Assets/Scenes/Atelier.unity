@@ -755,7 +755,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ici, vous pouvez trouvez les signes qu'il vous faut
+  m_text: Ici, vous pouvez trouver les signes qu'il vous faut
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6298267b1909e604bb5a590cf29bd856, type: 2}
   m_sharedMaterial: {fileID: -4588604389896671250, guid: 6298267b1909e604bb5a590cf29bd856, type: 2}
