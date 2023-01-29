@@ -13,6 +13,10 @@ public class TeleportHandler : MonoBehaviour
     [SerializeField] private float fadeOutTime = 1f;
     [SerializeField] private float fadeInTime = 0.3f;
     [SerializeField] private float floorHeight = 0;
+    private Transform x1;
+    private Transform x_1;
+    private Transform z1;
+    private Transform z_1;
     private bool hidden = true;
     private float alpha = 0;
     Gradient lineRendererGradient;
@@ -43,6 +47,10 @@ public class TeleportHandler : MonoBehaviour
         Color col = teleportationIndicatorMeshRenderer.material.color;
         col.a = alpha;
         teleportationIndicatorMeshRenderer.material.color = col;
+        x1 = teleportationIndicator.Find("x1");
+        x_1 = teleportationIndicator.Find("x-1");
+        z1 = teleportationIndicator.Find("z1");
+        z_1 = teleportationIndicator.Find("z-1");
     }
     public void ShootRay()
     {
@@ -68,6 +76,16 @@ public class TeleportHandler : MonoBehaviour
 
     public Vector3 GetTpPosition()
     {
+        Vector3 tpPos = teleportationIndicator.position;
+        Collider[] colliders = Physics.OverlapSphere(x1.position, 0.01f, whatIsGround);
+        if (colliders.Length != 0) tpPos.x -= 1;
+        colliders = Physics.OverlapSphere(x_1.position, 0.01f, whatIsGround);
+        if (colliders.Length != 0) tpPos.x += 1;
+        colliders = Physics.OverlapSphere(z1.position, 0.01f, whatIsGround);
+        if (colliders.Length != 0) tpPos.z -= 1;
+        colliders = Physics.OverlapSphere(z_1.position, 0.01f, whatIsGround);
+        if (colliders.Length != 0) tpPos.z += 1;
+
         return teleportationIndicator.position;
     }
 

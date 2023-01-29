@@ -224,7 +224,7 @@ public class GestureDetection : MonoBehaviour
                 playerMovement.TeleportToIndicator();
             }
             previousGesture = currentGesture;
-            if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp" && (!tutoManager._isInTuto || (((tutoManager.currentTutoStep == 7 || tutoManager.currentTutoStep == 10) && currentGesture.name == "sos") || (tutoManager.currentTutoStep == 8 && currentGesture.name == "sea monster") || (tutoManager.currentTutoStep == 9 && currentGesture.name == "sea") && tutoManager._canChangeStep)))
+            if (!_hasToValidateQuest && !currentGestureActivated && currentSignHoldTime > minSignHoldTime && !_isInGallery && currentGesture.name != "tp" && (!tutoManager._isInTuto || (((tutoManager.currentTutoStep == 7 || tutoManager.currentTutoStep == 10) && currentGesture.name == "sos") || (tutoManager.currentTutoStep == 8 && currentGesture.name == "sea monster") || (tutoManager.currentTutoStep == 9 && currentGesture.name == "ocean") && tutoManager._canChangeStep)))
             {
                 currentGestureActivated = true;
                 currentTimeBetweenSigns = 0;
