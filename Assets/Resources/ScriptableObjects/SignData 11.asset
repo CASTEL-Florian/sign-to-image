@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SignData 11
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 78ce7347b7bb3e84e97441f4f1892410, type: 3}
-  SignNameText: Aerien
-  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner le Ciel"
+  SignNameText: "A\xE9rien"
+  SignDescriptionText: "Peut \xEAtre utilis\xE9 pour dessiner le Ciel"

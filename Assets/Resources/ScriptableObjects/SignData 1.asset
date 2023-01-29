@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: c539ecece90b74047a3b9ff5c7ae4309, type: 3}
   SignNameText: Marin
-  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner la Mer"
+  SignDescriptionText: "Peut \xEAtre utilis\xE9 pour dessiner la Mer"

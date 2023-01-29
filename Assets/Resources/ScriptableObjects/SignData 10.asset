@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 4b4b23d1411628d41a6fa68f23cc255b, type: 3}
   SignNameText: Terrestre
-  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner la Montagne"
+  SignDescriptionText: "Peut \xEAtre utilis\xE9 pour dessiner la Montagne"

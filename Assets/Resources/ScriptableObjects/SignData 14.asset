@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SignSprite: {fileID: 21300000, guid: 8e52dcdc98c5b4149b058af3baa4e3c4, type: 3}
   SignNameText: Occulte
-  SignDescriptionText: "Peut etre utilis\xE9 pour dessiner un Mausol\xE9e"
+  SignDescriptionText: "Peut \xEAtre utilis\xE9 pour dessiner un Mausol\xE9e"
