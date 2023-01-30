@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,5 +38,12 @@ public class AudioHandler : MonoBehaviour
     } public void StopGaleryleMusic()
     {
         audioSource.Stop();
+    }
+
+    internal void playBackGroundClip(AudioClip backGroundAudioClip)
+    {
+        audioSource.clip = backGroundAudioClip;
+        audioSource.loop = true;
+        audioSource.Play();
     }
 }

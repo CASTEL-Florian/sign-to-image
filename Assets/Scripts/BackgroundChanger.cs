@@ -7,6 +7,9 @@ public class Background
 {
     public string name;
     public Texture2D texture;
+#nullable enable
+    [field: SerializeField] public AudioClip? backGroundAudioClip { get; set; }
+#nullable disable
 }
 public class BackgroundChanger : MonoBehaviour
 {
@@ -14,6 +17,7 @@ public class BackgroundChanger : MonoBehaviour
     [SerializeField] private MeshRenderer backgroundMeshRenderer;
     [SerializeField] private float fadeInTime = 1f;
     [SerializeField] private float fadeOutTime = 1f;
+    [SerializeField] private AudioHandler audioHandler ;
 
     private Coroutine changeBackgroundRoutine;
     private string currentBackground = "";
@@ -35,6 +39,7 @@ public class BackgroundChanger : MonoBehaviour
         }
         currentBackground = newBackgroundName;
         changeBackgroundRoutine = StartCoroutine(ChangeBackgroundRoutine(i));
+   
     }   
 
     private IEnumerator ChangeBackgroundRoutine(int backgroundIndex)
@@ -58,5 +63,9 @@ public class BackgroundChanger : MonoBehaviour
             backgroundMeshRenderer.material.SetColor("_EmissionColor", new Color(t, t, t, 1));
             yield return null;
         }
+         if (backgrounds[backgroundIndex].backGroundAudioClip != null)
+      {
+          audioHandler.playBackGroundClip(backgrounds[backgroundIndex].backGroundAudioClip);
+      }
     }
 }

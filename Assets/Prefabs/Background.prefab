@@ -99,36 +99,53 @@ MonoBehaviour:
   backgrounds:
   - name: ocean
     texture: {fileID: 2800000, guid: ffb1ba1ff03a5cc47ad135080987ebdb, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 8300000, guid: 177cdfaa2b6dc344fafb2c4421d7ea44, type: 3}
   - name: space
     texture: {fileID: 2800000, guid: 60795e4ab320a6a438fbbc98fec501b7, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 8300000, guid: 8a6b617f52df9c44c9e9a22856db7272, type: 3}
   - name: planet
     texture: {fileID: 2800000, guid: 6155764624f70e34e96eb57bfe64dece, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: sky
     texture: {fileID: 2800000, guid: 7d5e8bac145dc4d4683a99b570045717, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 8300000, guid: f097a5991d7e19948981d16174841361, type: 3}
   - name: river
     texture: {fileID: 2800000, guid: ee5c2c5432c1f76498d5981e38fb933c, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: starscape
     texture: {fileID: 2800000, guid: f2c59a0183bf9ba4bbc40101559700f1, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: swamp
     texture: {fileID: 2800000, guid: 427cb77e192fead428616f0f47cc9c84, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: mausoleum
     texture: {fileID: 2800000, guid: 0c1b7c4337f50ad48870127c6b7a2120, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: catacomb
     texture: {fileID: 2800000, guid: 85ccc8e61d3ea4c4fa4e6089d1c4ae29, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: maze
     texture: {fileID: 2800000, guid: 263a2b72f4fe3154bbf14fc42e8f5113, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: cave
     texture: {fileID: 2800000, guid: 95aaaed80a8391e4baf964a5d4bc4825, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: desert
     texture: {fileID: 2800000, guid: 0b49e44895f059b41886290a888caeb8, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: mountain
     texture: {fileID: 2800000, guid: 323dd33f35945bf498a80d5e24af970b, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: graveyard
     texture: {fileID: 2800000, guid: 055cb4999033552479d617ba1cf71959, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 8300000, guid: 501931430d6e2504ea1bfc102e73f69c, type: 3}
   - name: black hole
     texture: {fileID: 2800000, guid: 5070f95908dc437489f383a34f6e9448, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 0}
   - name: forest
     texture: {fileID: 2800000, guid: cb1ac2999fc137b408b3b1e48ff73282, type: 3}
+    <backGroundAudioClip>k__BackingField: {fileID: 8300000, guid: a02943572f67b2f489c915e3f34f55d4, type: 3}
   backgroundMeshRenderer: {fileID: 1644352859412316274}
   fadeInTime: 1
   fadeOutTime: 1
+  audioHandler: {fileID: 0}
