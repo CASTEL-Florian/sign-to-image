@@ -8,7 +8,6 @@
             "titre": "La quete du tuto !",
             "description": "Je souhaite que tu me representes un monstre marin dans l'ocean",
             "requestedPromptItems": [
-                "sea",
                 "ocean",
                 "monster"
             ],
