@@ -247,6 +247,7 @@ public class GestureDetection : MonoBehaviour
                         else
                             Reset();
                         questManager.AddQuest();
+                        questManager.GenerateQuestPlaceHolder();
                         sentenceParticlesLeft.Stop();
                         sentenceParticlesRight.Stop();
                         i = 0;
