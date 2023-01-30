@@ -1504,10 +1504,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerDatasFileName: PlayerDatas
   playerInfos:
+    url: 
     currentLevel: 1
     currentXP: 0
     currentQuestsList: []
     quests: []
+    _hasDoneTuto: 0
   currentQuest:
     rank: 1
     titre: test
@@ -1516,6 +1518,7 @@ MonoBehaviour:
     requestedPromptItems: []
     XPGiven: 0
     _hasBeenDone: 0
+  currentQuestPaper: {fileID: 0}
   QuestPaperList:
   - {fileID: 1428701051563523484}
   - {fileID: 1428701050188758148}
@@ -1531,6 +1534,8 @@ MonoBehaviour:
   NewXpText: {fileID: 832140612802001577}
   LevelUpText: {fileID: 832140611342883430}
   FinalCommentary: {fileID: 832140610802438351}
+  _isInBigPicture: 0
+  tutoManager: {fileID: 0}
 --- !u!1 &1337151973529831383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,11 +2111,13 @@ MonoBehaviour:
   QuestTitle: {fileID: 2656680708890974228}
   QuestRank: {fileID: 2656680708639592667}
   QuestDescription: {fileID: 2656680707883800294}
+  _isSelectedInBigPainting: 0
   _isSelected: 0
   endPosition: {fileID: 0}
   QuestAccept: {fileID: 2656680707220277524}
   QuestRefuse: {fileID: 2656680707949523177}
   QuestDeselect: {fileID: 2656680707399112278}
+  tutoManager: {fileID: 0}
   Selection: 0
   Remove: 0
   Deselection: 0
@@ -2242,11 +2249,13 @@ MonoBehaviour:
   QuestTitle: {fileID: 2656680707570689162}
   QuestRank: {fileID: 2656680707589043733}
   QuestDescription: {fileID: 2656680707340138109}
+  _isSelectedInBigPainting: 0
   _isSelected: 0
   endPosition: {fileID: 0}
   QuestAccept: {fileID: 2656680707375096459}
   QuestRefuse: {fileID: 2656680708758378717}
   QuestDeselect: {fileID: 2656680708997151274}
+  tutoManager: {fileID: 0}
   Selection: 0
   Remove: 0
   Deselection: 0
@@ -2896,11 +2905,13 @@ MonoBehaviour:
   QuestTitle: {fileID: 1428701051866534733}
   QuestRank: {fileID: 1428701050863372308}
   QuestDescription: {fileID: 1428701049872426628}
+  _isSelectedInBigPainting: 0
   _isSelected: 0
   endPosition: {fileID: 0}
   QuestAccept: {fileID: 1428701051436582800}
   QuestRefuse: {fileID: 1428701050940010756}
   QuestDeselect: {fileID: 1337151974144713256}
+  tutoManager: {fileID: 0}
   Selection: 0
   Remove: 0
   Deselection: 0
@@ -6153,6 +6164,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuestPaperManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8932400728466336226, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6247,6 +6262,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GestureDetection, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8932400728466336226, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6336,6 +6355,10 @@ PrefabInstance:
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuestPaperManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728466336226, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_Enabled
@@ -6427,6 +6450,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuestPaperManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8932400728466336226, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6517,6 +6544,10 @@ PrefabInstance:
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuestPaperManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8932400728466336226, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6606,6 +6637,10 @@ PrefabInstance:
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuestPaperManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728466336226, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_Enabled
@@ -6708,6 +6743,10 @@ PrefabInstance:
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuestManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -6816,6 +6855,10 @@ PrefabInstance:
       value: QuestPaperManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6922,6 +6965,10 @@ PrefabInstance:
       value: QuestPaperManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -7026,6 +7073,10 @@ PrefabInstance:
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuestPaperManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7136,6 +7187,10 @@ PrefabInstance:
     - target: {fileID: 8932400728124484909, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: onRelease.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuestPaperManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8932400728124484918, guid: 650175115e34848338b729a0faae6c30, type: 3}
       propertyPath: m_StaticEditorFlags
