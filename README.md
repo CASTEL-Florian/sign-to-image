@@ -40,7 +40,7 @@ The first image may take more time to generate. To avoid that, you can use the w
 
 ## Add the 3 files to the game :
 
-To use the app in the best conditions, you need to put the 3 files (GesturesData, PlayerDatas and ReferenceHandsData, which are available in the google drive : https://drive.google.com/drive/folders/1xa1zd5TBMbu1ts0k5knnI5QYolIMGDEU?usp=sharing) in the folder "Android/data/com.DefaultCompany.TestVR/files" of your VR headset.
+To use the app in the best conditions, you need to put the 3 files (GesturesData, PlayerDatas and ReferenceHandsData, which are available in the google drive : https://drive.google.com/drive/folders/1xa1zd5TBMbu1ts0k5knnI5QYolIMGDEU?usp=sharing) in the folder "Android/data/com.DefaultCompany.SignToImage/files" of your VR headset.
 
 ## How to use the app
 
