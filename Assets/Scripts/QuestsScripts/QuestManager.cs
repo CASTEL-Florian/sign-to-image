@@ -321,7 +321,6 @@ public class QuestManager : MonoBehaviour
             currentQuestPaper.GetComponent<QuestPaperManager>()._isSelectedInBigPainting = false;         
         }
         currentQuestPaper.GetComponent<QuestPaperManager>().RemoveQuest();
-        currentQuestPaper.SetActive(false);
 
         //for tuto -> go to step 12
         if (tutoManager._isInTuto && tutoManager.currentTutoStep == 11)

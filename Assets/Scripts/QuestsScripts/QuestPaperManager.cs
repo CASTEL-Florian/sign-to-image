@@ -125,5 +125,6 @@ public class QuestPaperManager : MonoBehaviour
         {
             questManager.RemoveQuest(quest);
         }
+        gameObject.SetActive(false);
     }
 }
