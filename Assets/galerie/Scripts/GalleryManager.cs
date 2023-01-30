@@ -9,31 +9,34 @@ public class GalleryManager : MonoBehaviour
     [SerializeField] private ImageFileManager imageFileManager;
     [SerializeField] private GameObject restricted;
 
-    public int number_of_tab = 0;
-    public Gallery reception;
+    private int PaintingsNumber = 0;
 
-    public List<Gallery> galleryModules;
-    public List<Transform> availableDocks;
+    [SerializeField]private Gallery reception;
 
-    static int moduleindex = 1;
+    [SerializeField]private List<Gallery> galleryModules;
+    [SerializeField] private List<Frame> frames;
+
+    int AvailableModuleIndex = 1;
     int offset;
     int i;
     int currentRoom;
    
     Dictionary<int, Gallery> availableModules = new Dictionary<int, Gallery>();
-    Dictionary<int, bool> restrictedpath = new Dictionary<int, bool>();
-    public List<Frame> frames;
-    bool modulecreated = false;
-    private bool isRestricted;
-    private bool isConnected;
+
 
     void Start()
     {
+        //To play the gallery music when generated
         audioHandler.PlayGaleryleMusic();
-        number_of_tab = imageFileManager.PaintingsNumber;
+
+        //Assigning the number of painting created by the player 
+        PaintingsNumber = imageFileManager.PaintingsNumber;
+
+        //adding the gallery room to the reception before starting the generation of the other room needed 
         availableModules.Add(0, reception);
-        number_of_tab -= reception.capacity;
+        PaintingsNumber -= reception.capacity;
         frames.AddRange(reception.frames);
+        //Calling the function responsable of the exhebition of the paintings in the gallery
         imageFileManager.ShowPaintings(reception.frames,offset );
 
         offset += reception.frames.Count;
@@ -42,145 +45,23 @@ public class GalleryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /* if(!modulecreated)
-         CheckTabNum();*/
-        //  InstantiateGallery3();
-
+       
+        //Keep track of the Current room that the player are in 
         currentRoom = FindCurrentRoom(availableModules, player);
    
-        if (number_of_tab > 0) { SuccessiveGeneration(currentRoom); }
-        //else if(number_of_tab<=0)
-        //{
-        //    List<int> connectedModules = FindConnectedRooms(currentRoom);
-        //   /* foreach (Transform dock in availableModules[availableModules.Count - 1].docks) 
-        //    {
-        //        Instantiate(restricted, dock.position, transform.rotation * Quaternion.Euler(0f, dock.eulerAngles.y, 0f));
-        //    }*/
-            
-        //    foreach (Transform dock in availableModules[currentRoom].docks)
-        //    {
-        //      foreach(int key in connectedModules) 
-        //        {
-        //            if (availableModules[key].transform.position == dock.position) 
-        //            {
-        //                isConnected = true;
-        //                break;
-        //            }
-        //        }
-        //        if (!isConnected) {
-        //            Instantiate(restricted, dock.position, transform.rotation * Quaternion.Euler(0f, dock.eulerAngles.y, 0f));
-        //            if (!restrictedpath.ContainsKey(currentRoom))
-        //            {
-        //                restrictedpath.Add(currentRoom, true);
-        //            }
-                   
-        //        }
-             
-        //    }
-        //  //  isRestricted = true;
-        //}
+
+        if (PaintingsNumber > 0)
+        {
+            SuccessiveGeneration(currentRoom);
+        }
+        //Function to hide the none connected rooms to the current room 
         hideModules(currentRoom);
+        //Function to activate the connected rooms to the current room 
         showModule(currentRoom);
     }
   
-    void InstantiateGallery()
-    {
-        int oldnum = number_of_tab;
-        //GameObject dock=new GameObject();
-        Gallery temp;
-        //  dock.transform.position=new Vector3(0, 0, 0);
-        int dockstart = 0;
-        while (number_of_tab > 0)
-        {
-            if (oldnum == number_of_tab)
-            {
-                availableDocks.Add(this.transform);
-            }
-
-            for (int i = 0; i < galleryModules.Count; i++)
-            {
-                if (galleryModules[i].capacity <= number_of_tab)
-                {
-                    if (i != 0)
-                    {
-                        int randPos = Random.Range(dockstart, availableDocks.Count);
-
-                        temp = Instantiate(galleryModules[i], availableDocks[randPos].position, transform.rotation * Quaternion.Euler(0f, availableDocks[randPos].eulerAngles.y, 0f));
-                        availableDocks.RemoveAt(randPos);
-                        foreach (Transform Dock in temp.docks)
-                        {
-                            availableDocks.Add(Dock);
-                        }
-
-
-                        number_of_tab -= galleryModules[i].capacity;
-                    }
-                    else if (number_of_tab - galleryModules[i].capacity <= 0)
-                    {
-                        int randPos = Random.Range(dockstart, availableDocks.Count);
-
-                        temp = Instantiate(galleryModules[i], availableDocks[randPos].position, transform.rotation * Quaternion.Euler(0f, availableDocks[randPos].eulerAngles.y, 0f));
-                        availableDocks.RemoveAt(randPos);
-
-                        foreach (Transform Dock in temp.docks)
-                        {
-                            availableDocks.Add(Dock);
-                        }
-                        number_of_tab -= galleryModules[i].capacity;
-                    }
-                    else if (number_of_tab - galleryModules[i].capacity >= 0)
-                    {
-                        int randPos = Random.Range(dockstart, availableDocks.Count);
-
-                        temp = Instantiate(galleryModules[i + 1], availableDocks[randPos].position, transform.rotation * Quaternion.Euler(0f, availableDocks[randPos].eulerAngles.y, 0f));
-                        availableDocks.RemoveAt(randPos);
-                        foreach (Transform Dock in temp.docks)
-                        {
-                            availableDocks.Add(Dock);
-                        }
-                        number_of_tab -= galleryModules[i + 1].capacity;
-
-                    }
-                }
-                /*     else if (galleryModules[i].capacity == number_of_tab)
-                     {
-
-                         Instantiate(galleryModules[i], dock.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
-                         number_of_tab -= galleryModules[i].capacity;
-                     }*/
-                else
-                {
-                    if (number_of_tab > 0)
-                    {
-                        for (int j = 0; j < galleryModules.Count; j++)
-                        {
-                            if (galleryModules[j].capacity > number_of_tab)
-                            {
-                                int randPos = Random.Range(dockstart, availableDocks.Count);
-
-                                Instantiate(galleryModules[i], availableDocks[randPos].position, transform.rotation * Quaternion.Euler(0f, availableDocks[randPos].eulerAngles.y, 0f));
-                                availableDocks.RemoveAt(randPos);
-                                number_of_tab -= galleryModules[j].capacity;
-
-                            }
-                            break;
-                        }
-
-                    }
-                }
-                Debug.Log(number_of_tab);
-                //dockstart = 1;
-            }
-
-        }
-
-
-
-    }
-
-
-
-
+   
+    //The function searchs for the rooms that aren't connected to the current one and hides them 
     void hideModules(int currentRoom)
     {
         int v;
@@ -195,6 +76,7 @@ public class GalleryManager : MonoBehaviour
         }
 
     }
+    //The function searchs for the rooms that are connected to the current one and activate them 
     void showModule(int currentRoom)
     {
         int v;
@@ -206,77 +88,73 @@ public class GalleryManager : MonoBehaviour
         }
 
     }
-    void SuccessiveGeneration(int ModuleKey)
+
+    //Generating succesivually the gallery depending on the player's current room  
+    void SuccessiveGeneration(int CurrentRoomKey)
     {
-        Gallery module = availableModules[ModuleKey];
+
+        Gallery module = availableModules[CurrentRoomKey];
 
         Gallery temp = null ;
 
 
-        List<int> connected = FindConnectedRooms(ModuleKey);
-        int n = ModuleKey == 0 ? 1 : 2;
+        List<int> connected = FindConnectedRooms(CurrentRoomKey);
+        //Following the logic of FindConnectedRooms function it adds also the actual room to the list of connected room and the initial dock port used to connect the new module with the dock of the currentroom exept if current room is the reception it do not have a initial dock 
+        int n = CurrentRoomKey == 0 ? 1 : 2;
+        //To verifie we already generated rooms and connected them to the current one if so the number of the connected room will not be inferior 
         if (connected.Count < module.docks.Length + n)
         {
 
-
+            //Connecting all the room's docks by generating a module for each dock  
             foreach (Transform Dock in module.docks)
             {
-
-                if (galleryModules[i].capacity <= number_of_tab)
+                
+                if (galleryModules[i].capacity <= PaintingsNumber)
                 {
-                    if (i != 0|| number_of_tab - galleryModules[i].capacity <= 0)
+                    if (i != 0|| PaintingsNumber - galleryModules[i].capacity <= 0)
                     {
 
 
                         temp = Instantiate(galleryModules[i], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f));
-                        number_of_tab -= galleryModules[i].capacity;
-                        availableModules.Add(moduleindex, temp);
+                        PaintingsNumber -= galleryModules[i].capacity;
+                        availableModules.Add(AvailableModuleIndex, temp);
                         frames.AddRange(temp.frames);
 
                     }
-                   /* else if (number_of_tab - galleryModules[i].capacity <= 0)
-                    {
-
-                        temp = Instantiate(galleryModules[i], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f));
-                        number_of_tab -= galleryModules[i].capacity;
-                        availableModules.Add(moduleindex, temp);
-                        frames.AddRange(temp.frames);
-                    }*/
-                    else if (number_of_tab - galleryModules[i].capacity >= 0)
+             
+                    else if (PaintingsNumber - galleryModules[i].capacity >= 0)
                     {
 
 
                         temp = Instantiate(galleryModules[i + 1], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f));
 
-                        number_of_tab -= galleryModules[i + 1].capacity;
-                        availableModules.Add(moduleindex, temp);
+                        PaintingsNumber -= galleryModules[i + 1].capacity;
+                        availableModules.Add(AvailableModuleIndex, temp);
                         frames.AddRange(temp.frames);
 
                     }
-                    moduleindex++;
+                    AvailableModuleIndex++;
                     i++;
+                    //we have only 3 modules
                     if (i > 2) { i = 0; }
+
                     imageFileManager.ShowPaintings(temp.frames, offset);
                     offset += temp.frames.Count;
                 }
 
                 else
                 {
-                    if (number_of_tab > 0)
+                    if (PaintingsNumber > 0)
                     {
                         for (int j = 0; j < galleryModules.Count; j++)
                         {
-                            if (galleryModules[j].capacity > number_of_tab)
+                            if (galleryModules[j].capacity > PaintingsNumber)
                             {
-
-
-
-
-                                number_of_tab -= galleryModules[j].capacity;
+                                PaintingsNumber -= galleryModules[j].capacity;
                                 temp = Instantiate(galleryModules[i], Dock.position, transform.rotation * Quaternion.Euler(0f, Dock.eulerAngles.y, 0f));
-                                availableModules.Add(moduleindex,temp );
+                                availableModules.Add(AvailableModuleIndex,temp );
                                 frames.AddRange(temp.frames);
-                                moduleindex++;
+                                AvailableModuleIndex++;
                                 i++;
                                 if (i > 3) { i = 0; }
                                 imageFileManager.ShowPaintings(temp.frames, offset);

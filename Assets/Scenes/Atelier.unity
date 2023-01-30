@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 50ca5228b211b0243a64a149d8cf91f8, type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: eca61519760f83348b3cd48e15680143, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -3326,7 +3326,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5178476918414268212, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8526580979199388063, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3382,11 +3382,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8571211502686687087, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8571211503229306768, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572550965902749403, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8572551146017039131, guid: 20a49b7dbf32a70458f112f97bebdb30, type: 3}
       propertyPath: m_IsActive
@@ -9217,6 +9221,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onlyHandsTrigger: 0
+  audioHandler: {fileID: 0}
 --- !u!4 &1629512279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2683542772516659882, guid: ef648ffc1280d6e4c939259a196f40d5, type: 3}
