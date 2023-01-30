@@ -104,7 +104,7 @@ public class QuestPaperManager : MonoBehaviour
 
     public void DeselectQuest()
     {
-        if (tutoManager != null && tutoManager._isInTuto)
+        if (tutoManager != null && tutoManager._isInTuto && tutoManager.currentTutoStep < 11)
             return;
         questManager.DeselectQuest();
         _isSelected = false;
@@ -118,12 +118,13 @@ public class QuestPaperManager : MonoBehaviour
 
     public void RemoveQuest()
     {
-        if (tutoManager != null && tutoManager._isInTuto)
+        if (tutoManager != null && tutoManager._isInTuto && tutoManager.currentTutoStep < 11)
             return;
         DeselectQuest();
         if(!_isSelected)
         {
             questManager.RemoveQuest(quest);
         }
+        gameObject.SetActive(false);
     }
 }
