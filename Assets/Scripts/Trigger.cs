@@ -9,6 +9,7 @@ public class Trigger : MonoBehaviour
     [SerializeField] private UnityEvent onTriggerEvent;
     [SerializeField] private bool onlyHandsTrigger = false;
     [SerializeField] AudioHandler audioHandler;
+    [SerializeField] private TriggerLock triggerLock;
     SceneFader SceneFader;
     private void Awake()
     {
@@ -23,12 +24,13 @@ public class Trigger : MonoBehaviour
 
     private void loadScene()
     {
-
         SceneFader.LoadScene(0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (triggerLock && triggerLock.locked)
+            return;
         if (onlyHandsTrigger)
         {
             if (other.tag == "Hand")
@@ -37,8 +39,9 @@ public class Trigger : MonoBehaviour
         }
         if (other.tag == "Hand"||other.tag=="Player")
         {
-            audioHandler.StopGaleryleMusic();
-           onTriggerEvent.Invoke();
+            if (audioHandler)
+                audioHandler.StopGaleryleMusic();
+            onTriggerEvent.Invoke();
         }
     }
 

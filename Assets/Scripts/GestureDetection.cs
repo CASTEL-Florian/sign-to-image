@@ -247,6 +247,7 @@ public class GestureDetection : MonoBehaviour
                         else
                             Reset();
                         questManager.AddQuest();
+                        questManager.GenerateQuestPlaceHolder();
                         sentenceParticlesLeft.Stop();
                         sentenceParticlesRight.Stop();
                         i = 0;
@@ -520,7 +521,7 @@ public class GestureDetection : MonoBehaviour
     }
     public IEnumerator StartCalibration()
     {
-        if(gesturesCanvasManagement.finGestureByName("calibration") != null)
+        if(gesturesCanvasManagement && gesturesCanvasManagement.finGestureByName("calibration") != null)
         {
             gesturesCanvasManagement.showGesture("calibration");
         }
