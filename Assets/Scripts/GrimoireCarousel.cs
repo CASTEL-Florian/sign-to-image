@@ -310,4 +310,18 @@ public class GrimoireCarousel : MonoBehaviour
             }
         }
     }
+
+    private void OnDisable()
+    {
+        if (showRoutine != null)
+        {
+            rightHand.transform.position = new Vector3(0, 0, 0);
+            rightHand.transform.rotation = Quaternion.Euler(0, 0, 0);
+            leftHand.transform.position = new Vector3(0, 0, 0);
+            leftHand.transform.rotation = Quaternion.Euler(0, 0, 0);
+            leftHand.SetActive(false);
+            rightHand.SetActive(false);
+            StopCoroutine(showRoutine);
+        }
+    }
 }
