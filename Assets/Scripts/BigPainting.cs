@@ -14,6 +14,7 @@ public class BigPainting : MonoBehaviour
     [SerializeField] private OVRScreenFade centerEyeAnchorFader;
     [SerializeField] private PlayerMovement player;
     [SerializeField] private Transform centerEyeAnchor;
+    [SerializeField] private AudioHandler audioHandler;
 
     [SerializeField] private GameObject tutoCanvas;
     private Vector3 tutoCanvasPosBigFrame = new Vector3(0.86f, 1.92f, -3.345f);
@@ -205,6 +206,8 @@ public class BigPainting : MonoBehaviour
         yield return new WaitForSeconds(centerEyeAnchorFader.fadeTime);
         transitioning = false;
         activated = false;
+        audioHandler.StopBackGroundClip();
+        audioHandler.PlayAtelierleSound();
     }
 
     private float DistanceXZ(Vector3 a, Vector3 b)

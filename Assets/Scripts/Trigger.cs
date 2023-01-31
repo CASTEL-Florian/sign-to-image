@@ -41,6 +41,7 @@ public class Trigger : MonoBehaviour
         {
             if (audioHandler)
                 audioHandler.StopGaleryleMusic();
+                audioHandler.StopAtelierSound();
             onTriggerEvent.Invoke();
         }
     }

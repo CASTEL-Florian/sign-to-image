@@ -10,8 +10,11 @@ public class AudioHandler : MonoBehaviour
     [SerializeField] private AudioClip sosSound;
     [SerializeField] private AudioClip tpSound;
     [SerializeField] private AudioClip switchStyleSound;
-    [SerializeField] private AudioClip GaleryMusic;
-  
+#nullable enable
+    [SerializeField] private AudioClip? GaleryMusic;
+    [SerializeField] private AudioClip? AtelierMusic;
+    [SerializeField] private AudioSource atelier;
+#nullable disable
     public void PlaySignSound()
     {
         audioSource.PlayOneShot(signSound);
@@ -35,15 +38,30 @@ public class AudioHandler : MonoBehaviour
         audioSource.clip = GaleryMusic;
         audioSource.loop = true;
         audioSource.Play();
-    } public void StopGaleryleMusic()
+    }
+    public void StopGaleryleMusic()
     {
         audioSource.Stop();
     }
+    public void PlayAtelierleSound()
+    {
+        atelier.clip = AtelierMusic;
+        atelier.loop = true;
+        atelier.Play();
+    }
+    public void StopAtelierSound()
+    {
 
-    internal void playBackGroundClip(AudioClip backGroundAudioClip)
+        atelier.Stop();
+    }
+    public void playBackGroundClip(AudioClip backGroundAudioClip)
     {
         audioSource.clip = backGroundAudioClip;
         audioSource.loop = true;
         audioSource.Play();
+    }
+    public void StopBackGroundClip()
+    {
+        audioSource.Stop();
     }
 }
