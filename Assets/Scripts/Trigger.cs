@@ -40,9 +40,11 @@ public class Trigger : MonoBehaviour
         if (other.tag == "Hand"||other.tag=="Player")
         {
             if (audioHandler)
+            {
                 audioHandler.StopGaleryleMusic();
                 audioHandler.StopAtelierSound();
-            onTriggerEvent.Invoke();
+                onTriggerEvent.Invoke();
+            }
         }
     }
 

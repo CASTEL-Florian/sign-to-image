@@ -51,7 +51,7 @@ public class AudioHandler : MonoBehaviour
     }
     public void StopAtelierSound()
     {
-
+        if(atelier!=null)
         atelier.Stop();
     }
     public void playBackGroundClip(AudioClip backGroundAudioClip)
