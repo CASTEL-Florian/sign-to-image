@@ -1,5 +1,5 @@
 {
-    "url": "https://6bda-34-126-165-27.ngrok.io",
+    "url": "",
     "currentLevel": 1,
     "currentXP": 0,
     "currentQuestsList": [
@@ -21,7 +21,6 @@
             "titre": "La quete du tuto !",
             "description": "Je souhaite que tu me representes un monstre marin dans l'ocean",
             "requestedPromptItems": [
-                "sea",
                 "ocean",
                 "monster"
             ],

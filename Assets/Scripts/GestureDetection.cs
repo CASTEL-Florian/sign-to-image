@@ -324,10 +324,6 @@ public class GestureDetection : MonoBehaviour
                 if (phraseField)
                     phraseField.text = phrase;
             }
-            else if(!hasRecognized)
-            {
-                gestureRecognitionInputField.text = " ";
-            }
         }
     }
 
